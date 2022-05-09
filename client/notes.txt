@@ -1,0 +1,2 @@
+for the product cards use a map function to display them and use a database.js to store the product infos
+

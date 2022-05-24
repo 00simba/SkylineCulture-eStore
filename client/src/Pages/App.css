@@ -1,0 +1,121 @@
+.FormGroup {
+	margin: 0 15px 20px;
+	padding: 0;
+	border-style: none;
+	background-color: #7795f8;
+	will-change: opacity, transform;
+	box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #829fff;
+	border-radius: 4px;
+}
+
+.FormRow {
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	margin-left: 15px;
+	border-top: 1px solid #819efc;
+}
+
+.StripeElement--webkit-autofill {
+	background: transparent !important;
+}
+
+.StripeElement {
+	width: 100%;
+	padding: 10px 0px 10px 0px;
+}
+
+
+.App {
+	margin: auto;
+	width: 90%;
+	padding: 0px 20px 0px 20px;
+	margin-left: 0%;
+	margin-top: 0%;
+	margin-right: 0%;
+	width: 100%;
+}
+
+
+@media only screen and (max-width: 426px){
+
+	.orderButton {
+		background-color: #fff;
+		border: 1px solid #d5d9d9;
+		border-radius: 8px;
+		box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+		box-sizing: border-box;
+		color: #0f1111;
+		cursor: pointer;
+		display: inline-block;
+		font-family: "Amazon Ember",sans-serif;
+		font-size: 13px;
+		line-height: 29px;
+		padding: 0 10px 0 11px;
+		position: relative;
+		text-align: center;
+		text-decoration: none;
+		user-select: none;
+		-webkit-user-select: none;
+		touch-action: manipulation;
+		vertical-align: middle;
+		width: 100px;
+		height: 35px;
+	  }
+	  
+	  .orderButton:hover {
+		background-color: #f7fafa;
+	  }
+	  
+	  .orderButton:focus {
+		border-color: #008296;
+		box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+		outline: 0;
+	  }
+
+	
+	.secureNote{
+		margin-bottom: 10px;
+	}
+	
+
+	.App {
+		margin: auto;
+		width: 90%;
+		padding: 0px 20px 0px 20px;
+		margin-left: 0%;
+		margin-top: 0%;
+		margin-right: 0%;
+		width: 100%;
+	}
+
+	.StripeElement {
+		width: 100%;
+	}
+
+	.FormRow {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-left: 0px;
+		border-top: 1px solid #7795f8;
+		width: 100%;
+	}
+
+	.FormGroup {
+		margin: 0 0px 10px;
+		width: 100%;
+		display: flex;
+		padding: 10px;
+		border-style: none;
+		background-color: #7795f8;
+		will-change: opacity, transform;
+		box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #829fff;
+		border-radius: 4px;
+	}
+	
+
+	
+
+}
+

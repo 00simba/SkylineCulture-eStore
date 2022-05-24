@@ -4,8 +4,20 @@ export default [
         "title" : "R34 GTR Keychain",
         "img" : "r34key.png",
         "price" : 15,
-        "url" : "r34-gtr-keychain"
+        "url" : "r34-gtr-keychain",
+        "description" : 
+        
+        "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain! "         
+        + "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! "
 
+        + "Specs:"
+        + "Size: 2 inches on longest side"
+        + "Material: Constructed of metal"
+        
+        + "ALL SHIPMENTS ARE FULLY TRACKED!"
+        + "USA: 3-5 business days"
+        + "Canada: 2-10 business days"
+        + "International: 7-14 business days"
     },
     {
         "id" : 2,
@@ -16,11 +28,11 @@ export default [
         "description" : "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain! "         
         + "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! "
         
-        + "Quick Specs:"
+        + "Specs:"
         + "Size: 2 inches on longest side"
         + "Material: Constructed of metal"
         
-        + "Shipping Info: ALL SHIPMENTS ARE FULLY TRACKED!"
+        + "ALL SHIPMENTS ARE FULLY TRACKED!"
         + "USA: 3-5 business days"
         + "Canada: 2-10 business days"
         + "International: 7-14 business days"
@@ -30,13 +42,35 @@ export default [
         "title" : "R34 GTR Pin",
         "img" : "r34pin.png",
         "price" : 20,
-        "url" : "r34-gtr-pin"
+        "url" : "r34-gtr-pin",
+        "description" : "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain! "         
+        + "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! "
+        
+        + "Specs:"
+        + "Size: 2 inches on longest side"
+        + "Material: Constructed of metal"
+        
+        + "ALL SHIPMENTS ARE FULLY TRACKED!"
+        + "USA: 3-5 business days"
+        + "Canada: 2-10 business days"
+        + "International: 7-14 business days"
     },
     {
         "id" : 4,
         "title" : "RB26 Keychain",
         "img" : "rb26.png",
         "price" : 9,
-        "url" : "r26-keychain"
+        "url" : "r26-keychain",
+        "description" : "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain! "         
+        + "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set." 
+        
+        + "Specs:"
+        + "Size: 2 inches on longest side"
+        + "Material: Constructed of metal"
+        
+        + "ALL SHIPMENTS ARE FULLY TRACKED!"
+        + "USA: 3-5 business days"
+        + "Canada: 2-10 business days"
+        + "International: 7-14 business days"
     } 
 ]

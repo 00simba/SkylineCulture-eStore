@@ -155,6 +155,112 @@ a{
 
 @media only screen and (max-width: 426px){
 
+
+  .removeBtn {
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Amazon Ember",sans-serif;
+    font-size: 13px;
+    line-height: 30px;
+    padding: 0 10px 0 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 100px;
+  }
+  
+  .removeBtn:hover {
+    background-color: #f7fafa;
+  }
+  
+  .removeBtn:focus {
+    border-color: #008296;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    outline: 0;
+  }
+
+
+
+
+
+  .checkoutBtn {
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Amazon Ember",sans-serif;
+    font-size: 13px;
+    line-height: 30px;
+    padding: 0 10px 0 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 130px;
+  }
+  
+  .checkoutBtn:hover {
+    background-color: #f7fafa;
+  }
+  
+  .checkoutBtn:focus {
+    border-color: #008296;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    outline: 0;
+  }
+
+
+  .proceedPayment {
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Amazon Ember",sans-serif;
+    font-size: 13px;
+    line-height: 30px;
+    padding: 0 10px 0 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 150px;
+  }
+  
+  .proceedPayment:hover {
+    background-color: #f7fafa;
+  }
+  
+  .proceedPayment:focus {
+    border-color: #008296;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    outline: 0;
+  }
+
+
   .addButton {
     background-color: #fff;
     border: 1px solid #d5d9d9;
@@ -243,7 +349,8 @@ a{
     -webkit-user-select: none;
     touch-action: manipulation;
     vertical-align: middle;
-    width: 100px;
+    width: 110px;
+    height: 35px;
   }
   
   .addToCart:hover {
@@ -263,23 +370,40 @@ a{
   }
 
   .infoPrice{
-    justify-content: flex-end;
     display: flex;
     flex-direction: column;
   }
 
-  .infoContainer{
-    justify-content: baseline;
-    display: flex;
-    flex-direction: row;
+  .productDesc{
+    padding: 40px;
   }
 
-  .infoContainer > div{
-    margin: 0px 20px 0px 20px;
+  .infoContainer{
+    width: 100%;
+    align-items: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 40px 0px 40px;
+  }
+
+
+  .addToCartBtn{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .counter{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 40px;
   }
 
   .addCounter{
     display: flex;
+    align-items: center;
     flex-direction: column;
   }
 

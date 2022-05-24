@@ -1,8 +1,7 @@
 import React from 'react'
 import '../index.css'
 import logo from '../logo.png'
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
-import {ImCart} from 'react-icons/im'
+import {Link} from 'react-router-dom';
 import cart from '../Images/cart_icon.png'
 
 

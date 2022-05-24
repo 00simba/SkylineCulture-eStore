@@ -1,15 +1,18 @@
 require('dotenv').config()
 
 const path = require('path')
-
-
 const express = require('express')
 const mongoose = require('mongoose')
 const Product = require('./models/products')
+const bodyParser = require('body-parser')
 const { execPath } = require('process')
+const { rmSync } = require('fs')
 const app = express()
 app.use(express.json())
 app.use(express.static('../client/build'))
+app.use(bodyParser.urlencoded({extended: false}))
+const cors = require("cors")
+app.use(cors())
 
 var database
 const dbURI = process.env.DATABASE_URI;
@@ -43,12 +46,61 @@ Product.find().then((result) => result.map((item) => {
 
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
+
 app.get('*', (req,res) =>{
     res.sendFile(path.resolve(__dirname,'..', 'client', 'build', 'index.html'));
 });
 
 
-app.post('/create-checkout-session', async (req,res) => {
+var customer = {}
+
+app.post("/collect", (req, res) =>{
+
+    customer={
+        email: req.body.customer_email,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        address: req.body.customer_address,
+        optional_address:  req.body.customer_optional_address,
+        country: req.body.country,
+        region: req.body.region
+    }
+
+    console.log(customer)
+
+    res.redirect("http://localhost:3001/collect-payment")
+})
+
+
+app.post("/payment", cors(), async (req, res) => {
+
+
+	let { amount, id } = req.body
+	try {
+		const payment = await stripe.paymentIntents.create({
+			amount,
+			currency: "USD",
+			description: "Skyline Company",
+			payment_method: id,
+			confirm: true
+		})
+		console.log("Payment", payment)
+		res.json({
+			message: "Payment successful",
+			success: true
+		})
+	} catch (error) {
+		console.log("Error", error)
+		res.json({
+			message: "Payment failed",
+			success: false
+		})
+	}
+})
+
+
+
+/*app.post('/create-checkout-session', async (req,res) => {
     try{
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
@@ -74,7 +126,7 @@ app.post('/create-checkout-session', async (req,res) => {
     } catch(e) {
         res.status(500).json({error: e.message})
     }
-})
+})*/
 
 
 app.listen(3001, () => {

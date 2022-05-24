@@ -36,7 +36,7 @@ export default function ProductPage(props){
 
     return(
         <div className="productContainer">
-                <img className="productImg" src={require(`../Images/${productObj.img}`)}></img>    
+                <img className="productImg" src={require(`../Images/${productObj.img}`)}></img>  
                 <div className="infoContainer">
                     <div className="infoPrice">
                         <h3 className="title">{productObj.title}</h3>
@@ -46,8 +46,12 @@ export default function ProductPage(props){
                         <AddToCart id={productObj.id} product={productObj.title} quantity={quantity} image={productObj.img} price={productObj.price} basePrice={productObj.basePrice} addItemToCart={props.addItemToCart}/>
                         <Counter quantity={quantity} add={add} minus={minus}/>
                     </div>
+                </div>  
+                <div className="productDesc">
+                    <span>{productObj.description}</span>
                 </div>
         </div>
+        
     )
 }
 

@@ -1,17 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import reportWebVitals from './reportWebVitals';
 import './index.css';
 import data from './Data/Data.js'
 import Header from './Components/Header';
 import Products from './Components/Product';
-import Popup from './Components/Popup'
 import ProductPage from './Components/ProductPage'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CartPage from './Components/CartPage'
-import axios from "axios"
 import './index.css';
-
+import Checkout from './Pages/Checkout'
+import Payment from './Pages/Payment'
 
 
 export default function Website(){
@@ -80,6 +77,8 @@ export default function Website(){
             <Routes>
                 <Route path='product/:productUrl' element={<ProductPage addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
                 <Route path='/cart' element={<CartPage setCartItems={setCartItems} cartItems={cartItems}/>}/>
+                <Route path='/checkout' element={<Checkout cartItems={cartItems}/>}></Route>
+                <Route path='/collect-payment' element={<Payment cartItems={cartItems}/>}></Route>
             </Routes>
 
         </BrowserRouter>

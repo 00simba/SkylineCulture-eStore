@@ -23,19 +23,39 @@ Product.find().then((result) => result.map((item) => {
 
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
-var cart;
-var customer;
-var total=0;
+let cart=[];
+let customer={
+    email: "",
+    first_name: "",
+    last_name: "",
+    address: "",
+    optional_address: "",
+    country: "",
+    region: "",
+};
+let total=0;
 
 app.get('*', (req,res) =>{
     res.sendFile(path.resolve(__dirname,'..', 'client', 'build', 'index.html'));
 });
 
 app.post("/get-items", (req,res) => {
+    total = 0
     cart = req.body
-    calculateTotal()  
 })
 
+app.post("/collect", (req, res) =>{
+    customer.email = req.body.customer_email,
+    customer.first_name = req.body.first_name,
+    customer.last_name = req.body.last_name,
+    customer.address = req.body.customer_address,
+    customer.optional_address =  req.body.customer_optional_address,
+    customer.country = req.body.country,
+    customer.region = req.body.region,
+    calculateTotal()
+    res.redirect("/collect-payment")
+}
+)
 
 function calculateTotal(){
     var cartArray = cart.items
@@ -43,20 +63,16 @@ function calculateTotal(){
         var price = ((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity))
         total += price 
     })
-}
-
-app.post("/collect", (req, res) =>{
-    customer={
-        email: req.body.customer_email,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        address: req.body.customer_address,
-        optional_address:  req.body.customer_optional_address,
-        country: req.body.country,
-        region: req.body.region,
+    if(customer.country === 'Canada'){
+        total += 795
     }
-    res.redirect("/collect-payment")
-})
+    else if(customer.country === "United States"){
+        total += 395
+    }
+    else{
+        total += 995
+    }
+}
 
 
 app.post("/payment", cors(), async (req, res) => {
@@ -81,6 +97,7 @@ app.post("/payment", cors(), async (req, res) => {
 			success: false
 		})
 	}
+    
 })
 
 app.listen(3001, () => {

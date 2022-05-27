@@ -12,7 +12,7 @@ export default function Payment(props){
             <div className='secureNote'>
             <span>We will never save your card information and this checkout is secure.</span>
             </div>
-            <StripeContainer />  
+            <StripeContainer/>  
         </div>
     )
     

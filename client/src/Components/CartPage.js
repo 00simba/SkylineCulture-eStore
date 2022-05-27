@@ -43,8 +43,6 @@ import {Link} from 'react-router-dom';
 
 
 
-
-
 function removeItem(setCartItems, cartItems, productId){
     cartItems.forEach(item => {
         if(item.productId === productId){
@@ -80,18 +78,33 @@ function decrementItem(cartItems, productId, setCartItems){
 } 
 
 
+function getTotal(cartItems){
+    var tempTotal=0
+    cartItems.forEach(item => {
+        tempTotal += parseInt(item.productPrice) * parseInt(item.productQuantity)
+    })
+    return tempTotal
+}
+
+
+
 export default function CartPage(props){
 
+    var total = getTotal(props.cartItems)
 
     const items = props.cartItems.map(item => {
 
         return(
             <div>
-            <h2>{item.productName}</h2>
-            <h2>{item.productQuantity}</h2> 
-            <h2>${(item.productPrice) * (item.productQuantity)}</h2>
-            <Counter add={() => incrementItem(props.cartItems, item.productId, props.setCartItems)} quantity={item.productQuantity}  minus={() => decrementItem(props.cartItems, item.productId, props.setCartItems)}/>
-            <button className="removeBtn" onClick={() => removeItem(props.setCartItems, props.cartItems, item.productId)}>Remove</button>
+                <div class="itemInfos">
+                <h3>{item.productName}</h3>
+                <span>Quantity: {item.productQuantity}</span> 
+                <span>Price: ${(item.productPrice) * (item.productQuantity)}</span>
+                </div>
+                <div className="modifyItem">
+                <Counter add={() => incrementItem(props.cartItems, item.productId, props.setCartItems)} quantity={item.productQuantity}  minus={() => decrementItem(props.cartItems, item.productId, props.setCartItems)}/>
+                <button className="removeBtn" onClick={() => removeItem(props.setCartItems, props.cartItems, item.productId)}>Remove</button>
+                </div>
             </div>
     
         )
@@ -101,12 +114,12 @@ export default function CartPage(props){
     return(
         <div>
             <div className="cartDiv">
-              <h1 >Your Cart</h1>
+              <h2>Cart: ${total}</h2>
+              <Link to={`/checkout`}><button className="checkoutBtn" type="button">Checkout</button></Link>
             </div>
             <div className="itemRow">
                 {items}
             </div>
-            <Link to={`/checkout`}><button className="checkoutBtn" type="button">Checkout</button></Link>
         </div>
     )
 }

@@ -9,18 +9,18 @@ const CARD_OPTIONS = {
 	iconStyle: "solid",
 	style: {
 		base: {
-			iconColor: "#c4f0ff",
-			color: "#fff",
+			iconColor: "#ffffff",
+			color: "#ffffff",
 			fontWeight: 500,
 			fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
 			fontSize: "16px",
 			fontSmoothing: "antialiased",
-			":-webkit-autofill": { color: "#fce883" },
-			"::placeholder": { color: "#87bbfd" }
+			":-webkit-autofill": { color: "#white" },
+			"::placeholder": { color: "#white" }
 		},
 		invalid: {
-			iconColor: "#ffc7ee",
-			color: "#ffc7ee"
+			iconColor: "#ffffff",
+			color: "#ffffff"
 		}
 	}
 }
@@ -69,7 +69,9 @@ export default function PaymentForm() {
                         <CardElement options={CARD_OPTIONS}/>
                     </div>
                 </fieldset>
-                <button className="orderButton">Place Order</button>
+                <div className="orderDiv">
+                    <button className="orderButton">Place Order</button>
+                </div>
             </form>
             :
         <div>

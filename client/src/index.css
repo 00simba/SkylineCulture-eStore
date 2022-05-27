@@ -147,27 +147,96 @@ a{
   padding: 16px;
 }
 
-.cartDiv h1{
-  padding-top: 20px;
-  padding-left: 30px;
+.cartDiv{
+  align-items: baseline;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0px 10px 10px 10px;
 }
 
 
 @media only screen and (max-width: 426px){
 
 
+  .orderDiv{
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .checkoutHeading{
+    margin-left: 10px;
+  }
+
+  .contactSpan{
+    padding-bottom: 5px;
+  }
+
+  .shippingSpan{
+    padding-bottom: 5px;
+  }
+
+  .checkoutForm{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+  }
+
+  .checkoutContainer{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .proceedDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  input{
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px black solid; 
+  }
+
+  input:focus {
+    outline: none 
+  }
+  
+
+  .itemInfos{
+    padding-top: 5px;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modifyItem{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  .modifyItem > div{
+    margin: 0px 10px 10px 10px;
+  }
+
   .removeBtn {
+    display: flex;
     background-color: #fff;
     border: 1px solid #d5d9d9;
     border-radius: 8px;
     box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
     box-sizing: border-box;
-    color: #0f1111;
+    color: #ff0000;
     cursor: pointer;
     display: inline-block;
     font-family: "Amazon Ember",sans-serif;
     font-size: 13px;
-    line-height: 30px;
+    line-height: 0px;
     padding: 0 10px 0 10px;
     position: relative;
     text-align: center;
@@ -176,7 +245,8 @@ a{
     -webkit-user-select: none;
     touch-action: manipulation;
     vertical-align: middle;
-    width: 100px;
+    height: 31px;
+    width: 70px;
   }
   
   .removeBtn:hover {
@@ -189,17 +259,13 @@ a{
     outline: 0;
   }
 
-
-
-
-
   .checkoutBtn {
-    background-color: #fff;
+    background-color: #2f2f2f;
     border: 1px solid #d5d9d9;
     border-radius: 8px;
-    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    box-shadow: rgba(255, 255, 255, 0.5) 0 2px 5px 0;
     box-sizing: border-box;
-    color: #0f1111;
+    color: #ffffff;
     cursor: pointer;
     display: inline-block;
     font-family: "Amazon Ember",sans-serif;
@@ -213,7 +279,8 @@ a{
     -webkit-user-select: none;
     touch-action: manipulation;
     vertical-align: middle;
-    width: 130px;
+    height: 40px;
+    width: 100px;
   }
   
   .checkoutBtn:hover {
@@ -227,13 +294,13 @@ a{
   }
 
 
-  .proceedPayment {
-    background-color: #fff;
+  .proceedPayment{
+    background-color: #2f2f2f;
     border: 1px solid #d5d9d9;
     border-radius: 8px;
     box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
     box-sizing: border-box;
-    color: #0f1111;
+    color: white;
     cursor: pointer;
     display: inline-block;
     font-family: "Amazon Ember",sans-serif;
@@ -247,6 +314,7 @@ a{
     -webkit-user-select: none;
     touch-action: manipulation;
     vertical-align: middle;
+    height: 40px;
     width: 150px;
   }
   
@@ -259,7 +327,6 @@ a{
     box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
     outline: 0;
   }
-
 
   .addButton {
     background-color: #fff;

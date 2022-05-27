@@ -39,19 +39,84 @@
 
 @media only screen and (max-width: 426px){
 
+	.shippingInfo{
+		display: flex;
+		flex-direction: column;
+		font-size: smaller;
+	}
+
+	.shippingSpan{
+		font-weight: 550;
+	}
+
+	.shippingInfoSpan{
+		font-weight: 550;
+		margin-bottom: 5px;
+	}
+
+
+	.contactInfoSpan{
+		font-weight: 550;
+		margin-bottom: 5px;		
+	}
+
+
+	.shippingDiv{
+		margin-top: 15px;
+		margin-bottom: 10px;
+	}
+
+	.usaDiv{
+		display: flex;
+		flex-direction: column;
+
+	}
+
+	.canadaDiv{
+		display: flex;
+		flex-direction: column;
+
+	}
+
+	.internationalDiv{
+		display: flex;
+		flex-direction: column;
+
+	}
+
+	.countryDrop{
+		border: 1px rgb(77, 77, 77) solid; 
+		border-radius: 5px;
+		padding: 8px;
+	}
+
+	.regionDrop{
+		border: 1px rgb(77, 77, 77) solid; 
+		border-radius: 5px;
+		padding: 8px;
+	}
+
+	.countryDrop:focus{
+		outline: none;
+	}
+
+	.regionDrop:focus{
+		outline: none;
+	}
+
 	.orderButton {
-		background-color: #fff;
+		background-color: #2f2f2f;
 		border: 1px solid #d5d9d9;
 		border-radius: 8px;
 		box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
 		box-sizing: border-box;
-		color: #0f1111;
+		color: white;
 		cursor: pointer;
 		display: inline-block;
 		font-family: "Amazon Ember",sans-serif;
 		font-size: 13px;
 		line-height: 29px;
-		padding: 0 10px 0 11px;
+		padding: 0px 10px 0 11px;
 		position: relative;
 		text-align: center;
 		text-decoration: none;
@@ -59,8 +124,8 @@
 		-webkit-user-select: none;
 		touch-action: manipulation;
 		vertical-align: middle;
-		width: 100px;
-		height: 35px;
+		width: 120px;
+		height: 45px;
 	  }
 	  
 	  .orderButton:hover {
@@ -75,11 +140,18 @@
 
 	
 	.secureNote{
+		font-size: smaller;
+		margin-bottom: 15px;
+	}
+
+	.almostHeader{
 		margin-bottom: 10px;
 	}
 	
 
 	.App {
+		display: flex;
+		flex-direction: column;
 		margin: auto;
 		width: 90%;
 		padding: 0px 20px 0px 20px;
@@ -98,7 +170,7 @@
 		flex-direction: column;
 		align-items: center;
 		margin-left: 0px;
-		border-top: 1px solid #7795f8;
+		border-top: 1px solid #2f2f2f;
 		width: 100%;
 	}
 
@@ -108,9 +180,9 @@
 		display: flex;
 		padding: 10px;
 		border-style: none;
-		background-color: #7795f8;
+		background-color: #2f2f2f;
 		will-change: opacity, transform;
-		box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #829fff;
+		box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #2f2f2f;
 		border-radius: 4px;
 	}
 	

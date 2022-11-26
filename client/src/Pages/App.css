@@ -25,19 +25,65 @@
 	padding: 10px 0px 10px 0px;
 }
 
-
-.App {
-	margin: auto;
-	width: 90%;
-	padding: 0px 20px 0px 20px;
-	margin-left: 0%;
-	margin-top: 0%;
-	margin-right: 0%;
+.FormRow {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-left: 0px;
+	border-top: 1px solid #2f2f2f;
 	width: 100%;
 }
 
+.FormGroup {
+	margin: 0 0px 10px;
+	width: 100%;
+	display: flex;
+	padding: 10px;
+	border-style: none;
+	background-color: #2f2f2f;
+	will-change: opacity, transform;
+	box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #2f2f2f;
+	border-radius: 4px;
+}
 
-@media only screen and (max-width: 426px){
+
+.orderButton {
+	background-color: #2f2f2f;
+	border: 1px solid #d5d9d9;
+	border-radius: 8px;
+	box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+	box-sizing: border-box;
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	font-family: "Amazon Ember",sans-serif;
+	font-size: 13px;
+	line-height: 29px;
+	padding: 0px 10px 0 11px;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	vertical-align: middle;
+	width: 120px;
+	height: 45px;
+  }
+  
+  .orderButton:hover {
+	background-color: #f7fafa;
+  }
+  
+  .orderButton:focus {
+	border-color: #008296;
+	box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+	outline: 0;
+  }
+
+
+
+@media only screen and (max-width: 578px){
 
 	.shippingInfo{
 		display: flex;
@@ -104,40 +150,6 @@
 		outline: none;
 	}
 
-	.orderButton {
-		background-color: #2f2f2f;
-		border: 1px solid #d5d9d9;
-		border-radius: 8px;
-		box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
-		box-sizing: border-box;
-		color: white;
-		cursor: pointer;
-		display: inline-block;
-		font-family: "Amazon Ember",sans-serif;
-		font-size: 13px;
-		line-height: 29px;
-		padding: 0px 10px 0 11px;
-		position: relative;
-		text-align: center;
-		text-decoration: none;
-		user-select: none;
-		-webkit-user-select: none;
-		touch-action: manipulation;
-		vertical-align: middle;
-		width: 120px;
-		height: 45px;
-	  }
-	  
-	  .orderButton:hover {
-		background-color: #f7fafa;
-	  }
-	  
-	  .orderButton:focus {
-		border-color: #008296;
-		box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
-		outline: 0;
-	  }
-
 	
 	.secureNote{
 		font-size: smaller;
@@ -145,7 +157,7 @@
 	}
 
 	.almostHeader{
-		margin-bottom: 10px;
+		margin-bottom: 2%;
 	}
 	
 
@@ -164,30 +176,28 @@
 	.StripeElement {
 		width: 100%;
 	}
+}
 
-	.FormRow {
+
+@media only screen and (min-width: 579px) and (max-width: 768px){
+
+	.App{
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		margin-left: 0px;
-		border-top: 1px solid #2f2f2f;
-		width: 100%;
+		margin: 5% 2% 0% 2%;
 	}
 
-	.FormGroup {
-		margin: 0 0px 10px;
-		width: 100%;
+}
+
+
+@media only screen and (min-width: 769px){
+
+	.App{
 		display: flex;
-		padding: 10px;
-		border-style: none;
-		background-color: #2f2f2f;
-		will-change: opacity, transform;
-		box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #2f2f2f;
-		border-radius: 4px;
+		flex-direction: column;
+		margin: 5% 5% 0% 5%;
 	}
-	
 
-	
 
 }
 

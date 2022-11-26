@@ -4,7 +4,7 @@ import data from './Data/Data.js'
 import Header from './Components/Header';
 import Products from './Components/Product';
 import ProductPage from './Components/ProductPage'
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useLocation, BrowserRouter, Router, Routes, Route } from 'react-router-dom';
 import CartPage from './Components/CartPage'
 import './index.css';
 import Checkout from './Pages/Checkout'
@@ -13,7 +13,6 @@ import Payment from './Pages/Payment'
 
 export default function Website(){
 
- 
     const products = data.map(item => {
         return(
             <Products 
@@ -61,26 +60,21 @@ export default function Website(){
 
         if(found==0){
             setCartItems([...cartItems, {productId: `${id}`, productName: `${product}`, productQuantity: `${quantity}`, productImage: `${image}`, productPrice: `${price}`}])
-        }
-    
+        }      
     }
 
+    const location = useLocation()
 
     return(
-        <BrowserRouter>
-            <Header />         
-            <div className="parent">
-                <Routes>
-                    <Route path='/' element={products}/>
-                </Routes>
-            </div>
-            <Routes>
+        <div>
+            {!["/checkout", "/collect-payment"].includes(location.pathname) && <Header/>}
+            <Routes>           
+                <Route path='/' element={<div className='parent'>{products}</div>}/>
                 <Route path='product/:productUrl' element={<ProductPage addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
                 <Route path='/cart' element={<CartPage setCartItems={setCartItems} cartItems={cartItems}/>}/>
                 <Route path='/checkout' element={<Checkout cartItems={cartItems}/>}></Route>
-                <Route path='/collect-payment' element={<Payment cartItems={cartItems}/>}></Route>
+                <Route path='/collect-payment' cartItems={cartItems} element={<Payment cartItems={cartItems}/>}></Route>
             </Routes>
-
-        </BrowserRouter>
+        </div>
     )
 }

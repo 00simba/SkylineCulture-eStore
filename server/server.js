@@ -30,6 +30,7 @@ let customer={
     last_name: "",
     address: "",
     optional_address: "",
+    city: "",
     country: "",
     region: "",
 };
@@ -38,6 +39,10 @@ let total=0;
 app.get('*', (req,res) =>{
     res.sendFile(path.resolve(__dirname,'..', 'client', 'build', 'index.html'));
 });
+
+app.get('/', (req, res) => {
+    res.json("Server Started")
+})
 
 app.post("/get-items", (req,res) => {
     total = 0
@@ -50,6 +55,8 @@ app.post("/collect", (req, res) =>{
     customer.last_name = req.body.last_name,
     customer.address = req.body.customer_address,
     customer.optional_address =  req.body.customer_optional_address,
+    customer.city = req.body.customer_city,
+    customer.code = req.body.code,
     customer.country = req.body.country,
     customer.region = req.body.region,
     calculateTotal()
@@ -58,8 +65,7 @@ app.post("/collect", (req, res) =>{
 )
 
 function calculateTotal(){
-    var cartArray = cart.items
-    cartArray.forEach((itemObject) => {
+    cart.forEach((itemObject) => {
         var price = ((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity))
         total += price 
     })
@@ -76,10 +82,12 @@ function calculateTotal(){
 
 
 app.post("/payment", cors(), async (req, res) => {
-	let { amount, id } = req.body
+    console.log(customer.email)
+	let {id} = req.body
 	try {
 		const payment = await stripe.paymentIntents.create({
 			amount: total,
+            receipt_email: customer.email,
 			currency: "USD",
 			description: "Skyline Company",
 			payment_method: id,
@@ -100,6 +108,6 @@ app.post("/payment", cors(), async (req, res) => {
     
 })
 
-app.listen(3001, () => {
-    console.log("Server is running on port 3001")
+app.listen(process.env.PORT || 8080, () => {
+    console.log("Server is running on port 8080")
 })

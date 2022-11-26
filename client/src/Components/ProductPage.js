@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Counter from './Counter'
 import AddToCart from './AddToCart'
+import '../index.css'
 
 
 export default function ProductPage(props){
@@ -34,6 +35,8 @@ export default function ProductPage(props){
         }
     }
 
+   (productObj.description).forEach(item => console.log(item))
+
     return(
         <div className="productContainer">
                 <img className="productImg" src={require(`../Images/${productObj.img}`)}></img>  
@@ -48,7 +51,7 @@ export default function ProductPage(props){
                     </div>
                 </div>  
                 <div className="productDesc">
-                    <span>{productObj.description}</span>
+                    {(productObj.description).map((item) => <p>{item}<br/></p>)}
                 </div>
         </div>
         

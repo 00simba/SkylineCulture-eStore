@@ -8,17 +8,15 @@ import cart from '../Images/cart_icon.png'
 export default function Header(){
     return(
             <div className='navbar'>
-
+                
                 <div id="menuToggle">
-                
+
                     <input type="checkbox" />
-                    
-                
+             
                     <span></span>
                     <span></span>
                     <span></span>
-                    
-                
+            
                     <ul id="menu">
                         <li>Keychains</li>
                         <li>Stickers</li>
@@ -26,21 +24,27 @@ export default function Header(){
                         <li>Track Order</li>
                     </ul>
                 </div>
-  
-                <Link to='/'>
-                <div className='skylineLogo'><img src={logo}></img></div>
-                </Link> 
-                <ul class='menuItems'>
+
+                <div className='skylineLogo'>
+                    <Link to='/'>
+                        <img src={logo}></img>
+                    </Link>
+                </div>
+
+                
+               <ul className='menuItems'>
                     <Link to='/'><li>Home</li></Link>
                     <li>Keychains</li>
                     <li>Stickers</li>
                     <li>Diecast Cars</li>
                     <li>Track Order</li>
-                </ul>  
-                <Link to='/cart'>   
-                    <div className='cartIcon'><img src={cart}></img></div>
-                </Link> 
-                 
+                    <Link to='/cart'><li className='yourCartText'>Your Cart</li></Link>
+                </ul>
+
+                <div className='cartIcon'>
+                    <Link to='/cart'><img src={cart}></img></Link>
+                </div>
+
             </div>
     )
 }

@@ -63,7 +63,7 @@ export default function PaymentForm() {
     return (
         <div>
             {!success ? 
-            <form onSubmit={handleSubmit}>
+            <form className="cardForm" onSubmit={handleSubmit}>
                 <fieldset className="FormGroup">
                     <div className="FormRow">
                         <CardElement options={CARD_OPTIONS}/>
@@ -77,8 +77,7 @@ export default function PaymentForm() {
         <div>
             <h2>Payment succesful</h2>
         </div> 
-            }
-            
+            }            
         </div>
     )
 }

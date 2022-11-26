@@ -44,11 +44,8 @@ import {Link} from 'react-router-dom';
 
 
 function removeItem(setCartItems, cartItems, productId){
-    cartItems.forEach(item => {
-        if(item.productId === productId){
-            cartItems.pop()
-        }
-    });
+    const objIndex = cartItems.findIndex((obj) => obj.productId === productId)
+    cartItems.splice(objIndex, 1)    
     setCartItems([...cartItems])
 }
 
@@ -95,15 +92,18 @@ export default function CartPage(props){
     const items = props.cartItems.map(item => {
 
         return(
-            <div>
-                <div class="itemInfos">
+            <div className="eachItemRow">
+                <div className="itemInfos">
                 <h3>{item.productName}</h3>
                 <span>Quantity: {item.productQuantity}</span> 
-                <span>Price: ${(item.productPrice) * (item.productQuantity)}</span>
+                <span>Price: ${(item.productPrice)}</span>
                 </div>
                 <div className="modifyItem">
                 <Counter add={() => incrementItem(props.cartItems, item.productId, props.setCartItems)} quantity={item.productQuantity}  minus={() => decrementItem(props.cartItems, item.productId, props.setCartItems)}/>
                 <button className="removeBtn" onClick={() => removeItem(props.setCartItems, props.cartItems, item.productId)}>Remove</button>
+                </div>
+                <div className="productImage">
+                    <img src={require(`../Images/${item.productImage}`)}></img>
                 </div>
             </div>
     
@@ -114,7 +114,7 @@ export default function CartPage(props){
     return(
         <div>
             <div className="cartDiv">
-              <h2>Cart: ${total}</h2>
+              <h2>Total: ${total}</h2>
               <Link to={`/checkout`}><button className="checkoutBtn" type="button">Checkout</button></Link>
             </div>
             <div className="itemRow">

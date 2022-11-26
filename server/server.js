@@ -82,8 +82,8 @@ function calculateTotal(){
 
 
 app.post("/payment", cors(), async (req, res) => {
-    console.log(customer.email)
 	let {id} = req.body
+    res.json({"amount": total})
 	try {
 		const payment = await stripe.paymentIntents.create({
 			amount: total,

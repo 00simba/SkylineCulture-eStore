@@ -92,7 +92,7 @@ export default function Checkout(props){
                 <Shipping country={location.country}/>
 
                 <div className='proceedDiv'>
-                <button onClick={()=> sendCart(props.cartItems)} className="proceedPayment" type="submit">Proceed to Payment</button>
+                <Link to={`/collect-payment`}><button onClick={()=> sendCart(props.cartItems)} className="proceedPayment" type="submit">Proceed to Payment</button></Link>
                 </div>
             </form>
 

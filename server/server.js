@@ -102,7 +102,8 @@ app.post("/payment", cors(), async (req, res) => {
 		res.json({
 			message: "Payment failed",
 			success: false,
-            amount: total
+            amount: total,
+            customer: customer
 		})
 	}
     

@@ -39,9 +39,8 @@ export default function Checkout(props){
       setForm(newForm)
     }
 
-  async function sendInfo(event){
+  async function sendInfo(){
     console.log('hello')
-    event.preventDefault();
     await axios.post('https://skylineculture-api.onrender.com/collect', {form})
     setForm({
       email: "",
@@ -109,7 +108,7 @@ export default function Checkout(props){
                 <Shipping country={location.country}/>
 
                 <div className='proceedDiv'>
-                <Link to={`/collect-payment`}><button onClick={(event)=> {sendCart(props.cartItems); sendInfo(event)}} className="proceedPayment" type="submit">Proceed to Payment</button></Link>
+                <Link to={`/collect-payment`}><button onClick={()=> {sendCart(props.cartItems); sendInfo()}} className="proceedPayment" type="submit">Proceed to Payment</button></Link>
                 </div>
             </form>
 

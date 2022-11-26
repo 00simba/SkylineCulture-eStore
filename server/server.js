@@ -47,7 +47,6 @@ app.get('/', (req, res) => {
 app.post("/get-items", (req,res) => {
     total = 0
     cart = req.body
-    res.json({cart: cart})
 })
 
 app.post("/collect", (req, res) =>{
@@ -61,7 +60,7 @@ app.post("/collect", (req, res) =>{
     customer.country = req.body.country,
     customer.region = req.body.region,
     calculateTotal()
-    res.json({amount: total, customer: customer})
+    res.send(req.body)
     res.redirect("/collect-payment")
 }
 )

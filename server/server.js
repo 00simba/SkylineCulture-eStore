@@ -47,6 +47,7 @@ app.get('/', (req, res) => {
 app.post("/get-items", (req,res) => {
     total = 0
     cart = req.body
+    res.json({cart: cart})
 })
 
 app.post("/collect", (req, res) =>{

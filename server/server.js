@@ -60,6 +60,7 @@ app.post("/collect", (req, res) =>{
     customer.country = req.body.country,
     customer.region = req.body.region,
     calculateTotal()
+    res.json({amount: total, customer: customer})
     res.redirect("/collect-payment")
 }
 )

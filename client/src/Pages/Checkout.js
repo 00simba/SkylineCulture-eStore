@@ -39,11 +39,25 @@ export default function Checkout(props){
       setForm(newForm)
     }
 
+  async function sendInfo(event){
+    console.log('hello')
+    event.preventDefault();
+    await axios.post('https://skylineculture-api.onrender.com/collect', {form})
+    setForm({
+      email: "",
+      firstname: "",
+      lastname: "",
+      address: "",
+      address_optional: "", 
+      city: "",
+      code: "",
+    })
+  }
+
 
   async function handleSubmit(event){
       event.preventDefault();
-      console.log('hello')
-      await axios.post('https://skylineculture-api.onrender.com/collect', {form})
+      //await axios.post('https://skylineculture-api.onrender.com/collect', {form})
       setForm({
         email: "",
         firstname: "",
@@ -54,6 +68,8 @@ export default function Checkout(props){
         code: "",
       })
   }
+
+  // submitForm={(event) => handleSubmit(event)}
        
     return(
       <div className='checkoutContainer'>
@@ -64,7 +80,7 @@ export default function Checkout(props){
 
           <div className='formContainer'>
 
-            <form className='checkoutForm' method='POST' action='/collect' submitForm={(event) => handleSubmit(event)}>
+            <form className='checkoutForm' method='POST' action='/collect'>
               
 
                 <span className='contactInfoSpan'>Contact Information</span>
@@ -93,7 +109,7 @@ export default function Checkout(props){
                 <Shipping country={location.country}/>
 
                 <div className='proceedDiv'>
-                <Link to={`/collect-payment`}><button onClick={(event)=> {sendCart(props.cartItems); handleSubmit(event)}} className="proceedPayment" type="submit">Proceed to Payment</button></Link>
+                <Link to={`/collect-payment`}><button onClick={(event)=> {sendCart(props.cartItems); sendInfo(event)}} className="proceedPayment" type="submit">Proceed to Payment</button></Link>
                 </div>
             </form>
 

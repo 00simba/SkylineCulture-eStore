@@ -20,8 +20,8 @@ export default function Checkout(props){
 
   const [location, setLocation] = React.useState([])
 
-  function sendCart(items){
-    axios.post("http://localhost:3001/get-items", {items})
+  async function sendCart(items){
+    await axios.post("https://skylineculture-api.onrender.com/get-items", {items})
 
   }
   
@@ -40,9 +40,9 @@ export default function Checkout(props){
     }
 
 
-  function handleSubmit(event){
+  async function handleSubmit(event){
       event.preventDefault();
-      axios.post('http://localhost:3001/collect', {form})
+      await axios.post('https://skylineculture-api.onrender.com/collect', {form})
       setForm({
         email: "",
         firstname: "",

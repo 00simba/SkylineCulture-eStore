@@ -1,6 +1,5 @@
 import React from 'react'
-import { ReactNotifications, Store } from 'react-notifications-component'
-import '../../node_modules/react-notifications-component/dist/theme.css'
+import { Store } from 'react-notifications-component'
 
 export default function AddToCart(props){
 

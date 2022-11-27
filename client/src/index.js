@@ -5,7 +5,7 @@ import './index.css';
 import Website from './Website';
 import {BrowserRouter as Router}  from "react-router-dom";
 
-ReactDOM.render(<Router><Website /></Router>,document.getElementById('root'));
+ReactDOM.render(<Router><Website/></Router>,document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

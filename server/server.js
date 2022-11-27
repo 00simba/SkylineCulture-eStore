@@ -64,7 +64,7 @@ app.post("/collect", (req, res) =>{
     customer.region = req.body.region
     calculateTotal()
     res.send(req.body)
-    res.send(total)
+    res.json({amount: total})
 }
 )
 

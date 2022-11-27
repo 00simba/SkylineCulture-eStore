@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import Counter from './Counter'
 import AddToCart from './AddToCart'
 import '../index.css'
-
+import { ReactNotifications } from 'react-notifications-component'
+import './theme.css'
 
 export default function ProductPage(props){
 
@@ -35,10 +36,9 @@ export default function ProductPage(props){
         }
     }
 
-   (productObj.description).forEach(item => console.log(item))
-
     return(
         <div className="productContainer">
+                <ReactNotifications/>
                 <img className="productImg" src={require(`../Images/${productObj.img}`)}></img>  
                 <div className="infoContainer">
                     <div className="infoPrice">
@@ -50,8 +50,11 @@ export default function ProductPage(props){
                         <Counter quantity={quantity} add={add} minus={minus}/>
                     </div>
                 </div>  
-                <div className="productDesc">
-                    {(productObj.description).map((item) => <p>{item}<br/></p>)}
+                <div className="productDesc">    
+                    <div className="descWrapper">
+                        <h3 className="descriptionHeader">Description</h3>
+                        {(productObj.description).map((item) => <p>{item}<br/></p>)}
+                    </div>
                 </div>
         </div>
         

@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import Counter from './Counter'
 import AddToCart from './AddToCart'
 import '../index.css'
-import { ReactNotifications } from 'react-notifications-component'
-import './theme.css'
+// import { ReactNotifications } from 'react-notifications-component'
+// import './theme.css'
 
 export default function ProductPage(props){
 
@@ -38,7 +38,6 @@ export default function ProductPage(props){
 
     return(
         <div className="productContainer">
-                <ReactNotifications/>
                 <img className="productImg" src={require(`../Images/${productObj.img}`)}></img>  
                 <div className="infoContainer">
                     <div className="infoPrice">

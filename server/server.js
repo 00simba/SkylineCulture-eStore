@@ -53,22 +53,23 @@ app.post("/get-items", (req,res) => {
 })
 
 app.post("/collect", (req, res) =>{
-    customer.email = req.body.customer_email,
-    customer.first_name = req.body.first_name,
-    customer.last_name = req.body.last_name,
-    customer.address = req.body.customer_address,
-    customer.optional_address =  req.body.customer_optional_address,
-    customer.city = req.body.customer_city,
-    customer.code = req.body.code,
-    customer.country = req.body.country,
-    customer.region = req.body.region,
+    customer.email = req.body.customer_email
+    customer.first_name = req.body.first_name
+    customer.last_name = req.body.last_name
+    customer.address = req.body.customer_address
+    customer.optional_address =  req.body.customer_optional_address
+    customer.city = req.body.customer_city
+    customer.code = req.body.code
+    customer.country = req.body.country
+    customer.region = req.body.region
+    calculateTotal()
     res.send(req.body)
     res.send(total)
 }
 )
 
 function calculateTotal(){
-    cart.forEach((itemObject) => {
+    (cart.items).forEach((itemObject) => {
         var price = ((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity))
         total += price 
     })

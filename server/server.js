@@ -36,7 +36,7 @@ let customer={
     region: "",
 };
 
-let total=0;
+let total;
 
 app.get('*', (req,res) =>{
     res.sendFile(path.resolve(__dirname,'..', 'client', 'build', 'index.html'));
@@ -52,37 +52,45 @@ app.post("/get-items", (req,res) => {
     res.send(cart)
 })
 
-app.post("/collect", (req, res) =>{
-    customer.email = req.body.customer_email
-    customer.first_name = req.body.first_name
-    customer.last_name = req.body.last_name
-    customer.address = req.body.customer_address
-    customer.optional_address =  req.body.customer_optional_address
-    customer.city = req.body.customer_city
-    customer.code = req.body.code
-    customer.country = req.body.country
-    customer.region = req.body.region
-    calculateTotal()
-    res.send(req.body)
-}
-)
 
-function calculateTotal(){
+async function calculateTotal(){
+    let currentTotal = 0;
     (cart.items).forEach((itemObject) => {
         var price = ((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity))
-        total += price 
+        currentTotal += price 
     })
     if(customer.country === 'Canada'){
-        total += 795
+        currentTotal += 795
     }
     else if(customer.country === "United States"){
-        total += 395
+        currentTotal += 395
     }
     else{
-        total += 995
+        currentTotal += 995
     }
+    return currentTotal
 }
 
+app.post("/collect", async (req, res) =>{
+    try{
+        customer.email = req.body.customer_email
+        customer.first_name = req.body.first_name
+        customer.last_name = req.body.last_name
+        customer.address = req.body.customer_address
+        customer.optional_address =  req.body.customer_optional_address
+        customer.city = req.body.customer_city
+        customer.code = req.body.code
+        customer.country = req.body.country
+        customer.region = req.body.region
+        total = await calculateTotal()
+        res.send(req.body)
+        res.json({amount: total})
+    }
+    catch(e){
+        res.end(e.message || e.toString())
+    }
+}
+)
 
 app.post("/payment", cors(), async (req, res) => {
 	let {id} = req.body

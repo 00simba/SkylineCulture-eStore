@@ -39,10 +39,15 @@ export default function Checkout(props){
       setForm(newForm)
     }
 
+  async function sendInfo(){
+    await axios.post('https://skylineculture-api.onrender.com/collect', JSON.stringify(form))
+    console.log('here')
+  }
+
   async function handleSubmit(event){
       event.preventDefault();
-      await axios.post('https://skylineculture-api.onrender.com/collect', JSON.stringify(form))
-      console.log("here")
+      // await axios.post('https://skylineculture-api.onrender.com/collect', JSON.stringify(form))
+      // console.log("here")
       setForm({
         email: "",
         firstname: "",
@@ -92,7 +97,7 @@ export default function Checkout(props){
                 <Shipping country={location.country}/>
 
                 <div className='proceedDiv'>
-                <Link to={`/collect-payment`}><button onClick={()=> sendCart(props.cartItems)} className="proceedPayment" type="submit">Proceed to Payment</button></Link>
+                <button onClick={()=> {sendCart(props.cartItems); sendInfo()}} className="proceedPayment" type="submit">Proceed to Payment</button>
                 </div>
             </form>
 

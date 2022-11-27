@@ -24,6 +24,7 @@ Product.find().then((result) => result.map((item) => {
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 let cart=[];
+
 let customer={
     email: "",
     first_name: "",
@@ -34,6 +35,7 @@ let customer={
     country: "",
     region: "",
 };
+
 let total=0;
 
 app.get('*', (req,res) =>{
@@ -47,6 +49,7 @@ app.get('/', (req, res) => {
 app.post("/get-items", (req,res) => {
     total = 0
     cart = req.body
+    res.send(cart)
 })
 
 app.post("/collect", (req, res) =>{

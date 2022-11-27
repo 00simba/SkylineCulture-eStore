@@ -41,7 +41,7 @@ export default function Checkout(props){
 
   async function sendInfo(){
     console.log('hello')
-    await axios.post('https://skylineculture-api.onrender.com/collect', {form})
+    await axios.post('https://skylineculture-api.onrender.com/collect', JSON.stringify(form))
     setForm({
       email: "",
       firstname: "",

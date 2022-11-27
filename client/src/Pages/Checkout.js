@@ -42,8 +42,12 @@ export default function Checkout(props){
 
   async function handleSubmit(){
       // event.preventDefault();
-      let data = JSON.stringify(form)
-      await axios.post('https://skylineculture-api.onrender.com/collect', data, {headers:{"Content-Type" : "application/json"}})
+      await axios.post('https://skylineculture-api.onrender.com/collect', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {
+        console.log(response);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
       setForm({
         email: "",
         firstname: "",

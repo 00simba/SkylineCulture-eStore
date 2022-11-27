@@ -59,7 +59,6 @@ app.post("/collect", (req, res) =>{
     customer.code = req.body.code,
     customer.country = req.body.country,
     customer.region = req.body.region,
-    calculateTotal()
     res.send(req.body)
     res.send(total)
 }

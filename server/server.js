@@ -36,7 +36,6 @@ let customer={
     region: "",
 };
 
-let total;
 
 app.get('*', (req,res) =>{
     res.sendFile(path.resolve(__dirname,'..', 'client', 'build', 'index.html'));
@@ -47,53 +46,46 @@ app.get('/', (req, res) => {
 })
 
 app.post("/get-items", (req,res) => {
-    total = 0
     cart = req.body
     res.send(cart)
 })
 
-
-async function calculateTotal(){
-    let currentTotal = 0;
-    (cart.items).forEach((itemObject) => {
-        var price = ((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity))
-        currentTotal += price 
-    })
-    if(customer.country === 'Canada'){
-        currentTotal += 795
-    }
-    else if(customer.country === "United States"){
-        currentTotal += 395
-    }
-    else{
-        currentTotal += 995
-    }
-    return currentTotal
-}
-
-app.post("/collect", async (req, res) =>{
-    try{
-        customer.email = req.body.customer_email
-        customer.first_name = req.body.first_name
-        customer.last_name = req.body.last_name
-        customer.address = req.body.customer_address
-        customer.optional_address =  req.body.customer_optional_address
-        customer.city = req.body.customer_city
-        customer.code = req.body.code
-        customer.country = req.body.country
-        customer.region = req.body.region
-        total = await calculateTotal()
-        res.send(req.body)
-        res.json({amount: total})
-    }
-    catch(e){
-        res.end(e.message || e.toString())
-    }
+app.post("/collect", (req, res) =>{
+    customer.email = req.body.customer_email
+    customer.first_name = req.body.first_name
+    customer.last_name = req.body.last_name
+    customer.address = req.body.customer_address
+    customer.optional_address =  req.body.customer_optional_address
+    customer.city = req.body.customer_city
+    customer.code = req.body.code
+    customer.country = req.body.country
+    customer.region = req.body.region
+    res.send(req.body)
 }
 )
 
+function calculateTotal(){
+    var total = 0;
+    (cart.items).forEach((itemObject) => {
+        var price = ((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity))
+        total += price 
+    })
+    if(customer.country === 'Canada'){
+        total += 795
+    }
+    else if(customer.country === "United States"){
+        total += 395
+    }
+    else{
+        total += 995
+    }
+    return total
+}
+
+
 app.post("/payment", cors(), async (req, res) => {
 	let {id} = req.body
+    var total = calculateTotal()
 	try {
 		const payment = await stripe.paymentIntents.create({
 			amount: total,

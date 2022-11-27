@@ -20,7 +20,6 @@ export default function Checkout(props){
 
   const [location, setLocation] = React.useState([])
 
-  
   function selectCountry(val){
     setLocation({...location, country: val})
   }
@@ -41,13 +40,7 @@ export default function Checkout(props){
   }
 
   async function handleSubmit(){
-      // event.preventDefault();
-      await axios.post('https://skylineculture-api.onrender.com/collect', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {
-        console.log(response);
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+      await axios.post('https://skylineculture-api.onrender.com/collect', form, {headers:{"Content-Type" : "application/json"}})
       setForm({
         email: "",
         firstname: "",
@@ -59,53 +52,51 @@ export default function Checkout(props){
       })
   }
 
-  // submitForm={(event) => handleSubmit(event)}
-       
-    return(
-      <div className='checkoutContainer'>
+  return(
+    <div className='checkoutContainer'>
 
-          <div className='backContainer'><BackButton/></div>
+        <div className='backContainer'><BackButton/></div>
 
-          <h2 className='checkoutHeading'>Checkout</h2>
-          
-          <div className='formContainer'>
+        <h2 className='checkoutHeading'>Checkout</h2>
+        
+        <div className='formContainer'>
 
-            <form className='checkoutForm' method='POST' action='/collect'>
-              
+          <form className='checkoutForm' method='POST' action='/collect'>
+            
 
-                <span className='contactInfoSpan'>Contact Information</span>
+              <span className='contactInfoSpan'>Contact Information</span>
 
-                <input onChange={(event) => handleChange(event)} placeholder="Email" id="email" name="customer_email"/>          
-                <br/>
+              <input onChange={(event) => handleChange(event)} placeholder="Email" id="email" name="customer_email"/>          
+              <br/>
 
-                <span  className='shippingInfoSpan'>Shipping Information</span>
+              <span  className='shippingInfoSpan'>Shipping Information</span>
 
-                <input onChange={(event) => handleChange(event)} placeholder="First Name" id="firstname" name="first_name"/> 
-                <br/>
-                <input onChange={(event) => handleChange(event)} placeholder="Last Name" id="lastname" name="last_name"/>
-                <br/>
-                <input onChange={(event) => handleChange(event)} placeholder="Address" id="address" name="customer_address"/>
-                <br/>
-                <input onChange={(event) => handleChange(event)} placeholder="Apartment, Suite, etc (optional)" id="address_optional" name="customer_optional_address"/>
-                <br/>
-                <input onChange={(event) => handleChange(event)} placeholder="City" id="city" name="customer_city"/>
-                <br/>
-                <input onChange={(event) => handleChange(event)} placeholder="ZIP / Postal Code" id="code" name="code"/>
-                <br/>
-                <CountryDropdown className="countryDrop" value={location.country} onChange={(val) => selectCountry(val)} name="country"/>
-                <br/>
-                <RegionDropdown className="regionDrop" country={location.country} value={location.region} onChange={(val) => selectRegion(val)} name="region"/>
+              <input onChange={(event) => handleChange(event)} placeholder="First Name" id="firstname" name="first_name"/> 
+              <br/>
+              <input onChange={(event) => handleChange(event)} placeholder="Last Name" id="lastname" name="last_name"/>
+              <br/>
+              <input onChange={(event) => handleChange(event)} placeholder="Address" id="address" name="customer_address"/>
+              <br/>
+              <input onChange={(event) => handleChange(event)} placeholder="Apartment, Suite, etc (optional)" id="address_optional" name="customer_optional_address"/>
+              <br/>
+              <input onChange={(event) => handleChange(event)} placeholder="City" id="city" name="customer_city"/>
+              <br/>
+              <input onChange={(event) => handleChange(event)} placeholder="ZIP / Postal Code" id="code" name="code"/>
+              <br/>
+              <CountryDropdown className="countryDrop" value={location.country} onChange={(val) => selectCountry(val)} name="country"/>
+              <br/>
+              <RegionDropdown className="regionDrop" country={location.country} value={location.region} onChange={(val) => selectRegion(val)} name="region"/>
 
-                <Shipping country={location.country}/>
+              <Shipping country={location.country}/>
 
-                <div className='proceedDiv'>
-                <Link to={`/collect-payment`}><button onClick={()=> {sendCart(props.cartItems); handleSubmit()}} className="proceedPayment" type="submit">Proceed to Payment</button></Link>
-                </div>
-            </form>
-
-          </div>
+              <div className='proceedDiv'>
+              <Link to={`/collect-payment`}><button onClick={()=> {sendCart(props.cartItems); handleSubmit()}} className="proceedPayment" type="submit">Proceed to Payment</button></Link>
+              </div>
+          </form>
 
         </div>
-    )
+
+      </div>
+  )
 
 }

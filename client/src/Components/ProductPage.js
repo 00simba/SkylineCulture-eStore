@@ -70,7 +70,12 @@ export default function ProductPage(props){
                     <div className="descWrapper">
                         <h3 className="descriptionHeader">Description</h3>
                         {(productObj.description).map((item) => <p>{item}<br/></p>)}
+                        <h3 className="detailsHeader">Details</h3>
+                        {productObj.specs}
+                        <h3 className="shippingHeader">Shipping</h3>
+                        {(productObj.shipping).map((item) => <p>{item}<br/></p>)}
                     </div>
+
                 </div>
         </div>
         

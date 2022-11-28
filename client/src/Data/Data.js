@@ -13,7 +13,9 @@ export default [
         
         "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! ",
 
-        "Specs:\n Size: 2 inches on longest side\n Material: Constructed of metal", shipping[0], shipping[1], shipping[2], shipping[3]]
+         ],
+        "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
+        "shipping": [shipping[0]]
     },
     {
         "id" : 2,
@@ -24,11 +26,10 @@ export default [
         "description" : [
             
         "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain! ",        
-        "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! ", 
-        
-        "Specs: \n Size: 2 inches on longest side \n Material: Constructed of metal",
-        
-        shipping[0], shipping[1], shipping[2], shipping[3]]
+        "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! "],
+
+        "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
+        "shipping": [shipping[0]]
     },
     {
         "id" : 3,
@@ -39,11 +40,10 @@ export default [
         "description" : [
         
         "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain! ",         
-        "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! ",
+        "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! "],
         
-        "Specs: \n Size: 2 inches on longest side \n Material: Constructed of metal",
-
-        shipping[0], shipping[1], shipping[2], shipping[3]]
+        "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
+        "shipping": [shipping[0]]
     },
     {
         "id" : 4,
@@ -54,10 +54,9 @@ export default [
         "description" : [
             
         "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain!",         
-        "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set.",
-        
-        "Specs: \n Size: 2 inches on longest side \n Material: Constructed of metal",
+        "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set."],
 
-        shipping[0], shipping[1], shipping[2], shipping[3]]
+        "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
+        "shipping": [shipping[0]]
     } 
 ]

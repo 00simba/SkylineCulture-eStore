@@ -6,8 +6,19 @@ li{
   align-items: center;
 }
 
+.detailsHeader{
+  margin-top: 4%; 
+  margin-bottom: 1%;
+}
+
+.shippingHeader{
+  margin-top: 4%; 
+  margin-bottom: 1%;
+}
+
+
 .descriptionHeader{
-  margin-bottom: 2%;
+  margin-bottom: 1%;
 }
 
 .cartStatus{
@@ -57,10 +68,9 @@ li{
 }
 
 .card h4{
-  margin-top: 5px;
+  margin-top: 5%;
   font-weight: 400;
   padding-left: 10px;
-  margin-bottom: 10px;
 }
 
 img{
@@ -800,7 +810,7 @@ input:focus {
   }
 
   .cartDiv{
-    margin: 4%;
+    margin: 8% 4% 6% 4%;
   }
 
   .itemRow{

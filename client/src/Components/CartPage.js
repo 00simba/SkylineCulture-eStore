@@ -92,7 +92,9 @@ export default function CartPage(props){
             </div>
         )
     })
-
+ 
+    const shortid = require('shortid');
+    const id = shortid.generate();
 
     return(
         <div>
@@ -113,7 +115,7 @@ export default function CartPage(props){
 
             <div className="cartDiv">
               <h2>Total: ${total}</h2>
-              {!(props.cartItems.length) ? <p className='cartStatus'>Cart Empty</p> :<Link to={`/checkout`}><button className="checkoutBtn" type="button">Checkout</button></Link>}
+              {!(props.cartItems.length) ? <p className='cartStatus'>Cart Empty</p> :<Link to={`/checkout/${id}`}><button onClick={() => props.changeId(id)} className="checkoutBtn" type="button">Checkout</button></Link>}
             </div>
             <div className="itemRow">
                {items}

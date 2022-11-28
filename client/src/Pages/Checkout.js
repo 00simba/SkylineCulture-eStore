@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import Shipping from '../Components/Shipping.js'
 import axios from 'axios';
 import '../index.css'
-import BackButton from '../Components/BackButton.js';
 
 export default function Checkout(props){
 
@@ -59,12 +58,13 @@ export default function Checkout(props){
       })
   }
 
-  // submitForm={(event) => handleSubmit(event)}
-       
+  const shortid = require('shortid');
+  const id = shortid.generate();
+  console.log("Checkout:" + id)
     return(
       <div className='checkoutContainer'>
 
-          <div className='backContainer'><BackButton/></div>
+      <Link to={`/cart`}><div className='backContainer'><div className='backButton' type="button">Back</div></div></Link>
 
           <h2 className='checkoutHeading'>Checkout</h2>
           
@@ -99,7 +99,7 @@ export default function Checkout(props){
                 <Shipping country={location.country}/>
 
                 <div className='proceedDiv'>
-                <Link to={`/collect-payment`}><button onClick={()=> {sendCart(props.cartItems); handleSubmit()}} className="proceedPayment" type="submit">Proceed to Payment</button></Link>
+                <Link to={`/collect-payment/${id}`}><button onClick={()=> {props.changeId(id); sendCart(props.cartItems); handleSubmit()}} className="proceedPayment" type="submit">Proceed to Payment</button></Link>
                 </div>
             </form>
 

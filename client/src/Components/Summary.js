@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function Summary(props){
-    console.log(props.cartItems)
 
     const items = props.cartItems.map(item => {
         return(

@@ -9,10 +9,8 @@ import CartPage from './Components/CartPage'
 import './index.css';
 import Checkout from './Pages/Checkout'
 import Payment from './Pages/Payment'
-import ScrollToTop from './Components/ScrollToTop';
 
-
-export default function Website(){
+export default function Website(props){
 
     const products = data.map(item => {
         return(
@@ -27,22 +25,28 @@ export default function Website(){
 
 
     const [cartItems, setCartItems] = React.useState([]);
+    const location = useLocation();   
+    const [id, setId] = React.useState(null)
 
-
+    console.log("Website:" + id)
 
     React.useEffect(() => {
         const data = localStorage.getItem('cart')
         if(data){
             setCartItems(JSON.parse(data))
         }
+        const uniqueID = localStorage.getItem('id')
+        if(uniqueID){
+            setId(uniqueID)
+        }
     }, [])
 
     React.useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cartItems))
+        localStorage.setItem('id', id)
     })
 
     cartItems.slice(1);
-    console.log(cartItems)
     
     function addItemToCart(id, product, quantity, image, price){
 
@@ -54,8 +58,6 @@ export default function Website(){
             if(x == product){
                 found=1;
                 cartItem.productQuantity = `${quantity}`;
-                console.log("Updated Quantity")
-                console.log(cartItems)
             }       
         })
 
@@ -64,18 +66,15 @@ export default function Website(){
         }      
     }
 
-    const location = useLocation()
-
     return(
         <div>
-            {!["/checkout", "/collect-payment"].includes(location.pathname) && <Header/>}
-            <ScrollToTop/>   
+            {![`/checkout/${id}`, `/collect-payment/${id}`].includes(location.pathname) && <Header/>} 
             <Routes>    
                 <Route path='/' element={<div className='parent'>{products}</div>}/>
                 <Route path='product/:productUrl' element={<ProductPage addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
-                <Route path='/cart' element={<CartPage setCartItems={setCartItems} cartItems={cartItems}/>}/>
-                <Route path='/checkout' element={<Checkout cartItems={cartItems}/>}></Route>
-                <Route path='/collect-payment' cartItems={cartItems} element={<Payment cartItems={cartItems}/>}></Route>
+                <Route path='/cart' element={<CartPage changeId={id => setId(id)} setCartItems={setCartItems} cartItems={cartItems}/>}/>
+                <Route path={`/checkout/${id}`} element={<Checkout changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
+                <Route path={`/collect-payment/${id}`} cartItems={cartItems} element={<Payment changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
             </Routes>
         </div>
     )

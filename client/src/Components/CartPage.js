@@ -1,46 +1,9 @@
 import React from 'react'
 import Counter from './Counter'
 import {Link} from 'react-router-dom';
-
-
-/*var itemsArray = []
-
-    for(var i=0; i<cartItems.length; i++){
-        var id = parseInt(cartItems[i].productId)
-        var quantity = parseInt(cartItems[i].productQuantity)
-        itemsArray.push({
-            id: id,
-            quantity: quantity
-        })/*
-
-    
-
-
-
-    }
-
-    /*console.log(itemsArray)*/
-
-
-    /*fetch('/create-checkout-session', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(
-            {
-                items: itemsArray
-            }
-        )
-    }).then(res => {
-        if(res.ok) return res.json()
-        return res.json().then(json => Promise.reject(json))
-    }).then(({url}) => {
-        window.location = url
-    }).catch(e => {
-        console.error(e.error)
-    })*/
-
+import { toast, ToastContainer } from 'react-toastify';
+import { Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function removeItem(setCartItems, cartItems, productId){
@@ -84,35 +47,59 @@ function getTotal(cartItems){
 }
 
 
-
 export default function CartPage(props){
 
     var total = getTotal(props.cartItems)
+
+    const remove = () => toast.error('Item Removed From Cart', {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
 
     const items = props.cartItems.map(item => {
 
         return(
             <div className="eachItemRow">
                 <div className="itemInfos">
-                <h3>{item.productName}</h3>
-                <span>Quantity: {item.productQuantity}</span> 
-                <span>Price: ${(item.productPrice)}</span>
+                    <h3>{item.productName}</h3>
+                    <span>Quantity: {item.productQuantity}</span> 
+                    <span>Price: ${(item.productPrice)}</span>
                 </div>
                 <div className="modifyItem">
-                <Counter add={() => incrementItem(props.cartItems, item.productId, props.setCartItems)} quantity={item.productQuantity}  minus={() => decrementItem(props.cartItems, item.productId, props.setCartItems)}/>
-                <button className="removeBtn" onClick={() => removeItem(props.setCartItems, props.cartItems, item.productId)}>Remove</button>
+                    <Counter add={() => incrementItem(props.cartItems, item.productId, props.setCartItems)} quantity={item.productQuantity}  minus={() => decrementItem(props.cartItems, item.productId, props.setCartItems)}/>
+                    <button className="removeBtn" onClick={() => {removeItem(props.setCartItems, props.cartItems, item.productId); remove()}}>Remove</button>
                 </div>
                 <div className="productImage">
                     <img src={require(`../Images/${item.productImage}`)}></img>
                 </div>
             </div>
-    
         )
     })
 
 
     return(
         <div>
+            <ToastContainer
+            position="bottom-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+            transition={Zoom}
+            limit={1}
+            />
+
             <div className="cartDiv">
               <h2>Total: ${total}</h2>
               <Link to={`/checkout`}><button className="checkoutBtn" type="button">Checkout</button></Link>

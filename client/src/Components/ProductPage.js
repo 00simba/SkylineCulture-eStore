@@ -4,7 +4,7 @@ import Counter from './Counter'
 import AddToCart from './AddToCart'
 import '../index.css'
 import { ToastContainer } from 'react-toastify';
-import { Slide, Zoom, Flip, Bounce } from 'react-toastify';
+import { Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProductPage(props){

@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import Counter from './Counter'
 import AddToCart from './AddToCart'
 import '../index.css'
-// import { ReactNotifications } from 'react-notifications-component'
-// import './theme.css'
+import { ToastContainer } from 'react-toastify';
+import { Slide, Zoom, Flip, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProductPage(props){
 
@@ -38,6 +39,22 @@ export default function ProductPage(props){
 
     return(
         <div className="productContainer">
+
+                <ToastContainer
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+                transition={Zoom}
+                limit={1}
+                />
+
                 <img className="productImg" src={require(`../Images/${productObj.img}`)}></img>  
                 <div className="infoContainer">
                     <div className="infoPrice">

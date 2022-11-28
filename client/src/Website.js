@@ -9,6 +9,7 @@ import CartPage from './Components/CartPage'
 import './index.css';
 import Checkout from './Pages/Checkout'
 import Payment from './Pages/Payment'
+import ScrollToTop from './Components/ScrollToTop';
 
 
 export default function Website(){
@@ -68,7 +69,8 @@ export default function Website(){
     return(
         <div>
             {!["/checkout", "/collect-payment"].includes(location.pathname) && <Header/>}
-            <Routes>           
+            <ScrollToTop/>   
+            <Routes>    
                 <Route path='/' element={<div className='parent'>{products}</div>}/>
                 <Route path='product/:productUrl' element={<ProductPage addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
                 <Route path='/cart' element={<CartPage setCartItems={setCartItems} cartItems={cartItems}/>}/>

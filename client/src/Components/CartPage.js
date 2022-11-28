@@ -62,6 +62,17 @@ export default function CartPage(props){
         theme: "colored",
         });
 
+    const empty = () => toast.error('Your Cart Is Empty', {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
+
     const items = props.cartItems.map(item => {
 
         return(
@@ -102,10 +113,10 @@ export default function CartPage(props){
 
             <div className="cartDiv">
               <h2>Total: ${total}</h2>
-              <Link to={`/checkout`}><button className="checkoutBtn" type="button">Checkout</button></Link>
+              {!(props.cartItems.length) ? <p className='cartStatus'>Cart Empty</p> :<Link to={`/checkout`}><button className="checkoutBtn" type="button">Checkout</button></Link>}
             </div>
             <div className="itemRow">
-                {items}
+               {items}
             </div>
         </div>
     )

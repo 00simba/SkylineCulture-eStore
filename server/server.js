@@ -32,6 +32,7 @@ let customer={
     address: "",
     optional_address: "",
     city: "",
+    code: "",
     country: "",
     region: "",
 };
@@ -94,7 +95,16 @@ app.post("/payment", cors(), async (req, res) => {
 			description: "Skyline Company",
 			payment_method: id,
 			confirm: true,
-            metadata: {'cart': cart}
+            customer: {
+                address: {
+                    city: customer.city,
+                    country: customer.country,
+                    line1: customer.address,
+                    line2: customer.optional_address,
+                    postal_code: customer.code,
+                    state: customer.region
+                }
+            }
 		})
 		console.log("Payment", payment)
 		res.json({

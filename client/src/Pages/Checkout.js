@@ -44,7 +44,6 @@ export default function Checkout(props){
   async function handleSubmit(){
       // event.preventDefault();
         await axios.post('https://skylineculture-api.onrender.com/collect', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {
-          console.log(response);
       })
       .catch(function (error) {
           console.log(error);
@@ -64,7 +63,7 @@ export default function Checkout(props){
 
   const shortid = require('shortid');
   const id = shortid.generate();
-  console.log("Checkout:" + id)
+  
     return(
       <div className='checkoutContainer'>
 

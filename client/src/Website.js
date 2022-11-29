@@ -28,8 +28,6 @@ export default function Website(props){
     const location = useLocation();   
     const [id, setId] = React.useState(null)
 
-    console.log("Website:" + id)
-
     React.useEffect(() => {
         const data = localStorage.getItem('cart')
         if(data){

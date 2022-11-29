@@ -100,14 +100,14 @@ app.post("/payment", cors(), async (req, res) => {
 		res.json({
 			message: "Payment successful",
 			success: true,
+            items: cart,
+            customer: customer
 		})
 	} catch (error) {
 		console.log("Error", error)
 		res.json({
 			message: "Payment failed",
 			success: false,
-            amount: total,
-            customer: customer.city
 		})
 	}
     

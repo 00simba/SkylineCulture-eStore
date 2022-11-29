@@ -15,6 +15,8 @@ export default function Checkout(props){
     address_optional: "", 
     city: "",
     code: "",
+    country: "",
+    region: "",
   })
 
   const [location, setLocation] = React.useState([])
@@ -55,6 +57,8 @@ export default function Checkout(props){
         address_optional: "", 
         city: "",
         code: "",
+        country: "",
+        region: "",
       })
   }
 
@@ -92,9 +96,9 @@ export default function Checkout(props){
                 <br/>
                 <input onChange={(event) => handleChange(event)} placeholder="ZIP / Postal Code" id="code" name="code"/>
                 <br/>
-                <CountryDropdown className="countryDrop" value={location.country} onChange={(val) => selectCountry(val)} name="country"/>
+                <CountryDropdown className="countryDrop" value={location.country} onChange={(val) => selectCountry(val)} id="country" name="country"/>
                 <br/>
-                <RegionDropdown className="regionDrop" country={location.country} value={location.region} onChange={(val) => selectRegion(val)} name="region"/>
+                <RegionDropdown className="regionDrop" country={location.country} value={location.region} onChange={(val) => selectRegion(val)} id="region" name="region"/>
 
                 <Shipping country={location.country}/>
 

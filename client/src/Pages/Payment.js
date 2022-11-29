@@ -13,7 +13,7 @@ export default function Payment(props){
 
 
     return(
-        <div className='App'>
+        <div className='App'>  
             <Link to={`/checkout/${id}`}><div className='backContainer'><div className='backButton' type="button" onClick={() => props.changeId(id)}>Back</div></div></Link>
             <h2 className='almostHeader'>Almost There</h2>
             <div className='secureNote'>

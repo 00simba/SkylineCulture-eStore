@@ -93,7 +93,8 @@ app.post("/payment", cors(), async (req, res) => {
 			currency: "USD",
 			description: "Skyline Company",
 			payment_method: id,
-			confirm: true
+			confirm: true,
+            metadata: {'cart': cart}
 		})
 		console.log("Payment", payment)
 		res.json({

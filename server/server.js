@@ -27,10 +27,10 @@ let cart=[];
 
 let customer={
     email: "",
-    first_name: "",
-    last_name: "",
+    firstname: "",
+    lastname: "",
     address: "",
-    optional_address: "",
+    address_optional: "", 
     city: "",
     code: "",
     country: "",
@@ -52,12 +52,12 @@ app.post("/get-items", (req,res) => {
 })
 
 app.post("/collect", (req, res) =>{
-    customer.email = req.body.customer_email
-    customer.first_name = req.body.first_name
-    customer.last_name = req.body.last_name
-    customer.address = req.body.customer_address
-    customer.optional_address =  req.body.customer_optional_address
-    customer.city = req.body.customer_city
+    customer.email = req.body.email
+    customer.firstname = req.body.firstname
+    customer.lastname = req.body.lastname
+    customer.address = req.body.address
+    customer.optional_address =  req.body.optional_address
+    customer.city = req.body.city
     customer.code = req.body.code
     customer.country = req.body.country
     customer.region = req.body.region
@@ -100,8 +100,8 @@ app.post("/payment", cors(), async (req, res) => {
 		res.json({
 			message: "Payment successful",
 			success: true,
-            items: cart,
-            customer: customer
+            items: cart.items,
+            customer: customer,
 		})
 	} catch (error) {
 		console.log("Error", error)

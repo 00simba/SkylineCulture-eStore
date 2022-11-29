@@ -75,20 +75,20 @@ export default function Checkout(props){
 
                 <span className='contactInfoSpan'>Contact Information</span>
 
-                <input onChange={(event) => handleChange(event)} placeholder="Email" id="email" name="customer_email"/>          
+                <input onChange={(event) => handleChange(event)} placeholder="Email" id="email" name="email"/>          
                 <br/>
 
                 <span  className='shippingInfoSpan'>Shipping Information</span>
 
-                <input onChange={(event) => handleChange(event)} placeholder="First Name" id="firstname" name="first_name"/> 
+                <input onChange={(event) => handleChange(event)} placeholder="First Name" id="firstname" name="firstname"/> 
                 <br/>
-                <input onChange={(event) => handleChange(event)} placeholder="Last Name" id="lastname" name="last_name"/>
+                <input onChange={(event) => handleChange(event)} placeholder="Last Name" id="lastname" name="lastname"/>
                 <br/>
-                <input onChange={(event) => handleChange(event)} placeholder="Address" id="address" name="customer_address"/>
+                <input onChange={(event) => handleChange(event)} placeholder="Address" id="address" name="address"/>
                 <br/>
-                <input onChange={(event) => handleChange(event)} placeholder="Apartment, Suite, etc (optional)" id="address_optional" name="customer_optional_address"/>
+                <input onChange={(event) => handleChange(event)} placeholder="Apartment, Suite, etc (optional)" id="address_optional" name="address_optional"/>
                 <br/>
-                <input onChange={(event) => handleChange(event)} placeholder="City" id="city" name="customer_city"/>
+                <input onChange={(event) => handleChange(event)} placeholder="City" id="city" name="city"/>
                 <br/>
                 <input onChange={(event) => handleChange(event)} placeholder="ZIP / Postal Code" id="code" name="code"/>
                 <br/>

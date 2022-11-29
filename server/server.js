@@ -3,6 +3,7 @@ const path = require('path')
 const express = require('express')
 const mongoose = require('mongoose')
 const Product = require('./models/products')
+const Order = require('./models/orders')
 const bodyParser = require('body-parser')
 const { execPath } = require('process')
 const { rmSync } = require('fs')
@@ -103,6 +104,17 @@ app.post("/payment", cors(), async (req, res) => {
             items: cart.items,
             customer: customer,
 		})
+        var orderModel = new Order()
+        orderModel.customer = customer
+        orderModel.items = cart.items
+        orderModel.save((err, data) => {
+            if(err){
+                console.error(err)
+            }
+            else{
+                res.status(200).send({"Mesaage": "Inserted to DB"})
+            }
+        })
 	} catch (error) {
 		console.log("Error", error)
 		res.json({

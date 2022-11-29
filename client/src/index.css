@@ -30,6 +30,7 @@ p{
 }
 
 .descWrapper{
+  border-radius: 15px;
   box-shadow: 0 2px 10px -2px rgba(0,0,0,.2);
   padding: 5%;  
 }
@@ -350,7 +351,7 @@ input:focus {
 }
 
 .checkoutBtn:hover {
-  background-color: #f7fafa;
+  background-color: #9b9b9b;
 }
 
 .checkoutBtn:focus {
@@ -386,13 +387,22 @@ input:focus {
 }
 
 .backButton:hover {
-  background-color: #f7fafa;
+  background-color: #9b9b9b;
 }
 
 .backButton:focus {
   border-color: #008296;
   box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
   outline: 0;
+}
+
+
+button:disabled{
+  border: 1px solid #d5d9d9;
+  background-color: #cccccc;
+  color: #666666;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  cursor: not-allowed !important;
 }
 
 .proceedPayment{
@@ -420,7 +430,7 @@ input:focus {
 }
 
 .proceedPayment:hover {
-  background-color: #f7fafa;
+  background-color: #9b9b9b;
 }
 
 .proceedPayment:focus {
@@ -1256,7 +1266,7 @@ input:focus {
   .formContainer{
     box-shadow: 0 2px 10px -2px rgba(0,0,0,.2);
     border-radius: 10px;
-    margin: 0% 20% 2% 10%;
+    margin: 0% 10% 2% 10%;
     padding: 4% 0% 4% 0%;
   } 
 
@@ -1266,20 +1276,15 @@ input:focus {
 
   
   .backContainer{
-    margin: 0% 0% 0% 10%;
-  }
-
-  .backContainer{
-    margin-left: 2%;
-    margin-bottom: 1%;
+    margin: 1% 0% 0% 10%;
   }
 
   .almostHeader{
-    margin: 2% 0% 0% 2%;
+    margin: 2% 0% 0% 0%;
   }
 
   .secureNote{
-    margin: 0% 0% 2% 2%;
+    margin: 1% 0% 2% 0%;
   }
 
   .cardElement{
@@ -1292,7 +1297,7 @@ input:focus {
 
   .summaryContainer{
     order: 2;
-    margin: 0% 2% 2% 2%;
+    margin: 0% 0% 2% 0%;
     width: 100%;
     padding-top: 0px
   }
@@ -1308,7 +1313,6 @@ input:focus {
   .stripeCard{
     order: 1;
     width: 100%;
-    margin-left: 2%;
   }
 
 

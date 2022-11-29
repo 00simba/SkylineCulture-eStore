@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import Shipping from '../Components/Shipping.js'
 import axios from 'axios';
 import '../index.css'
+import './App.css'
 
 export default function Checkout(props){
 
@@ -42,28 +43,35 @@ export default function Checkout(props){
   }
 
   async function handleSubmit(){
-      // event.preventDefault();
-        await axios.post('https://skylineculture-api.onrender.com/collect', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {
-      })
-      .catch(function (error) {
-          console.log(error);
-      });
-      setForm({
-        email: "",
-        firstname: "",
-        lastname: "",
-        address: "",
-        address_optional: "", 
-        city: "",
-        code: "",
-        country: "",
-        region: "",
-      })
+      await axios.post('https://skylineculture-api.onrender.com/collect', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+    setForm({
+      email: "",
+      firstname: "",
+      lastname: "",
+      address: "",
+      address_optional: "", 
+      city: "",
+      code: "",
+      country: "",
+      region: "",
+    })
+}
+
+  function validateForm() {
+    if ((form.email && form.firstname && form.lastname && form.address && form.city && form.code && form.country && form.region) === "") {
+      return true
+    }
   }
+
+  // onChange={(event) => handleChange(event)} 
 
   const shortid = require('shortid');
   const id = shortid.generate();
-  
+
     return(
       <div className='checkoutContainer'>
 
@@ -102,7 +110,7 @@ export default function Checkout(props){
                 <Shipping country={location.country}/>
 
                 <div className='proceedDiv'>
-                <Link to={`/collect-payment/${id}`}><button onClick={()=> {props.changeId(id); sendCart(props.cartItems); handleSubmit()}} className="proceedPayment" type="submit">Proceed to Payment</button></Link>
+                  <Link to={`/collect-payment/${id}`}><button disabled={validateForm()} onClick={()=> {props.changeId(id); sendCart(props.cartItems); handleSubmit()}} className="proceedPayment" type="submit">Proceed to Payment</button></Link>
                 </div>
             </form>
 

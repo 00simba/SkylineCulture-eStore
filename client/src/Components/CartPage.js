@@ -2,7 +2,7 @@ import React from 'react'
 import Counter from './Counter'
 import {Link} from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
-import { Zoom } from 'react-toastify';
+import { Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -109,7 +109,7 @@ export default function CartPage(props){
             draggable
             pauseOnHover
             theme="colored"
-            transition={Zoom}
+            transition={Slide}
             limit={1}
             />
 

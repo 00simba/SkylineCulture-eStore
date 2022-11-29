@@ -96,9 +96,9 @@ export default function Checkout(props){
                 <br/>
                 <input onChange={(event) => handleChange(event)} placeholder="ZIP / Postal Code" id="code" name="code"/>
                 <br/>
-                <CountryDropdown className="countryDrop" value={location.country} onChange={(val) => {selectCountry(val); form.country=location.country}} id="country" name="country"/>
+                <CountryDropdown className="countryDrop" value={location.country} onChange={(val) => {selectCountry(val); form.country=val}} id="country" name="country"/>
                 <br/>
-                <RegionDropdown className="regionDrop" country={location.country} value={location.region} onChange={(val) => {selectRegion(val); form.region=location.region}} id="region" name="region"/>
+                <RegionDropdown className="regionDrop" country={location.country} value={location.region} onChange={(val) => {selectRegion(val); form.region=val}} id="region" name="region"/>
 
                 <Shipping country={location.country}/>
 

@@ -6,6 +6,16 @@ li{
   align-items: center;
 }
 
+.summaryContainer{
+  border-radius: 15px;
+  box-shadow: 0 2px 10px -2px rgba(0,0,0,.2);
+  padding: 1% 2% 2% 2%; 
+}
+
+.summaryHeading{
+  margin-top: 2%;
+}
+
 .detailsHeader{
   margin-top: 4%; 
   margin-bottom: 1%;
@@ -641,8 +651,9 @@ button:disabled{
   margin-bottom: 5%;
 }
 
+
 .summaryItemsDiv{
-  padding-top: 10px;
+  padding-top: 2%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -663,6 +674,11 @@ button:disabled{
 
 
 @media only screen and (max-width: 578px){
+
+
+  .summaryContainer{
+    padding: 1% 3% 5% 3%;
+  }
 
   #menuToggle
   {
@@ -870,6 +886,11 @@ button:disabled{
 
 
 @media only screen and (min-width: 579px) and (max-width: 768px){
+
+  .summaryContainer{
+    padding: 1% 3% 4% 3%;
+  }
+
 
   .navbar{
     display: flex;
@@ -1284,7 +1305,7 @@ button:disabled{
   }
 
   .secureNote{
-    margin: 1% 0% 2% 0%;
+    margin: 0.5% 0% 5% 0%;
   }
 
   .cardElement{
@@ -1297,9 +1318,9 @@ button:disabled{
 
   .summaryContainer{
     order: 2;
-    margin: 0% 0% 2% 0%;
+    margin: 0% 0% 3% 0%;
     width: 100%;
-    padding-top: 0px
+    padding-top: 0px;
   }
 
   .paymentInfo{

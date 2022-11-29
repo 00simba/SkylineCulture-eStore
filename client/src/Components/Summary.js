@@ -20,7 +20,7 @@ export default function Summary(props){
 
     return(
         <div className="summaryContainer">
-            <h2>Order Summary</h2>
+            <h2 className="summaryHeading">Order Summary</h2>
                 {items}
          </div>
     )  

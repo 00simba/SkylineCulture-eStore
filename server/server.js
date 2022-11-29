@@ -97,26 +97,15 @@ app.post("/payment", cors(), async (req, res) => {
 			payment_method: id,
 			confirm: true,
 		})
-		console.log("Payment", payment)
 		res.json({
 			message: "Payment successful",
 			success: true,
-            items: cart.items,
-            customer: customer,
 		})
         var orderModel = new Order()
         orderModel.customer = customer
         orderModel.items = cart.items
-        orderModel.save((err, data) => {
-            if(err){
-                console.error(err)
-            }
-            else{
-                res.status(200).send({"Mesaage": "Inserted to DB"})
-            }
-        })
+        await orderModel.save()
 	} catch (error) {
-		console.log("Error", error)
 		res.json({
 			message: "Payment failed",
 			success: false,

@@ -64,6 +64,11 @@ export default function Website(props){
         }      
     }
 
+    const [country, setCountry] = React.useState('')
+    function changeCountry(country){
+        setCountry(country)
+    }
+
     return(
         <div>
             {![`/checkout/${id}`, `/collect-payment/${id}`].includes(location.pathname) && <Header/>} 
@@ -71,8 +76,8 @@ export default function Website(props){
                 <Route path='/' element={<div className='parent'>{products}</div>}/>
                 <Route path='product/:productUrl' element={<ProductPage addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
                 <Route path='/cart' element={<CartPage changeId={id => setId(id)} setCartItems={setCartItems} cartItems={cartItems}/>}/>
-                <Route path={`/checkout/${id}`} element={<Checkout changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
-                <Route path={`/collect-payment/${id}`} cartItems={cartItems} element={<Payment changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
+                <Route path={`/checkout/${id}`} element={<Checkout changeCountry={changeCountry} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
+                <Route path={`/collect-payment/${id}`} cartItems={cartItems} element={<Payment country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
             </Routes>
         </div>
     )

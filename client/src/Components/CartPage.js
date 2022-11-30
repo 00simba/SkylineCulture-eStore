@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 
 function removeItem(setCartItems, cartItems, productId){
@@ -52,17 +53,6 @@ export default function CartPage(props){
     var total = getTotal(props.cartItems)
 
     const remove = () => toast.error('Item Removed From Cart', {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        });
-
-    const empty = () => toast.error('Your Cart Is Empty', {
         position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,

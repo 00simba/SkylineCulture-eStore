@@ -71,9 +71,7 @@ export default function Checkout(props){
   const [addressOptional, setAddressOptional] = useState('')
   const [city, setCity] = useState('')
   const [code, setCode] = useState('')
-  const [country, setCountry] = useState('')
-  const [region, setRegion] = useState('')
-
+ 
   const win = window.sessionStorage;
 
   useEffect(()=>{
@@ -148,7 +146,7 @@ export default function Checkout(props){
                 <Shipping country={location.country}/>
 
                 <div className='proceedDiv'>
-                  <Link to={`/collect-payment/${id}`}><button disabled={!(email && firstname && lastname && address && city && code &&form.country && form.region) ? true : false} onClick={()=> {props.changeId(id); sendCart(props.cartItems); handleSubmit()}} className="proceedPayment" type="submit">Proceed to Payment</button></Link>
+                  <Link to={`/collect-payment/${id}`}><button disabled={!(email && firstname && lastname && address && city && code &&form.country && form.region) ? true : false} onClick={()=> {props.changeId(id); sendCart(props.cartItems); handleSubmit(); props.changeCountry(form.country)}} className="proceedPayment" type="submit">Proceed to Payment</button></Link>
                 </div>
             </form>
 

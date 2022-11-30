@@ -11,7 +11,6 @@ export default function Payment(props){
     const shortid = require('shortid');
     const id = shortid.generate();
 
-
     return(
         <div className='App'>  
                 <Link to={`/checkout/${id}`}><div className='backContainer'><div className='backButton' type="button" onClick={() => props.changeId(id)}>Back</div></div></Link>
@@ -22,7 +21,7 @@ export default function Payment(props){
                     </div>
                     <div className="paymentInfo">
                         <StripeContainer/>  
-                        <Summary cartItems={props.cartItems}/>
+                        <Summary cartItems={props.cartItems} country={props.country}/>
                     </div>
                 </div>    
         </div>

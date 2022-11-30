@@ -7,6 +7,7 @@ const Order = require('./models/orders')
 const bodyParser = require('body-parser')
 const { execPath } = require('process')
 const { rmSync } = require('fs')
+const shortid = require('shortid');
 const app = express()
 app.use(express.json())
 app.use(express.static('../client/build'))
@@ -105,7 +106,6 @@ app.post("/payment", cors(), async (req, res) => {
         orderModel.customer = customer
         orderModel.items = cart.items
         await orderModel.save()
-        localStorage.clear()
 	} catch (error) {
 		res.json({
 			message: "Payment failed",

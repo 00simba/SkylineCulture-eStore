@@ -48,9 +48,20 @@ function getTotal(cartItems){
 }
 
 
+function getCount(cartItems) {
+    var tempCount=0;
+    cartItems.forEach((item) => {
+        tempCount += parseInt(item.productQuantity)
+    })
+    return tempCount
+}
+
+
 export default function CartPage(props){
 
     var total = getTotal(props.cartItems)
+
+    var itemCount = getCount(props.cartItems)
 
     const remove = () => toast.error('Item Removed From Cart', {
         position: "bottom-center",
@@ -102,14 +113,20 @@ export default function CartPage(props){
             transition={Slide}
             limit={1}
             />
-
             <div className="cartDiv">
-              <h2>Total: ${total}</h2>
+              <div className='cartInfo'>
+                <h3 className='totalHeading'>Total: ${total}</h3>
+                <h3>Item(s): {itemCount}</h3>
+              </div>
               {!(props.cartItems.length) ? <p className='cartStatus'>Cart Empty</p> :<Link to={`/checkout/${id}`}><button onClick={() => props.changeId(id)} className="checkoutBtn" type="button">Checkout</button></Link>}
             </div>
+            {!(props.cartItems.length) ? <div className="contDiv">
+                <span className='contMsg'>Your cart is currently empty, click the button below to view some products!</span>
+                <Link to={`/`}><button className='shopBtn'>Continue Shopping</button></Link>
+            </div> :
             <div className="itemRow">
                {items}
-            </div>
+            </div>}
         </div>
     )
 }

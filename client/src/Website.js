@@ -78,7 +78,7 @@ export default function Website(props){
         <div>
             {![`/checkout/${id}`, `/collect-payment/${id}`].includes(location.pathname) && <Header/>} 
             <Routes>    
-                <Route path='/' element={<div><Banner/><div className='parent'>{products}</div></div>}/>
+                <Route path='/' element={<div><div><Banner/></div><div className='parent'>{products}</div></div>}/>
                 <Route path='product/:productUrl' element={<ProductPage addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
                 <Route path='/cart' element={<CartPage changeId={id => setId(id)} setCartItems={setCartItems} cartItems={cartItems}/>}/>
                 <Route path={`/checkout/${id}`} element={<Checkout changeCountry={changeCountry} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>

@@ -4,13 +4,10 @@ import logo from '../logo.png'
 import {Link} from 'react-router-dom';
 import cart from '../Images/cart_icon.png'
 
-
 export default function Header(){
     return(
-            <div className='navbar'>
-                
+            <div className='navbar'>               
                 <div id="menuToggle">
-
                     <input type="checkbox" />
              
                     <span></span>

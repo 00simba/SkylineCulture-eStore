@@ -775,7 +775,7 @@ button:disabled{
   .card{
     margin-top: 0;
     width: 290px;
-    padding: 10px 10px 0px 10px;
+    padding: 10px 10px 10px 10px;
     border-radius: 10px;
   }
 
@@ -797,7 +797,6 @@ button:disabled{
   {
     text-decoration: none;
     color: #232323;
-    
     transition: color 0.3s ease;
   }
 
@@ -805,7 +804,6 @@ button:disabled{
   {
     color: tomato;
   }
-
 
   #menuToggle input
   {
@@ -832,7 +830,7 @@ button:disabled{
     margin-bottom: 5px;
     position: relative;
     
-    background: black;
+    background: rgb(0, 0, 0);
     border-radius: 3px;
     
     z-index: 1;
@@ -876,14 +874,14 @@ button:disabled{
 
   #menu
   {
+    overflow: hidden;
     position: absolute;
-    width: 300px;
-    min-height: 100vh;
+    min-width: 100vw;
+    min-height: 150vh;
     margin: -100px 0 0 -50px;
     padding: 50px;
     padding-top: 125px;
-    
-    background: #ededed;
+    background: lightgray;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     /* to stop flickering of text in safari */
@@ -892,6 +890,7 @@ button:disabled{
     transform: translate(-100%, 0);
     
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+
   }
 
   #menu li

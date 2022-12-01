@@ -235,7 +235,7 @@ img{
 
 
 .productImg{
-  width: 75%;
+  width: 80%;
   justify-content: center;
   align-items: center;
 }
@@ -774,7 +774,7 @@ button:disabled{
   
   .card{
     margin-top: 0;
-    width: 280px;
+    width: 290px;
     padding: 10px 10px 0px 10px;
     border-radius: 10px;
   }

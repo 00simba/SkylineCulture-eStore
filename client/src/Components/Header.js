@@ -3,24 +3,50 @@ import '../index.css'
 import logo from '../logo.png'
 import {Link} from 'react-router-dom';
 import cart from '../Images/cart_icon.png'
+import { useState, useEffect, useRef } from 'react';
+
 
 export default function Header(){
+
+    const [isOpen, setOpen] = useState(false)
+
+    isOpen?(document.body.style.overflow) = "hidden" : document.body.style.overflow = "auto"
+    isOpen?(document.body.style.pointerEvents) = "hidden" : document.body.style.pointerEvents = "auto" 
+
+    let menuRef = useRef();
+
+    useEffect(() => {
+        let handler = (e) =>{
+            if(!menuRef.current.contains(e.target)){
+                document.getElementById('checkBox').click()
+            }
+        }
+        document.addEventListener("mousedown", handler)   
+        return () => {
+            document.removeEventListener("mousedown", handler)
+        }
+    });
+
+
     return(
-            <div className='navbar'>               
+            <div className='navbar'>   
+            <div className='menuContainer' ref={menuRef}>          
                 <div id="menuToggle">
-                    <input type="checkbox" />
+                    <input id="checkBox" type="checkbox" onClick={() => {setOpen(!isOpen);}}/>
              
                     <span></span>
                     <span></span>
                     <span></span>
             
                     <ul id="menu">
+                        <li>Home</li>
                         <li>Keychains</li>
                         <li>Stickers</li>
                         <li>Diecast Cars</li>
                         <li>Track Order</li>
                     </ul>
                 </div>
+            </div>  
 
                 <div className='skylineLogo'>
                     <Link to='/'>

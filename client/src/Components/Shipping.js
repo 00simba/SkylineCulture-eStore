@@ -12,7 +12,7 @@ export default function Shipping(props){
                     <span className="shippingSpan">Shipping Details</span>
                     <div className="shippingInfo">
                         <span>Method: USPS First Class Tracked </span>
-                        <span>ETA: 3-5 business days</span>
+                        <span>ETA: 3-6 business days</span>
                         <span>Flat Rate: $3.95</span>  
                     </div>   
                 </div>
@@ -32,7 +32,7 @@ export default function Shipping(props){
                     <span className="shippingSpan">Shipping Details</span>
                     <div className="shippingInfo">
                         <span>Method: APC International Tracked </span>
-                        <span>ETA: 7-14 business days</span>
+                        <span>ETA: 7-15 business days</span>
                         <span>Flat Rate: $9.95</span>
                     </div>
                 </div>  

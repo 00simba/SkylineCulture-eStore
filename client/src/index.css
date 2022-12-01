@@ -876,7 +876,6 @@ button:disabled{
   {
     position: absolute;
     min-width: 75vw;
-    min-height: 2000vh;
     margin: -100px 0 0 -50px;
     padding: 50px;
     padding-top: 125px;

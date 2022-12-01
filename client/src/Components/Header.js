@@ -10,6 +10,10 @@ export default function Header(){
 
     const [isOpen, setOpen] = useState(false)
 
+    function changeOpen(){
+        setOpen(!isOpen)
+    }
+
     isOpen?(document.body.style.overflow) = "hidden" : document.body.style.overflow = "auto"
     isOpen?(document.body.style.pointerEvents) = "hidden" : document.body.style.pointerEvents = "auto" 
 
@@ -17,7 +21,7 @@ export default function Header(){
             <div className='navbar'>   
        
                 <div id="menuToggle">
-                    <input id="checkBox" type="checkbox" onClick={() => {setOpen(!isOpen);}}/>
+                    <input id="checkBox" type="checkbox" onClick={changeOpen}/>
                 
                     <span></span>
                     <span></span>

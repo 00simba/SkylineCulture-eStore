@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 export default function AddToCart(props){
 
-    const notify = () => toast.success('Item Added To Cart!', {
+    const notify = () => toast.success(`Item Added To Cart!`, {
         position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,

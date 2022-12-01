@@ -879,14 +879,18 @@ button:disabled{
     margin: -100px 0 0 -50px;
     padding: 50px;
     padding-top: 125px;
-    background: lightgray;
+    background: rgb(255, 255, 255);
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     /* to stop flickering of text in safari */
     
     transform-origin: 0% 0%;
     transform: translate(-100%, 0);
-    
+    border-radius: 20px;
+
+    border: 5px solid lightgray ;
+
+
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 
   }

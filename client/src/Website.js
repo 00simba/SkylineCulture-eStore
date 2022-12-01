@@ -30,10 +30,6 @@ export default function Website(props){
     const [id, setId] = React.useState(null)
 
     React.useEffect(() => {
-        window.scrollTo(0, 0)
-      }, [])
-
-    React.useEffect(() => {
         const data = localStorage.getItem('cart')
         if(data){
             setCartItems(JSON.parse(data))

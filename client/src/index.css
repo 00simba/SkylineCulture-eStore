@@ -194,7 +194,6 @@ img{
   margin-top: 5px;
   font-weight: 450;
   padding-left: 10px;
-  margin-bottom: 10px;
 }
 
 .card:hover {
@@ -775,7 +774,7 @@ button:disabled{
   
   .card{
     margin-top: 0;
-    width: 250px;
+    width: 280px;
     padding: 10px 10px 0px 10px;
     border-radius: 10px;
   }

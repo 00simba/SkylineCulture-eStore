@@ -6,6 +6,26 @@ li{
   align-items: center;
 }
 
+.bannerContainer{
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden
+}
+
+.bannerContainer .bannerImage{
+  position: absolute; 
+}
+
+.bannerContainer .bannerContent{
+  position: relative;
+}
+
+
+
 .totalHeading{
   font-weight: 450;
 }
@@ -147,7 +167,6 @@ li{
 
 .card{
   width: 250px;
-  margin: 20px;
   padding: 10px;
   border-radius: 10px;
 }
@@ -745,9 +764,21 @@ button:disabled{
   justify-content: space-between;
 }
 
+.bannerImage{
+  padding: 5%;
+}
+
 
 
 @media only screen and (max-width: 578px){
+
+  
+  .card{
+    margin-top: 0;
+    width: 250px;
+    padding: 0px 10px 10px 10px;
+    border-radius: 10px;
+  }
 
 
   .summaryContainer{
@@ -1424,6 +1455,5 @@ button:disabled{
     order: 1;
     width: 100%;
   }
-
 
 }

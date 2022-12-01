@@ -13,32 +13,17 @@ export default function Header(){
     isOpen?(document.body.style.overflow) = "hidden" : document.body.style.overflow = "auto"
     isOpen?(document.body.style.pointerEvents) = "hidden" : document.body.style.pointerEvents = "auto" 
 
-    let menuRef = useRef();
-
-    useEffect(() => {
-        let handler = (e) =>{
-            if(!menuRef.current.contains(e.target)){
-                document.getElementById('checkBox').click()
-            }
-        }
-        document.addEventListener("mousedown", handler)   
-        return () => {
-            document.removeEventListener("mousedown", handler)
-        }
-    });
-
-
     return(
             <div className='navbar'>   
-            <div className='menuContainer' ref={menuRef}>          
+       
                 <div id="menuToggle">
                     <input id="checkBox" type="checkbox" onClick={() => {setOpen(!isOpen);}}/>
-             
+                
                     <span></span>
                     <span></span>
                     <span></span>
             
-                    <ul id="menu">
+                    <ul id="menu" >
                         <li>Home</li>
                         <li>Keychains</li>
                         <li>Stickers</li>
@@ -46,7 +31,7 @@ export default function Header(){
                         <li>Track Order</li>
                     </ul>
                 </div>
-            </div>  
+      
 
                 <div className='skylineLogo'>
                     <Link to='/'>

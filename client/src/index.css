@@ -791,7 +791,7 @@ button:disabled{
 @media only screen and (max-width: 578px){
 
   .parent{
-    padding-bottom: 10%;
+    margin-bottom: 15vh
   }
 
   .backContainer{
@@ -1047,7 +1047,7 @@ button:disabled{
 @media only screen and (min-width: 579px) and (max-width: 768px){
 
   .parent{
-    padding-bottom: 10%;
+    margin-bottom: 15vh
   }
 
   .productContainer{
@@ -1362,7 +1362,7 @@ button:disabled{
 
   .parent{
 		flex-wrap: wrap;
-    padding: 40px 10px 40px 10px;
+    padding: 40px 10px 15vh 10px;
 	}
 
   .productContainer{

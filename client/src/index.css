@@ -6,6 +6,14 @@ li{
   align-items: center;
 }
 
+.websiteBanner{
+  display: flex;
+  justify-content: center;
+  padding: 2% 0% 2% 0%;
+  background-color: lightgray;
+  z-index: 10;
+}
+
 .backButton {
   background-color: #fff;
   border: 1px solid #d5d9d9;
@@ -279,7 +287,7 @@ img{
 }
 
 .navbar{
-  box-shadow: 0 0px 10px 0px rgba(0,0,0,.2);
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,.2);
 }
 
 .navbar li{
@@ -652,7 +660,7 @@ button:disabled{
 }
 
 .productDesc{
-  padding: 40px;
+  padding: 7% 40px 8% 40px;
 }
 
 .infoContainer{
@@ -1019,6 +1027,14 @@ button:disabled{
 
 @media only screen and (min-width: 579px) and (max-width: 768px){
 
+  .websiteBanner{
+    display: flex;
+    justify-content: center;
+    padding: 1% 0% 1% 0%;
+    background-color: lightgray;
+    z-index: 10;
+  }
+
   .backContainer{
     margin: 5% 0% 0% 3%;
   }
@@ -1253,6 +1269,14 @@ button:disabled{
 
 
 @media only screen and (min-width: 769px){
+
+  .websiteBanner{
+    display: flex;
+    justify-content: center;
+    padding: 0.75% 0% 0.75% 0%;
+    background-color: lightgray;
+    z-index: 10;
+  }
 
   .backContainer{
     margin: 2% 0% 0% 7%;

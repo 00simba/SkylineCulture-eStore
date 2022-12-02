@@ -9,7 +9,7 @@ import { useState, useEffect, useRef } from 'react';
 export default function Header(){
 
     return(
-            <div className='navbar'>   
+            <div className='navbar'>  
        
                 <div id="menuToggle">
                     <input id="checkBox" type="checkbox"/>

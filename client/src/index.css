@@ -7,7 +7,7 @@ li{
 }
 
 .cartContainer{
-  height: 100vh;
+  margin-bottom: 15vh;
 }
 
 .checkoutContainer .backContainer .backButton{

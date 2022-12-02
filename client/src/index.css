@@ -6,6 +6,14 @@ li{
   align-items: center;
 }
 
+.checkoutContainer .backContainer .backButton{
+  line-height: 33px;
+}
+
+.paymentWrapper .backContainer .backButton{
+  line-height: 33px;
+}
+
 .websiteBanner{
   display: flex;
   justify-content: center;
@@ -902,9 +910,10 @@ button:disabled{
     
     transform-origin: 0% 0%;
     transform: translate(-100%, 0);
-    border-radius: 20px;
+    border-bottom-right-radius: 20px;
 
-    border: 3px solid rgb(0, 0, 0) ;
+    border-bottom: 3px solid rgb(0, 0, 0) ;
+    border-right: 3px solid rgb(0, 0, 0) ;
 
 
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);

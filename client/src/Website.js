@@ -73,7 +73,7 @@ export default function Website(props){
 
     return(
         <div>
-            <WebsiteBanner/>
+            {![`/checkout/${id}`, `/collect-payment/${id}`].includes(location.pathname) && <WebsiteBanner/>} 
             {![`/checkout/${id}`, `/collect-payment/${id}`].includes(location.pathname) && <Header/>} 
             <Routes>    
                 <Route path='/' element={<div><div><Banner/></div><div className='parent'>{products}</div></div>}/>

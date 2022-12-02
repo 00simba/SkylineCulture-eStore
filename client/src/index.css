@@ -6,6 +6,10 @@ li{
   align-items: center;
 }
 
+.cartContainer{
+  height: 100vh;
+}
+
 .checkoutContainer .backContainer .backButton{
   line-height: 33px;
 }
@@ -234,6 +238,7 @@ img{
 .parent{
   flex-direction: row;
   padding-top: 20px;
+  padding-bottom: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -730,6 +735,7 @@ button:disabled{
   width: 100%;
   flex-direction: row;
   padding-top: 20px;
+  padding-bottom: 5%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -783,6 +789,10 @@ button:disabled{
 
 
 @media only screen and (max-width: 578px){
+
+  .parent{
+    padding-bottom: 10%;
+  }
 
   .backContainer{
     margin: 7% 0% 0% 5%;
@@ -1011,6 +1021,7 @@ button:disabled{
 
   .productContainer{
     padding-top: 5%;
+    padding-bottom: 5%;
   }
   
   .bannerImage{
@@ -1034,6 +1045,14 @@ button:disabled{
 
 
 @media only screen and (min-width: 579px) and (max-width: 768px){
+
+  .parent{
+    padding-bottom: 10%;
+  }
+
+  .productContainer{
+    padding-bottom: 10%;
+  }
 
   .websiteBanner{
     display: flex;
@@ -1343,7 +1362,7 @@ button:disabled{
 
   .parent{
 		flex-wrap: wrap;
-    padding: 40px 10px 0px 10px;
+    padding: 40px 10px 40px 10px;
 	}
 
   .productContainer{
@@ -1351,7 +1370,7 @@ button:disabled{
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    padding: 15px 40px 40px 100px;
+    padding: 15px 40px 80px 100px;
 
   }
 

@@ -98,7 +98,7 @@ export default function CartPage(props){
     const id = shortid.generate();
 
     return(
-        <div>
+        <div className='cartContainer'>
             <ToastContainer
             position="bottom-center"
             autoClose={5000}

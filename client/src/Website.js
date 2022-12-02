@@ -83,7 +83,7 @@ export default function Website(props){
                 <Route path={`/checkout/${id}`} element={<Checkout changeCountry={changeCountry} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
                 <Route path={`/collect-payment/${id}`} cartItems={cartItems} element={<Payment country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
             </Routes>
-            <Footer/>
+            {![`/checkout/${id}`, `/collect-payment/${id}`].includes(location.pathname) && <Footer/>}
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Counter from './Counter'
 import AddToCart from './AddToCart'
 import '../index.css'
@@ -40,6 +40,7 @@ export default function ProductPage(props){
     return(
         <div className="productContainer">
 
+            <Link to='/cart'>
                 <ToastContainer
                 position="bottom-center"
                 autoClose={5000}
@@ -54,6 +55,7 @@ export default function ProductPage(props){
                 transition={Slide}
                 limit={1}
                 />
+            </Link>
 
                 <img className="productImg" src={require(`../Images/${productObj.img}`)}></img>  
                 <div className="infoContainer">

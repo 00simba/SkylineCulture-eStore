@@ -8,20 +8,11 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function Header(){
 
-    const [isOpen, setOpen] = useState(false)
-
-    function changeOpen(){
-        setOpen(!isOpen)
-    }
-
-    isOpen?(document.body.style.overflow) = "hidden" : document.body.style.overflow = "auto"
-    isOpen?(document.body.style.pointerEvents) = "hidden" : document.body.style.pointerEvents = "auto" 
-
     return(
             <div className='navbar'>   
        
                 <div id="menuToggle">
-                    <input id="checkBox" type="checkbox" onClick={changeOpen}/>
+                    <input id="checkBox" type="checkbox"/>
                 
                     <span></span>
                     <span></span>

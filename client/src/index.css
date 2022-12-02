@@ -770,8 +770,15 @@ button:disabled{
 
 
 @media only screen and (max-width: 578px){
+    
+  .productLink{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
 
-  
   .card{
     margin-top: 0;
     width: 290px;
@@ -888,7 +895,7 @@ button:disabled{
     transform: translate(-100%, 0);
     border-radius: 20px;
 
-    border: 5px solid lightgray ;
+    border: 3px solid rgb(0, 0, 0) ;
 
 
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
@@ -990,6 +997,23 @@ button:disabled{
 
   .productContainer{
     padding-top: 7%;
+  }
+  
+  .bannerImage{
+    padding: 2%;
+  }
+
+  .bannerContent img{
+    width: 150%;
+  }
+
+  .bannerContainer{
+    height: 5%;
+  }
+
+  .bannerContainer .bannerContent{
+    display: flex;
+    justify-content: center;
   }
 
 }
@@ -1218,6 +1242,15 @@ button:disabled{
   .cardForm{
     margin: 1%;
   }
+
+  .bannerImage{
+    padding: 10%;
+  }
+
+  .bannerContainer{
+    height: 280px;
+  }
+
 }
 
 
@@ -1454,6 +1487,14 @@ button:disabled{
   .stripeCard{
     order: 1;
     width: 100%;
+  }
+
+  .bannerImage{
+    padding: 20%;
+  }
+
+  .bannerContainer{
+    height: 370px;
   }
 
 }

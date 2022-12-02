@@ -13,15 +13,12 @@ export default function Header(){
     let menuRef = useRef();
 
     useEffect(() => {
-
         let handler = (event) => {
             if(!menuRef.current.contains(event.target) && isOpen){
                 document.getElementById('checkBox').click();
             }
         }
-
         document.addEventListener("mousedown", handler)
-
         return () => {
             document.removeEventListener("mousedown", handler)
         }
@@ -44,6 +41,7 @@ export default function Header(){
                             <li>Stickers</li>
                             <li>Diecast Cars</li>
                             <li>Track Order</li>
+                            <li>Contact</li>
                         </ul>
                     </div>
                 </div>
@@ -62,6 +60,7 @@ export default function Header(){
                     <li>Stickers</li>
                     <li>Diecast Cars</li>
                     <li>Track Order</li>
+                    <li>Contact</li>
                     <Link to='/cart'><li className='yourCartText'>Your Cart</li></Link>
                 </ul>
 

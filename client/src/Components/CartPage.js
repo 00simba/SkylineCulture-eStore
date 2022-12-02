@@ -122,7 +122,7 @@ export default function CartPage(props){
             </div>
             {!(props.cartItems.length) ? <div className="contDiv">
                 <span className='contMsg'>Your cart is currently empty, click the button below to view some products!</span>
-                <Link to={`/`}><button className='shopBtn'>Continue Shopping</button></Link>
+                <Link to={`/`}><button className='shopBtn'>Shop Now</button></Link>
             </div> :
             <div className="itemRow">
                {items}

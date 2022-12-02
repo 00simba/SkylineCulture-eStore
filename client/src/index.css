@@ -912,9 +912,9 @@ button:disabled{
     transform: translate(-100%, 0);
     border-bottom-right-radius: 20px;
 
-    border-bottom: 3px solid rgb(0, 0, 0) ;
-    border-right: 3px solid rgb(0, 0, 0) ;
-
+    border-bottom: 2.5px solid rgb(0, 0, 0) ;
+    border-right: 2.5px solid rgb(0, 0, 0) ;
+    
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 
   }

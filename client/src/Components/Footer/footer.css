@@ -1,0 +1,148 @@
+.footerContainer{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,.2);
+    margin-top: 10%;
+}
+
+.linkSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+    background-color: white;
+    width: 100%;
+    gap: 40px;
+}
+
+.listItems{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding-inline-start: 0px;
+    gap: 15px;
+
+}
+
+.listItems li{
+    padding: 0%
+
+}
+
+.contentSection{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-bottom: solid 2px lightgray;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 4%;
+}
+
+.copyrightBanner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2%;
+    background-color: lightgray;
+    width: 100%;
+}
+
+
+.contentTitle{
+    padding-bottom: 10px;
+}
+
+.linkTitle{
+    padding-bottom: 10px;
+}
+
+.footerLogo{
+    display: flex;
+    width: 40%;
+    padding-bottom: 2%;
+}
+
+.footerLogoContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+@media only screen and (min-width: 579px) and (max-width: 768px){
+
+    .footerContainer{
+        flex-direction: row;
+    }
+
+    .contentSection{
+        width: 50%;
+        border-bottom: none;
+        text-align: start;
+    }
+
+    .linkSection{
+        width: auto;
+    }
+
+        
+    .footerLogo{
+        display: flex;
+        width: 50%;
+        padding-bottom: 2%;
+    }
+
+    .footerLogoContainer{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-top: 1%;
+
+    }
+
+}
+
+
+@media only screen and (min-width: 768px){
+
+
+
+    .contentSection{
+        width: 33%;
+        border-bottom: none;
+        text-align: start;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .linkSection{
+        width: auto;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        gap: 120px;
+    }
+
+    .footerLogo{
+        display: flex;
+        width: 60%;
+        padding-bottom: 2%;
+    }
+
+    .footerLogoContainer{
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .copyrightBanner{
+        padding: 1%;
+    }
+
+}

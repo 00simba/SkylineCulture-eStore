@@ -6,6 +6,40 @@ li{
   align-items: center;
 }
 
+.backButton {
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember",sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 80px;
+  height: 35px;
+}
+
+.backButton:hover {
+  background-color: #f7fafa;
+}
+
+.backButton:focus {
+  border-color: #008296;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  outline: 0;
+}
+
 .bannerContainer{
   border-top: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
@@ -462,43 +496,6 @@ input:focus {
   outline: 0;
 }
 
-
-
-.backButton {
-  background-color: #2f2f2f;
-  border: 1px solid #d5d9d9;
-  border-radius: 8px;
-  box-shadow: rgba(255, 255, 255, 0.5) 0 2px 5px 0;
-  box-sizing: border-box;
-  color: #ffffff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Amazon Ember",sans-serif;
-  font-size: 13px;
-  line-height: 30px;
-  padding: 3px 0px 0px 0px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-  height: 40px;
-  width: 90px;
-}
-
-.backButton:hover {
-  background-color: #9b9b9b;
-}
-
-.backButton:focus {
-  border-color: #008296;
-  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
-  outline: 0;
-}
-
-
 button:disabled{
   border: 1px solid #d5d9d9;
   background-color: #cccccc;
@@ -770,6 +767,10 @@ button:disabled{
 
 
 @media only screen and (max-width: 578px){
+
+  .backContainer{
+    margin: 5% 0% 0% 3%;
+  }
     
   .productLink{
     display: flex;
@@ -987,16 +988,13 @@ button:disabled{
     margin-top: 5%;
   }
 
-  .backContainer{
-    margin: 5% 0% 0% 0%;
-  }
 
   .checkoutHeading{
     margin: 5% 0% 2% 0%;
   }
 
   .productContainer{
-    padding-top: 7%;
+    padding-top: 5%;
   }
   
   .bannerImage{
@@ -1020,6 +1018,10 @@ button:disabled{
 
 
 @media only screen and (min-width: 579px) and (max-width: 768px){
+
+  .backContainer{
+    margin: 5% 0% 0% 3%;
+  }
 
   .contDiv{
     margin: 15% 15% 0% 15%;
@@ -1222,11 +1224,6 @@ button:disabled{
     margin-left: 2%;
   }
 
-  .backContainer{
-    margin-left: 2%;
-    margin-bottom: 1%;
-  }
-
   .almostHeader{
     margin: 2% 0% 0% 1%;
   }
@@ -1256,6 +1253,10 @@ button:disabled{
 
 
 @media only screen and (min-width: 769px){
+
+  .backContainer{
+    margin: 2% 0% 0% 7%;
+  }
 
   .yourCartText{
     display: none;
@@ -1318,7 +1319,7 @@ button:disabled{
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    padding: 60px 40px 40px 100px;
+    padding: 15px 40px 40px 100px;
 
   }
 
@@ -1448,10 +1449,6 @@ button:disabled{
     margin-top: 2%;
   }
 
-  
-  .backContainer{
-    margin: 1% 0% 0% 10%;
-  }
 
   .almostHeader{
     margin: 2% 0% 0% 0%;

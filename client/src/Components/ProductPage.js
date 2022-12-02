@@ -6,6 +6,7 @@ import '../index.css'
 import { ToastContainer } from 'react-toastify';
 import { Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import BackButton from "./BackButton";
 
 export default function ProductPage(props){
 
@@ -38,47 +39,52 @@ export default function ProductPage(props){
     }
 
     return(
-        <div className="productContainer">
+        <div>
+            <div className="backContainer">
+                <BackButton/>
+            </div>
+            <div className="productContainer">
 
-            <Link to='/cart'>
-                <ToastContainer
-                position="bottom-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-                transition={Slide}
-                limit={1}
-                />
-            </Link>
+                <Link to='/cart'>
+                    <ToastContainer
+                    position="bottom-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="colored"
+                    transition={Slide}
+                    limit={1}
+                    />
+                </Link>
 
-                <img className="productImg" src={require(`../Images/${productObj.img}`)}></img>  
-                <div className="infoContainer">
-                    <div className="infoPrice">
-                        <h3 className="title">{productObj.title}</h3>
-                        <h2 className="price">${productObj.price}</h2>
-                    </div>
-                    <div className="addCounter">
-                        <AddToCart id={productObj.id} product={productObj.title} quantity={quantity} image={productObj.img} price={productObj.price} basePrice={productObj.basePrice} addItemToCart={props.addItemToCart}/>
-                        <Counter quantity={quantity} add={add} minus={minus}/>
-                    </div>
-                </div>  
-                <div className="productDesc">    
-                    <div className="descWrapper">
-                        <h3 className="descriptionHeader">Description</h3>
-                        {(productObj.description).map((item) => <p>{item}<br/></p>)}
-                        <h3 className="detailsHeader">Details</h3>
-                        {productObj.specs}
-                        <h3 className="shippingHeader">Shipping</h3>
-                        {(productObj.shipping).map((item) => <p>{item}<br/></p>)}
-                    </div>
+                    <img className="productImg" src={require(`../Images/${productObj.img}`)}></img>  
+                    <div className="infoContainer">
+                        <div className="infoPrice">
+                            <h3 className="title">{productObj.title}</h3>
+                            <h2 className="price">${productObj.price}</h2>
+                        </div>
+                        <div className="addCounter">
+                            <AddToCart id={productObj.id} product={productObj.title} quantity={quantity} image={productObj.img} price={productObj.price} basePrice={productObj.basePrice} addItemToCart={props.addItemToCart}/>
+                            <Counter quantity={quantity} add={add} minus={minus}/>
+                        </div>
+                    </div>  
+                    <div className="productDesc">    
+                        <div className="descWrapper">
+                            <h3 className="descriptionHeader">Description</h3>
+                            {(productObj.description).map((item) => <p>{item}<br/></p>)}
+                            <h3 className="detailsHeader">Details</h3>
+                            {productObj.specs}
+                            <h3 className="shippingHeader">Shipping</h3>
+                            {(productObj.shipping).map((item) => <p>{item}<br/></p>)}
+                        </div>
 
-                </div>
+                    </div>
+            </div>
         </div>
         
     )

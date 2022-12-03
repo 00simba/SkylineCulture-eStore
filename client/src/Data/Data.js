@@ -63,7 +63,7 @@ export default [
         "id" : 5,
         "title" : "Turbo Keychain",
         "img" : "turbo_keychain/turbo_main.png",
-        "price" : 9,
+        "price" : 8,
         "url" : "turbo-keychain",
         "description" : [
             
@@ -77,7 +77,7 @@ export default [
         "id" : 6,
         "title" : "NOS Keychain",
         "img" : "nos_keychain/nos_main.png",
-        "price" : 9,
+        "price" : 6,
         "url" : "nos-keychain",
         "description" : [
             
@@ -101,12 +101,11 @@ export default [
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
         "shipping": [shipping[0]]
     },
-    ,
     {
         "id" : 8,
         "title" : "Suspension Keychain",
         "img" : "suspension_keychain/suspension_main.png",
-        "price" : 9,
+        "price" : 8,
         "url" : "suspension-keychain",
         "description" : [
             
@@ -120,8 +119,8 @@ export default [
         "id" : 9,
         "title" : "TE37 Keychain",
         "img" : "te37_keychain/te37_main.png",
-        "price" : 9,
-        "url" : "te37_keychain",
+        "price" : 12,
+        "url" : "te37-keychain",
         "description" : [
             
         "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain!",         

@@ -51,6 +51,12 @@ export default function ProductPage(props){
         images.push({original: require(`../Images/${productObj.img[index]}`)})
     })
 
+    class MyGallery extends React.Component {
+        render() {
+          return <ImageGallery items={images} showFullscreenButton={true} showThumbnails={false} showPlayButton={false}/>;
+        }
+      }
+
     return(
         <div>
             <div className="backContainer">
@@ -75,9 +81,7 @@ export default function ProductPage(props){
                     />
                 </Link>
                     <div className="imageContainer">
-                    <ImageGallery items={images} showFullscreenButton={true} showThumbnails={false} showPlayButton={false}/>
-                    {/* <img className="productImg" src={require(`../Images/${productObj.img}`)}></img> */}
-
+                        <MyGallery/>
                     </div>
 
                     <div className="infoContainer">

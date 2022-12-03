@@ -47,7 +47,7 @@ export default function ProductPage(props){
         images.push({original: require(`../Images/${productObj.img[index]}`)})
     })
 
-    class MyGallery extends React.Component {
+    class MyGallery extends React.Component{
         render() {
           return <ImageGallery items={images} showFullscreenButton={true} showThumbnails={false} showPlayButton={false}/>;
         }

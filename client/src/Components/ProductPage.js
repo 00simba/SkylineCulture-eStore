@@ -8,12 +8,8 @@ import { Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import BackButton from "./BackButton";
 import './imageSlide.css'
-
-
 import '../../node_modules/react-image-gallery/styles/css/image-gallery.css'
-
 import ImageGallery from 'react-image-gallery';
-
 
 export default function ProductPage(props){
 
@@ -45,7 +41,7 @@ export default function ProductPage(props){
         }
     }
 
-    const images = []
+    let images = []
 
     productObj.img.forEach((img, index) => {
         images.push({original: require(`../Images/${productObj.img[index]}`)})

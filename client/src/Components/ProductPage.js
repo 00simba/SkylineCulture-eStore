@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import BackButton from "./BackButton";
 import './imageSlide.css'
 import '../../node_modules/react-image-gallery/styles/css/image-gallery.css'
-import { ImageGallery } from 'react-image-gallery';
+import ImageGallery from 'react-image-gallery';
 
 export default function ProductPage(props){
 

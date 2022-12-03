@@ -289,7 +289,8 @@ img{
 }
 
 
-.productImg{
+.imageContainer{
+  display: flex;
   width: 80%;
   justify-content: center;
   align-items: center;
@@ -1142,7 +1143,7 @@ button:disabled{
     padding-right: 40px;
   }
 
-  .productImg {
+  .imageContainer {
     display: flex;
     flex-basis: 50%;
     flex-grow: 1;
@@ -1374,7 +1375,7 @@ button:disabled{
 
   }
 
-  .productImg {
+  .imageContainer {
     display: flex;
     width: 350px;
     order: 1

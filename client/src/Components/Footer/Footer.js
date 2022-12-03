@@ -1,5 +1,4 @@
 import React from "react";
-import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 import './footer.css'
 import logo from '../../logo.png'
  
@@ -10,7 +9,7 @@ const Footer = () => {
         <div className="footerLogoContainer">
           <div className="footerLogo"><img src={logo}></img></div>
         </div>
-        <p>Welcome to SkylineCulture webstore! Support the page by shopping our items and be sure to follow us on Instagram: @skylineculture.</p>
+        <p>Welcome to the SkylineCulture webstore! Support the page by shopping our items and be sure to follow us on Instagram: @skylineculture.</p>
       </div>
       <div className="linkSection">
         <div className="Links">

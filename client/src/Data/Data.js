@@ -4,7 +4,7 @@ export default [
     {
         "id" : "1",
         "title" : "R34 GTR Keychain",
-        "img" : "r34key.png",
+        "img" : ["r34key.png"],
         "price" : 15,
         "url" : "r34-gtr-keychain",
         "description" : [
@@ -20,7 +20,7 @@ export default [
     {
         "id" : 2,
         "title" : "R32 GTR Keychain",
-        "img" : "r32key.png",
+        "img" : ["r32key.png"],
         "price" : 15,
         "url" : "r32-gtr-keychain",
         "description" : [
@@ -34,7 +34,7 @@ export default [
     {
         "id" : 3,
         "title" : "R34 GTR Pin",
-        "img" : "r34pin.png",
+        "img" : ["r34pin.png"],
         "price" : 20,
         "url" : "r34-gtr-pin",
         "description" : [
@@ -48,7 +48,7 @@ export default [
     {
         "id" : 4,
         "title" : "RB26 Keychain",
-        "img" : "rb26.png",
+        "img" : ["rb26.png"],
         "price" : 9,
         "url" : "r26-keychain",
         "description" : [
@@ -62,7 +62,7 @@ export default [
     {
         "id" : 5,
         "title" : "Turbo Keychain",
-        "img" : "turbo_keychain/turbo_main.png",
+        "img" : ["turbo_keychain/turbo_main.png", "turbo_keychain/turbo_1.png", "turbo_keychain/turbo_2.png", "turbo_keychain/turbo_3.png"],
         "price" : 8,
         "url" : "turbo-keychain",
         "description" : [
@@ -76,7 +76,7 @@ export default [
     {
         "id" : 6,
         "title" : "NOS Keychain",
-        "img" : "nos_keychain/nos_main.png",
+        "img" : ["nos_keychain/nos_main.png", "nos_keychain/nos_1.png", "nos_keychain/nos_2.png"],
         "price" : 6,
         "url" : "nos-keychain",
         "description" : [
@@ -90,7 +90,7 @@ export default [
     {
         "id" : 7,
         "title" : "Gearbox Keychain",
-        "img" : "gearbox_keychain/gearbox_main.png",
+        "img" : ["gearbox_keychain/gearbox_main.png", "gearbox_keychain/gearbox_1.png", "gearbox_keychain/gearbox_2.png"],
         "price" : 9,
         "url" : "gearbox-keychain",
         "description" : [
@@ -104,7 +104,7 @@ export default [
     {
         "id" : 8,
         "title" : "Suspension Keychain",
-        "img" : "suspension_keychain/suspension_main.png",
+        "img" : ["suspension_keychain/suspension_main.png", "suspension_keychain/suspension_1.png", "suspension_keychain/suspension_2.png", "suspension_keychain/suspension_3.png", "suspension_keychain/suspension_4.png", "suspension_keychain/suspension_5.png"],
         "price" : 8,
         "url" : "suspension-keychain",
         "description" : [
@@ -118,7 +118,7 @@ export default [
     {
         "id" : 9,
         "title" : "TE37 Keychain",
-        "img" : "te37_keychain/te37_main.png",
+        "img" : ["te37_keychain/te37_main.png", "te37_keychain/te37_1.png", "te37_keychain/te37_2.png", "te37_keychain/te37_3.png"],
         "price" : 12,
         "url" : "te37-keychain",
         "description" : [

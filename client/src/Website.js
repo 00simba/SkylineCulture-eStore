@@ -63,7 +63,7 @@ export default function Website(props){
         })
 
         if(found==0){
-            setCartItems([...cartItems, {productId: `${id}`, productName: `${product}`, productQuantity: `${quantity}`, productImage: `${image}`, productPrice: `${price}`}])
+            setCartItems([...cartItems, {productId: `${id}`, productName: `${product}`, productQuantity: `${quantity}`, productImage: `${image[0]}`, productPrice: `${price}`}])
         }      
     }
 

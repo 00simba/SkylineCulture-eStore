@@ -11,8 +11,9 @@ This project is still in development but if you'd like to take a look visit www.
 Steps to run this project locally on your machine:
 1. Clone this repository to your computer
 2. Open the root folder in an IDE of your choice
-3. Open a terminal in the root folder and type `cd client`
-4. Type `npm run build` to create a build
-5. Once done, type `cd ..` to return to the root folder
+3. Open a terminal in the root folder and type `cd client` then `npm install --force`
+4. Type `cd ..` then `cd server`  followed by `npm install --force`
+4. Go to the client folder by typing `cd ..` then `cd client`  
+5. Type `npm run build` and `cd ..` to return to the root folder
 5. Type `cd server` followed by `npm run start`
 6. Visit http://localhost:8080/ to view the website!

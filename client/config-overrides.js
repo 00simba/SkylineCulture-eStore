@@ -6,8 +6,12 @@ module.exports = function override(webpackConfig) {
       include: /node_modules/,
       type: "javascript/auto",  
     }); 
-    webpackConfig.optimization.minimize = true
-    webpackConfig.optimization.minimizer.push(new TerserPlugin({ exclude: /\/node_modules\/react-image-gallery/ }))
+    webpackConfig.optimization = 
+      {
+        minimize: true,
+        minimizer: [new TerserPlugin({ exclude: /\/node_modules\/react-image-gallery/ })],
+      }
+    
     return webpackConfig;
   }
 

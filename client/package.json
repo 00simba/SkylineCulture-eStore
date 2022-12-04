@@ -24,7 +24,7 @@
     "react-toastify": "^9.1.1",
     "shortid": "^2.2.16",
     "web-vitals": "^2.1.4",
-    "webpack": "^4.28.3"
+    "webpack": "^4.19.1"
   },
   "scripts": {
     "start": "react-app-rewired start",

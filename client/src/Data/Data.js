@@ -15,7 +15,8 @@ export default [
 
          ],
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
-        "shipping": [shipping[0]]
+        "shipping": [shipping[0]],
+        "variants" : [{}]
     },
     {
         "id" : 2,
@@ -29,7 +30,8 @@ export default [
         "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! "],
 
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
-        "shipping": [shipping[0]]
+        "shipping": [shipping[0]],
+        "variants" : [{}]
     },
     {
         "id" : 3,
@@ -43,7 +45,8 @@ export default [
         "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! "],
         
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
-        "shipping": [shipping[0]]
+        "shipping": [shipping[0]],
+        "variants" : [{}]
     },
     {
         "id" : 4,
@@ -57,7 +60,8 @@ export default [
         "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set."],
 
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
-        "shipping": [shipping[0]]
+        "shipping": [shipping[0]],
+        "variants" : [{}]       
     },
     {
         "id" : 5,
@@ -71,7 +75,8 @@ export default [
         "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set."],
 
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
-        "shipping": [shipping[0]]
+        "shipping": [shipping[0]],
+        "variants": [{"Select Colour": ["Black", "Silver", "Chroma"]}],
     },
     {
         "id" : 6,
@@ -85,7 +90,8 @@ export default [
         "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set."],
 
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
-        "shipping": [shipping[0]]
+        "shipping": [shipping[0]],
+        "variants" : [{}]
     },
     {
         "id" : 7,
@@ -99,7 +105,8 @@ export default [
         "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set."],
 
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
-        "shipping": [shipping[0]]
+        "shipping": [shipping[0]],
+        "variants" : [{}]
     },
     {
         "id" : 8,
@@ -113,7 +120,8 @@ export default [
         "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set."],
 
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
-        "shipping": [shipping[0]]
+        "shipping": [shipping[0]],
+        "variants": [{"Select Colour": ["Blue", "Green", "Gold", "Red", "Black"]}],
     },
     {
         "id" : 9,
@@ -127,6 +135,7 @@ export default [
         "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set."],
 
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
-        "shipping": [shipping[0]]
+        "shipping": [shipping[0]],
+        "variants" : [{}]
     } 
 ]

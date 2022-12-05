@@ -682,10 +682,17 @@ button:disabled{
   align-items: baseline;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding: 0px 40px 0px 40px;
 }
 
+.infoContainer .productInfo{
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 5%;
+}
 .addToCartBtn{
   display: flex;
   align-items: center;
@@ -1392,6 +1399,13 @@ button:disabled{
     margin-top: 2%;
     padding: 0px 0px 0px 0px;
     gap: 3%;
+  }
+
+  .infoContainer .productInfo{
+    justify-content: flex-start;
+    align-items: center;
+    width: auto;
+    gap: 30px;
   }
 
   .productDesc{

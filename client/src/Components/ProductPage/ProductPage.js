@@ -1,15 +1,16 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import Counter from './Counter'
-import AddToCart from './AddToCart'
-import '../index.css'
+import Counter from '../Counter'
+import AddToCart from '../AddToCart'
+import '../../index.css'
 import { ToastContainer } from 'react-toastify';
 import { Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import BackButton from "./BackButton";
-import './imageSlide.css'
-import '../../node_modules/react-image-gallery/styles/css/image-gallery.css'
+import BackButton from "../BackButton";
+import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css'
 import ImageGallery from 'react-image-gallery';
+import Dropdown from "../Dropdown/Dropdown";
+import './productpage.css'
 
 export default function ProductPage(props){
 
@@ -44,7 +45,7 @@ export default function ProductPage(props){
     let images = []
 
     productObj.img.forEach((img, index) => {
-        images.push({original: require(`../Images/${productObj.img[index]}`)})
+        images.push({original: require(`../../Images/${productObj.img[index]}`)})
     })
 
     class MyGallery extends React.Component{
@@ -82,15 +83,20 @@ export default function ProductPage(props){
                     </div>
 
                     <div className="infoContainer">
-                        <div className="infoPrice">
-                            <h3 className="title">{productObj.title}</h3>
-                            <h2 className="price">${productObj.price}</h2>
+                        <div className="productInfo">
+                            <div className="infoPrice">
+                                <h3 className="title">{productObj.title}</h3>
+                                <h2 className="price">${productObj.price}</h2>
+                            </div>
+                            <div className="addCounter">
+                                <AddToCart id={productObj.id} product={productObj.title} quantity={quantity} image={productObj.img} price={productObj.price} basePrice={productObj.basePrice} addItemToCart={props.addItemToCart}/>
+                                <Counter quantity={quantity} add={add} minus={minus}/>
+                            </div>
                         </div>
-                        <div className="addCounter">
-                            <AddToCart id={productObj.id} product={productObj.title} quantity={quantity} image={productObj.img} price={productObj.price} basePrice={productObj.basePrice} addItemToCart={props.addItemToCart}/>
-                            <Counter quantity={quantity} add={add} minus={minus}/>
+                        <div className="optionsContainer">
+                            {(productObj.variants).map(variant => <Dropdown options={variant}/>)}
                         </div>
-                    </div>  
+                    </div>
                     <div className="productDesc">    
                         <div className="descWrapper">
                             <h3 className="descriptionHeader">Description</h3>
@@ -100,7 +106,6 @@ export default function ProductPage(props){
                             <h3 className="shippingHeader">Shipping</h3>
                             {(productObj.shipping).map((item) => <p>{item}<br/></p>)}
                         </div>
-
                     </div>
             </div>
         </div>

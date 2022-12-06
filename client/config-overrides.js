@@ -11,7 +11,6 @@ module.exports = function override(webpackConfig) {
         minimize: true,
         minimizer: [new TerserPlugin({ exclude: /\/node_modules\/react-image-gallery/ })],
       }
-    
     return webpackConfig;
   }
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import Counter from '../Counter'
 import AddToCart from '../AddToCart'
@@ -48,11 +48,11 @@ export default function ProductPage(props){
         images.push({original: require(`../../Images/${productObj.img[index]}`)})
     })
 
-    class MyGallery extends React.Component{
+    const MyGallery = React.memo(class MyGallery extends React.Component{
         render() {
           return <ImageGallery items={images} showFullscreenButton={true} showThumbnails={false} showPlayButton={false}/>;
         }
-    }
+    })
 
     const [selected, setSelected] = React.useState(null);
 
@@ -89,7 +89,7 @@ export default function ProductPage(props){
                 </Link>
 
                     <div className="imageContainer">
-                        <MyGallery/>
+                        {MyGallery}
                     </div>
 
                     <div className="infoContainer">

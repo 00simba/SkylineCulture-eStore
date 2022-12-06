@@ -90,7 +90,7 @@ export default function ProductPage(props){
                                 <h2 className="price">${productObj.price}</h2>
                             </div>
                             <div className="addCounter">
-                                <AddToCart id={productObj.id} product={productObj.title} quantity={quantity} variant={selected} variants={productObj.variants} image={productObj.img} price={productObj.price} basePrice={productObj.basePrice} addItemToCart={props.addItemToCart}/>
+                                <AddToCart id={productObj.id} product={productObj.title} quantity={quantity} variant={selected} variants={productObj.variants} image={productObj.img} price={productObj.price} basePrice={productObj.basePrice} url={productObj.url} addItemToCart={props.addItemToCart}/>
                                 <Counter quantity={quantity} add={add} minus={minus}/>
                             </div>
                         </div>

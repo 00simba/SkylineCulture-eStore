@@ -51,7 +51,8 @@ export default function Website(props){
 
     console.log(cartItems)
     
-    function addItemToCart(id, product, quantity, variant, image, price){
+    function addItemToCart(id, product, quantity, variant, image, price, url){
+        console.log(url)
 
         let picture = image[0]
         image.forEach((image) => {
@@ -76,7 +77,7 @@ export default function Website(props){
         })
 
         if(found==0){
-            setCartItems([...cartItems, {productId: `${id}`, productName: `${product}`, productQuantity: `${quantity}`, productVariant: `${variant}`,productImage: `${picture}`, productPrice: `${price}`}])
+            setCartItems([...cartItems, {productId: `${id}`, productName: `${product}`, productQuantity: `${quantity}`, productVariant: `${variant}`,productImage: `${picture}`, productPrice: `${price}`, productUrl: `${url}`}])
         }      
     }
 

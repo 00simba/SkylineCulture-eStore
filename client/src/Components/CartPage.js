@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
 
 
 function removeItem(setCartItems, cartItems, productId, productVariant){
@@ -71,7 +70,7 @@ export default function CartPage(props){
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",
+        theme: "colored",
         });
 
     const items = props.cartItems.map(item => {
@@ -79,7 +78,7 @@ export default function CartPage(props){
         return(
             <div className="eachItemRow">
                 <div className="itemInfos">
-                    <h3>{item.productName}</h3>
+                    <h3><a href={`#/product/${item.productUrl}`}>{item.productName}</a></h3>
                     <span>Price: ${(item.productPrice)}</span>
                     <span>Quantity: {item.productQuantity}</span> 
                     {item.productVariant !='null' && item.productVariant !='Default' && <span>Color: {item.productVariant}</span>}
@@ -89,7 +88,7 @@ export default function CartPage(props){
                     <button className="removeBtn" onClick={() => {removeItem(props.setCartItems, props.cartItems, item.productId, item.productVariant); remove()}}>Remove</button>
                 </div>
                 <div className="productImage">
-                    <img src={require(`../Images/${item.productImage}`)}></img>
+                    <a href={`#/product/${item.productUrl}`}><img src={require(`../Images/${item.productImage}`)}></img></a>
                 </div>
             </div>
         )

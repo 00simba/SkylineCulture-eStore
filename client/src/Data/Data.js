@@ -66,7 +66,7 @@ export default [
     {
         "id" : 5,
         "title" : "Turbo Keychain",
-        "img" : ["turbo_keychain/turbo_main.png", "turbo_keychain/turbo_1.png", "turbo_keychain/turbo_2.png", "turbo_keychain/turbo_3.png"],
+        "img" : ["turbo_keychain/turbo_main.png", "turbo_keychain/turbo_Black.png", "turbo_keychain/turbo_Silver.png", "turbo_keychain/turbo_Chroma.png"],
         "price" : 8,
         "url" : "turbo-keychain",
         "description" : [
@@ -76,7 +76,7 @@ export default [
 
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
         "shipping": [shipping[0]],
-        "variants": [{"Select Colour": ["Black", "Silver", "Chroma"]}],
+        "variants": [{"Select Color": ["Black", "Silver", "Chroma"]}],
     },
     {
         "id" : 6,
@@ -111,7 +111,7 @@ export default [
     {
         "id" : 8,
         "title" : "Suspension Keychain",
-        "img" : ["suspension_keychain/suspension_main.png", "suspension_keychain/suspension_1.png", "suspension_keychain/suspension_2.png", "suspension_keychain/suspension_3.png", "suspension_keychain/suspension_4.png", "suspension_keychain/suspension_5.png"],
+        "img" : ["suspension_keychain/suspension_main.png", "suspension_keychain/suspension_Blue.png", "suspension_keychain/suspension_Green.png", "suspension_keychain/suspension_Gold.png", "suspension_keychain/suspension_Red.png", "suspension_keychain/suspension_Black.png"],
         "price" : 8,
         "url" : "suspension-keychain",
         "description" : [

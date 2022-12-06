@@ -48,22 +48,31 @@ export default function Website(props){
     })
 
     cartItems.slice(1);
+
+    console.log(cartItems)
     
-    function addItemToCart(id, product, quantity, image, price){
+    function addItemToCart(id, product, quantity, variant, image, price){
+
+        let picture = image[0]
+        image.forEach((image) => {
+            if(image.includes(variant)){
+                picture = image
+            }
+        })
 
         var found=0;
 
         cartItems.forEach((cartItem) => {
             var x = cartItem.productName; 
-            var y = cartItem.productQuantity;  
-            if(x == product){
+            var y = cartItem.productVariant
+            if(x == product && y == variant){
                 found=1;
                 cartItem.productQuantity = `${quantity}`;
             }       
         })
 
         if(found==0){
-            setCartItems([...cartItems, {productId: `${id}`, productName: `${product}`, productQuantity: `${quantity}`, productImage: `${image[0]}`, productPrice: `${price}`}])
+            setCartItems([...cartItems, {productId: `${id}`, productName: `${product}`, productQuantity: `${quantity}`, productVariant: `${variant}`,productImage: `${picture}`, productPrice: `${price}`}])
         }      
     }
 

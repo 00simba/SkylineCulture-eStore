@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Counter from '../Counter'
 import AddToCart from '../AddToCart'
@@ -54,6 +54,17 @@ export default function ProductPage(props){
         }
     }
 
+    const [selected, setSelected] = React.useState(null);
+
+    function hasVariants(){
+        if(Object.keys(productObj.variants[0]).length === 0){
+            setSelected("Default")
+        }
+    }
+
+    useEffect(() => hasVariants())
+
+
     return(
         <div>
             <div className="backContainer">
@@ -74,7 +85,6 @@ export default function ProductPage(props){
                     pauseOnHover
                     theme="colored"
                     transition={Slide}
-                    limit={1}
                     />
                 </Link>
 
@@ -89,12 +99,12 @@ export default function ProductPage(props){
                                 <h2 className="price">${productObj.price}</h2>
                             </div>
                             <div className="addCounter">
-                                <AddToCart id={productObj.id} product={productObj.title} quantity={quantity} image={productObj.img} price={productObj.price} basePrice={productObj.basePrice} addItemToCart={props.addItemToCart}/>
+                                <AddToCart id={productObj.id} product={productObj.title} quantity={quantity} variant={selected} image={productObj.img} price={productObj.price} basePrice={productObj.basePrice} addItemToCart={props.addItemToCart}/>
                                 <Counter quantity={quantity} add={add} minus={minus}/>
                             </div>
                         </div>
                         <div className="optionsContainer">
-                            {(productObj.variants).map(variant => <Dropdown options={variant}/>)}
+                            {(productObj.variants).map(variant => <Dropdown setSelected={setSelected} options={variant}/>)}
                         </div>
                     </div>
                     <div className="productDesc">    

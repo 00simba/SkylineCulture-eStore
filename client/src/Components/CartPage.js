@@ -7,15 +7,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 
-function removeItem(setCartItems, cartItems, productId){
-    const objIndex = cartItems.findIndex((obj) => obj.productId === productId)
+function removeItem(setCartItems, cartItems, productId, productVariant){
+    const objIndex = cartItems.findIndex((obj) => obj.productId === productId && obj.productVariant === productVariant)
     cartItems.splice(objIndex, 1)    
     setCartItems([...cartItems])
 }
 
- function incrementItem(cartItems, productId ,setCartItems){
+ function incrementItem(cartItems, productId, productVariant, setCartItems){
     cartItems.forEach(item => {
-        if(item.productId === productId){
+        if(item.productId === productId && item.productVariant === productVariant){
             var newQuantity = parseInt(item.productQuantity) + 1 ;
             item.productQuantity = newQuantity.toString()
         }
@@ -23,9 +23,9 @@ function removeItem(setCartItems, cartItems, productId){
     setCartItems([...cartItems])
 }
 
-function decrementItem(cartItems, productId, setCartItems){
+function decrementItem(cartItems, productId, productVariant, setCartItems){
     cartItems.forEach(item => {
-        if(item.productId === productId){
+        if(item.productId === productId && item.productVariant === productVariant){
             if(item.productQuantity === "1"){
                 setCartItems([...cartItems])
             }
@@ -71,7 +71,7 @@ export default function CartPage(props){
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "colored",
+        theme: "light",
         });
 
     const items = props.cartItems.map(item => {
@@ -80,12 +80,13 @@ export default function CartPage(props){
             <div className="eachItemRow">
                 <div className="itemInfos">
                     <h3>{item.productName}</h3>
-                    <span>Quantity: {item.productQuantity}</span> 
                     <span>Price: ${(item.productPrice)}</span>
+                    <span>Quantity: {item.productQuantity}</span> 
+                    {item.productVariant !='null' && item.productVariant !='Default' && <span>Color: {item.productVariant}</span>}
                 </div>
                 <div className="modifyItem">
-                    <Counter add={() => incrementItem(props.cartItems, item.productId, props.setCartItems)} quantity={item.productQuantity}  minus={() => decrementItem(props.cartItems, item.productId, props.setCartItems)}/>
-                    <button className="removeBtn" onClick={() => {removeItem(props.setCartItems, props.cartItems, item.productId); remove()}}>Remove</button>
+                    <Counter add={() => incrementItem(props.cartItems, item.productId, item.productVariant, props.setCartItems)} quantity={item.productQuantity}  minus={() => decrementItem(props.cartItems, item.productId, item.productVariant, props.setCartItems)}/>
+                    <button className="removeBtn" onClick={() => {removeItem(props.setCartItems, props.cartItems, item.productId, item.productVariant); remove()}}>Remove</button>
                 </div>
                 <div className="productImage">
                     <img src={require(`../Images/${item.productImage}`)}></img>

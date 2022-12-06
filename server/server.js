@@ -12,6 +12,7 @@ app.use(express.static('../client/build'))
 app.use(bodyParser.urlencoded({extended: false}))
 const cors = require("cors")
 app.use(cors())
+app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 
 const dbURI = process.env.DATABASE_URI;
 mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true}).then((result) => console.log('Connected to DB')).catch((err) => console.log(err))
@@ -38,13 +39,9 @@ let customer={
 };
 
 
-app.get('/*', (req,res) =>{
+app.get('*', (req,res) =>{
     res.sendFile(path.resolve(__dirname,'..', 'client', 'build', 'index.html'));
 });
-
-app.get('/', (req, res) => {
-    res.json("Server Started")
-})
 
 app.post("/get-items", (req,res) => {
     cart = req.body

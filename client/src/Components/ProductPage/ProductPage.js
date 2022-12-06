@@ -62,7 +62,7 @@ export default function ProductPage(props){
                 <BackButton/>
             </div>
             <div className="productContainer">
-
+    
                 <Link to='/cart'>
                     <ToastContainer
                     position="bottom-center"
@@ -77,8 +77,8 @@ export default function ProductPage(props){
                     theme="colored"
                     transition={Slide}
                     />
-                </Link>
-
+                </Link> 
+                
                     <div className="imageContainer">
                         <MyGallery/>
                     </div>

@@ -4,7 +4,7 @@ import data from './Data/Data.js'
 import Header from './Components/Header';
 import Products from './Components/Product';
 import ProductPage from './Components/ProductPage/ProductPage'
-import { useLocation, BrowserRouter, Router, Routes, Route } from 'react-router-dom';
+import { useLocation, Routes, Route } from 'react-router-dom';
 import CartPage from './Components/CartPage'
 import './index.css';
 import Checkout from './Pages/Checkout'
@@ -12,6 +12,7 @@ import Payment from './Pages/Payment'
 import Banner from './Components/Banner';
 import WebsiteBanner from './Components/WebsiteBanner/WebsiteBanner';
 import Footer from './Components/Footer/Footer';
+import PageNotFound from './Pages/PageNotFound/PageNotFound';
 
 export default function Website(props){
 
@@ -90,12 +91,13 @@ export default function Website(props){
         <div>
             {![`/checkout/${id}`, `/collect-payment/${id}`].includes(location.pathname) && <WebsiteBanner/>} 
             {![`/checkout/${id}`, `/collect-payment/${id}`].includes(location.pathname) && <Header/>} 
-            <Routes>    
-                <Route path='/' element={<div><div><Banner/></div><div className='parent'>{products}</div></div>}/>
-                <Route path='product/:productUrl' element={<ProductPage addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
-                <Route path='/cart' element={<CartPage changeId={id => setId(id)} setCartItems={setCartItems} cartItems={cartItems}/>}/>
-                <Route path={`/checkout/${id}`} element={<Checkout changeCountry={changeCountry} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
-                <Route path={`/collect-payment/${id}`} cartItems={cartItems} element={<Payment country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
+            <Routes>   
+                    <Route path='/' element={<div><div><Banner/></div><div className='parent'>{products}</div></div>}/>
+                    <Route path='product/:productUrl' element={<ProductPage addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
+                    <Route path='/cart' element={<CartPage changeId={id => setId(id)} setCartItems={setCartItems} cartItems={cartItems}/>}/>
+                    <Route path={`/checkout/${id}`} element={<Checkout changeCountry={changeCountry} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
+                    <Route path={`/collect-payment/${id}`} cartItems={cartItems} element={<Payment country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
+                    <Route path="/*" element={<PageNotFound/>}/>
             </Routes>
             {![`/checkout/${id}`, `/collect-payment/${id}`].includes(location.pathname) && <Footer/>}
         </div>

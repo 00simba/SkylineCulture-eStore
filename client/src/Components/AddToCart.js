@@ -1,11 +1,9 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import { toast } from 'react-toastify';
 
 export default function AddToCart(props){
 
-
-
-    const notify = () => toast.success(`Item Added! View Here`, {
+    const notify = () => toast.success(`Item Added! Click To View`, {
         position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -31,7 +29,7 @@ export default function AddToCart(props){
         <div className='addToCartBtn'>
             <button onClick={() => {
                 if((props.variant !== null && Object.keys(props.variants[0]).length !== 0) || (props.variant === null && Object.keys(props.variants[0]).length === 0)){
-                    notify();
+                    notify()
                     props.addItemToCart(props.id, props.product, props.quantity, props.variant, props.image, props.price, props.url)
                 }
                 else{

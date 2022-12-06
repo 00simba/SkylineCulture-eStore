@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Counter from '../Counter'
 import AddToCart from '../AddToCart'
@@ -62,9 +62,6 @@ export default function ProductPage(props){
         }
     }
 
-    useEffect(() => hasVariants())
-
-
     return(
         <div>
             <div className="backContainer">
@@ -99,7 +96,7 @@ export default function ProductPage(props){
                                 <h2 className="price">${productObj.price}</h2>
                             </div>
                             <div className="addCounter">
-                                <AddToCart id={productObj.id} product={productObj.title} quantity={quantity} variant={selected} image={productObj.img} price={productObj.price} basePrice={productObj.basePrice} addItemToCart={props.addItemToCart}/>
+                                <AddToCart onClick={hasVariants} id={productObj.id} product={productObj.title} quantity={quantity} variant={selected} image={productObj.img} price={productObj.price} basePrice={productObj.basePrice} addItemToCart={props.addItemToCart}/>
                                 <Counter quantity={quantity} add={add} minus={minus}/>
                             </div>
                         </div>
@@ -122,4 +119,3 @@ export default function ProductPage(props){
         
     )
 }
-

@@ -10,7 +10,7 @@ import './index.css';
 import Checkout from './Pages/Checkout'
 import Payment from './Pages/Payment'
 import Banner from './Components/Banner';
-import WebsiteBanner from './WebsiteBanner';
+import WebsiteBanner from './Components/WebsiteBanner/WebsiteBanner';
 import Footer from './Components/Footer/Footer';
 
 export default function Website(props){

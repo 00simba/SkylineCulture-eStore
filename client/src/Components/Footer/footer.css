@@ -49,8 +49,9 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: white;
     padding: 2%;
-    background-color: lightgray;
+    background-color: #2977ff;
     width: 100%;
 }
 

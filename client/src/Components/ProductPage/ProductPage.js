@@ -48,11 +48,11 @@ export default function ProductPage(props){
         images.push({original: require(`../../Images/${productObj.img[index]}`)})
     })
 
-    const MyGallery = React.memo(class MyGallery extends React.Component{
+    class MyGallery extends React.Component{
         render() {
           return <ImageGallery items={images} showFullscreenButton={true} showThumbnails={false} showPlayButton={false}/>;
         }
-    })
+    }
 
     const [selected, setSelected] = React.useState(null);
 
@@ -89,7 +89,7 @@ export default function ProductPage(props){
                 </Link>
 
                     <div className="imageContainer">
-                        {MyGallery}
+                        <MyGallery/>
                     </div>
 
                     <div className="infoContainer">

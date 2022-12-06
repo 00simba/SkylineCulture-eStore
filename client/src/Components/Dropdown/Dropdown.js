@@ -7,7 +7,7 @@ export default function Dropdown(props){
         return(
             <div>
                 <div className='dropdownLabel'>
-                    <span>{key.split(" ")[1]}</span>
+                    <h3>{key.split(" ")[1]}</h3>
                 </div>
                 <div class="dropdown">
                     <select id="dropbtn" onChange={(event)=>{props.setSelected(event.target.value)}}>

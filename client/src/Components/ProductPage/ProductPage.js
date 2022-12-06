@@ -55,13 +55,7 @@ export default function ProductPage(props){
     }
 
     const [selected, setSelected] = React.useState(null);
-
-    function hasVariants(){
-        if(Object.keys(productObj.variants[0]).length === 0){
-            setSelected("Default")
-        }
-    }
-
+  
     return(
         <div>
             <div className="backContainer">
@@ -96,13 +90,13 @@ export default function ProductPage(props){
                                 <h2 className="price">${productObj.price}</h2>
                             </div>
                             <div className="addCounter">
-                                <AddToCart onClick={hasVariants} id={productObj.id} product={productObj.title} quantity={quantity} variant={selected} image={productObj.img} price={productObj.price} basePrice={productObj.basePrice} addItemToCart={props.addItemToCart}/>
+                                <AddToCart id={productObj.id} product={productObj.title} quantity={quantity} variant={selected} variants={productObj.variants} image={productObj.img} price={productObj.price} basePrice={productObj.basePrice} addItemToCart={props.addItemToCart}/>
                                 <Counter quantity={quantity} add={add} minus={minus}/>
                             </div>
                         </div>
-                        <div className="optionsContainer">
+                        {productObj.hasOwnProperty('variants') && <div className="optionsContainer">
                             {(productObj.variants).map(variant => <Dropdown setSelected={setSelected} options={variant}/>)}
-                        </div>
+                        </div>}
                     </div>
                     <div className="productDesc">    
                         <div className="descWrapper">

@@ -27,9 +27,27 @@ export default function AddToCart(props){
             theme: "light",
     });
 
+    function checkItems(){
+        if((props.variant != null && Object.keys(props.variants[0]).length != 0) || (props.variant == null && Object.keys(props.variants[0]).length == 0)){
+            notify();
+            props.addItemToCart(props.id, props.product, props.quantity, props.variant, props.image, props.price)
+        }
+        else{
+            warn()
+        }
+    }
+
     return(
         <div className='addToCartBtn'>
-            <button onClick={() => {props.variant && props.addItemToCart(props.id, props.product, props.quantity, props.variant, props.image, props.price); if(props.variant==null){warn()}else{notify()}}} className='addToCart' type="button">Add to Cart</button>
+            <button onClick={() => {
+                if((props.variant !== null && Object.keys(props.variants[0]).length !== 0) || (props.variant === null && Object.keys(props.variants[0]).length === 0)){
+                    notify();
+                    props.addItemToCart(props.id, props.product, props.quantity, props.variant, props.image, props.price)
+                }
+                else{
+                    warn()
+                }}
+            } className='addToCart' type="button">Add to Cart</button>
         </div>
     )
 }

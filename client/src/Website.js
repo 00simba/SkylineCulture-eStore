@@ -68,7 +68,11 @@ export default function Website(props){
             if(x == product && y == variant){
                 found=1;
                 cartItem.productQuantity = `${quantity}`;
-            }       
+            }
+            if(x == product && cartItem.productVariant == "null"){
+                found=1;
+                cartItem.productQuantity = `${quantity}`;
+            }     
         })
 
         if(found==0){

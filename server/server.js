@@ -81,7 +81,6 @@ app.post("/collect", (req, res) =>{
 
 app.post('/config', (req, res) => {
     res.send({ publishableKey : process.env.STRIPE_PUBLISHABLE_KEY})
-    console.log({ publishableKey : process.env.STRIPE_PUBLISHABLE_KEY})
 })
 
 app.post('/create-payment-intent', async (req, res) => {

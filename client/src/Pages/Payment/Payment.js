@@ -12,6 +12,8 @@ function PaymentTest(props) {
 
   useEffect(() => {
     fetch("https://skylineculture.onrender.com/config", {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin':'*',
         method: "POST",
     }).then(async (r) => {
         const { publishableKey } = await r.json();
@@ -21,6 +23,8 @@ function PaymentTest(props) {
 
   useEffect(() => {
     fetch("https://skylineculture.onrender.com/create-payment-intent", {
+      'content-type': 'application/json',
+      'Access-Control-Allow-Origin':'*',
       method: "POST",
       body: JSON.stringify({}),
     }).then(async (result) => {

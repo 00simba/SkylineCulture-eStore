@@ -26,11 +26,6 @@ const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 let cart=[];
 
-var history = require('connect-history-api-fallback');
-app.use(history({
-    index: path.join(__dirname, '..', 'client', 'build', 'index.html')
-}))
-
 let customer={
     email: "",
     firstname: "",

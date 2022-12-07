@@ -28,12 +28,14 @@ export default function Summary(props){
 
     var total = getTotal(props.cartItems)
 
+    console.log(props.cartItems)
+
     const items = props.cartItems.map(item => {
         return(
             <div>
                 <div class="summaryItemsDiv">
                     <div class="summaryNames">
-                        <span>{item.productName}</span>
+                        <span>{item.productName} {item.productVariant !== "null" && <span> - {item.productVariant}</span>}</span>
                     </div>
                     <div class="summaryPriceQuantity">
                         <span>{item.productQuantity} x ${(item.productPrice)}</span> 

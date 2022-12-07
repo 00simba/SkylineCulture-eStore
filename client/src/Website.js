@@ -8,8 +8,7 @@ import { useLocation, Routes, Route, useParams } from 'react-router-dom';
 import CartPage from './Components/CartPage'
 import './index.css';
 import Checkout from './Pages/Checkout'
-import Payment from './Pages/Payment'
-import Banner from './Components/Banner';
+import Payment from './Pages/Payment/Payment'
 import WebsiteBanner from './Components/WebsiteBanner/WebsiteBanner';
 import Footer from './Components/Footer/Footer';
 import PageNotFound from './Pages/PageNotFound/PageNotFound';
@@ -98,7 +97,7 @@ export default function Website(){
             {![`/checkout/${id}`, `/collect-payment/${id}`].includes(location.pathname) && <WebsiteBanner/>} 
             {![`/checkout/${id}`, `/collect-payment/${id}`].includes(location.pathname) && <Header/>} 
             <Routes>   
-                    <Route path='/' element={<div><div><Banner/></div><div className='parent'>{products}</div></div>}/>
+                    <Route path='/' element={<div className='parent'>{products}</div>}/>
                     <Route path={`product/:productUrl`} element={<ProductPage productUrl = {productUrl} addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
                     <Route path='/cart' element={<CartPage changeId={id => setId(id)} setCartItems={setCartItems} cartItems={cartItems}/>}/>
                     <Route path={`/checkout/${id}`} element={<Checkout changeCountry={changeCountry} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>

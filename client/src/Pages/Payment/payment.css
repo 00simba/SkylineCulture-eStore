@@ -1,0 +1,18 @@
+@media only screen and (max-width: 578px){}
+
+@media only screen and (min-width: 579px) and (max-width: 768px){
+    .paymentWrapper{
+        padding: 3% 5% 0% 5%;
+    }
+}
+
+@media only screen and (min-width: 769px){
+
+    .paymentWrapper{
+        margin-top: 2%;
+    }
+
+    .paymentInfo{
+        gap: 5%;
+    }
+}

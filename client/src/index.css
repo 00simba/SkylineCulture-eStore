@@ -16,7 +16,7 @@ li{
 }
 
 .paymentWrapper .backContainer .backButton{
-  line-height: 33px;
+  line-height: 35px;
 }
 
 .websiteBanner{
@@ -38,7 +38,7 @@ li{
   display: inline-block;
   font-family: "Amazon Ember",sans-serif;
   font-size: 13px;
-  line-height: 29px;
+  line-height: 30px;
   padding: 0 10px 0 11px;
   position: relative;
   text-align: center;
@@ -60,26 +60,6 @@ li{
   box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
   outline: 0;
 }
-
-.bannerContainer{
-  border-top: 1px solid lightgray;
-  border-bottom: 1px solid lightgray;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden
-}
-
-.bannerContainer .bannerImage{
-  position: absolute; 
-}
-
-.bannerContainer .bannerContent{
-  position: relative;
-}
-
-
 
 .totalHeading{
   font-weight: 450;
@@ -791,12 +771,6 @@ button:disabled{
   justify-content: space-between;
 }
 
-.bannerImage{
-  padding: 5%;
-}
-
-
-
 @media only screen and (max-width: 578px){
 
   .parent{
@@ -1031,23 +1005,6 @@ button:disabled{
   .productContainer{
     padding-top: 5%;
     margin-bottom: 15vh
-  }
-  
-  .bannerImage{
-    padding: 2%;
-  }
-
-  .bannerContent img{
-    width: 150%;
-  }
-
-  .bannerContainer{
-    height: 5%;
-  }
-
-  .bannerContainer .bannerContent{
-    display: flex;
-    justify-content: center;
   }
 
 }
@@ -1290,14 +1247,6 @@ button:disabled{
 
   .cardForm{
     margin: 1%;
-  }
-
-  .bannerImage{
-    padding: 10%;
-  }
-
-  .bannerContainer{
-    height: 280px;
   }
 
 }
@@ -1551,14 +1500,6 @@ button:disabled{
   .stripeCard{
     order: 1;
     width: 100%;
-  }
-
-  .bannerImage{
-    padding: 20%;
-  }
-
-  .bannerContainer{
-    height: 370px;
   }
 
 }

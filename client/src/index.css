@@ -466,12 +466,13 @@ input:focus {
 }
 
 .checkoutBtn {
-  background-color: #2f2f2f;
+  background-color: #2977ff;
   border: 1px solid #d5d9d9;
   border-radius: 8px;
   box-shadow: rgba(255, 255, 255, 0.5) 0 2px 5px 0;
   box-sizing: border-box;
   color: #ffffff;
+  font-weight: bold;
   cursor: pointer;
   display: inline-block;
   font-family: "Amazon Ember",sans-serif;
@@ -490,7 +491,7 @@ input:focus {
 }
 
 .checkoutBtn:hover {
-  background-color: #9b9b9b;
+  background-color: #166bff;
 }
 
 .checkoutBtn:focus {
@@ -508,7 +509,7 @@ button:disabled{
 }
 
 .proceedPayment{
-  background-color: #2f2f2f;
+  background-color: #2977ff;
   border: 1px solid #d5d9d9;
   border-radius: 8px;
   box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
@@ -516,6 +517,7 @@ button:disabled{
   color: white;
   cursor: pointer;
   display: inline-block;
+  font-weight: bold;
   font-family: "Amazon Ember",sans-serif;
   font-size: 13px;
   line-height: 30px;
@@ -532,7 +534,7 @@ button:disabled{
 }
 
 .proceedPayment:hover {
-  background-color: #9b9b9b;
+  background-color: #166bff;
 }
 
 .proceedPayment:focus {

@@ -38,27 +38,16 @@ export default function Checkout(props){
     }
 
   async function sendCart(items){
-    await axios.post("https://skylineculture-api.onrender.com/get-items", {items})
+    await axios.post("https://skylineculture.onrender.com/get-items", {items})
 
   }
 
   async function handleSubmit(){
-      await axios.post('https://skylineculture-api.onrender.com/collect', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {
+    await axios.post('https://skylineculture.onrender.com/collect', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {
     })
     .catch(function (error) {
-        console.log(error);
+      console.log(error);
     });
-    setForm({
-      email: "",
-      firstname: "",
-      lastname: "",
-      address: "",
-      address_optional: "", 
-      city: "",
-      code: "",
-      country: "",
-      region: "",
-    })
 }
 
   const shortid = require('shortid');
@@ -68,33 +57,47 @@ export default function Checkout(props){
   const [firstname, setFirstName] = useState('')
   const [lastname, setLastName] = useState('')
   const [address, setAddress] = useState('')
-  const [addressOptional, setAddressOptional] = useState('')
+  const [address_optional, setAddressOptional] = useState('')
   const [city, setCity] = useState('')
   const [code, setCode] = useState('')
  
   const win = window.sessionStorage;
 
   useEffect(()=>{
-    if(win.getItem('email'))
+    if(win.getItem('email')){
     setEmail(win.getItem('email'))
+    form.email=win.getItem('email')
+  } 
 
-    if(win.getItem('firstname'))
+    if(win.getItem('firstname')){
     setFirstName(win.getItem('firstname'))
+    form.firstname=win.getItem('firstname')
+    }
 
-    if(win.getItem('lastname'))
+    if(win.getItem('lastname')){
     setLastName(win.getItem('lastname'))
+    form.lastname=win.getItem('lastname')
+    }
 
-    if(win.getItem('address'))
+    if(win.getItem('address')){
     setAddress(win.getItem('address'))
+    form.address=win.getItem('address')
+    }
 
-    if(win.getItem('address_optional'))
+    if(win.getItem('address_optional')){
     setAddressOptional(win.getItem('address_optional'))
+    form.address_optional=win.getItem('address_optional')
+    }
 
-    if(win.getItem('city'))
+    if(win.getItem('city')){
     setCity(win.getItem('city'))
+    form.city=win.getItem('city')
+    }
 
-    if(win.getItem('code'))
+    if(win.getItem('code')){
     setCode(win.getItem('code'))
+    form.code=win.getItem('code')
+    }
   
   }, [])
 
@@ -103,10 +106,10 @@ export default function Checkout(props){
     win.setItem('firstname', firstname)
     win.setItem('lastname', lastname)
     win.setItem('address', address)
-    win.setItem('address_optional', addressOptional)
+    win.setItem('address_optional', address_optional)
     win.setItem('city', city)
     win.setItem('code', code)
-  }, [email, firstname, lastname, address, addressOptional, city, code])
+  }, [email, firstname, lastname, address, address_optional, city, code])
 
     return(
       <div className='checkoutContainer'>
@@ -133,7 +136,7 @@ export default function Checkout(props){
                 <br/>
                 <input onChange={(event) => {handleChange(event); setAddress(event.target.value)}} value={address} placeholder="Address" id="address" name="address"/>
                 <br/>
-                <input onChange={(event) => {handleChange(event); setAddressOptional(event.target.value)}} value={addressOptional} placeholder="Apartment, Suite, etc (optional)" id="address_optional" name="address_optional"/>
+                <input onChange={(event) => {handleChange(event); setAddressOptional(event.target.value)}} value={address_optional} placeholder="Apartment, Suite, etc (optional)" id="address_optional" name="address_optional"/>
                 <br/>
                 <input onChange={(event) => {handleChange(event); setCity(event.target.value)}} value={city} placeholder="City" id="city" name="city"/>
                 <br/>
@@ -146,7 +149,7 @@ export default function Checkout(props){
                 <Shipping country={location.country}/>
 
                 <div className='proceedDiv'>
-                  <Link to={`/collect-payment/${id}`}><button disabled={!(email && firstname && lastname && address && city && code &&form.country && form.region) ? true : false} onClick={()=> {props.changeId(id); sendCart(props.cartItems); handleSubmit(); props.changeCountry(form.country)}} className="proceedPayment" type="submit">Proceed to Payment</button></Link>
+                  <Link to={`/payment/${id}`}><button disabled={!(email && firstname && lastname && address && city && code &&form.country && form.region) ? true : false} onClick={()=> {props.changeId(id); sendCart(props.cartItems); handleSubmit(); props.changeCountry(form.country)}} className="proceedPayment" type="submit">Proceed to Payment</button></Link>
                 </div>
             </form>
 

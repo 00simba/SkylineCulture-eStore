@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import Counter from '../Counter'
 import AddToCart from '../AddToCart'
 import '../../index.css'
@@ -16,6 +16,10 @@ export default function ProductPage(props){
 
     const params = useParams()
     const productUrl = params.productUrl
+    
+    if(!props.productUrl.includes(productUrl)){
+        window.location.replace("/*");    
+    }
 
     let index;
 
@@ -24,6 +28,7 @@ export default function ProductPage(props){
             index = (props.items[items].props.item.id)-1
         }
     }
+
 
     const productObj = props.items[index].props.item;
 
@@ -55,7 +60,7 @@ export default function ProductPage(props){
     }
 
     const [selected, setSelected] = React.useState(null);
-  
+
     return(
         <div>
             <div className="backContainer">

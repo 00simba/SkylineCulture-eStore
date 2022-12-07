@@ -4,7 +4,7 @@ import data from './Data/Data.js'
 import Header from './Components/Header';
 import Products from './Components/Product';
 import ProductPage from './Components/ProductPage/ProductPage'
-import { useLocation, Routes, Route } from 'react-router-dom';
+import { useLocation, Routes, Route, useParams } from 'react-router-dom';
 import CartPage from './Components/CartPage'
 import './index.css';
 import Checkout from './Pages/Checkout'
@@ -14,7 +14,7 @@ import WebsiteBanner from './Components/WebsiteBanner/WebsiteBanner';
 import Footer from './Components/Footer/Footer';
 import PageNotFound from './Pages/PageNotFound/PageNotFound';
 
-export default function Website(props){
+export default function Website(){
 
     const products = data.map(item => {
         return(
@@ -22,11 +22,10 @@ export default function Website(props){
                 key={item.id}
                 id={item.id}
                 title={item.title}
-                item={item}    
+                item={item}  
             />
         )
     })
-
 
     const [cartItems, setCartItems] = React.useState([]);
     const location = useLocation();   
@@ -49,11 +48,8 @@ export default function Website(props){
     })
 
     cartItems.slice(1);
-
-    console.log(cartItems)
     
     function addItemToCart(id, product, quantity, variant, image, price, url){
-        console.log(url)
 
         let picture = image[0]
         image.forEach((image) => {
@@ -87,13 +83,23 @@ export default function Website(props){
         setCountry(country)
     }
 
+    const productUrl = []
+
+    data.forEach((object) => {
+        for(let key in object){
+            if(key === "url"){
+                productUrl.push(object[key])
+            }
+        }
+    })
+
     return(
         <div>
             {![`/checkout/${id}`, `/collect-payment/${id}`].includes(location.pathname) && <WebsiteBanner/>} 
             {![`/checkout/${id}`, `/collect-payment/${id}`].includes(location.pathname) && <Header/>} 
             <Routes>   
                     <Route path='/' element={<div><div><Banner/></div><div className='parent'>{products}</div></div>}/>
-                    <Route path='product/:productUrl' element={<ProductPage addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
+                    <Route path={`product/:productUrl`} element={<ProductPage productUrl = {productUrl} addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
                     <Route path='/cart' element={<CartPage changeId={id => setId(id)} setCartItems={setCartItems} cartItems={cartItems}/>}/>
                     <Route path={`/checkout/${id}`} element={<Checkout changeCountry={changeCountry} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
                     <Route path={`/collect-payment/${id}`} cartItems={cartItems} element={<Payment country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>

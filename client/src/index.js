@@ -5,8 +5,7 @@ import './index.css';
 import Website from './Website';
 import {BrowserRouter, BrowserRouter as Router, HashRouter}  from "react-router-dom";
 import ScrollToTop from './Components/ScrollToTop';
-const path = require();
-require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
+require('../dotenv').config();
 
 ReactDOM.render(<BrowserRouter><ScrollToTop/><Website/></BrowserRouter>,document.getElementById('root'));
 

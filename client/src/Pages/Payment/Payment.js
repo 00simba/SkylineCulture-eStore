@@ -20,7 +20,7 @@ function PaymentTest(props) {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:8080/create-payment-intent", {
+    fetch("https://skylineculture.onrender.com/create-payment-intent", {
       method: "POST",
       body: JSON.stringify({}),
     }).then(async (result) => {

@@ -80,7 +80,7 @@ app.post("/collect", (req, res) =>{
 })
 
 app.post('/config', (req, res) => {
-    res.json({ publishableKey : process.env.STRIPE_PUBLISHABLE_KEY})
+    res.send({ publishableKey : process.env.STRIPE_PUBLISHABLE_KEY})
 })
 
 app.post('/create-payment-intent', async (req, res) => {

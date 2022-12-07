@@ -11,7 +11,7 @@ function PaymentTest(props) {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8080/config", {
+    fetch("https://skylineculture.onrender.com/config", {
         method: "POST",
     }).then(async (r) => {
         const { publishableKey } = await r.json();

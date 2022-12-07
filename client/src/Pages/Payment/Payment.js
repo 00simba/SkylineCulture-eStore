@@ -15,7 +15,6 @@ function PaymentTest(props) {
         method: "POST",
     }).then(async (r) => {
         const { publishableKey } = await r.json();
-        console.log(publishableKey)
         setStripePromise(loadStripe(publishableKey));
     });
   }, []);

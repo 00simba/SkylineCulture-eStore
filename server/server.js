@@ -92,7 +92,7 @@ app.post('/create-payment-intent', async (req, res) => {
         });
     
         // Send publishable key and PaymentIntent details to client
-        res.send({
+        res.json({
           clientSecret: paymentIntent.client_secret,
         });
         // var orderModel = new Order()

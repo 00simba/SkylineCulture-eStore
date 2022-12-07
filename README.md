@@ -6,7 +6,7 @@ As someone with over 400,000 followers on Instagram I decided to start selling m
 
 This website is a SPA built using the MERN stack. It has all core functionalities of what you would expect from a webstore. One major functionality being it accepts payments using the Stripe API.
 
-This project is still in development but if you'd like to take a look visit https://skylineculture.onrender.com/#/
+This project is still in development but if you'd like to take a look visit https://skylineculture.onrender.com/
 
 Steps to run this project locally on your machine:
 1. Clone this repository to your computer

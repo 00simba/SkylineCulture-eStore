@@ -1,0 +1,12 @@
+.completeContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+    text-align: center;
+}
+
+.headingContainer{
+    display: flex;
+    flex-direction: column;
+}

@@ -14,13 +14,8 @@ export default function CheckoutForm(props) {
   const clientSecret = props.clientSecret
   const clientSecretArr = clientSecret.split('_')
 
-  const shortid = require('shortid');
-  const id = shortid.generate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    props.changeId(id)
 
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
@@ -34,7 +29,7 @@ export default function CheckoutForm(props) {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `https://skylineculture.onrender.com/order-complete/${id}`,
+        return_url: `https://skylineculture.onrender.com/order-complete/${props.id}`,
       },
     });
 

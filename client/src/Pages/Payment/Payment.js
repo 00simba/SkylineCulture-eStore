@@ -43,7 +43,7 @@ function PaymentTest(props) {
             <div className="paymentInfo">
                 {clientSecret && stripePromise && (
                     <Elements stripe={stripePromise} options={{ clientSecret }}>
-                    <CheckoutForm clientSecret={clientSecret}/>
+                    <CheckoutForm clientSecret={clientSecret} changeId={props.changeId}/>
                     </Elements>
                 )}
                 <Summary cartItems={props.cartItems} country={props.country}/>

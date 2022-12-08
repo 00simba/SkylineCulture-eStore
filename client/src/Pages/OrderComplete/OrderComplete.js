@@ -5,7 +5,7 @@ import './ordercomplete.css'
 export default function OrderComplete(){
 
     useEffect(() => {
-        axios.post("http://localhost:8080/save-items").then((res) => {
+        axios.post("https://skylineculture-api.onrender.com/save-items").then((res) => {
         console.log(res)
         })
     }, []);

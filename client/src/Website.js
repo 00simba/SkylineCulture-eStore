@@ -93,8 +93,8 @@ export default function Website(){
         }
     })
 
-    const [stripePromise, setPromise] = useState(null);
-    const [clientSecret, setSecret] = useState("");
+    const [stripePromise, setPromise] = React.useState(null);
+    const [clientSecret, setSecret] = React.useState("");
 
     return(
         <div>

@@ -29,7 +29,7 @@ export default function CheckoutForm(props) {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `https://skylineculture.onrender.com/order-complete?payment_intent=${clientSecretArr[0] + '_' + clientSecretArr[1]}&payment_intent_client_secret=${clientSecret}&redirect_status=succeeded`,
+        return_url: `https://skylineculture.onrender.com/order-complete`,
       },
     });
 

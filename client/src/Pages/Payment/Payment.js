@@ -31,12 +31,6 @@ function PaymentTest(props) {
   const shortid = require('shortid');
   const id = shortid.generate();
 
-  const nextId = shortid.generate();
-  useEffect(()=>{
-    props.changeComplete(nextId)
-  }, [])
-
-
   return (
     <div className="App">
         <Link to={`/checkout/${id}`}><div className='backContainer'><div className='backButton' type="button" onClick={() => props.changeId(id)}>Back</div></div></Link>   
@@ -48,7 +42,7 @@ function PaymentTest(props) {
             <div className="paymentInfo">
                 {clientSecret && stripePromise && (
                     <Elements stripe={stripePromise} options={{ clientSecret }}>
-                    <CheckoutForm clientSecret={clientSecret} id={nextId}/>
+                      <CheckoutForm clientSecret={clientSecret} completeID={props.completeID}/>
                     </Elements>
                 )}
                 <Summary cartItems={props.cartItems} country={props.country}/>

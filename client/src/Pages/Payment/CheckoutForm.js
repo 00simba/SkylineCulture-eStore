@@ -14,8 +14,6 @@ export default function CheckoutForm(props) {
 
   const handleSubmit = async (e) => {
 
-    axios.post("https://skylineculture-api.onrender.com/save-items").then((res) => {})
-    
     e.preventDefault();
 
     if (!stripe || !elements) {
@@ -32,6 +30,8 @@ export default function CheckoutForm(props) {
         // Make sure to change this to your payment completion page
         return_url: `https://skylineculture.onrender.com/order-complete`,
       },
+    }).then((error) => {
+      axios.post("https://skylineculture-api.onrender.com/save-items").then((res) => {})
     });
 
     if (error.type === "card_error" || error.type === "validation_error") {

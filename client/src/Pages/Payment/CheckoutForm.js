@@ -3,8 +3,6 @@ import { useState } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 import React, { useEffect } from 'react'
 import './payment.css'
-import axios from "axios";
-
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -37,13 +35,6 @@ export default function CheckoutForm() {
     } else {
       setMessage("An unexpected error occured.");
     }
-
-    useEffect(() => {
-      axios.post("https://skylineculture-api.onrender.com/save-items", {}).then(function (response) {
-      }).catch(function (error) {
-        console.log(error);
-      });
-    }, []);
   
     setIsProcessing(false);
   };

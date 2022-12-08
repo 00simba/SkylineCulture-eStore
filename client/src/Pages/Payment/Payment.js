@@ -35,7 +35,7 @@ function PaymentTest(props) {
     <div className="App">
         <Link to={`/checkout/${id}`}><div className='backContainer'><div className='backButton' type="button" onClick={() => props.changeId(id)}>Back</div></div></Link>   
         <div className = "paymentWrapper">
-        <h2 className='almostHeader'>Almost There</h2>
+        <h2 className='almostHeader'>Payment</h2>
             <div className='secureNote'>
             <span>We will never save your card information and this checkout is secure.</span>
             </div>

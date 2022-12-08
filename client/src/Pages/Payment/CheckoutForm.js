@@ -12,7 +12,6 @@ export default function CheckoutForm(props) {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const clientSecret = props.clientSecret
-  const clientSecretArr = clientSecret.split('_')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,12 +23,12 @@ export default function CheckoutForm(props) {
     }
 
     setIsProcessing(true);
-    
+
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `https://skylineculture.onrender.com/order-complete/${props.completeID}`,
+        return_url: `https://skylineculture.onrender.com/order-complete/${clientSecret}`,
       },
     });
 

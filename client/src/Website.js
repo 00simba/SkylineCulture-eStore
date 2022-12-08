@@ -96,11 +96,6 @@ export default function Website(){
     })
 
     const [clientSecret, setSecret] = React.useState("");
-    const clientSecretArr = clientSecret.split('_')
-
-    const completeID = shortid.generate()
-
-    //{`/order-complete?payment_intent=${stripePromise}&payment_intent_client_secret=${clientSecret}&redirect_status=succeeded`}
 
     return(
         <div>
@@ -111,8 +106,8 @@ export default function Website(){
                     <Route path={`product/:productUrl`} element={<ProductPage productUrl = {productUrl} addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
                     <Route path='/cart' element={<CartPage changeId={id => setId(id)} setCartItems={setCartItems} cartItems={cartItems}/>}/>
                     <Route path={`/checkout/${id}`} element={<Checkout changeCountry={changeCountry} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
-                    <Route path={`/payment/${id}`} cartItems={cartItems} element={<Payment completeID={completeID} setSecret={setSecret} country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
-                    <Route path={`/order-complete/${completeID}`} element={<OrderComplete/>}/>
+                    <Route path={`/payment/${id}`} cartItems={cartItems} element={<Payment setSecret={setSecret} country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
+                    <Route path={`/order-complete/${clientSecret}`} element={<OrderComplete/>}/>
                     <Route path="/*" element={<PageNotFound/>}/>
             </Routes>
             {![`/checkout/${id}`, `/payment/${id}`].includes(location.pathname) && <Footer/>}

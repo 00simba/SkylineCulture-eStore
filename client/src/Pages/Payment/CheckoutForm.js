@@ -4,12 +4,15 @@ import { useStripe, useElements } from "@stripe/react-stripe-js";
 import React, { useEffect } from 'react'
 import './payment.css'
 
-export default function CheckoutForm() {
+export default function CheckoutForm(props) {
   const stripe = useStripe();
   const elements = useElements();
 
   const [message, setMessage] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
+
+  const clientSecret = props.clientSecret
+  const clientSecretArr = clientSecret.split('_')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +29,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `https://skylineculture.onrender.com/order-complete`,
+        return_url: `https://skylineculture.onrender.com/order-complete?payment_intent=${clientSecretArr[0] + '_' + clientSecretArr[1]}&payment_intent_client_secret=${clientSecret}&redirect_status=succeeded`,
       },
     });
 

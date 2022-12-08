@@ -94,8 +94,8 @@ export default function Website(){
 
     return(
         <div>
-            {![`/checkout/${id}`, `/payment/${id}`].includes(location.pathname) && <WebsiteBanner/>} 
-            {![`/checkout/${id}`, `/payment/${id}`].includes(location.pathname) && <Header/>} 
+            {![`/checkout/${id}`, `/payment/${id}`, `/order-complete`].includes(location.pathname) && <WebsiteBanner/>} 
+            {![`/checkout/${id}`, `/payment/${id}`, `/order-complete`].includes(location.pathname) && <Header/>} 
             <Routes>   
                     <Route path='/' element={<div className='parent'>{products}</div>}/>
                     <Route path={`product/:productUrl`} element={<ProductPage productUrl = {productUrl} addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
@@ -104,7 +104,7 @@ export default function Website(){
                     <Route path={`/payment/${id}`} cartItems={cartItems} element={<Payment country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
                     <Route path="/*" element={<PageNotFound/>}/>
             </Routes>
-            {![`/checkout/${id}`, `/payment/${id}`].includes(location.pathname) && <Footer/>}
+            {![`/checkout/${id}`, `/payment/${id}`, `/order-complete`].includes(location.pathname) && <Footer/>}
         </div>
     )
 }

@@ -63,7 +63,6 @@ function calculateTotal(){
 
 app.post("/get-items", (req,res) => {
     cart = req.body
-    total = calculateTotal()
     res.send(cart)
 })
 
@@ -88,7 +87,7 @@ app.post('/create-payment-intent', async (req, res) => {
     try {
         const paymentIntent = await stripe.paymentIntents.create({
           currency: "USD",
-          amount: 1000,
+          amount: calculateTotal(),
           automatic_payment_methods: { enabled: true },
         });
     

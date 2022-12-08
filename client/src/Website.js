@@ -108,7 +108,7 @@ export default function Website(){
                     <Route path={`product/:productUrl`} element={<ProductPage productUrl = {productUrl} addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
                     <Route path='/cart' element={<CartPage changeId={id => setId(id)} setCartItems={setCartItems} cartItems={cartItems}/>}/>
                     <Route path={`/checkout/${id}`} element={<Checkout changeCountry={changeCountry} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
-                    <Route path={`/payment/${id}`} cartItems={cartItems} element={<Payment setSecret={setSecret} country={country} changeId={id => setId(id)} cartItems={cartItems}/>}><CheckoutForm id={id}/></Route>
+                    <Route path={`/payment/${id}`} cartItems={cartItems} element={<Payment setSecret={setSecret} country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
                     <Route path={`/order-complete/${id}`} element={<OrderComplete/>}/>
                     <Route path="/*" element={<PageNotFound/>}/>
             </Routes>

@@ -30,6 +30,7 @@ function PaymentTest(props) {
 
   const shortid = require('shortid');
   const id = shortid.generate();
+  const nextId = shortid.generate();
 
 
   return (
@@ -43,7 +44,7 @@ function PaymentTest(props) {
             <div className="paymentInfo">
                 {clientSecret && stripePromise && (
                     <Elements stripe={stripePromise} options={{ clientSecret }}>
-                    <CheckoutForm clientSecret={clientSecret} changeId={props.changeId}/>
+                    <CheckoutForm clientSecret={clientSecret} id={nextId}/>
                     </Elements>
                 )}
                 <Summary cartItems={props.cartItems} country={props.country}/>

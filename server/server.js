@@ -38,6 +38,7 @@ let customer={
     region: "",
 };
 
+
 app.get('*', (req,res) =>{
     res.sendFile(path.resolve(__dirname,'..', 'client', 'build', 'index.html'));
 });
@@ -80,19 +81,19 @@ app.post("/collect", (req, res) =>{
 })
 
 app.post('/config', (req, res) => {
-    res.send({ publishableKey : process.env.STRIPE_PUBLISHABLE_KEY})
+    res.json({ publishableKey : 'pk_test_r12jgstJ5soE83k76iTP681O00lRb3pB1l'})
 })
 
 app.post('/create-payment-intent', async (req, res) => {
     try {
         const paymentIntent = await stripe.paymentIntents.create({
           currency: "USD",
-          amount: 999,
+          amount: 1000,
           automatic_payment_methods: { enabled: true },
         });
     
         // Send publishable key and PaymentIntent details to client
-        res.send({
+        res.json({
           clientSecret: paymentIntent.client_secret,
         });
         // var orderModel = new Order()

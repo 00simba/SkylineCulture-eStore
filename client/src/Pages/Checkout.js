@@ -38,12 +38,12 @@ export default function Checkout(props){
     }
 
   async function sendCart(items){
-    await axios.post("https://skylineculture.onrender.com/get-items", {items})
+    await axios.post("https://skylineculture-api.onrender.com/get-items", {items})
 
   }
 
   async function handleSubmit(){
-    await axios.post('https://skylineculture.onrender.com/collect', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {
+    await axios.post('https://skylineculture-api.onrender.com/collect', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {
     })
     .catch(function (error) {
       console.log(error);

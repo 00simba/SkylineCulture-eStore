@@ -5,32 +5,26 @@ import CheckoutForm from "./CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
 import { Link } from 'react-router-dom'
 import Summary from '../../Components/Summary'
+import axios from "axios";
 
 function PaymentTest(props) {
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch("https://skylineculture.onrender.com/config", {
-        'content-type': 'application/json',
-        'Access-Control-Allow-Origin':'*',
-        method: "POST",
-    }).then(async (r) => {
-        const { publishableKey } = await r.json();
-        setStripePromise(loadStripe(publishableKey));
-    });
+
+    axios.post("https://skylineculture-api.onrender.com/config").then(function (res){
+      const publishableKey = res.data.publishableKey
+      setStripePromise(loadStripe(publishableKey))
+    } )
   }, []);
 
   useEffect(() => {
-    fetch("https://skylineculture.onrender.com/create-payment-intent", {
-      'content-type': 'application/json',
-      'Access-Control-Allow-Origin':'*',
-      method: "POST",
-      body: JSON.stringify({}),
-    }).then(async (result) => {
-      var { clientSecret } = await result.json();
-      setClientSecret(clientSecret);
-    });
+
+    axios.post("https://skylineculture-api.onrender.com/create-payment-intent",  {}).then(function (res){
+      const clientSecret = res.data.clientSecret
+      setClientSecret(clientSecret)
+    } )
   }, []);
 
   const shortid = require('shortid');

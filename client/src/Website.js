@@ -12,6 +12,7 @@ import WebsiteBanner from './Components/WebsiteBanner/WebsiteBanner';
 import Footer from './Components/Footer/Footer';
 import PageNotFound from './Pages/PageNotFound/PageNotFound';
 import Payment from './Pages/Payment/Payment'
+import OrderComplete from './Pages/OrderComplete/OrderComplete';
 
 export default function Website(){
 
@@ -102,6 +103,7 @@ export default function Website(){
                     <Route path='/cart' element={<CartPage changeId={id => setId(id)} setCartItems={setCartItems} cartItems={cartItems}/>}/>
                     <Route path={`/checkout/${id}`} element={<Checkout changeCountry={changeCountry} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
                     <Route path={`/payment/${id}`} cartItems={cartItems} element={<Payment country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
+                    <Route path='/order-complete' element={<OrderComplete/>}/>
                     <Route path="/*" element={<PageNotFound/>}/>
             </Routes>
             {![`/checkout/${id}`, `/payment/${id}`, `/order-complete`].includes(location.pathname) && <Footer/>}

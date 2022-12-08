@@ -1,7 +1,15 @@
+import axios from 'axios';
 import React, { useEffect } from 'react';
 import './ordercomplete.css'
 
 export default function OrderComplete(){
+
+    useEffect(() => {
+        axios.post("https://skylineculture-api.onrender.com/save-items").then((res) => {
+        console.log(res)
+        })
+    }, []);
+
     return(
         <div className='completeContainer'>
             <div className='headingContainer'>

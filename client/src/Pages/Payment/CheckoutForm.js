@@ -37,6 +37,13 @@ export default function CheckoutForm() {
     } else {
       setMessage("An unexpected error occured.");
     }
+
+    useEffect(() => {
+      axios.post("https://skylineculture-api.onrender.com/save-items", {}).then(function (response) {
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }, []);
   
     setIsProcessing(false);
   };

@@ -109,7 +109,7 @@ app.post('/save-items', async(req, res) => {
     orderModel.customer = customer
     orderModel.items = cart.items
     await orderModel.save()
-    res.sendStatus(201)
+    res.json({"Status": "Saved"})
 })
 
 app.listen(process.env.PORT || 8080, () => {

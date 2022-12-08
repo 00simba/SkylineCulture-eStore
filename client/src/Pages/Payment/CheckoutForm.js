@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 import React from 'react'
 import './payment.css'
+import axios from "axios";
 
 
 export default function CheckoutForm() {
@@ -37,6 +38,10 @@ export default function CheckoutForm() {
       setMessage("An unexpected error occured.");
     }
 
+    axios.get('https://skylineculture.onrender.com/save-items').then((res)=>{
+      console.log(res)
+    })
+  
     setIsProcessing(false);
   };
 

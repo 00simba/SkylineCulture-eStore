@@ -104,12 +104,12 @@ app.post('/create-payment-intent', async (req, res) => {
       }
 })
 
-app.post('/save-items', async(req, res) => {
+app.get('/save-items', async(req, res) => {
     var orderModel = new Order()
     orderModel.customer = customer
     orderModel.items = cart.items
     await orderModel.save()
-    res.end()
+    res.status(200)
 })
 
 app.listen(process.env.PORT || 8080, () => {

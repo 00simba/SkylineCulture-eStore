@@ -23,7 +23,7 @@ export default function CheckoutForm(props) {
 
     setIsProcessing(true);
 
-    const { paymentIntent, error } = await stripe.confirmPayment({
+    const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
@@ -37,7 +37,7 @@ export default function CheckoutForm(props) {
       setMessage("An unexpected error occured.");
     }
 
-    if(!error){
+    if(error.type !== "card_error" && error.type !== "validation_error"){
       axios.post("https://skylineculture-api.onrender.com/save-items").then((res) => {})
     }
     

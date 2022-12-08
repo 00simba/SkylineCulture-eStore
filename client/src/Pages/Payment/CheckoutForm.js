@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 import React, { useEffect } from 'react'
 import './payment.css'
+import axios from "axios";
 
 export default function CheckoutForm(props) {
   const stripe = useStripe();
@@ -22,7 +23,7 @@ export default function CheckoutForm(props) {
 
     setIsProcessing(true);
 
-    const { error } = await stripe.confirmPayment({
+    const { paymentIntent, error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
@@ -30,12 +31,16 @@ export default function CheckoutForm(props) {
       },
     });
 
+    if(paymentIntent){
+      axios.post("https://skylineculture-api.onrender.com/save-items").then((res) => {})
+    }
+
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message);
     } else {
       setMessage("An unexpected error occured.");
     }
-  
+    
     setIsProcessing(false);
   };
 

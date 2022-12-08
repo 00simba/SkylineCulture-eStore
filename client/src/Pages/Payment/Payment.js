@@ -24,12 +24,15 @@ function PaymentTest(props) {
     axios.post("https://skylineculture-api.onrender.com/create-payment-intent",  {}).then(function (res){
       const clientSecret = res.data.clientSecret
       setClientSecret(clientSecret)
-      props.setSecret(clientSecret)
     } )
   }, []);
 
   const shortid = require('shortid');
   const id = shortid.generate();
+
+  useEffect(() => {
+    props.setSecret(clientSecret)
+  })
 
   return (
     <div className="App">

@@ -105,8 +105,8 @@ export default function Website(){
                     <Route path='/' element={<div className='parent'>{products}</div>}/>
                     <Route path={`product/:productUrl`} element={<ProductPage productUrl = {productUrl} addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
                     <Route path='/cart' element={<CartPage changeId={id => setId(id)} setCartItems={setCartItems} cartItems={cartItems}/>}/>
-                    <Route path={`/checkout/${id}`} element={<Checkout setSecret={setSecret} changeCountry={changeCountry} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
-                    <Route path={`/payment/${id}`} cartItems={cartItems} element={<Payment country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
+                    <Route path={`/checkout/${id}`} element={<Checkout changeCountry={changeCountry} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
+                    <Route path={`/payment/${id}`} cartItems={cartItems} element={<Payment setSecret={clientSecret => setSecret(clientSecret)} country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
                     <Route path={`/${secret}`} element={<OrderComplete/>}/>
                     <Route path="/*" element={<PageNotFound/>}/>
             </Routes>

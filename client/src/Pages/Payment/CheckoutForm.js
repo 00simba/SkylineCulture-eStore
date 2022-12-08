@@ -11,10 +11,6 @@ export default function CheckoutForm(props) {
   const [message, setMessage] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const clientSecret = props.clientSecret
-
-  console.log('Checkout' + clientSecret)
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -30,7 +26,7 @@ export default function CheckoutForm(props) {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `https://skylineculture.onrender.com/order-complete/${clientSecret}/`,
+        return_url: `https://skylineculture.onrender.com/order-complete`,
       },
     });
 

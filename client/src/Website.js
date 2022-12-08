@@ -95,9 +95,6 @@ export default function Website(){
         }
     })
 
-    const [clientSecret, setSecret] = React.useState("");
-    console.log('Website' + clientSecret)
-
     return(
         <div>
             {![`/checkout/${id}`, `/payment/${id}`].includes(location.pathname) && <WebsiteBanner/>} 
@@ -108,7 +105,7 @@ export default function Website(){
                     <Route path='/cart' element={<CartPage changeId={id => setId(id)} setCartItems={setCartItems} cartItems={cartItems}/>}/>
                     <Route path={`/checkout/${id}`} element={<Checkout changeCountry={changeCountry} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
                     <Route path={`/payment/${id}`} cartItems={cartItems} element={<Payment setSecret={setSecret} country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
-                    <Route path={`/order-complete/${clientSecret}/:param`} element={<OrderComplete/>}/>
+                    <Route path={`/order-complete`} element={<OrderComplete/>}/>
                     <Route path="/*" element={<PageNotFound/>}/>
             </Routes>
             {![`/checkout/${id}`, `/payment/${id}`].includes(location.pathname) && <Footer/>}

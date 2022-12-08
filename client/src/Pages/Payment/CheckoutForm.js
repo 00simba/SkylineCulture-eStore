@@ -26,7 +26,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `https://skylineculture-api.onrender.com/order-complete`,
+        return_url: `https://skylineculture.onrender.com/order-complete`,
       },
     });
 

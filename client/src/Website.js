@@ -96,6 +96,8 @@ export default function Website(){
     const [stripePromise, setPromise] = React.useState(null);
     const [clientSecret, setSecret] = React.useState("");
 
+    //{`/order-complete?payment_intent=${stripePromise}&payment_intent_client_secret=${clientSecret}&redirect_status=succeeded`}
+
     return(
         <div>
             {![`/checkout/${id}`, `/payment/${id}`].includes(location.pathname) && <WebsiteBanner/>} 
@@ -106,7 +108,7 @@ export default function Website(){
                     <Route path='/cart' element={<CartPage changeId={id => setId(id)} setCartItems={setCartItems} cartItems={cartItems}/>}/>
                     <Route path={`/checkout/${id}`} element={<Checkout changeCountry={changeCountry} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
                     <Route path={`/payment/${id}`} cartItems={cartItems} element={<Payment setPromise={setPromise} setSecret={setSecret} country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
-                    <Route path={`/order-complete?payment_intent=${stripePromise}&payment_intent_client_secret=${clientSecret}&redirect_status=succeeded`} element={<OrderComplete/>}/>
+                    <Route path='/order-complete' element={<OrderComplete/>}/>
                     <Route path="/*" element={<PageNotFound/>}/>
             </Routes>
             {![`/checkout/${id}`, `/payment/${id}`].includes(location.pathname) && <Footer/>}

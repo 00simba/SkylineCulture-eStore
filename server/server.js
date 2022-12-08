@@ -43,24 +43,6 @@ app.get('*', (req,res) =>{
     res.sendFile(path.resolve(__dirname,'..', 'client', 'build', 'index.html'));
 });
 
-function calculateTotal(){
-    var total = 0;
-    (cart.items).forEach((itemObject) => {
-        var price = ((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity))
-        total += price 
-    })
-    if(customer.country === 'Canada'){
-        total += 795
-    }
-    else if(customer.country === "United States"){
-        total += 395
-    }
-    else{
-        total += 995
-    }
-    return total
-}
-
 app.post("/get-items", (req,res) => {
     cart = req.body
     res.send(cart)
@@ -82,6 +64,24 @@ app.post("/collect", (req, res) =>{
 app.post('/config', (req, res) => {
     res.json({ publishableKey : 'pk_test_r12jgstJ5soE83k76iTP681O00lRb3pB1l'})
 })
+
+function calculateTotal(){
+    var total = 0;
+    (cart.items).forEach((itemObject) => {
+        var price = ((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity))
+        total += price 
+    })
+    if(customer.country === 'Canada'){
+        total += 795
+    }
+    else if(customer.country === "United States"){
+        total += 395
+    }
+    else{
+        total += 995
+    }
+    return total
+}
 
 app.post('/create-payment-intent', async (req, res) => {
     try {

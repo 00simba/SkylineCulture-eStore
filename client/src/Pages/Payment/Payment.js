@@ -16,7 +16,6 @@ function PaymentTest(props) {
     axios.post("https://skylineculture-api.onrender.com/config").then(function (res){
       const publishableKey = res.data.publishableKey
       setStripePromise(loadStripe(publishableKey))
-      props.setPromise(publishableKey)
     } )
   }, []);
 

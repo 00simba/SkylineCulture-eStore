@@ -1,7 +1,7 @@
 import { PaymentElement } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
-import React from 'react'
+import React, { useEffect } from 'react'
 import './payment.css'
 import axios from "axios";
 

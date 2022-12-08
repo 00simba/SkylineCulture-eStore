@@ -30,10 +30,6 @@ function PaymentTest(props) {
   const shortid = require('shortid');
   const id = shortid.generate();
 
-  useEffect(() => {
-    props.setSecret(clientSecret)
-  })
-
   return (
     <div className="App">
         <Link to={`/checkout/${id}`}><div className='backContainer'><div className='backButton' type="button" onClick={() => props.changeId(id)}>Back</div></div></Link>   

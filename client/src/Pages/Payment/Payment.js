@@ -13,7 +13,7 @@ function PaymentTest(props) {
 
   useEffect(() => {
 
-    axios.post("https://skylineculture-api.onrender.com/config").then(function (res){
+    axios.post("http://localhost:8080/config").then(function (res){
       const publishableKey = res.data.publishableKey
       setStripePromise(loadStripe(publishableKey))
     } )
@@ -21,7 +21,7 @@ function PaymentTest(props) {
 
   useEffect(() => {
 
-    axios.post("https://skylineculture-api.onrender.com/create-payment-intent",  {}).then(function (res){
+    axios.post("http://localhost:8080/create-payment-intent",  {}).then(function (res){
       const clientSecret = res.data.clientSecret
       setClientSecret(clientSecret)
     } )

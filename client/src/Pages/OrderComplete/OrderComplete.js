@@ -1,7 +1,14 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
 import './ordercomplete.css'
 
 export default function OrderComplete(){
+
+    useEffect(() => {
+        axios.post("http://localhost:8080/save-items").then((res) => {
+        console.log(res)
+        })
+    }, []);
 
     return(
         <div className='completeContainer'>

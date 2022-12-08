@@ -95,10 +95,6 @@ app.post('/create-payment-intent', async (req, res) => {
         res.json({
           clientSecret: paymentIntent.client_secret,
         });
-        // var orderModel = new Order()
-        // orderModel.customer = customer
-        // orderModel.items = cart.items
-        // await orderModel.save()
       } catch (e) {
         return res.status(400).send({
           error: {
@@ -106,6 +102,14 @@ app.post('/create-payment-intent', async (req, res) => {
           },
         });
       }
+})
+
+app.post('/save-items', async (req, res) => {
+        var orderModel = new Order()
+        orderModel.customer = customer
+        orderModel.items = cart.items
+        await orderModel.save()
+        res.send(res)
 })
 
 app.listen(process.env.PORT || 8080, () => {

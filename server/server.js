@@ -95,10 +95,10 @@ app.post('/create-payment-intent', async (req, res) => {
         res.json({
           clientSecret: paymentIntent.client_secret,
         });
-        var orderModel = new Order()
-        orderModel.customer = customer
-        orderModel.items = cart.items
-        await orderModel.save()
+        // var orderModel = new Order()
+        // orderModel.customer = customer
+        // orderModel.items = cart.items
+        // await orderModel.save()
       } catch (e) {
         return res.status(400).send({
           error: {

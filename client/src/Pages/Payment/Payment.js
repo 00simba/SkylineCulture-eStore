@@ -30,7 +30,11 @@ function PaymentTest(props) {
 
   const shortid = require('shortid');
   const id = shortid.generate();
+
   const nextId = shortid.generate();
+  useEffect(()=>{
+    props.changeComplete(nextId)
+  }, [])
 
 
   return (

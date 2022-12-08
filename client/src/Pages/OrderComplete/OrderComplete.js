@@ -6,7 +6,7 @@ export default function OrderComplete(){
 
     useEffect(()=>{
         axios.post('https://skylineculture.onrender.com/save-items')
-    })
+    }, [])
 
     return(
         <div className='completeContainer'>

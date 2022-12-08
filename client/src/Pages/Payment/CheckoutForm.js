@@ -13,6 +13,9 @@ export default function CheckoutForm(props) {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleSubmit = async (e) => {
+
+    axios.post("https://skylineculture-api.onrender.com/save-items").then((res) => {})
+    
     e.preventDefault();
 
     if (!stripe || !elements) {
@@ -35,11 +38,7 @@ export default function CheckoutForm(props) {
       setMessage(error.message);
     } else {
       setMessage("An unexpected error occured.");
-    }
-
-    if(error.type !== "card_error" && error.type !== "validation_error"){
-      axios.post("https://skylineculture-api.onrender.com/save-items").then((res) => {})
-    }
+    }  
     
     setIsProcessing(false);
   };

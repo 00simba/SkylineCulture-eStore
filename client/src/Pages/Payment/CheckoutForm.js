@@ -24,24 +24,28 @@ export default function CheckoutForm(props) {
 
     setIsProcessing(true);
 
+    axios.post("https://skylineculture-api.onrender.com/save-items").then((res) => {})
+    
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
         return_url: `https://skylineculture.onrender.com/order-complete`,
       },
-    }).then((error) => {
-      axios.post("https://skylineculture-api.onrender.com/save-items").then((res) => {})
-    });
+    })
 
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message);
     } else {
       setMessage("An unexpected error occured.");
-    }  
+    }
+
+    axios.post("https://skylineculture-api.onrender.com/delete-item").then((res) => {})
     
-    setIsProcessing(false);
+    setIsProcessing(false); 
+
   };
+
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>

@@ -10,6 +10,7 @@ app.use(express.json())
 app.use(express.static('../client/build'))
 app.use(bodyParser.urlencoded({extended: false}))
 const cors = require("cors")
+const { db } = require('./models/products')
 app.use(cors())
 app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 require('dotenv').config()
@@ -110,6 +111,14 @@ app.post('/save-items', async (req, res) => {
         orderModel.items = cart.items
         await orderModel.save()
         res.send(res)
+})
+
+app.post('/delete-item', async (req, res) => {
+    Order.deleteOne({items: cart.items, customer: customer}).then(() => {
+        console.log("Deleted")
+    }).catch((error) => {
+        console.log(error)
+    })
 })
 
 app.listen(process.env.PORT || 8080, () => {

@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
  
 export default function OrderComplete(){
 
+    localStorage.clear()
+    sessionStorage.clear()
+
     return(
         <div className='completeContainer'>
             <div className='headingContainer'>

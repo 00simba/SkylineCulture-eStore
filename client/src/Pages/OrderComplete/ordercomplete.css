@@ -20,8 +20,9 @@
 }
 
 .homeButton{
-    background-color: #2f2f2f;
+    background-color: rgb(50, 50, 50);
     border: 1px solid #d5d9d9;
+    font-weight: bold;
     border-radius: 8px;
     box-shadow: rgba(255, 255, 255, 0.5) 0 2px 5px 0;
     box-sizing: border-box;

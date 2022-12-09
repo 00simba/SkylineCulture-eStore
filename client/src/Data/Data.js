@@ -16,7 +16,8 @@ export default [
          ],
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
         "shipping": [shipping[0]],
-        "variants" : [{}]
+        "variants" : [{}],
+        "collection" : "Keychains",
     },
     {
         "id" : 2,
@@ -31,7 +32,8 @@ export default [
 
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
         "shipping": [shipping[0]],
-        "variants" : [{}]
+        "variants" : [{}],
+        "collection" : "Keychains",
     },
     {
         "id" : 3,
@@ -46,7 +48,8 @@ export default [
         
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
         "shipping": [shipping[0]],
-        "variants" : [{}]
+        "variants" : [{}],
+        "collection" : "Keychains",
     },
     {
         "id" : 4,
@@ -61,7 +64,8 @@ export default [
 
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
         "shipping": [shipping[0]],
-        "variants" : [{}]       
+        "variants" : [{}],
+        "collection" : "Keychains",    
     },
     {
         "id" : 5,
@@ -77,6 +81,7 @@ export default [
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
         "shipping": [shipping[0]],
         "variants": [{"Select Color": ["Black", "Silver", "Chroma"]}],
+        "collection" : "Keychains",
     },
     {
         "id" : 6,
@@ -91,7 +96,8 @@ export default [
 
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
         "shipping": [shipping[0]],
-        "variants" : [{}]
+        "variants" : [{}],
+        "collection" : "Keychains",
     },
     {
         "id" : 7,
@@ -106,7 +112,8 @@ export default [
 
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
         "shipping": [shipping[0]],
-        "variants" : [{}]
+        "variants" : [{}],
+        "collection" : "Keychains",
     },
     {
         "id" : 8,
@@ -122,6 +129,7 @@ export default [
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
         "shipping": [shipping[0]],
         "variants": [{"Select Colour": ["Blue", "Green", "Gold", "Red", "Black"]}],
+        "collection" : "Keychains",
     },
     {
         "id" : 9,
@@ -136,6 +144,7 @@ export default [
 
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
         "shipping": [shipping[0]],
-        "variants" : [{}]
+        "variants" : [{}],
+        "collection" : "Keychains",
     } 
 ]

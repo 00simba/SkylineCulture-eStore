@@ -1,0 +1,21 @@
+.collectionContainer{
+    min-height: 75vh;
+}
+
+.collectionHeader{
+    display: flex;
+    padding: 3% 5% 2% 5%;
+}
+
+.collectionItems{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3%;
+}
+
+.card{
+    width: 270px;
+}

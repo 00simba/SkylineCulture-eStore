@@ -36,12 +36,12 @@ export default function Header(){
                         <span></span>
                 
                         <ul id="menu" >
-                            <li>Home</li>
-                            <li>Keychains</li>
-                            <li>Stickers</li>
-                            <li>Diecast Cars</li>
-                            <li>Track Order</li>
-                            <li>Contact</li>
+                            <Link to='/'><li>Home</li></Link>
+                            <Link to="/keychains"><li>Keychains</li></Link>
+                            <Link to="/stickers"><li>Stickers</li></Link>
+                            <Link to="/diecast-cars"><li>Diecast Cars</li></Link>
+                            <Link to="/track-order"><li>Track Order</li></Link>
+                            <Link to="/contact"><li>Contact</li></Link>
                         </ul>
                     </div>
                 </div>
@@ -56,11 +56,11 @@ export default function Header(){
                 
                <ul className='menuItems'>
                     <Link to='/'><li>Home</li></Link>
-                    <li>Keychains</li>
-                    <li>Stickers</li>
-                    <li>Diecast Cars</li>
-                    <li>Track Order</li>
-                    <li>Contact</li>
+                    <Link to='/keychains'><li>Keychains</li></Link>
+                    <Link to='/stickers'><li>Stickers</li></Link>
+                    <Link to='/diecast-cars'><li>Diecast Cars</li></Link>
+                    <Link to='/track-order'><li>Track Order</li></Link>
+                    <Link to='/contact'><li>Contact</li></Link>
                     <Link to='/cart'><li className='yourCartText'>Your Cart</li></Link>
                 </ul>
 

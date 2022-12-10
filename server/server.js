@@ -59,7 +59,7 @@ app.post("/collect", (req, res) =>{
     customer.code = req.body.code
     customer.country = req.body.country
     customer.region = req.body.region
-    res.send(req.body)
+    res.send(customer)
 })
 
 app.post('/config', (req, res) => {
@@ -107,18 +107,23 @@ app.post('/create-payment-intent', async (req, res) => {
 
 app.post('/save-items', async (req, res) => {
         var orderModel = new Order()
+        orderModel.orderID = req.body.orderID
         orderModel.customer = customer
         orderModel.items = cart.items
         await orderModel.save()
         res.send(res)
 })
 
-app.post('/delete-item', async (req, res) => {
-    Order.deleteOne({items: cart.items, customer: customer}).then(() => {
+app.get('/delete-item', async (req, res) => {
+    Order.deleteOne({orderID: req.body.orderID, items: cart.items, customer: customer}).then(() => {
         console.log("Deleted")
     }).catch((error) => {
         console.log(error)
     })
+})
+
+app.post('/get-customer', (req,res) => {
+    res.json(customer)
 })
 
 app.listen(process.env.PORT || 8080, () => {

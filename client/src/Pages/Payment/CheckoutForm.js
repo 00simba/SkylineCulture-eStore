@@ -24,13 +24,24 @@ export default function CheckoutForm(props) {
 
     setIsProcessing(true);
 
-    axios.post("https://skylineculture-api.onrender.com/save-items").then((res) => {})
-    
+    axios.post("https://skylineculture-api.onrender.com/save-items", {orderID : props.orderID}).then((res) => {})
+
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
         return_url: `https://skylineculture.onrender.com/order-complete`,
+        shipping: {
+          address: {
+            city: props.customer.city,
+            country: props.customer.country,
+            line1: props.customer.address,
+            line2: props.customer.address_optional,
+            postal_code: props.customer.code,
+            state: props.customer.region
+          },
+          name: props.customer.firstname + ' ' + props.customer.lastname
+        }
       },
     })
 
@@ -40,7 +51,7 @@ export default function CheckoutForm(props) {
       setMessage("An unexpected error occured.");
     }
 
-    axios.post("https://skylineculture-api.onrender.com/delete-item").then((res) => {})
+    axios.post("https://skylineculture-api.onrender.com/delete-item", {orderID : props.orderID}).then((res) => {})
     
     setIsProcessing(false); 
 

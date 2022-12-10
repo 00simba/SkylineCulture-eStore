@@ -10,9 +10,9 @@ import axios from "axios";
 function PaymentTest(props) {
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
+  const [customer, setCustomer] = useState(null)
 
   useEffect(() => {
-
     axios.post("https://skylineculture-api.onrender.com/config").then(function (res){
       const publishableKey = res.data.publishableKey
       setStripePromise(loadStripe(publishableKey))
@@ -20,15 +20,25 @@ function PaymentTest(props) {
   }, []);
 
   useEffect(() => {
-
     axios.post("https://skylineculture-api.onrender.com/create-payment-intent",  {}).then(function (res){
       const clientSecret = res.data.clientSecret
       setClientSecret(clientSecret)
     } )
   }, []);
 
+  useEffect(() => {
+    axios.post("https://skylineculture-api.onrender.com/get-customer").then((res) => {
+      const customer = res.data
+      setCustomer(customer)
+    }).catch((err) => console.log(err))
+  }, [])
+
   const shortid = require('shortid');
   const id = shortid.generate();
+
+  const orderIDArr = clientSecret.split('_')
+  const orderID = orderIDArr[0] + '_' + orderIDArr[1]
+
 
   return (
     <div className="App">
@@ -41,7 +51,7 @@ function PaymentTest(props) {
             <div className="paymentInfo">
                 {clientSecret && stripePromise && (
                     <Elements stripe={stripePromise} options={{ clientSecret }}>
-                      <CheckoutForm clientSecret={clientSecret}/>
+                      <CheckoutForm clientSecret={clientSecret} customer={customer} orderID={orderID}/>
                     </Elements>
                 )}
                 <Summary cartItems={props.cartItems} country={props.country}/>

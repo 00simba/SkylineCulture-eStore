@@ -4,13 +4,11 @@ const mongoose = require('mongoose')
 const Product = require('./models/products')
 const Order = require('./models/orders')
 const bodyParser = require('body-parser')
-const shortid = require('shortid');
 const app = express()
 app.use(express.json())
 app.use(express.static('../client/build'))
 app.use(bodyParser.urlencoded({extended: false}))
 const cors = require("cors")
-const { db } = require('./models/products')
 app.use(cors())
 app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 require('dotenv').config()

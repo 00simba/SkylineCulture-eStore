@@ -29,7 +29,7 @@ export default function Website(){
         if(data){
             setCartItems(JSON.parse(data))
         }
-        const uniqueID = localStorage.getItem('id')
+        const uniqueID = sessionStorage.getItem('id')
         if(uniqueID){
             setId(uniqueID)
         }
@@ -37,7 +37,7 @@ export default function Website(){
 
     React.useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cartItems))
-        localStorage.setItem('id', id)
+        sessionStorage.setItem('id', id)
     })
 
     cartItems.slice(1);

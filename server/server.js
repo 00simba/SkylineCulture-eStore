@@ -114,9 +114,8 @@ app.post('/save-items', async (req, res) => {
         res.send(res)
 })
 
-app.get('/delete-item', async (req, res) => {
-    const ID = req.body.orderID
-    Order.deleteOne({orderID: ID, items: cart.items, customer: customer}).then(() => {
+app.post('/delete-item', async (req, res) => {
+    Order.deleteOne({orderID: req.body.orderID, items: cart.items, customer: customer}).then(() => {
         console.log("Deleted")
     }).catch((error) => {
         console.log(error)

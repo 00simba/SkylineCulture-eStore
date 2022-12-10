@@ -17,6 +17,7 @@ import OrderComplete from './Pages/OrderComplete/OrderComplete';
 import Keychains from './Pages/Keychains/Keychains';
 import Stickers from './Pages/Stickers/Stickers';
 import DiecastCars from './Pages/DiecastCars/DiecastCars';
+import TrackOrder from './Pages/TrackOrder/TrackOrder';
 
 export default function Website(){
 
@@ -111,6 +112,7 @@ export default function Website(){
                     <Route path={`/keychains`} element={<Keychains data={data}/>}/>
                     <Route path={`/stickers`} element={<Stickers data={data}/>}/>
                     <Route path={`/diecast-cars`} element={<DiecastCars data={data}/>}/>
+                    <Route path={`track-order`} element={<TrackOrder/>}/>
                     <Route path="/*" element={<PageNotFound/>}/>
             </Routes>
             {![`/checkout/${id}`, `/payment/${id}`].includes(location.pathname) && <Footer/>}

@@ -1,0 +1,6 @@
+.trackingContainer{
+    display: flex;
+    min-height: 75vh;
+    flex-direction: column;
+    padding: 2% 5% 2% 5%;
+}

@@ -25,9 +25,9 @@ Product.find().then((result) => result.map((item) => {
 
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
-let cart=[];
+let cart = [];
 
-let customer={
+let customer = {
     email: "",
     firstname: "",
     lastname: "",
@@ -38,6 +38,8 @@ let customer={
     country: "",
     region: "",
 };
+
+var ID;
 
 
 app.get('*', (req,res) =>{
@@ -108,6 +110,7 @@ app.post('/create-payment-intent', async (req, res) => {
 app.post('/save-items', async (req, res) => {
         var orderModel = new Order()
         orderModel.orderID = req.body.orderID
+        ID = req.body.orderID
         orderModel.customer = customer
         orderModel.items = cart.items
         await orderModel.save()
@@ -115,7 +118,7 @@ app.post('/save-items', async (req, res) => {
 })
 
 app.post('/delete-item', async (req, res) => {
-    Order.deleteOne({orderID: req.body.orderID, items: cart.items, customer: customer}).then(() => {
+    Order.deleteOne({orderID: ID, items: cart.items, customer: customer}).then(() => {
         console.log("Deleted")
     }).catch((error) => {
         console.log(error)

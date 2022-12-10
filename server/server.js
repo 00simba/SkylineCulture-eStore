@@ -123,7 +123,7 @@ app.get('/delete-item', async (req, res) => {
 })
 
 app.post('/get-customer', (req,res) => {
-    res.json(customer)
+    res.send(customer)
 })
 
 app.listen(process.env.PORT || 8080, () => {

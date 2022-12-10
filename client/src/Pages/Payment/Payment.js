@@ -29,6 +29,7 @@ function PaymentTest(props) {
   useEffect(() => {
     axios.post("https://skylineculture-api.onrender.com/get-customer").then((res) => {
       const customer = res.data
+      console.log(customer)
       setCustomer(customer)
     }).catch((err) => console.log(err))
   }, [])

@@ -43,6 +43,9 @@ export default function CheckoutForm(props) {
           name: props.customer.firstname + ' ' + props.customer.lastname
         }
       },
+    }).catch((error) => {
+      console.error(error);
+      axios.post("https://skylineculture-api.onrender.com/delete-item", {orderID : props.orderID}).then((res) => {});
     })
 
     if (error.type === "card_error" || error.type === "validation_error") {
@@ -50,8 +53,6 @@ export default function CheckoutForm(props) {
     } else {
       setMessage("An unexpected error occured.");
     }
-
-    axios.post("https://skylineculture-api.onrender.com/delete-item", {orderID : props.orderID}).then((res) => {})
     
     setIsProcessing(false); 
 

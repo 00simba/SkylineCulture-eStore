@@ -18,6 +18,8 @@ import Keychains from './Pages/Keychains/Keychains';
 import Stickers from './Pages/Stickers/Stickers';
 import DiecastCars from './Pages/DiecastCars/DiecastCars';
 import TrackOrder from './Pages/TrackOrder/TrackOrder';
+import TermsAndService from './Pages/TermsAndService/TermsAndService';
+import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 
 export default function Website(){
 
@@ -112,7 +114,9 @@ export default function Website(){
                     <Route path={`/keychains`} element={<Keychains data={data}/>}/>
                     <Route path={`/stickers`} element={<Stickers data={data}/>}/>
                     <Route path={`/diecast-cars`} element={<DiecastCars data={data}/>}/>
-                    <Route path={`track-order`} element={<TrackOrder/>}/>
+                    <Route path={`/track-order`} element={<TrackOrder/>}/>
+                    <Route path={`/terms-and-service`} element={<TermsAndService/>}/>
+                    <Route path={`/privacy-policy`} element={<PrivacyPolicy/>}/>
                     <Route path="/*" element={<PageNotFound/>}/>
             </Routes>
             {![`/checkout/${id}`, `/payment/${id}`].includes(location.pathname) && <Footer/>}

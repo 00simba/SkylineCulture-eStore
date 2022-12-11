@@ -127,6 +127,14 @@ app.post('/get-customer', (req,res) => {
     res.send(customer)
 })
 
+const axios = require('axios');
+
+app.post('/get-tracking', (req, res) => {
+    axios.get(`https://chitchats.com/tracking/${req.body.orderID}.json`).then((response) => {
+            res.send(response.data)
+    }).catch((err) => console.log(err)) 
+})
+
 app.listen(process.env.PORT || 8080, () => {
     console.log("Server is running on port 8080")
 })

@@ -4,7 +4,7 @@ import data from './Data/Data.js'
 import Header from './Components/Header';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import Products from './Components/Product';
-import ProductPage from './Components/ProductPage/ProductPage'
+import ProductPage from './Pages/ProductPage/ProductPage'
 import { useLocation, Routes, Route } from 'react-router-dom';
 import CartPage from './Components/CartPage'
 import './index.css';

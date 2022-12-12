@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import './trackorder.css';
-
+import { Link } from 'react-router-dom'
 
 export default function TrackOrder(){
 
@@ -30,6 +30,7 @@ export default function TrackOrder(){
                         <div className='infoRow'><span className='infoLabel'>Type:&nbsp;</span>{shippingInfo && shippingInfo.package_description}</div>
                         <div className='infoRow'><span className='infoLabel'>Weight:&nbsp;</span>{shippingInfo && shippingInfo.weight_description}</div>
                         <div className='infoRow'><span className='infoLabel'>Dimensions:&nbsp;</span>{shippingInfo && shippingInfo.size_description}</div>                    
+                        <div className='infoRow'><span className='infoLabel'>Tracking URL:&nbsp;</span><a href={shippingInfo && shippingInfo.tracking_url}>{shippingInfo && shippingInfo.tracking_url}</a></div>                    
                     </div>
                     <span className='infoLabel'>Latest Updates:</span>
                     <div className='trackingHistory'>

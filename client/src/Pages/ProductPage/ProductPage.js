@@ -1,15 +1,15 @@
 import React from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import Counter from '../Counter'
-import AddToCart from '../AddToCart'
+import Counter from '../../Components/Counter'
+import AddToCart from '../../Components/AddToCart'
 import '../../index.css'
 import { ToastContainer } from 'react-toastify';
 import { Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import BackButton from "../BackButton";
+import BackButton from "../../Components/BackButton";
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css'
 import ImageGallery from 'react-image-gallery';
-import Dropdown from "../Dropdown/Dropdown";
+import Dropdown from "../../Components/Dropdown/Dropdown";
 import './productpage.css'
 
 export default function ProductPage(props){

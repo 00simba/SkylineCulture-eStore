@@ -32,13 +32,6 @@ export default function ProductPage(props){
 
     const productObj = props.items[index].props.item;
 
-    const [productStock, setStock]= React.useState(null)
-    useEffect(() => {
-        axios.post('http://localhost:8080/get-stock', {productName: productObj.title}).then((res) => setStock(res.data[0].stock)).catch((err) => console.error(err))
-    }, [])
-    
-    console.log(productStock)
-
     const [quantity, setQuantity] = React.useState(1)
     
     function add(){
@@ -68,6 +61,24 @@ export default function ProductPage(props){
 
     const [selected, setSelected] = React.useState(null);
 
+    const [productStock, setStock] = React.useState(null);
+
+    useEffect(() => {
+        axios.post('http://localhost:8080/get-stock', {productName: productObj.title}).then((res) => setStock(res.data[0].stock)).catch((err) => console.error(err))
+    }, [])
+
+    let soldOut = false
+
+    if(productStock){
+        productStock.forEach((obj) => {
+            for(const [key, value] of Object.entries(obj)){
+                if((key === selected || key === "Default") && value == 0){
+                    soldOut = true
+                }
+            }
+        })
+    }
+    
     return(
         <div>
             <div className="backContainer">
@@ -99,10 +110,10 @@ export default function ProductPage(props){
                         <div className="productInfo">
                             <div className="infoPrice">
                                 <h3 className="title">{productObj.title}</h3>
-                                <h2 className="price">${productObj.price}</h2>
+                                {soldOut ? <h2 className="price">SOLD OUT</h2> : <h2 className="price">${productObj.price}</h2>}
                             </div>
                             <div className="addCounter">
-                                <AddToCart id={productObj.id} product={productObj.title} quantity={quantity} variant={selected} variants={productObj.variants} image={productObj.img} price={productObj.price} basePrice={productObj.basePrice} url={productObj.url} addItemToCart={props.addItemToCart}/>
+                                <AddToCart disabled={soldOut} id={productObj.id} product={productObj.title} quantity={quantity} variant={selected} variants={productObj.variants} image={productObj.img} price={productObj.price} basePrice={productObj.basePrice} url={productObj.url} addItemToCart={props.addItemToCart}/>
                                 <Counter quantity={quantity} add={add} minus={minus}/>
                             </div>
                         </div>

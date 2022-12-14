@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Counter from '../../Components/Counter'
 import AddToCart from '../../Components/AddToCart'
@@ -11,6 +11,7 @@ import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css'
 import ImageGallery from 'react-image-gallery';
 import Dropdown from "../../Components/Dropdown/Dropdown";
 import './productpage.css'
+import axios from "axios";
 
 export default function ProductPage(props){
 
@@ -29,8 +30,14 @@ export default function ProductPage(props){
         }
     }
 
-
     const productObj = props.items[index].props.item;
+
+    const [productStock, setStock]= React.useState(null)
+    useEffect(() => {
+        axios.post('http://localhost:8080/get-stock', {productName: productObj.title}).then((res) => setStock(res.data[0].stock)).catch((err) => console.error(err))
+    }, [])
+    
+    console.log(productStock)
 
     const [quantity, setQuantity] = React.useState(1)
     

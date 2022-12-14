@@ -13,7 +13,11 @@ const productSchema = new Schema({
     price: {
         type: Number,
         required: true
-    }
+    },
+    stock: [{
+        variant: {type: String},
+        amount: {type: Number}
+    }]
 })
 
 const Product = mongoose.model('Product', productSchema)

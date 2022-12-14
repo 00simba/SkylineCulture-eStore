@@ -49,7 +49,7 @@ export default [
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
         "shipping": [shipping[0]],
         "variants" : [{}],
-        "collection" : "Keychains",
+        "collection" : "Pins",
     },
     {
         "id" : 4,

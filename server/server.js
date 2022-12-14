@@ -11,6 +11,8 @@ app.use(bodyParser.urlencoded({extended: false}))
 const cors = require("cors")
 app.use(cors())
 app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+const axios = require('axios');
+const { response } = require('express')
 require('dotenv').config()
 
 const dbURI = process.env.DATABASE_URI;
@@ -18,7 +20,7 @@ mongoose.connect(dbURI, {dbName: 'website-db', useNewUrlParser: true, useUnified
 
 const storeItems = new Map()
 Product.find().then((result) => result.map((item) => {
-    storeItems.set(item.id, {name: item.name, price: item.price})
+    storeItems.set(item.id, {name: item.name, price: item.price, stock: item.stock})
 }))
 
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
@@ -123,11 +125,14 @@ app.post('/delete-item', async (req, res) => {
     })
 })
 
+app.post('/get-stock', (req, res) => {
+    Product.find({name: req.body.productName}).then((response) => {
+        res.send(response)}).catch((err) => {console.log(err)})
+})
+
 app.post('/get-customer', (req,res) => {
     res.send(customer)
 })
-
-const axios = require('axios');
 
 app.post('/get-tracking', (req, res) => {
     axios.get(`https://chitchats.com/tracking/${req.body.orderID}.json`).then((response) => {

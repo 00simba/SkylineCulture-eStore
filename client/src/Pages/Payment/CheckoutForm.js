@@ -24,7 +24,8 @@ export default function CheckoutForm(props) {
 
     setIsProcessing(true);
 
-    axios.post("https://skylineculture-api.onrender.com/save-items", {orderID : props.orderID}).then((res) => {})
+    axios.post("http://localhost:8080/remove-inventory").then((res) => console.log(res.data)).catch((err) => console.log(err))
+    axios.post("http://localhost:8080/save-items", {orderID : props.orderID}).then((res) => {console.log(res.data)})
 
     const { error } = await stripe.confirmPayment({
       elements,
@@ -45,7 +46,8 @@ export default function CheckoutForm(props) {
       },
     })
 
-    axios.post("https://skylineculture-api.onrender.com/delete-item", {orderID : props.orderID}).then((res) => {});
+    axios.post("http://localhost:8080/add-inventory").then((res) => console.log(res.data)).catch((err) => console.log(err))
+    axios.post("http://localhost:8080/delete-item", {orderID : props.orderID}).then((res) => {console.log(res.data)});
 
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message);

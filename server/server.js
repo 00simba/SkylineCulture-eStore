@@ -12,7 +12,7 @@ const cors = require("cors")
 app.use(cors())
 app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 const axios = require('axios');
-const { response } = require('express')
+const { update } = require('./models/products')
 require('dotenv').config()
 
 const dbURI = process.env.DATABASE_URI;
@@ -108,25 +108,25 @@ app.post('/create-payment-intent', async (req, res) => {
 })
 
 app.post('/save-items', async (req, res) => {
-        var orderModel = new Order()
+        var orderModel = await new Order()
         orderModel.orderID = req.body.orderID
         ID = req.body.orderID
         orderModel.customer = customer
         orderModel.items = cart.items
         await orderModel.save()
-        res.send(res)
+        console.log("Saved")
 })
 
 app.post('/delete-item', async (req, res) => {
-    Order.deleteOne({orderID: ID, items: cart.items, customer: customer}).then(() => {
+    await Order.deleteOne({orderID: ID, items: cart.items, customer: customer}).then(() => {
         console.log("Deleted")
     }).catch((error) => {
         console.log(error)
     })
 })
 
-app.post('/get-stock', (req, res) => {
-    Product.find({name: req.body.productName}).then((response) => {
+app.post('/get-stock', async (req, res) => {
+    await Product.find({name: req.body.productName}).then((response) => {
         res.send(response)}).catch((err) => {console.log(err)})
 })
 
@@ -134,10 +134,92 @@ app.post('/get-customer', (req,res) => {
     res.send(customer)
 })
 
-app.post('/get-tracking', (req, res) => {
-    axios.get(`https://chitchats.com/tracking/${req.body.orderID}.json`).then((response) => {
+app.post('/get-tracking', async (req, res) => {
+    await axios.get(`https://chitchats.com/tracking/${req.body.orderID}.json`).then((response) => {
             res.send(response.data)
     }).catch((err) => console.log(err)) 
+})
+
+app.post('/remove-inventory', async (req, res) => {
+    cart.items.forEach(async (item) => {
+        await Product.findOne({name: item.productName}).then(async (product) => {
+
+            product = product.toObject()
+            
+            if(item.productVariant === "null"){
+                let productCount = parseInt(product.stock[0].Default)
+                let itemCount = parseInt(item.productQuantity)
+                let updatedCount = productCount - itemCount
+    
+                await Product.findOneAndUpdate(
+                    {
+                        "name" : product.name
+                    },
+                    {
+                        "$set": {"stock.$[elem].Default": updatedCount}
+                    },
+                    { arrayFilters: [ { "elem.Default": { $eq: productCount } } ] }
+                )
+        
+            }
+            else{
+                let productCount = parseInt(product.stock[0][item.productVariant])
+                let itemCount = parseInt(item.productQuantity)
+                let updatedCount = productCount - itemCount
+
+                await Product.findOneAndUpdate(
+                    {
+                        "name" : product.name
+                    },
+                    {
+                        "$set": { [`stock.$[elem].${item.productVariant}`] : updatedCount}
+                    },
+                    { arrayFilters: [ { [`elem.${item.productVariant}`] : { $eq: productCount } } ] }
+                )
+            }
+        })
+    })
+})
+
+
+app.post('/add-inventory', async (req, res) => {
+    cart.items.forEach(async (item) => {
+        await Product.findOne({name: item.productName}).then(async (product) => {
+
+            product = product.toObject()
+            
+            if(item.productVariant === "null"){
+                let productCount = parseInt(product.stock[0].Default)
+                let itemCount = parseInt(item.productQuantity)
+                let updatedCount = productCount + itemCount
+
+                await Product.findOneAndUpdate(
+                    {
+                        "name" : product.name
+                    },
+                    {
+                        "$set": {"stock.$[elem].Default": updatedCount}
+                    },
+                    { arrayFilters: [ { "elem.Default": { $eq: productCount } } ] }
+                )
+            }
+            else{
+                let productCount = parseInt(product.stock[0][item.productVariant])
+                let itemCount = parseInt(item.productQuantity)
+                let updatedCount = productCount + itemCount
+
+                await Product.findOneAndUpdate(
+                    {
+                        "name" : product.name
+                    },
+                    {
+                        "$set": { [`stock.$[elem].${item.productVariant}`] : updatedCount}
+                    },
+                    { arrayFilters: [ { [`elem.${item.productVariant}`] : { $eq: productCount } } ] }
+                )
+            }
+        })
+    })
 })
 
 app.listen(process.env.PORT || 8080, () => {

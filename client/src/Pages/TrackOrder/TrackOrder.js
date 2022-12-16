@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React from 'react';
 import './trackorder.css';
-import { Link } from 'react-router-dom'
 
 export default function TrackOrder(){
 
@@ -11,7 +10,7 @@ export default function TrackOrder(){
 
     function handleSubmit(e){
         e.preventDefault()
-        axios.post("https://skylineculture-api.onrender.com/get-tracking", {orderID : orderID}).then((res) => {setInfo(res.data.shipment)}).catch((err) => console.error(err))
+        axios.post("http://localhost:8080/get-tracking", {orderID : orderID}).then((res) => {setInfo(res.data.shipment)}).catch((err) => console.error(err))
     }
 
     return(

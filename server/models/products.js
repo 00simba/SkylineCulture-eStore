@@ -14,10 +14,10 @@ const productSchema = new Schema({
         type: Number,
         required: true
     },
-    stock: [{
-        variant: {type: String},
-        amount: {type: Number}
-    }]
+    stock: {
+        type: Array,
+        required: true
+    }
 })
 
 const Product = mongoose.model('Product', productSchema)

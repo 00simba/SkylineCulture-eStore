@@ -12,7 +12,6 @@ const cors = require("cors")
 app.use(cors())
 app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 const axios = require('axios');
-const { update } = require('./models/products')
 require('dotenv').config()
 
 const dbURI = process.env.DATABASE_URI;
@@ -40,7 +39,6 @@ let customer = {
 };
 
 var ID;
-
 
 app.get('*', (req,res) =>{
     res.sendFile(path.resolve(__dirname,'..', 'client', 'build', 'index.html'));
@@ -220,6 +218,68 @@ app.post('/add-inventory', async (req, res) => {
             }
         })
     })
+})
+
+const { Countries, Provinces, Country, Province } = require('country-and-province')
+
+
+app.post('/create-shipment', async (req, res) => {  
+
+    var value = 0.00;
+    (cart.items).forEach((itemObject) => {
+        value += ((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity))
+    })
+
+    let stringValue = (value * 1.00 / 100).toFixed(2)
+
+    var CCA2Country = '';
+
+    await axios.get(`https://restcountries.com/v3.1/name/${customer.country}`).then((res) => CCA2Country = res.data[0].cca2).catch((err) => console.error(err))
+
+    let provinceCode = ''
+
+    new Country(CCA2Country).provinces.data.forEach((obj) => {
+        if(obj.name === customer.region){
+            provinceCode = obj.code
+        }
+    })
+
+    await axios.post(`https://chitchats.com/api/v1/clients/${process.env.CHITCHATS_CLIENT_ID}/shipments`, {
+        "name": `${customer.firstname}\u00A0${customer.lastname}`,
+        "address_1": `${customer.address}`,
+        "address_2": `${customer.address_optional}`,
+        "city": `${customer.city}`,
+        "province_code": `${provinceCode}`,
+        "postal_code": `${customer.code}`,
+        "country_code": `${CCA2Country}`,
+        "package_contents": "merchandise",
+        "description": "Keychains, Enamel Pins, and Diecast Cars",
+        "value": stringValue,
+        "value_currency": "usd",
+        "order_id": "",
+        "order_store": "",
+        "package_type": "parcel",
+        "weight_unit": "g",
+        "weight": 100,
+        "size_unit": "cm",
+        "size_x": 17,
+        "size_y": 10,
+        "size_z": 2,
+        "insurance_requested": true,
+        "signature_requested": false,
+        "vat_reference": "",
+        "duties_paid_requested": false,
+        "postage_type": "chit_chats_canada_tracked",
+        "cheapest_postage_type_requested": "no",
+        "tracking_number": "",
+        "ship_date": "today"
+    }, { headers: {
+        "Accept" : "*/*",
+        "Accept-Encoding" : "gzip, deflate, br",
+        "Connection" : "keep-alive",
+        "Authorization": `${process.env.CHITCHATS_TOKEN}`,
+        "Content-Type": "application/json" } 
+    }).then((res) => {console.log('Shipment Created')}).catch((err) => {console.error(err)})
 })
 
 app.listen(process.env.PORT || 8080, () => {

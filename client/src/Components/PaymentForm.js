@@ -42,7 +42,7 @@ export default function PaymentForm() {
     if(!error) {
         try {
             const {id} = paymentMethod
-            const response = await axios.post("https://skylineculture-api.onrender.com/payment", {
+            const response = await axios.post("http://localhost:8080/payment", {
                 amount: 1000,
                 id
             })

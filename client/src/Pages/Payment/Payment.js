@@ -13,21 +13,21 @@ function PaymentTest(props) {
   const [customer, setCustomer] = useState(null)
 
   useEffect(() => {
-    axios.post("https://skylineculture-api.onrender.com/config").then(function (res){
+    axios.post("http://localhost:8080/config").then(function (res){
       const publishableKey = res.data.publishableKey
       setStripePromise(loadStripe(publishableKey))
     } )
   }, []);
 
   useEffect(() => {
-    axios.post("https://skylineculture-api.onrender.com/create-payment-intent",  {}).then(function (res){
+    axios.post("http://localhost:8080/create-payment-intent",  {}).then(function (res){
       const clientSecret = res.data.clientSecret
       setClientSecret(clientSecret)
     } )
   }, []);
 
   useEffect(() => {
-    axios.post("https://skylineculture-api.onrender.com/get-customer").then((res) => {
+    axios.post("http://localhost:8080/get-customer").then((res) => {
       const customer = res.data
       setCustomer(customer)
     }).catch((err) => console.log(err))

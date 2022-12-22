@@ -20,6 +20,7 @@ import DiecastCars from './Pages/DiecastCars/DiecastCars';
 import TrackOrder from './Pages/TrackOrder/TrackOrder';
 import TermsAndService from './Pages/TermsAndService/TermsAndService';
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
+import ContactUs from './Pages/ContactUs/ContactUs';
 
 export default function Website(){
 
@@ -115,6 +116,7 @@ export default function Website(){
                     <Route path={`/stickers`} element={<Stickers data={data}/>}/>
                     <Route path={`/diecast-cars`} element={<DiecastCars data={data}/>}/>
                     <Route path={`/track-order`} element={<TrackOrder/>}/>
+                    <Route path={`/contact-us`} element={<ContactUs/>}/>
                     <Route path={`/terms-and-service`} element={<TermsAndService/>}/>
                     <Route path={`/privacy-policy`} element={<PrivacyPolicy/>}/>
                     <Route path="/*" element={<PageNotFound/>}/>

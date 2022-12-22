@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ordercomplete.css'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
  
 export default function OrderComplete(){
 
     localStorage.clear()
     sessionStorage.clear()
+
+    useEffect(() => {
+        axios.post('http://localhost:8080/send-receipt').then((res) => console.log(res)).catch((err) => console.error(err))
+    }, [])
 
     return(
         <div className='completeContainer'>
@@ -14,7 +19,7 @@ export default function OrderComplete(){
                 <h2>Thank you.</h2>
             </div>
             <div className='completeInfo'>
-                <p>You will receive a payment confirmation and soon tracking information through email.</p>
+                <p>You will receive a payment confirmation and tracking information email within 24 hours.</p>
                 <p>Visit the Track Order page for estimated shipping times</p>
                 <p>For all other inquiries about your order email: skylineculture@gmail.com</p>
             </div>

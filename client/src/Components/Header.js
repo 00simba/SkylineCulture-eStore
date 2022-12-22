@@ -41,7 +41,7 @@ export default function Header(){
                             <Link to="/stickers"><li>Stickers</li></Link>
                             <Link to="/diecast-cars"><li>Diecast Cars</li></Link>
                             <Link to="/track-order"><li>Track Order</li></Link>
-                            <Link to="/contact"><li>Contact</li></Link>
+                            <Link to="/contact-us"><li>Contact</li></Link>
                         </ul>
                     </div>
                 </div>
@@ -60,7 +60,7 @@ export default function Header(){
                     <Link to='/stickers'><li>Stickers</li></Link>
                     <Link to='/diecast-cars'><li>Diecast Cars</li></Link>
                     <Link to='/track-order'><li>Track Order</li></Link>
-                    <Link to='/contact'><li>Contact</li></Link>
+                    <Link to='/contact-us'><li>Contact</li></Link>
                     <Link to='/cart'><li className='yourCartText'>Your Cart</li></Link>
                 </ul>
 

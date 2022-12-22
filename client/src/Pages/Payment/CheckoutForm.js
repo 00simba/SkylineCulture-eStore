@@ -24,6 +24,7 @@ export default function CheckoutForm(props) {
 
     setIsProcessing(true);
 
+    axios.post('http://localhost:8080/create-shipment').then((res) => console.log(res)).catch((err) => console.error(err))
     axios.post("http://localhost:8080/remove-inventory").then((res) => console.log(res.data)).catch((err) => console.log(err))
     axios.post("http://localhost:8080/save-items", {orderID : props.orderID}).then((res) => {console.log(res.data)})
 
@@ -31,7 +32,7 @@ export default function CheckoutForm(props) {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `https://skylineculture.onrender.com/order-complete`,
+        return_url: `http://localhost:3000/order-complete`,
         shipping: {
           address: {
             city: props.customer.city,

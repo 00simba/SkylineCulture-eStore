@@ -48,7 +48,6 @@ export default function Checkout(props){
     .catch(function (error) {
       console.log(error);
     });
-    await axios.post('http://localhost:8080/create-shipment').then((res) => console.log(res)).catch((err) => console.error(err));
 }
 
   const shortid = require('shortid');

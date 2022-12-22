@@ -8,9 +8,9 @@ export default function TrackOrder(){
 
     const [shippingInfo, setInfo] = React.useState(null)
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault()
-        axios.post("http://localhost:8080/get-tracking", {orderID : orderID}).then((res) => {setInfo(res.data.shipment)}).catch((err) => console.error(err))
+        await axios.post("http://localhost:8080/get-tracking", {orderID : orderID}).then((res) => {setInfo(res.data.shipment)}).catch((err) => console.error(err))
     }
 
     return(

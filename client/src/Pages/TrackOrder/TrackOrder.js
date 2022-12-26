@@ -10,7 +10,7 @@ export default function TrackOrder(){
 
     async function handleSubmit(e){
         e.preventDefault()
-        await axios.post("http://localhost:8080/get-tracking", {orderID : orderID}).then((res) => {setInfo(res.data.shipment)}).catch((err) => console.error(err))
+        await axios.post("https://skylineculture-api.onrender.com/get-tracking", {orderID : orderID}).then((res) => {setInfo(res.data.shipment)}).catch((err) => console.error(err))
     }
 
     return(

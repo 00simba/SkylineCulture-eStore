@@ -9,7 +9,7 @@ export default function OrderComplete(){
     sessionStorage.clear()
 
     useEffect(() => {
-        axios.post('http://localhost:8080/send-receipt').then((res) => console.log(res)).catch((err) => console.error(err))
+        axios.post('https://skylineculture-api.onrender.com/send-receipt').then((res) => console.log(res)).catch((err) => console.error(err))
     }, [])
 
     return(

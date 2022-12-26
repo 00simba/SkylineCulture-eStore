@@ -64,7 +64,7 @@ export default function ProductPage(props){
     const [productStock, setStock] = React.useState(null);
 
     useEffect(() => {
-        axios.post('http://localhost:8080/get-stock', {productName: productObj.title}).then((res) => setStock(res.data[0].stock)).catch((err) => console.error(err))
+        axios.post('https://skylineculture-api.onrender.com/get-stock', {productName: productObj.title}).then((res) => setStock(res.data[0].stock)).catch((err) => console.error(err))
     }, [])
 
     let soldOut = false

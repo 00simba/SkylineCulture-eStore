@@ -13,8 +13,6 @@ app.use(cors())
 app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 const axios = require('axios');
 const { Country } = require('country-and-province')
-const sgMail = require('@sendgrid/mail')
-sgMail.setApiKey('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')
 require('dotenv').config()
 
 const dbURI = process.env.DATABASE_URI;
@@ -221,28 +219,6 @@ app.post('/add-inventory', async (req, res) => {
             }
         })
     })
-})
-
-app.post('/send-receipt', async (req, res) => {
-
-    let customerEmail = customer.email
-
-    const msg = {
-        to: `${customerEmail}`, // Change to your recipient
-        from: 'skylineculture@gmail.com', // Change to your verified sender
-        subject: 'Sending with SendGrid is Fun',
-        text: 'and easy to do anywhere, even with Node.js',
-        html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-      }
-      sgMail
-        .send(msg)
-        .then(() => {
-          console.log('Email sent')
-        })
-        .catch((error) => {
-          console.error(error)
-        })
-
 })
 
 app.post('/create-shipment', async (req, res) => {  

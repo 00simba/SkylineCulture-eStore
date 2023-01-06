@@ -141,7 +141,7 @@ export default [
         "url" : "te37-keychain",
         "description" : [
             
-        "Featuring the car community famous 3D miniature TE37 keychain designed as realistically as possible.",         
+        "Featuring the car community famous TE37 as a 3D miniature keychain designed as realistic as possible.",         
         
         ],
 

@@ -8,7 +8,7 @@ export default function(){
 
             <p>Welcome to SkylineCulture!</p>
 
-            <p>These terms and conditions outline the rules and regulations for the use of SkylineCulture's Website, located at skylineculture.onrender.com.</p>
+            <p>These terms and conditions outline the rules and regulations for the use of SkylineCulture's Website, located at skylineculture.store</p>
 
             <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use SkylineCulture if you do not agree to take all of the terms and conditions stated on this page.</p>
 

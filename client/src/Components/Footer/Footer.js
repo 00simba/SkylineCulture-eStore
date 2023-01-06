@@ -26,14 +26,14 @@ const Footer = () => {
         <h3 className="linkTitle">Inquiries</h3>
           <ul className="listItems">
             <Link to="/track-order"><li>Track Order</li></Link>
-            <Link to="/contact"><li>Contact</li></Link>
+            <Link to="/contact-us"><li>Contact</li></Link>
             <Link to="/terms-and-service"><li>Terms and Service</li></Link>
             <Link to="/privacy-policy"><li>Privacy Policy</li></Link>
           </ul>
         </div>
       </div>
       <div className="copyrightBanner">
-        &copy; {new Date().getFullYear()} Copyright: skylineculture.onrender.com
+        &copy; {new Date().getFullYear()} Copyright: skylineculture.store
       </div>
     </div>
    

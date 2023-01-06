@@ -1,4 +1,4 @@
-const shipping =  ["ALL SHIPMENTS ARE TRACKED!\n\n USA: 3-6 business days\n Canada: 2-8 business days\n International: 7-15 business days"]
+const shipping =  ["All shipments are fully tracked!\n\n USA: 3-6 business days\n Canada: 2-8 business days\n International: 7-15 business days"]
 
 export default [
     {
@@ -43,10 +43,9 @@ export default [
         "url" : "r34-gtr-pin",
         "description" : [
         
-        "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain! ",         
-        "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! "],
+        "One of the most iconic, timeless, and influential machine in automotive history, the R34 GTR! Fully designed at SkylineCulture. A pin for all R34 GTR fans to bring the most out of their backpacks, hats, pin collections, and more!"],
         
-        "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
+        "specs": "Size: 1.5 in x 0.75 in\n Double Black Rubber Pin Clutch\n Soft Enamel Process\n Black Dyed Metal",
         "shipping": [shipping[0]],
         "variants" : [{}],
         "collection" : "Pins",
@@ -59,10 +58,9 @@ export default [
         "url" : "r26-keychain",
         "description" : [
             
-        "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain!",         
-        "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set."],
+        "Based off the heart of Godzilla, the RB26! The RB26, inline 6 2.6L engine debuted in 1989 and contributed to motorsports history as it set records."],
 
-        "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
+        "specs": "Made of PVC material allowing for flexibility while retaining durability and quality.",
         "shipping": [shipping[0]],
         "variants" : [{}],
         "collection" : "Keychains",    
@@ -75,10 +73,11 @@ export default [
         "url" : "turbo-keychain",
         "description" : [
             
-        "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain!",         
-        "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set."],
+        "Give your keyset a boost by getting this turbo keychain that features a spinnable turbine.",
+    
+        ],
 
-        "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
+        "specs": "Size: 28mm X 16mm.\n Material: Constructed of metal",
         "shipping": [shipping[0]],
         "variants": [{"Select Color": ["Black", "Silver", "Chroma"]}],
         "collection" : "Keychains",
@@ -91,10 +90,11 @@ export default [
         "url" : "nos-keychain",
         "description" : [
             
-        "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain!",         
-        "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set."],
+        "A perfect miniature NOS bottle keychain that features an unscrewable lid to work as a stash.",
+    
+        ],
 
-        "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
+        "specs": "Size: 2 inches on longest side\n Material: Constructed of zinc alloy",
         "shipping": [shipping[0]],
         "variants" : [{}],
         "collection" : "Keychains",
@@ -107,8 +107,9 @@ export default [
         "url" : "gearbox-keychain",
         "description" : [
             
-        "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain!",         
-        "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set."],
+        "A fun 6 speed gearbox keychain that you can fidgit with to mimic the gearbox of a real car.",         
+        
+        ],
 
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
         "shipping": [shipping[0]],
@@ -123,10 +124,11 @@ export default [
         "url" : "suspension-keychain",
         "description" : [
             
-        "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain!",         
-        "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set."],
+        "An adjustable suspension keychain that can be pressed on its ends to engage the spring just like a real suspension.",         
+        
+        ],
 
-        "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
+        "specs": "Size: 74mm length\n Material: Constructed of metal",
         "shipping": [shipping[0]],
         "variants": [{"Select Colour": ["Blue", "Green", "Gold", "Red", "Black"]}],
         "collection" : "Keychains",
@@ -139,10 +141,11 @@ export default [
         "url" : "te37-keychain",
         "description" : [
             
-        "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain!",         
-        "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set."],
+        "Featuring the car community famous 3D miniature TE37 keychain designed as realistically as possible.",         
+        
+        ],
 
-        "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
+        "specs": "Size: 3.2cm rim diameter\n Material: Constructed of zinc alloy",
         "shipping": [shipping[0]],
         "variants" : [{}],
         "collection" : "Keychains",

@@ -51,7 +51,7 @@ export default function Summary(props){
             <div className='breakDown'>
                 <div>Subtotal: ${subTotal}</div>
                 <div>Shipping: ${shipping}</div>
-                <div className='totalCost'>Total: ${total}</div>
+                <div className='totalCost'>Total: ${total} USD</div>
             </div>
          </div>
     )  

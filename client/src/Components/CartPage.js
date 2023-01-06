@@ -41,7 +41,7 @@ function decrementItem(cartItems, productId, productVariant, setCartItems){
 function getTotal(cartItems){
     var tempTotal=0
     cartItems.forEach(item => {
-        tempTotal += parseFloat(item.productPrice).toFixed(2) * parseInt(item.productQuantity)
+        tempTotal += parseFloat(item.productPrice) * parseInt(item.productQuantity)
     })
     return tempTotal
 }
@@ -115,7 +115,7 @@ export default function CartPage(props){
             />
             <div className="cartDiv">
               <div className='cartInfo'>
-                <h3 className='totalHeading'>Total: ${total}</h3>
+                <h3 className='totalHeading'>Total: ${total.toFixed(2)}</h3>
                 <h3>Item(s): {itemCount}</h3>
               </div>
               {!(props.cartItems.length) ? <p className='cartStatus'>Cart Empty</p> :<Link to={`/checkout/${id}`}><button onClick={() => props.changeId(id)} className="checkoutBtn" type="button">Checkout</button></Link>}

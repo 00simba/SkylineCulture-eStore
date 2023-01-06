@@ -8,8 +8,8 @@ export default function Summary(props){
     function getTotal(cartItems){
         var total=0
         cartItems.forEach(item => {
-            total += parseInt(item.productPrice) * parseInt(item.productQuantity)
-            subTotal += parseInt(item.productPrice) * parseInt(item.productQuantity)
+            total += parseFloat(item.productPrice) * parseInt(item.productQuantity)
+            subTotal += parseFloat(item.productPrice) * parseInt(item.productQuantity)
         })
         if(props.country === 'Canada'){
             shipping = 7.95

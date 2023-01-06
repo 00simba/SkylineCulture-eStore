@@ -4,7 +4,7 @@ import './websitebanner.css'
 export default function WebsiteBanner(){
     return(
         <div className='websiteBanner'>
-            🔧 Work In Progress...
+            ✈️ Fast Worldwide Shipping!
         </div>
     )
 }

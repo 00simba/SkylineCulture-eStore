@@ -64,7 +64,7 @@ app.post("/collect", (req, res) =>{
 })
 
 app.post('/config', (req, res) => {
-    res.json({ publishableKey : 'pk_test_r12jgstJ5soE83k76iTP681O00lRb3pB1l'})
+    res.json({ publishableKey : 'pk_live_NUvboNKoFJl7b8W2UwzNphXv00wcelkZMY'})
 })
 
 function calculateTotal(){

@@ -4,7 +4,7 @@ export default [
     {
         "id" : "1",
         "title" : "R34 GTR Keychain",
-        "img" : ["r34key.png"],
+        "img" : ["r34_keychain/r34key_main.png", "r34_keychain/r34key_1.png"],
         "price" : 15,
         "url" : "r34-gtr-keychain",
         "description" : [
@@ -22,7 +22,7 @@ export default [
     {
         "id" : 2,
         "title" : "R32 GTR Keychain",
-        "img" : ["r32key.png"],
+        "img" : ["r32_keychain/r32key_main.PNG"],
         "price" : 15,
         "url" : "r32-gtr-keychain",
         "description" : [
@@ -38,7 +38,7 @@ export default [
     {
         "id" : 3,
         "title" : "R34 GTR Pin",
-        "img" : ["r34pin.png"],
+        "img" : ["r34_pin/r34pin_main.png", "r34_pin/r34pin_1.png", "r34_pin/r34pin_2.png", "r34_pin/r34pin_3.png"],
         "price" : 20,
         "url" : "r34-gtr-pin",
         "description" : [
@@ -53,7 +53,7 @@ export default [
     {
         "id" : 4,
         "title" : "RB26 Keychain",
-        "img" : ["rb26.png"],
+        "img" : ["rb26_keychain/rb26_main.PNG"],
         "price" : 9,
         "url" : "r26-keychain",
         "description" : [

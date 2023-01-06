@@ -8,8 +8,8 @@ export default function Summary(props){
     function getTotal(cartItems){
         var total=0
         cartItems.forEach(item => {
-            total += parseFloat(item.productPrice).toFixed(2) * parseInt(item.productQuantity)
-            subTotal += parseFloat(item.productPrice).toFixed(2) * parseInt(item.productQuantity)
+            total += parseFloat(item.productPrice) * parseInt(item.productQuantity)
+            subTotal += parseFloat(item.productPrice) * parseInt(item.productQuantity)
         })
         if(props.country === 'Canada'){
             shipping = 7.95
@@ -49,9 +49,9 @@ export default function Summary(props){
             <h2 className="summaryHeading">Order Summary</h2>
                 {items}
             <div className='breakDown'>
-                <div>Subtotal: ${subTotal}</div>
+                <div>Subtotal: ${subTotal.toFixed(2)}</div>
                 <div>Shipping: ${shipping}</div>
-                <div className='totalCost'>Total: ${total} USD</div>
+                <div className='totalCost'>Total: ${total.toFixed(2)} USD</div>
             </div>
          </div>
     )  

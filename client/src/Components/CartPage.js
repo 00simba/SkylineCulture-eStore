@@ -41,7 +41,7 @@ function decrementItem(cartItems, productId, productVariant, setCartItems){
 function getTotal(cartItems){
     var tempTotal=0
     cartItems.forEach(item => {
-        tempTotal += parseFloat(item.productPrice) * parseInt(item.productQuantity)
+        tempTotal += parseFloat(item.productPrice).toFixed(2) * parseInt(item.productQuantity)
     })
     return tempTotal
 }

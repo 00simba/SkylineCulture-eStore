@@ -25,10 +25,13 @@ export default function AddToCart(props){
             theme: "colored",
     });
 
+    if(props.variant){
+        console.log(props.variant.includes('Select'))
+    }
     return(
         <div className='addToCartBtn'>
             <button disabled={props.disabled} onClick={() => {
-                if((props.variant !== null && Object.keys(props.variants[0]).length !== 0) || (props.variant === null && Object.keys(props.variants[0]).length === 0)){
+                if((props.variant !== null && !props.variant.includes('Select') && Object.keys(props.variants[0]).length !== 0) || (props.variant === null && Object.keys(props.variants[0]).length === 0)){
                     notify()
                     props.addItemToCart(props.id, props.product, props.quantity, props.variant, props.image, props.price, props.url)
                 }

@@ -14,7 +14,7 @@ export default function Header(){
 
     useEffect(() => {
         let handler = (event) => {
-            if(!menuRef.current.contains(event.target) && isOpen){
+            if(!menuRef.current.contains(event.target) && isOpen || (event.target.id === 'mobileLi')){
                 document.getElementById('checkBox').click();
             }
         }
@@ -36,12 +36,12 @@ export default function Header(){
                         <span></span>
                 
                         <ul id="menu" >
-                            <Link to='/'><li>Home</li></Link>
-                            <Link to="/keychains"><li>Keychains</li></Link>
-                            <Link to="/stickers"><li>Stickers</li></Link>
-                            <Link to="/diecast-cars"><li>Diecast Cars</li></Link>
-                            <Link to="/track-order"><li>Track Order</li></Link>
-                            <Link to="/contact-us"><li>Contact</li></Link>
+                            <Link to='/'><li id='mobileLi'>Home</li></Link>
+                            <Link to="/keychains"><li id='mobileLi'>Keychains</li></Link>
+                            <Link to="/stickers"><li id='mobileLi'>Stickers</li></Link>
+                            <Link to="/diecast-cars"><li id='mobileLi'>Diecast Cars</li></Link>
+                            <Link to="/track-order"><li id='mobileLi'>Track Order</li></Link>
+                            <Link to="/contact-us"><li id='mobileLi'>Contact</li></Link>
                         </ul>
                     </div>
                 </div>

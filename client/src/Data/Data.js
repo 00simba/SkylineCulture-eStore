@@ -54,7 +54,7 @@ export default [
         "id" : 4,
         "title" : "RB26 Keychain",
         "img" : ["rb26_keychain/rb26_main.PNG"],
-        "price" : 5.99,
+        "price" : 4.99,
         "url" : "r26-keychain",
         "description" : [
             
@@ -86,7 +86,7 @@ export default [
         "id" : 6,
         "title" : "NOS Keychain",
         "img" : ["nos_keychain/nos_main.png", "nos_keychain/nos_1.png", "nos_keychain/nos_2.png"],
-        "price" : 5.99,
+        "price" : 4.99,
         "url" : "nos-keychain",
         "description" : [
             
@@ -146,6 +146,23 @@ export default [
         ],
 
         "specs": "Size: 3.2cm rim diameter\n Material: Constructed of zinc alloy",
+        "shipping": [shipping[0]],
+        "variants" : [{}],
+        "collection" : "Keychains",
+    },
+    {
+        "id" : 10,
+        "title" : "GTR Keychain",
+        "img" : ["gtr_keychain/gtr_main.png", "gtr_keychain/gtr_1.png", "gtr_keychain/gtr_2.png"],
+        "price" : 4.99,
+        "url" : "gtr-keychain",
+        "description" : [
+            
+        "A clean, simple, and classic GTR logo keychain for any GTR fan.",         
+        
+        ],
+
+        "specs": "Size: 1.5 inches by 1.7 inches\n Material: Constructed of metal",
         "shipping": [shipping[0]],
         "variants" : [{}],
         "collection" : "Keychains",

@@ -136,7 +136,7 @@ export default [
     {
         "id" : 9,
         "title" : "TE37 Keychain",
-        "img" : ["te37_keychain/te37_main.png", "te37_keychain/te37_1.png", "te37_keychain/te37_2.png", "te37_keychain/te37_3.png"],
+        "img" : ["te37_keychain/te37_Black.png", "te37_keychain/te37_Chroma.png", "te37_keychain/te37_Silver.png", "te37_keychain/te37_1.png", "te37_keychain/te37_2.png", "te37_keychain/te37_3.png", "te37_keychain/te37_4.png"],
         "price" : 11.99,
         "url" : "te37-keychain",
         "description" : [
@@ -147,7 +147,7 @@ export default [
 
         "specs": "Size: 3.2cm rim diameter\n Material: Constructed of zinc alloy",
         "shipping": [shipping[0]],
-        "variants" : [{}],
+        "variants" : [{"Select Color": ["Black", "Silver", "Chroma"]}],
         "collection" : "Keychains",
     },
     {

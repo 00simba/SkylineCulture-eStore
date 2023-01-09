@@ -9,7 +9,7 @@ export default [
         "url" : "r34-gtr-keychain",
         "description" : [
         
-        "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain!",        
+        "One of the most popular sports car out of Japan, the R34 GTR! This spec is based off the ultra rare 1 of 20 Z-TUNE!",        
         
         "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! ",
 

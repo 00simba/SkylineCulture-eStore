@@ -25,9 +25,8 @@ export default function ContactUs(){
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('service_tstetdc', 'template_nquyi7w', form.current, 'tMgSATKzaRQ4LzWTM')
+        emailjs.sendForm('service_d5wq1tq', 'template_nquyi7w', form.current, 'tMgSATKzaRQ4LzWTM')
         .then((result) => {
-            console.log(result.text);
             setName('')
             setEmail('')
             setMessage('')
@@ -63,10 +62,10 @@ export default function ContactUs(){
                     <span>Please fill out the form below in order to get in touch about any inquiries. You can expect to receive a response within 24 hours.</span>
 
                     <label className='nameLabel'>Name</label>
-                    <input type="text" name="user_name" id='name' value={name} onChange={(e) => setName(e.target.value)}/>
+                    <input type="text" name="name" id='name' value={name} onChange={(e) => setName(e.target.value)}/>
 
                     <label className='emailLabel'>Email</label>
-                    <input type="email" name="user_email" id='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <input type="email" name="email" id='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
 
                     <label className='messageLabel'>Message</label>
                     <textarea name="message" className='messageBox' id='message' value={message} onChange={(e) => setMessage(e.target.value)}/>

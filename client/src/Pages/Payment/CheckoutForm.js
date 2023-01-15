@@ -48,8 +48,7 @@ export default function CheckoutForm(props) {
     })
 
     axios.post("https://skylineculture-api.onrender.com/add-inventory").then((res) => console.log(res.data)).catch((err) => console.log(err))
-    axios.post("https://skylineculture-api.onrender.com/delete-item", {orderID : props.orderID}).then((res) => {console.log(res.data)});
-
+    
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message);
     } else {

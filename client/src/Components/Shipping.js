@@ -31,8 +31,8 @@ export default function Shipping(props){
                 <div className="internationalDiv">      
                     <span className="shippingSpan">Shipping Details</span>
                     <div className="shippingInfo">
-                        <span>Method: APC International Tracked </span>
-                        <span>ETA: 7-15 business days</span>
+                        <span>Method: APC or Asendia International Tracked </span>
+                        <span>ETA: 6-21 business days</span>
                         <span>Flat Rate: $9.95</span>
                     </div>
                 </div>  

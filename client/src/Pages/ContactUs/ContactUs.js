@@ -20,6 +20,7 @@ export default function ContactUs(){
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
+    const [subject, setSubject] = useState('')
     const [message, setMessage] = useState('')
 
     const sendEmail = (e) => {
@@ -32,6 +33,7 @@ export default function ContactUs(){
             setMessage('')
             document.getElementById('name').value = ''
             document.getElementById('email').value = ''
+            document.getElementById('subject').value = ''
             document.getElementById('message').value = ''
         }, (error) => {
             console.log(error.text);
@@ -59,19 +61,22 @@ export default function ContactUs(){
 
                     <h2>Contact Us</h2>
                     <br/>
-                    <span>Please fill out the form below in order to get in touch about any inquiries. You can expect to receive a response within 24 hours.</span>
+                    <span>Please fill out the form below in order to get in touch about any inquiries or email info@skylineculture.store. You can expect to receive a response within 24 hours.</span>
 
                     <label className='nameLabel'>Name</label>
                     <input type="text" name="name" id='name' value={name} onChange={(e) => setName(e.target.value)}/>
 
                     <label className='emailLabel'>Email</label>
-                    <input type="email" name="email" id='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <input type="text" name="email" id='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+
+                    <label className='subjectLabel'>Subject</label>
+                    <input type="text" name="subject" id='subject' value={subject} onChange={(e) => setSubject(e.target.value)}/>
 
                     <label className='messageLabel'>Message</label>
                     <textarea name="message" className='messageBox' id='message' value={message} onChange={(e) => setMessage(e.target.value)}/>
 
                     <div className='submitDiv'>
-                        <button className='submitBtn' type="submit" value="Send" disabled={!(name && email && message)} onClick={(e) => {sendEmail(e); notify();}}>Submit</button>
+                        <button className='submitBtn' type="submit" value="Send" disabled={!(name && email && subject && message)} onClick={(e) => {sendEmail(e); notify();}}>Submit</button>
                     </div>
                 </form>
             </div>

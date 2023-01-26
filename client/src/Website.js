@@ -23,9 +23,7 @@ import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import ContactUs from './Pages/ContactUs/ContactUs';
 import ReactGA from 'react-ga'
 
-const TRACKING_ID = '351085145';
-ReactGA.initialize(TRACKING_ID);
-
+ReactGA.initialize('UA-255315723-1');
 
 export default function Website(){
 

@@ -12,8 +12,13 @@ import ImageGallery from 'react-image-gallery';
 import Dropdown from "../../Components/Dropdown/Dropdown";
 import './productpage.css'
 import axios from "axios";
+import ReactGA from 'react-ga'
 
 export default function ProductPage(props){
+
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname)
+    }, [])
 
     const params = useParams()
     const productUrl = params.productUrl

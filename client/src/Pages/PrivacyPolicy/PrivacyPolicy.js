@@ -1,7 +1,14 @@
 import React from 'react';
 import './privacypolicy.css'
+import ReactGA from 'react-ga'
+import { useEffect } from 'react';
 
 export default function PrivacyPolicy(){
+
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname)
+    }, [])
+
     return(
         <div className='privacyContainer'>
             <h2>Privacy Policy of SkylineCulture</h2>

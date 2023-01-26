@@ -2,8 +2,13 @@ import React, { useEffect } from 'react';
 import './ordercomplete.css'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import ReactGA from 'react-ga'
  
 export default function OrderComplete(){
+
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname)
+    }, [])
 
     localStorage.clear()
     sessionStorage.clear()

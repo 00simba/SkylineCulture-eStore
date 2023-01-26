@@ -21,6 +21,11 @@ import TrackOrder from './Pages/TrackOrder/TrackOrder';
 import TermsAndService from './Pages/TermsAndService/TermsAndService';
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import ContactUs from './Pages/ContactUs/ContactUs';
+import ReactGA from 'react-ga'
+
+const TRACKING_ID = 'G-096HJBGR8F';
+ReactGA.initialize(TRACKING_ID);
+
 
 export default function Website(){
 

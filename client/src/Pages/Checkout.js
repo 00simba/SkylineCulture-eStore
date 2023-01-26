@@ -5,8 +5,13 @@ import Shipping from '../Components/Shipping.js'
 import axios from 'axios';
 import '../index.css'
 import './App.css'
+import ReactGA from 'react-ga'
 
 export default function Checkout(props){
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname)
+  }, [])
 
   const [form, setForm] = useState({
     email: "",

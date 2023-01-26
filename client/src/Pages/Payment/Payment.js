@@ -6,11 +6,16 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Link } from 'react-router-dom'
 import Summary from '../../Components/Summary'
 import axios from "axios";
+import ReactGA from 'react-ga'
 
 function PaymentTest(props) {
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
   const [customer, setCustomer] = useState(null)
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname)
+  }, [])
 
   useEffect(() => {
     axios.post("https://skylineculture-api.onrender.com/config").then(function (res){

@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Products from '../../Components/Product';
+import ReactGA from 'react-ga'
 
 export default function LandingPage(props){
+
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname)
+    }, [])
 
     const products = props.data.map(item => {
         return(

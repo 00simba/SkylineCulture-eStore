@@ -1,8 +1,14 @@
 import React from 'react';
 import '../collections.css'
 import Products from '../../Components/Product';
+import ReactGA from 'react-ga'
+import { useEffect } from 'react';
 
 export default function Keychains(props){
+
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname)
+    }, [])
 
     let found = false
 

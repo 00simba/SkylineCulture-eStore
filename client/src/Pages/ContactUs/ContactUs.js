@@ -1,9 +1,14 @@
-import React, { useRef, useState} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast, ToastContainer, Slide } from 'react-toastify';
 import './contactus.css'
+import ReactGA from 'react-ga'
 
 export default function ContactUs(){
+
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname)
+    }, [])
 
     const notify = () => toast.success(`Email Sent!`, {
         position: "bottom-center",

@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ReactGA from 'react-ga'
+import { useEffect } from 'react';
 
 
 function removeItem(setCartItems, cartItems, productId, productVariant){
@@ -57,6 +59,10 @@ function getCount(cartItems) {
 
 
 export default function CartPage(props){
+
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname)
+    }, [])
 
     var total = getTotal(props.cartItems)
 

@@ -1,7 +1,14 @@
 import React from 'react'
 import './termsandservice.css'
+import ReactGA from 'react-ga'
+import { useEffect } from 'react'
 
 export default function(){
+
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname)
+    }, [])
+    
     return(
         <div className='termsContainer'>
             <h2><strong>Terms and Conditions</strong></h2>

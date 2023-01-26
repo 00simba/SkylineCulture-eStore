@@ -1,8 +1,14 @@
 import axios from 'axios';
 import React from 'react';
 import './trackorder.css';
+import ReactGA from 'react-ga'
+import { useEffect } from 'react';
 
 export default function TrackOrder(){
+
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname)
+    }, [])
 
     const [orderID, setID] = React.useState('');
 

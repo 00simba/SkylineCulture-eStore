@@ -10,7 +10,7 @@ export default function Summary(props){
         var total = 0
         cartItems.forEach(item => {
             total += parseFloat(item.salePrice) * parseInt(item.productQuantity)
-            saving += parseFloat(item.productPrice) - parseFloat(item.salePrice)
+            saving += (parseFloat(item.productPrice) - parseFloat(item.salePrice)) * parseInt(item.productQuantity)
             subTotal += parseFloat(item.salePrice) * parseInt(item.productQuantity)
         })
         if(props.country === 'Canada'){

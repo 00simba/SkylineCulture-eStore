@@ -43,7 +43,7 @@ function decrementItem(cartItems, productId, productVariant, setCartItems){
 function getTotal(cartItems){
     var tempTotal=0
     cartItems.forEach(item => {
-        tempTotal += parseFloat(item.productPrice) * parseInt(item.productQuantity)
+        tempTotal += parseFloat(item.salePrice) * parseInt(item.productQuantity)
     })
     return tempTotal
 }
@@ -85,7 +85,7 @@ export default function CartPage(props){
             <div className="eachItemRow">
                 <div className="itemInfos">
                     <h3><a href={`/product/${item.productUrl}`}>{item.productName}</a></h3>
-                    <span>Price: ${(item.productPrice)}</span>
+                    <span>Price: <s>${(item.productPrice)}</s> <span className='salePrice'>${(item.salePrice)}</span></span>
                     <span>Quantity: {item.productQuantity}</span> 
                     {item.productVariant !='null' && item.productVariant !='Default' && <span>Color: {item.productVariant}</span>}
                 </div>
@@ -127,7 +127,7 @@ export default function CartPage(props){
               {!(props.cartItems.length) ? <p className='cartStatus'>Cart Empty</p> :<Link to={`/checkout/${id}`}><button onClick={() => props.changeId(id)} className="checkoutBtn" type="button">Checkout</button></Link>}
             </div>
             {!(props.cartItems.length) ? <div className="contDiv">
-                <span className='contMsg'>Your cart is currently empty, click the button below to view some products!</span>
+                <span className='contMsg'>Your cart is currently empty. Click the button below to view some products.</span>
                 <Link to={`/`}><button className='shopBtn'>Shop Now</button></Link>
             </div> :
             <div className="itemRow">

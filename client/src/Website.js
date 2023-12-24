@@ -49,7 +49,7 @@ export default function Website(){
 
     cartItems.slice(1);
     
-    function addItemToCart(id, product, quantity, variant, image, price, url){
+    function addItemToCart(id, product, quantity, variant, image, price, sale_price, url){
 
         let picture = image[0]
         image.forEach((image) => {
@@ -74,7 +74,7 @@ export default function Website(){
         })
 
         if(found==0){
-            setCartItems([...cartItems, {productId: `${id}`, productName: `${product}`, productQuantity: `${quantity}`, productVariant: `${variant}`,productImage: `${picture}`, productPrice: `${price}`, productUrl: `${url}`}])
+            setCartItems([...cartItems, {productId: `${id}`, productName: `${product}`, productQuantity: `${quantity}`, productVariant: `${variant}`,productImage: `${picture}`, productPrice: `${price}`, salePrice: `${sale_price}`, productUrl: `${url}`}])
         }      
     }
 
@@ -113,7 +113,7 @@ export default function Website(){
                     <Route path={`product/:productUrl`} element={<ProductPage productUrl = {productUrl} addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
                     <Route path='/cart' element={<CartPage changeId={id => setId(id)} setCartItems={setCartItems} cartItems={cartItems}/>}/>
                     <Route path={`/checkout/${id}`} element={<Checkout changeCountry={changeCountry} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
-                    <Route path={`/payment/${id}`} cartItems={cartItems} element={<Payment country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
+                    <Route path={`/payment/${id}`} element={<Payment country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
                     <Route path={`/order-complete`} element={<OrderComplete/>}/>
                     <Route path={`/keychains`} element={<Keychains data={data}/>}/>
                     <Route path={`/stickers`} element={<Stickers data={data}/>}/>

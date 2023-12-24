@@ -32,7 +32,7 @@ export default function CheckoutForm(props) {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `https://skylineculture.onrender.com//order-complete`,
+        return_url: `https://skylineculture.onrender.com/order-complete`,
         shipping: {
           address: {
             city: props.customer.city,

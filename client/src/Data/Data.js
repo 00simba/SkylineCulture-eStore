@@ -5,7 +5,8 @@ export default [
         "id" : "1",
         "title" : "R34 GTR Keychain",
         "img" : ["r34_keychain/r34key_main.png", "r34_keychain/r34key_1.png"],
-        "price" : 14.99,
+        "price" : 19.99,
+        "sale_price": 14.99,
         "url" : "r34-gtr-keychain",
         "description" : [
         
@@ -23,7 +24,8 @@ export default [
         "id" : 2,
         "title" : "R32 GTR Keychain",
         "img" : ["r32_keychain/r32key_main.PNG"],
-        "price" : 14.99,
+        "price" : 19.99,
+        "sale_price": 14.99,
         "url" : "r32-gtr-keychain",
         "description" : [
             
@@ -39,7 +41,8 @@ export default [
         "id" : 3,
         "title" : "R34 GTR Pin",
         "img" : ["r34_pin/r34pin_main.png", "r34_pin/r34pin_1.png", "r34_pin/r34pin_2.png", "r34_pin/r34pin_3.png"],
-        "price" : 14.99,
+        "price" : 19.99,
+        "sale_price": 14.99,
         "url" : "r34-gtr-pin",
         "description" : [
         
@@ -54,7 +57,8 @@ export default [
         "id" : 4,
         "title" : "RB26 Keychain",
         "img" : ["rb26_keychain/rb26_main.PNG"],
-        "price" : 4.99,
+        "price" : 9.99,
+        "sale_price": 4.99,
         "url" : "r26-keychain",
         "description" : [
             
@@ -69,7 +73,8 @@ export default [
         "id" : 5,
         "title" : "Turbo Keychain",
         "img" : ["turbo_keychain/turbo_main.png", "turbo_keychain/turbo_Black.png", "turbo_keychain/turbo_Silver.png", "turbo_keychain/turbo_Chroma.png"],
-        "price" : 7.99,
+        "price" : 9.99,
+        "sale_price": 7.99,
         "url" : "turbo-keychain",
         "description" : [
             
@@ -86,7 +91,8 @@ export default [
         "id" : 6,
         "title" : "NOS Keychain",
         "img" : ["nos_keychain/nos_main.png", "nos_keychain/nos_1.png", "nos_keychain/nos_2.png"],
-        "price" : 4.99,
+        "price" : 7.99,
+        "sale_price": 4.99,
         "url" : "nos-keychain",
         "description" : [
             
@@ -103,7 +109,8 @@ export default [
         "id" : 7,
         "title" : "Gearbox Keychain",
         "img" : ["gearbox_keychain/gearbox_main.png", "gearbox_keychain/gearbox_1.png", "gearbox_keychain/gearbox_2.png"],
-        "price" : 8.99,
+        "price" : 12.99,
+        "sale_price": 8.99,
         "url" : "gearbox-keychain",
         "description" : [
             
@@ -120,7 +127,8 @@ export default [
         "id" : 8,
         "title" : "Suspension Keychain",
         "img" : ["suspension_keychain/suspension_main.png", "suspension_keychain/suspension_Blue.png", "suspension_keychain/suspension_Green.png", "suspension_keychain/suspension_Gold.png", "suspension_keychain/suspension_Red.png", "suspension_keychain/suspension_Black.png"],
-        "price" : 7.99,
+        "price" : 11.99,
+        "sale_price": 7.99,
         "url" : "suspension-keychain",
         "description" : [
             
@@ -137,7 +145,8 @@ export default [
         "id" : 9,
         "title" : "TE37 Keychain",
         "img" : ["te37_keychain/te37_Black.png", "te37_keychain/te37_Chroma.png", "te37_keychain/te37_Silver.png", "te37_keychain/te37_1.png", "te37_keychain/te37_2.png", "te37_keychain/te37_3.png", "te37_keychain/te37_4.png"],
-        "price" : 11.99,
+        "price" : 14.99,
+        "sale_price": 11.99,
         "url" : "te37-keychain",
         "description" : [
             
@@ -154,7 +163,8 @@ export default [
         "id" : 10,
         "title" : "GTR Keychain",
         "img" : ["gtr_keychain/gtr_main.png", "gtr_keychain/gtr_1.png", "gtr_keychain/gtr_2.png"],
-        "price" : 4.99,
+        "price" : 9.99,
+        "sale_price": 4.99,
         "url" : "gtr-keychain",
         "description" : [
             

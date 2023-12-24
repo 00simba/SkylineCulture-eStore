@@ -33,7 +33,7 @@ export default function AddToCart(props){
             <button disabled={props.disabled} onClick={() => {
                 if((props.variant !== null && !props.variant.includes('Select') && Object.keys(props.variants[0]).length !== 0) || (props.variant === null && Object.keys(props.variants[0]).length === 0)){
                     notify()
-                    props.addItemToCart(props.id, props.product, props.quantity, props.variant, props.image, props.price, props.url)
+                    props.addItemToCart(props.id, props.product, props.quantity, props.variant, props.image, props.price, props.sale_price, props.url)
                 }
                 else{
                     warn()

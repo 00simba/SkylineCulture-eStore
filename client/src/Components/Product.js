@@ -13,7 +13,7 @@ export default function Product(props){
             <div className="card">
                 <img className="productpic" src={require(`../Images/${props.item.img[0]}`)}></img>
                 <h4>{props.item.title}</h4>
-                <h3 className="prices">${props.item.price}</h3>
+                <div className='cardPriceDiv'><h3 className="prices"><s>${props.item.price}</s></h3><h3 className="salePrice">${props.item.sale_price}</h3></div>
             </div>
         </Link>
     )

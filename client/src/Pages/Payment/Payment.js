@@ -51,7 +51,7 @@ function PaymentTest(props) {
         <div className = "paymentWrapper">
         <h2 className='almostHeader'>Payment</h2>
             <div className='secureNote'>
-            <span>We will never save your card information and this checkout is secure.</span>
+            <span>You're almost there. Enter your payment details to confirm your purchase.</span>
             </div>
             <div className="paymentInfo">
                 {clientSecret && stripePromise && (

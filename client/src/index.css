@@ -1,3 +1,18 @@
+.cardPriceDiv{
+  display: flex;
+  flex-direction: row;
+}
+
+.productPagePrice{
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+}
+
+.salePrice{
+  color:#005eff
+}
+
 li{
   list-style-type: none;
   padding: 8px;
@@ -774,6 +789,12 @@ button:disabled{
 }
 
 @media only screen and (max-width: 578px){
+
+  .productPagePrice{
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+  }
 
   .parent{
     margin-bottom: 15vh

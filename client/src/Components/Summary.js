@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Summary(props){
 
-    var saving;
+    var saving = 0.00;
     var shipping;
     var subTotal = 0;
 

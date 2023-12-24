@@ -151,7 +151,7 @@ export default function Checkout(props){
                 <br/>
                 <RegionDropdown className="regionDrop" country={location.country} value={location.region} onChange={(val) => {selectRegion(val); form.region=val}} id="region" name="region"/>
 
-                <Shipping country={location.country}/>
+                <Shipping country={location.country} cart={props.cartItems}/>
 
                 <div className='proceedDiv'>
                   <Link to={`/payment/${id}`}><button disabled={!(email && firstname && lastname && address && city && code &&form.country && form.region) ? true : false} onClick={()=> {props.changeId(id); sendCart(props.cartItems); handleSubmit(); props.changeCountry(form.country)}} className="proceedPayment" type="submit">Proceed to Payment</button></Link>

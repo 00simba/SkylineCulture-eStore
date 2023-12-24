@@ -3,28 +3,33 @@ import React from "react";
 export default function Summary(props){
 
     var saving = 0.00;
-    var shipping;
-    var subTotal = 0;
+    var shipping = 0.00;
+    var subTotal = 0.00;
 
     function getTotal(cartItems){
-        var total = 0
+        var total = 0.00
         cartItems.forEach(item => {
-            total += parseFloat(item.salePrice) * parseInt(item.productQuantity)
             saving += (parseFloat(item.productPrice) - parseFloat(item.salePrice)) * parseInt(item.productQuantity)
             subTotal += parseFloat(item.salePrice) * parseInt(item.productQuantity)
         })
-        if(props.country === 'Canada'){
-            shipping = 7.95
-            total += 7.95
+
+        total += subTotal
+
+        if(subTotal < 35.00){
+            if(props.country === 'Canada'){
+                shipping = 7.95
+                total += 7.95
+            }
+            else if(props.country === "United States"){
+                shipping = 3.95
+                total += 3.95
+            }
+            else{
+                shipping = 9.95
+                total += 9.95
+            }
         }
-        else if(props.country === "United States"){
-            shipping = 3.95
-            total += 3.95
-        }
-        else{
-            shipping = 9.95
-            total += 9.95
-        }
+
         return total
     }
 
@@ -45,14 +50,13 @@ export default function Summary(props){
         )
     })
 
-
     return(
         <div className="summaryContainer">
             <h2 className="summaryHeading">Order Summary</h2>
                 {items}
             <div className='breakDown'>
                 <div>Subtotal: ${subTotal.toFixed(2)}</div>
-                <div>Shipping: ${shipping}</div>
+                <div>Shipping: {shipping > 0.00 ? '$' + shipping.toString() : 'FREE'}</div>
                 <div>Saving: <span className="salePrice">${saving.toFixed(2)}</span></div>
                 <div className='totalCost'>Total: ${total.toFixed(2)} USD</div>
             </div>

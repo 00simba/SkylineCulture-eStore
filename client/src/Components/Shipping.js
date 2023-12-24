@@ -2,8 +2,22 @@ import React from "react";
 import '../Pages/App.css'
 
 
+function getTotal(cart){
+
+    var total = 0.00
+    
+    cart.forEach((item) => {
+        total += parseFloat(item.salePrice) * item.productQuantity
+    })
+
+    return total
+
+}
 
 export default function Shipping(props){
+
+    var total = getTotal(props.cart)
+    console.log(total)
 
     return(
         <div className="shippingDiv">
@@ -13,7 +27,7 @@ export default function Shipping(props){
                     <div className="shippingInfo">
                         <span>Method: USPS First Class Tracked </span>
                         <span>ETA: 3-6 business days</span>
-                        <span>Flat Rate: $3.95</span>  
+                        {total < 35.00 ? <span>Flat Rate: $3.95</span> : <span>Shipping: FREE</span>}
                     </div>   
                 </div>
             }
@@ -23,7 +37,7 @@ export default function Shipping(props){
                     <div className="shippingInfo">
                         <span>Method: Canada Post Tracked</span>
                         <span>ETA: 2-8 business days</span>
-                        <span>Flat Rate: $7.95</span>
+                        {total < 35.00 ? <span>Flat Rate: $7.95</span> : <span>Shipping: FREE</span>}
                     </div>
                 </div>  
             }
@@ -33,7 +47,7 @@ export default function Shipping(props){
                     <div className="shippingInfo">
                         <span>Method: APC or Asendia International Tracked </span>
                         <span>ETA: 6-21 business days</span>
-                        <span>Flat Rate: $9.95</span>
+                        {total < 35.00 ? <span>Flat Rate: $9.95</span> : <span>Shipping: FREE</span>}
                     </div>
                 </div>  
             }

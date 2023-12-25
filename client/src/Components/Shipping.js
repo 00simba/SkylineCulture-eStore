@@ -17,7 +17,6 @@ function getTotal(cart){
 export default function Shipping(props){
 
     var total = getTotal(props.cart)
-    console.log(total)
 
     return(
         <div className="shippingDiv">

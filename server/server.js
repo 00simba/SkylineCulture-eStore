@@ -73,17 +73,17 @@ function calculateTotal(){
         var price = ((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity))
         total += price 
     })
-   
-    if(customer.country === 'Canada'){
-        total += 795
+    if(total < 3500){
+        if(customer.country === 'Canada'){
+            total += 795
+        }
+        else if(customer.country === "United States"){
+            total += 395
+        }
+        else{
+            total += 995
+        }
     }
-    else if(customer.country === "United States"){
-        total += 395
-    }
-    else{
-        total += 995
-    }
-    
     return total
 }
 

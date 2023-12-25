@@ -197,7 +197,7 @@ export default [
     },
     {
         "id" : 12,
-        "title" : "1/36 R34 GTR",
+        "title" : "1/36 R34 GTR1",
         "img" : ["36r34_diecast/36r34_main.png", "36r34_diecast/36r34_Blue.png", "36r34_diecast/36r34_Silver.png", "36r34_diecast/r36r34_Black.png"],
         "price" : 19.99,
         "sale_price": 14.99,

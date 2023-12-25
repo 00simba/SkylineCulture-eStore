@@ -90,8 +90,8 @@ function calculateTotal(){
 app.post('/create-customer', async (req, res) => {
     try{
         const customer = await stripe.customer.create({
-            name : req.body.firstname + ' ' + req.body.lastname,
-            email: req.body.email
+            name : "Test Customer",
+            email: "test@gmail.com"
         })   
     } catch (e) {
         return res.status(400).send({

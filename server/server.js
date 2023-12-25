@@ -68,19 +68,21 @@ app.post('/config', (req, res) => {
 })
 
 function calculateTotal(){
-    var total = 0;
+    var total = 0.00;
     (cart.items).forEach((itemObject) => {
         var price = ((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity))
         total += price 
     })
-    if(customer.country === 'Canada'){
-        total += 795
-    }
-    else if(customer.country === "United States"){
-        total += 395
-    }
-    else{
-        total += 995
+    if(total < 35.00){
+        if(customer.country === 'Canada'){
+            total += 795
+        }
+        else if(customer.country === "United States"){
+            total += 395
+        }
+        else{
+            total += 995
+        }
     }
     return total
 }

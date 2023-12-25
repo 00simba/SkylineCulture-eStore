@@ -176,5 +176,41 @@ export default [
         "shipping": [shipping[0]],
         "variants" : [{}],
         "collection" : "Keychains",
+    },
+    {
+        "id" : 11,
+        "title" : "100 Pack Stickers",
+        "img" : ["100pc_sticker/100pc_main.png", "100pc_sticker/100pc_1.png", "100pc_sticker/100pc_2.png", "100pc_sticker/100pc_3.png"],
+        "price" : 14.99,
+        "sale_price": 9.99,
+        "url" : "100-pack-stickers",
+        "description" : [
+            
+        "Decorate your accessories by owning this pack of 100 car stickers.",         
+        
+        ],
+
+        "specs": "Size: 4cm to 10cm\n Material: Vinyl, Eco-Friendly PVC",
+        "shipping": [shipping[0]],
+        "variants" : [{}],
+        "collection" : "Stickers",
+    },
+    {
+        "id" : 12,
+        "title" : "B",
+        "img" : ["36r34_diecast/36r34_main.png", "36r34_diecast/36r34_Blue.png", "36r34_diecast/36r34_Silver.png", "36r34_diecast/r36r34_Black.png"],
+        "price" : 19.99,
+        "sale_price": 14.99,
+        "url" : "36-r34-diecast",
+        "description" : [
+            
+        "Featuring the R34 GTR in Bayside Blue, Black, and Fast & Furious Silver with doors that can open. Get your 1:36 scaled version today!",         
+        
+        ],
+
+        "specs": "Scale: 1:36\n Material: Alloy",
+        "shipping": [shipping[0]],
+        "variants" : [{"Select Color": ["Blue", "Black", "Silver"]}],
+        "collection" : "Diecast Cars",
     } 
 ]

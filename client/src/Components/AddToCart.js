@@ -25,9 +25,6 @@ export default function AddToCart(props){
             theme: "colored",
     });
 
-    if(props.variant){
-        console.log(props.variant.includes('Select'))
-    }
     return(
         <div className='addToCartBtn'>
             <button disabled={props.disabled} onClick={() => {

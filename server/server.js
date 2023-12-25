@@ -68,12 +68,12 @@ app.post('/config', (req, res) => {
 })
 
 function calculateTotal(){
-    var total = 0.00;
+    var total = 0;
     (cart.items).forEach((itemObject) => {
-        var price = parseFloat(((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity)))
+        var price = ((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity))
         total += price 
     })
-    if(total < 35.00){
+    if(total < 3500){
         if(customer.country === 'Canada'){
             total += 795
         }

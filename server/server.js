@@ -10,9 +10,11 @@ app.use(express.static('../client/build'))
 app.use(bodyParser.urlencoded({extended: false}))
 const cors = require("cors")
 app.use(cors())
-app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+app.use(express.static(path.join(__dirname, '..', 'client', 'build')))
 const axios = require('axios');
 const { Country } = require('country-and-province')
+const { countryToAlpha2 }= require('country-to-iso')
+
 require('dotenv').config()
 
 const dbURI = process.env.DATABASE_URI;
@@ -89,9 +91,18 @@ function calculateTotal(){
 
 app.post('/create-customer', async (req, res) => {
     try{
+        var Alpha2 = countryToAlpha2(req.body.country)
         const customer = await stripe.customers.create({
             name : req.body.firstname + ' ' + req.body.lastname,
-            email: req.body.email
+            email: req.body.email,
+            address:{
+                city: req.body.city,
+                country: Alpha2,
+                line1: req.body.address_1,
+                line2: req.body.address_2,
+                postal_code: req.body.code,
+                state: req.body.region
+            }
         })   
     } catch (e) {
         return res.status(400).send({

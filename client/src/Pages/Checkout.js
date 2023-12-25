@@ -53,6 +53,11 @@ export default function Checkout(props){
     .catch(function (error) {
       console.log(error);
     });
+    await axios.post('https://skylineculture-api.onrender.com/create-customer', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 
   const shortid = require('shortid');

@@ -87,6 +87,21 @@ function calculateTotal(){
     return total
 }
 
+app.post('/create-customer', async (req, res) => {
+    try{
+        const customer = await stripe.customer.create({
+            name : req.body.firstname + ' ' + req.body.lastname,
+            email: req.body.email
+        })   
+    } catch (e) {
+        return res.status(400).send({
+            error: {
+              message: e.message,
+            },
+        });
+    }
+})
+
 app.post('/create-payment-intent', async (req, res) => {
     try {
         const paymentIntent = await stripe.paymentIntents.create({

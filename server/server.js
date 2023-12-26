@@ -53,19 +53,6 @@ app.post("/get-items", (req,res) => {
     res.send(cart)
 })
 
-app.post("/collect", (req, res) =>{
-    customer.email = req.body.email
-    customer.firstname = req.body.firstname
-    customer.lastname = req.body.lastname
-    customer.address = req.body.address
-    customer.address_optional =  req.body.address_optional
-    customer.city = req.body.city
-    customer.code = req.body.code
-    customer.country = req.body.country
-    customer.region = req.body.region
-    res.send(customer)
-})
-
 app.post('/create-customer', async (req, res) => {
     try{
         var Alpha2 = countryToAlpha2(req.body.country)

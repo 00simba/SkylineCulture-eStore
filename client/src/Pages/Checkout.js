@@ -49,10 +49,6 @@ export default function Checkout(props){
   }
 
   async function handleSubmit(){
-    await axios.post('https://skylineculture-api.onrender.com/collect', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {})
-    .catch(function (error) {
-      console.log(error);
-    });
     await axios.post('https://skylineculture-api.onrender.com/create-customer', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {
     })
     .catch(function (error) {

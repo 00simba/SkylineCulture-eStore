@@ -30,6 +30,7 @@ const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 let cart = [];
 
 let customer = {
+    cus_id: "",
     email: "",
     firstname: "",
     lastname: "",
@@ -53,6 +54,7 @@ app.post("/get-items", (req,res) => {
 })
 
 app.post("/collect", (req, res) =>{
+    customer.cus_id = req.body.cus_id
     customer.email = req.body.email 
     customer.firstname = req.body.firstname
     customer.lastname = req.body.lastname

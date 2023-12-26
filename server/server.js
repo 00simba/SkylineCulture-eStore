@@ -94,18 +94,19 @@ function calculateTotal(){
 app.post('/create-customer', async (req, res) => {
     try{
         var Alpha2 = countryToAlpha2(req.body.country)
-        const customer = await stripe.customers.create({
+        const stripeCustomer = await stripe.customers.create({
             name : req.body.firstname + ' ' + req.body.lastname,
             email: req.body.email,
             address:{
                 city: req.body.city,
                 country: Alpha2,
-                line1: req.body.address_1,
-                line2: req.body.address_2,
+                line1: req.body.address,
+                line2: req.body.address_optional,
                 postal_code: req.body.code,
                 state: req.body.region
             }
-        })   
+        }) 
+        customer.cus_id = stripeCustomer.id
     } catch (e) {
         return res.status(400).send({
             error: {

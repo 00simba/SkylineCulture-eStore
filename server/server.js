@@ -25,11 +25,12 @@ Product.find().then((result) => result.map((item) => {
     storeItems.set(item.id, {name: item.name, price: item.price, stock: item.stock})
 }))
 
-const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+const stripe = require('stripe')('sk_test_r7LRraq8cpR1wwDUSF6aXKhY00DcUrutz9')
 
 let cart = [];
 
-let customer = {
+var customer = {
+    cus_id: "",
     email: "",
     firstname: "",
     lastname: "",
@@ -38,8 +39,8 @@ let customer = {
     city: "",
     code: "",
     country: "",
-    region: "",
-};
+    region: ""
+}
 
 var ID;
 
@@ -52,21 +53,42 @@ app.post("/get-items", (req,res) => {
     res.send(cart)
 })
 
-app.post("/collect", (req, res) =>{
-    customer.email = req.body.email 
-    customer.firstname = req.body.firstname
-    customer.lastname = req.body.lastname
-    customer.address = req.body.address
-    customer.address_optional =  req.body.address_optional
-    customer.city = req.body.city
-    customer.code = req.body.code
-    customer.country = req.body.country
-    customer.region = req.body.region
-    res.send(customer)
+app.post('/create-customer', async (req, res) => {
+    try{
+        var Alpha2 = countryToAlpha2(req.body.country)
+        const stripeCustomer = await stripe.customers.create({
+            name : req.body.firstname + ' ' + req.body.lastname,
+            email: req.body.email,
+            address:{
+                city: req.body.city,
+                country: Alpha2,
+                line1: req.body.address,
+                line2: req.body.address_optional,
+                postal_code: req.body.code,
+                state: req.body.region
+            }
+        }) 
+        customer.cus_id = stripeCustomer.id
+        customer.email = req.body.email
+        customer.firstname = req.body.firstname
+        customer.lastname = req.body.lastname
+        customer.address = req.body.address
+        customer.address_optional =  req.body.address_optional
+        customer.city = req.body.city
+        customer.code = req.body.code
+        customer.country = req.body.country
+        customer.region = req.body.region
+    } catch (e) {
+        return res.status(400).send({
+            error: {
+              message: e.message,
+            },
+        });
+    }
 })
 
 app.post('/config', (req, res) => {
-    res.json({ publishableKey : 'pk_live_NUvboNKoFJl7b8W2UwzNphXv00wcelkZMY'})
+    res.json({ publishableKey : 'pk_test_r12jgstJ5soE83k76iTP681O00lRb3pB1l'})
 })
 
 function calculateTotal(){
@@ -88,30 +110,6 @@ function calculateTotal(){
     }
     return total
 }
-
-app.post('/create-customer', async (req, res) => {
-    try{
-        var Alpha2 = countryToAlpha2(req.body.country)
-        const customer = await stripe.customers.create({
-            name : req.body.firstname + ' ' + req.body.lastname,
-            email: req.body.email,
-            address:{
-                city: req.body.city,
-                country: Alpha2,
-                line1: req.body.address_1,
-                line2: req.body.address_2,
-                postal_code: req.body.code,
-                state: req.body.region
-            }
-        })   
-    } catch (e) {
-        return res.status(400).send({
-            error: {
-              message: e.message,
-            },
-        });
-    }
-})
 
 app.post('/create-payment-intent', async (req, res) => {
     try {

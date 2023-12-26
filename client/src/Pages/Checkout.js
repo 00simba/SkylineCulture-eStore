@@ -14,6 +14,7 @@ export default function Checkout(props){
   }, [])
 
   const [form, setForm] = useState({
+    cus_id: "",
     email: "",
     firstname: "",
     lastname: "",
@@ -48,11 +49,6 @@ export default function Checkout(props){
   }
 
   async function handleSubmit(){
-    await axios.post('https://skylineculture-api.onrender.com/collect', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
     await axios.post('https://skylineculture-api.onrender.com/create-customer', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {
     })
     .catch(function (error) {
@@ -130,7 +126,7 @@ export default function Checkout(props){
           
           <div className='formContainer'>
 
-            <form className='checkoutForm' method='POST' action='/collect'>
+            <form className='checkoutForm' method='POST' action='/create-customer'>
               
 
                 <span className='contactInfoSpan'>Contact Information</span>

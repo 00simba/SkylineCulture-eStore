@@ -51,7 +51,7 @@ export default function Checkout(props){
   async function handleSubmit(){
     await axios.post('https://skylineculture-api.onrender.com/create-customer', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {
       const newForm = {...form}
-      newForm[cus_id] = response.data.id
+      newForm['cus_id'] = response.data.id
       setForm(newForm)
     })
     .catch(function (error) {

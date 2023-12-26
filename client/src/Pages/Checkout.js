@@ -57,9 +57,7 @@ export default function Checkout(props){
     .catch(function (error) {
       console.log(error);
     });
-    await axios.post('https://skylineculture-api.onrender.com/collect', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {
-      console.log(response.data)
-    })
+    await axios.post('https://skylineculture-api.onrender.com/collect', form, {headers:{"Content-Type" : "application/json"}}).then(function (response) {})
     .catch(function (error) {
       console.log(error);
     });

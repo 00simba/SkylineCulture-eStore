@@ -29,7 +29,7 @@ const stripe = require('stripe')('sk_test_r7LRraq8cpR1wwDUSF6aXKhY00DcUrutz9')
 
 let cart = [];
 
-let customer = {
+const [customer, setCustomer] = useState({
     cus_id: "",
     email: "",
     firstname: "",
@@ -40,7 +40,7 @@ let customer = {
     code: "",
     country: "",
     region: "",
-};
+})
 
 var ID;
 
@@ -54,8 +54,7 @@ app.post("/get-items", (req,res) => {
 })
 
 app.post("/collect", (req, res) =>{
-    customer.cus_id = req.body.cus_id
-    customer.email = req.body.email 
+    setCustomer({...customer, email: req.body.email})
     customer.firstname = req.body.firstname
     customer.lastname = req.body.lastname
     customer.address = req.body.address
@@ -65,6 +64,31 @@ app.post("/collect", (req, res) =>{
     customer.country = req.body.country
     customer.region = req.body.region
     res.send(customer)
+})
+
+app.post('/create-customer', async (req, res) => {
+    try{
+        var Alpha2 = countryToAlpha2(req.body.country)
+        const stripeCustomer = await stripe.customers.create({
+            name : req.body.firstname + ' ' + req.body.lastname,
+            email: req.body.email,
+            address:{
+                city: req.body.city,
+                country: Alpha2,
+                line1: req.body.address,
+                line2: req.body.address_optional,
+                postal_code: req.body.code,
+                state: req.body.region
+            }
+        }) 
+        setCustomer({...customer, cus_id: stripeCustomer.id})
+    } catch (e) {
+        return res.status(400).send({
+            error: {
+              message: e.message,
+            },
+        });
+    }
 })
 
 app.post('/config', (req, res) => {
@@ -90,31 +114,6 @@ function calculateTotal(){
     }
     return total
 }
-
-app.post('/create-customer', async (req, res) => {
-    try{
-        var Alpha2 = countryToAlpha2(req.body.country)
-        const stripeCustomer = await stripe.customers.create({
-            name : req.body.firstname + ' ' + req.body.lastname,
-            email: req.body.email,
-            address:{
-                city: req.body.city,
-                country: Alpha2,
-                line1: req.body.address,
-                line2: req.body.address_optional,
-                postal_code: req.body.code,
-                state: req.body.region
-            }
-        }) 
-        customer.cus_id = stripeCustomer.id
-    } catch (e) {
-        return res.status(400).send({
-            error: {
-              message: e.message,
-            },
-        });
-    }
-})
 
 app.post('/create-payment-intent', async (req, res) => {
     try {

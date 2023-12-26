@@ -126,7 +126,7 @@ export default function Checkout(props){
           
           <div className='formContainer'>
 
-            <form className='checkoutForm' method='POST' action='/collect'>
+            <form className='checkoutForm' method='POST' action='/create-customer'>
               
 
                 <span className='contactInfoSpan'>Contact Information</span>

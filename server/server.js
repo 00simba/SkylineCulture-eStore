@@ -25,7 +25,7 @@ Product.find().then((result) => result.map((item) => {
     storeItems.set(item.id, {name: item.name, price: item.price, stock: item.stock})
 }))
 
-const stripe = require('stripe')('sk_test_r7LRraq8cpR1wwDUSF6aXKhY00DcUrutz9')
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 let cart = [];
 
@@ -88,7 +88,7 @@ app.post('/create-customer', async (req, res) => {
 })
 
 app.post('/config', (req, res) => {
-    res.json({ publishableKey : 'pk_test_r12jgstJ5soE83k76iTP681O00lRb3pB1l'})
+    res.json({ publishableKey : 'pk_live_NUvboNKoFJl7b8W2UwzNphXv00wcelkZMY'})
 })
 
 function calculateTotal(){

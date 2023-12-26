@@ -29,7 +29,7 @@ const stripe = require('stripe')('sk_test_r7LRraq8cpR1wwDUSF6aXKhY00DcUrutz9')
 
 let cart = [];
 
-const [customer, setCustomer] = useState({
+var customer = {
     cus_id: "",
     email: "",
     firstname: "",
@@ -39,8 +39,8 @@ const [customer, setCustomer] = useState({
     city: "",
     code: "",
     country: "",
-    region: "",
-})
+    region: ""
+}
 
 var ID;
 
@@ -54,7 +54,7 @@ app.post("/get-items", (req,res) => {
 })
 
 app.post("/collect", (req, res) =>{
-    setCustomer({...customer, email: req.body.email})
+    customer.email = req.body.email
     customer.firstname = req.body.firstname
     customer.lastname = req.body.lastname
     customer.address = req.body.address
@@ -81,7 +81,16 @@ app.post('/create-customer', async (req, res) => {
                 state: req.body.region
             }
         }) 
-        setCustomer({...customer, cus_id: stripeCustomer.id})
+        customer.cus_id = stripeCustomer.id
+        customer.email = req.body.email
+        customer.firstname = req.body.firstname
+        customer.lastname = req.body.lastname
+        customer.address = req.body.address
+        customer.address_optional =  req.body.address_optional
+        customer.city = req.body.city
+        customer.code = req.body.code
+        customer.country = req.body.country
+        customer.region = req.body.region
     } catch (e) {
         return res.status(400).send({
             error: {

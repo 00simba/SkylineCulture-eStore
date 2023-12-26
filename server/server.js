@@ -25,7 +25,7 @@ Product.find().then((result) => result.map((item) => {
     storeItems.set(item.id, {name: item.name, price: item.price, stock: item.stock})
 }))
 
-const stripe = require('stripe')(process.env.STRIPE_PUBLISHABLE_KEY)
+const stripe = require('stripe')('sk_test_r7LRraq8cpR1wwDUSF6aXKhY00DcUrutz9')
 
 let cart = [];
 

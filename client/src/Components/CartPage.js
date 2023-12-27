@@ -69,7 +69,7 @@ export default function CartPage(props){
 
     async function handleSubmit(){
         await axios.post("https://skylineculture-api.onrender.com/get-items", {cartItems})
-        await axios.post("https://skylineculture-api.onrender.com/create-checkout-session").then((res) => {window.location = res.data.url})
+        await axios.post("https://skylineculture-api.onrender.com/create-checkout-session").then((res) => {window.location = res.data.url}).catch((err) => console.log(err))
         sessionStorage.clear()
     }
 

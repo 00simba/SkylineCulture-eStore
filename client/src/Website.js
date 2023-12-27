@@ -8,11 +8,9 @@ import ProductPage from './Pages/ProductPage/ProductPage'
 import { useLocation, Routes, Route } from 'react-router-dom';
 import CartPage from './Components/CartPage'
 import './index.css';
-import Checkout from './Pages/Checkout'
 import WebsiteBanner from './Components/WebsiteBanner/WebsiteBanner';
 import Footer from './Components/Footer/Footer';
 import PageNotFound from './Pages/PageNotFound/PageNotFound';
-import Payment from './Pages/Payment/Payment'
 import OrderComplete from './Pages/OrderComplete/OrderComplete';
 import Keychains from './Pages/Keychains/Keychains';
 import Stickers from './Pages/Stickers/Stickers';
@@ -22,6 +20,7 @@ import TermsAndService from './Pages/TermsAndService/TermsAndService';
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import ContactUs from './Pages/ContactUs/ContactUs';
 import ReactGA from 'react-ga'
+import shortid from 'shortid';
 
 ReactGA.initialize('UA-255315723-1');
 
@@ -29,26 +28,23 @@ export default function Website(){
 
     const [cartItems, setCartItems] = React.useState([]);
     const location = useLocation();   
-    const [id, setId] = React.useState(null)
+    const [id, setId] = React.useState(shortid.generate())
 
     React.useEffect(() => {
+        setId(shortid.generate())
         const data = localStorage.getItem('cart')
         if(data){
             setCartItems(JSON.parse(data))
-        }
-        const uniqueID = sessionStorage.getItem('id')
-        if(uniqueID){
-            setId(uniqueID)
         }
     }, [])
 
     React.useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cartItems))
-        sessionStorage.setItem('id', id)
     })
 
     cartItems.slice(1);
-    
+
+
     function addItemToCart(id, product, quantity, variant, image, price, sale_price, url){
 
         let picture = image[0]
@@ -111,10 +107,8 @@ export default function Website(){
             <Routes>   
                     <Route path='/' element={<LandingPage data={data}/>}/>
                     <Route path={`product/:productUrl`} element={<ProductPage productUrl = {productUrl} addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
-                    <Route path='/cart' element={<CartPage changeId={id => setId(id)} setCartItems={setCartItems} cartItems={cartItems}/>}/>
-                    <Route path={`/checkout/${id}`} element={<Checkout changeCountry={changeCountry} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
-                    <Route path={`/payment/${id}`} element={<Payment country={country} changeId={id => setId(id)} cartItems={cartItems}/>}></Route>
-                    <Route path={`/order-complete`} element={<OrderComplete/>}/>
+                    <Route path='/cart' element={<CartPage setCartItems={setCartItems} cartItems={cartItems}/>}/>
+                    <Route path={`/order-complete`} element={<OrderComplete orderID={id}/>}/>
                     <Route path={`/keychains`} element={<Keychains data={data}/>}/>
                     <Route path={`/stickers`} element={<Stickers data={data}/>}/>
                     <Route path={`/diecast-cars`} element={<DiecastCars data={data}/>}/>

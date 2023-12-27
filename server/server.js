@@ -12,8 +12,9 @@ const cors = require("cors")
 app.use(cors())
 app.use(express.static(path.join(__dirname, '..', 'client', 'build')))
 const axios = require('axios');
-const { Country } = require('country-and-province')
-const { countryToAlpha2 }= require('country-to-iso')
+const { countryToAlpha2 } = require('country-to-iso')
+const { getCountry } = require('./getCountry')
+const { createWriteStream } = require('fs')
 
 require('dotenv').config()
 
@@ -22,7 +23,7 @@ mongoose.connect(dbURI, {dbName: 'website-db', useNewUrlParser: true, useUnified
 
 const storeItems = new Map()
 Product.find().then((result) => result.map((item) => {
-    storeItems.set(item.id, {name: item.name, price: item.price, stock: item.stock})
+    storeItems.set(item.id, {name: item.name, price: item.price, stripe_price: item.stripe_price, stock: item.stock})
 }))
 
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
@@ -93,30 +94,31 @@ app.post('/config', (req, res) => {
 
 function calculateTotal(){
     var total = 0;
-    (cart.items).forEach((itemObject) => {
+    (cart.cartItems).forEach((itemObject) => {
         var price = ((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity))
         total += price 
     })
-    if(total < 3500){
-        if(customer.country === 'Canada'){
-            total += 795
-        }
-        else if(customer.country === "United States"){
-            total += 395
-        }
-        else{
-            total += 995
-        }
-    }
+    //if(total < 3500){
+    //    if(customer.country === 'Canada'){
+    //        total += 795
+    //    }
+    //    else if(customer.country === "United States"){
+    //        total += 395
+    //   }
+    //    else{
+    //        total += 995
+    //    }
+    //}
     return total
 }
 
 app.post('/create-payment-intent', async (req, res) => {
     try {
         const paymentIntent = await stripe.paymentIntents.create({
-          currency: "USD",
-          amount: calculateTotal(),
-          automatic_payment_methods: { enabled: true },
+            customer: customer.cus_id,
+            currency: "USD",
+            amount: calculateTotal(),
+            automatic_payment_methods: { enabled: true },
         });
     
         // Send publishable key and PaymentIntent details to client
@@ -137,13 +139,13 @@ app.post('/save-items', async (req, res) => {
         orderModel.orderID = req.body.orderID
         ID = req.body.orderID
         orderModel.customer = customer
-        orderModel.items = cart.items
+        orderModel.items = cart.cartItems
         await orderModel.save()
         console.log("Saved")
 })
 
 app.post('/delete-item', async (req, res) => {
-    await Order.deleteOne({orderID: ID, items: cart.items, customer: customer}).then(() => {
+    await Order.deleteOne({orderID: ID, items: cart.cartItems, customer: customer}).then(() => {
         console.log("Deleted")
     }).catch((error) => {
         console.log(error)
@@ -166,7 +168,7 @@ app.post('/get-tracking', async (req, res) => {
 })
 
 app.post('/remove-inventory', async (req, res) => {
-    cart.items.forEach(async (item) => {
+    cart.cartItems.forEach(async (item) => {
         await Product.findOne({name: item.productName}).then(async (product) => {
 
             product = product.toObject()
@@ -208,7 +210,7 @@ app.post('/remove-inventory', async (req, res) => {
 
 
 app.post('/add-inventory', async (req, res) => {
-    cart.items.forEach(async (item) => {
+    cart.cartItems.forEach(async (item) => {
         await Product.findOne({name: item.productName}).then(async (product) => {
 
             product = product.toObject()
@@ -247,64 +249,258 @@ app.post('/add-inventory', async (req, res) => {
     })
 })
 
-app.post('/create-shipment', async (req, res) => {  
 
-    var value = 0.00;
-    (cart.items).forEach((itemObject) => {
-        value += ((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity))
-    })
+// Fetch the Checkout Session to display the JSON result on the success page
+app.get('/checkout-session', async (req, res) => {
+    const { sessionId } = req.query;
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    res.send(session);
+  });
 
-    let stringValue = (value * 1.00 / 100).toFixed(2)
+function getShipping(){
 
-    var CCA2Country = '';
-
-    await axios.get(`https://restcountries.com/v3.1/name/${customer.country}`).then((res) => CCA2Country = res.data[0].cca2).catch((err) => console.error(err))
-
-    let provinceCode = ''
-
-    new Country(CCA2Country).provinces.data.forEach((obj) => {
-        if(obj.name === customer.region){
-            provinceCode = obj.code
+    var country = getCountry()
+    var shipping = []
+    if(calculateTotal() < 3500){
+        if(country == 'Canada'){
+            shipping.push({
+                shipping_rate_data: {
+                  type: 'fixed_amount',
+                  fixed_amount: {
+                    amount: 795,
+                    currency: 'usd',
+                  },
+                  display_name: 'Canada Post',
+                  delivery_estimate: {
+                    minimum: {
+                      unit: 'business_day',
+                      value: 2,
+                    },
+                    maximum: {
+                      unit: 'business_day',
+                      value: 8,
+                    },
+                  },
+                },
+              })
+        } 
+        else if(country == "United States"){
+            shipping.push({
+                shipping_rate_data: {
+                  type: 'fixed_amount',
+                  fixed_amount: {
+                    amount: 395,
+                    currency: 'usd',
+                  },
+                  display_name: 'USPS First Class',
+                  delivery_estimate: {
+                    minimum: {
+                      unit: 'business_day',
+                      value: 3,
+                    },
+                    maximum: {
+                      unit: 'business_day',
+                      value: 5,
+                    },
+                  },
+                },
+              })
         }
+        else{
+            shipping.push({
+                shipping_rate_data: {
+                  type: 'fixed_amount',
+                  fixed_amount: {
+                    amount: 795,
+                    currency: 'usd',
+                  },
+                  display_name: 'Asendia International',
+                  delivery_estimate: {
+                    minimum: {
+                      unit: 'business_day',
+                      value: 5,
+                    },
+                    maximum: {
+                      unit: 'business_day',
+                      value: 22,
+                    },
+                  },
+                },
+              })
+        }
+    }
+    else{
+        if(country == 'Canada'){
+            shipping.push({
+                shipping_rate_data: {
+                  type: 'fixed_amount',
+                  fixed_amount: {
+                    amount: 0,
+                    currency: 'usd',
+                  },
+                  display_name: 'Canada Post',
+                  delivery_estimate: {
+                    minimum: {
+                      unit: 'business_day',
+                      value: 2,
+                    },
+                    maximum: {
+                      unit: 'business_day',
+                      value: 8,
+                    },
+                  },
+                },
+              })
+        } 
+        else if(country == "United States"){
+            shipping.push({
+                shipping_rate_data: {
+                  type: 'fixed_amount',
+                  fixed_amount: {
+                    amount: 395,
+                    currency: 'usd',
+                  },
+                  display_name: 'USPS',
+                  delivery_estimate: {
+                    minimum: {
+                      unit: 'business_day',
+                      value: 3,
+                    },
+                    maximum: {
+                      unit: 'business_day',
+                      value: 5,
+                    },
+                  },
+                },
+              })
+        }
+        else{
+            shipping.push({
+                shipping_rate_data: {
+                  type: 'fixed_amount',
+                  fixed_amount: {
+                    amount: 795,
+                    currency: 'usd',
+                  },
+                  display_name: 'Asendia International',
+                  delivery_estimate: {
+                    minimum: {
+                      unit: 'business_day',
+                      value: 5,
+                    },
+                    maximum: {
+                      unit: 'business_day',
+                      value: 22,
+                    },
+                  },
+                },
+              })
+        }
+    }
+    return shipping     
+}
+
+function getLineItems(){
+
+    var line_items = []
+
+    console.log(cart)
+
+    cart['cartItems'].forEach((cartItem) => {
+  
+        if(cartItem.productVariant != 'null'){
+            var priceString = storeItems.get(parseInt(cartItem.productId)).stripe_price
+            stringArr = priceString.split(' ')
+            priceIndex = stringArr.indexOf(cartItem.productVariant) + 1
+            var stripe_price = stringArr[priceIndex]
+
+            line_items.push({
+                price: stripe_price,
+                quantity: parseInt(cartItem.productQuantity)
+            })    
+        }
+        else{
+            line_items.push({
+                price: storeItems.get(parseInt(cartItem.productId)).stripe_price,
+                quantity: parseInt(cartItem.productQuantity)
+            })
+        } 
+
     })
 
-    await axios.post(`https://chitchats.com/api/v1/clients/${process.env.CHITCHATS_CLIENT_ID}/shipments`, {
-        "name": `${customer.firstname}\u00A0${customer.lastname}`,
-        "address_1": `${customer.address}`,
-        "address_2": `${customer.address_optional}`,
-        "city": `${customer.city}`,
-        "province_code": `${provinceCode}`,
-        "postal_code": `${customer.code}`,
-        "country_code": `${CCA2Country}`,
-        "package_contents": "merchandise",
-        "description": "Keychains, Enamel Pins, and Diecast Cars",
-        "value": stringValue,
-        "value_currency": "usd",
-        "order_id": "",
-        "order_store": "",
-        "package_type": "parcel",
-        "weight_unit": "g",
-        "weight": 100,
-        "size_unit": "cm",
-        "size_x": 17,
-        "size_y": 10,
-        "size_z": 2,
-        "insurance_requested": true,
-        "signature_requested": false,
-        "vat_reference": "",
-        "duties_paid_requested": false,
-        "postage_type": "chit_chats_canada_tracked",
-        "cheapest_postage_type_requested": "no",
-        "tracking_number": "",
-        "ship_date": "today"
-    }, { headers: {
-        "Accept" : "*/*",
-        "Accept-Encoding" : "gzip, deflate, br",
-        "Connection" : "keep-alive",
-        "Authorization": `${process.env.CHITCHATS_TOKEN}`,
-        "Content-Type": "application/json" } 
-    }).then((res) => {console.log('Shipment Created')}).catch((err) => {console.error(err)})
-})
+    return line_items
+
+}
+
+var session_id;
+
+  
+app.post('/create-checkout-session', async (req, res) => {
+    const domainURL = 'https://www.skylineculture.store';
+
+    // Create new Checkout Session for the order
+    // Other optional params include:
+    // [billing_address_collection] - to display billing address details on the page
+    // [customer] - if you have an existing Stripe Customer ID
+    // [customer_email] - lets you prefill the email input in the Checkout page
+    // [automatic_tax] - to automatically calculate sales tax, VAT and GST in the checkout page
+    // For full details see https://stripe.com/docs/api/checkout/sessions/create
+    const session = await stripe.checkout.sessions.create({
+      mode: 'payment',
+      invoice_creation: {
+        enabled: true,
+      },
+      customer_creation: "always",
+      allow_promotion_codes: true,
+      shipping_address_collection: {allowed_countries: ['CA', 'US', 'GB', 'AU', 'NZ', 'FR', 'DE', 'BE', 'DK', 'IS', 'IE', 'FI', 'SE', 'CH', 'NL', 'NO', 'HK', 'JP', 'SG', 'ZA', 'KW', 'AE', 'QA']},
+      line_items: getLineItems(),
+      success_url: `${domainURL}/order-complete`,
+      cancel_url: `${domainURL}/cart`,
+      billing_address_collection: 'required',
+      shipping_options: getShipping(),
+    });
+
+    return res.redirect(303, session.url);
+  });
+
+  
+  
+  // Webhook handler for asynchronous events.
+  app.post('/webhook', async (req, res) => {
+    let data;
+    let eventType;
+    // Check if webhook signing is configured.
+    if (process.env.STRIPE_WEBHOOK_SECRET) {
+      // Retrieve the event by verifying the signature using the raw body and secret.
+      let event;
+      let signature = req.headers['stripe-signature'];
+  
+      try {
+        event = stripe.webhooks.constructEvent(
+          req.rawBody,
+          signature,
+          process.env.STRIPE_WEBHOOK_SECRET
+        );
+      } catch (err) {
+        console.log(`⚠️  Webhook signature verification failed.`);
+        return res.sendStatus(400);
+      }
+      // Extract the object from the event.
+      data = event.data;
+      eventType = event.type;
+    } else {
+      // Webhook signing is recommended, but if the secret is not configured in `config.js`,
+      // retrieve the event data directly from the request body.
+      data = req.body.data;
+      eventType = req.body.type;
+    }
+  
+    if (eventType === 'checkout.session.completed') {
+      console.log(`🔔  Payment received!`);
+    }
+  
+    res.sendStatus(200);
+});
 
 app.listen(process.env.PORT || 8080, () => {
     console.log("Server is running on port 8080")

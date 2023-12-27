@@ -54,39 +54,39 @@ app.post("/get-items", (req,res) => {
     res.send(cart)
 })
 
-app.post('/create-customer', async (req, res) => {
-    try{
-        var Alpha2 = countryToAlpha2(req.body.country)
-        const stripeCustomer = await stripe.customers.create({
-            name : req.body.firstname + ' ' + req.body.lastname,
-            email: req.body.email,
-            address:{
-                city: req.body.city,
-                country: Alpha2,
-                line1: req.body.address,
-                line2: req.body.address_optional,
-                postal_code: req.body.code,
-                state: req.body.region
-            }
-        }) 
-        customer.cus_id = stripeCustomer.id
-        customer.email = req.body.email
-        customer.firstname = req.body.firstname
-        customer.lastname = req.body.lastname
-        customer.address = req.body.address
-        customer.address_optional =  req.body.address_optional
-        customer.city = req.body.city
-        customer.code = req.body.code
-        customer.country = req.body.country
-        customer.region = req.body.region
-    } catch (e) {
-        return res.status(400).send({
-            error: {
-              message: e.message,
-            },
-        });
-    }
-})
+// app.post('/create-customer', async (req, res) => {
+//     try{
+//         var Alpha2 = countryToAlpha2(req.body.country)
+//         const stripeCustomer = await stripe.customers.create({
+//             name : req.body.firstname + ' ' + req.body.lastname,
+//             email: req.body.email,
+//             address:{
+//                 city: req.body.city,
+//                 country: Alpha2,
+//                 line1: req.body.address,
+//                 line2: req.body.address_optional,
+//                 postal_code: req.body.code,
+//                 state: req.body.region
+//             }
+//         }) 
+//         customer.cus_id = stripeCustomer.id
+//         customer.email = req.body.email
+//         customer.firstname = req.body.firstname
+//         customer.lastname = req.body.lastname
+//         customer.address = req.body.address
+//         customer.address_optional =  req.body.address_optional
+//         customer.city = req.body.city
+//         customer.code = req.body.code
+//         customer.country = req.body.country
+//         customer.region = req.body.region
+//     } catch (e) {
+//         return res.status(400).send({
+//             error: {
+//               message: e.message,
+//             },
+//         });
+//     }
+// })
 
 app.post('/config', (req, res) => {
     res.json({ publishableKey : 'pk_live_NUvboNKoFJl7b8W2UwzNphXv00wcelkZMY'})
@@ -112,27 +112,27 @@ function calculateTotal(){
     return total
 }
 
-app.post('/create-payment-intent', async (req, res) => {
-    try {
-        const paymentIntent = await stripe.paymentIntents.create({
-            customer: customer.cus_id,
-            currency: "USD",
-            amount: calculateTotal(),
-            automatic_payment_methods: { enabled: true },
-        });
+// app.post('/create-payment-intent', async (req, res) => {
+//     try {
+//         const paymentIntent = await stripe.paymentIntents.create({
+//             customer: customer.cus_id,
+//             currency: "USD",
+//             amount: calculateTotal(),
+//             automatic_payment_methods: { enabled: true },
+//         });
     
-        // Send publishable key and PaymentIntent details to client
-        res.json({
-          clientSecret: paymentIntent.client_secret,
-        });
-      } catch (e) {
-        return res.status(400).send({
-          error: {
-            message: e.message,
-          },
-        });
-      }
-})
+//         // Send publishable key and PaymentIntent details to client
+//         res.json({
+//           clientSecret: paymentIntent.client_secret,
+//         });
+//       } catch (e) {
+//         return res.status(400).send({
+//           error: {
+//             message: e.message,
+//           },
+//         });
+//       }
+// })
 
 app.post('/save-items', async (req, res) => {
         var orderModel = await new Order()
@@ -259,7 +259,8 @@ app.get('/checkout-session', async (req, res) => {
 
 function getShipping(){
 
-    var country = getCountry()
+    var country = 'United States'
+    country = getCountry()
     var shipping = []
     if(calculateTotal() < 3500){
         if(country == 'Canada'){

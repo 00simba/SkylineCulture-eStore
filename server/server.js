@@ -459,6 +459,7 @@ app.post('/create-checkout-session', async (req, res) => {
     });
 
     return res.redirect(303, session.url);
+    
   });
 
   

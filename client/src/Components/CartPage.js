@@ -67,7 +67,13 @@ export default function CartPage(props){
 
     var cartItems = props.cartItems
 
-    axios.post("https://skylineculture-api.onrender.com/get-items", {cartItems})
+    async function handleSubmit(){
+        await axios.post("https://skylineculture-api.onrender.com/get-items", {cartItems})
+        await axios.post("https://skylineculture-api.onrender.com/create-checkout-session")
+        sessionStorage.clear()
+    }
+
+    
 
 //    useEffect(() => {
 //         async function fetchConfig() {
@@ -146,7 +152,7 @@ export default function CartPage(props){
                 <h3 className='totalHeading'>Total: ${total.toFixed(2)}</h3>
                 <h3>Item(s): {itemCount}</h3>
               </div>
-              {!(props.cartItems.length) ? <p className='cartStatus'>Cart Empty</p> : <form action="https://skylineculture-api.onrender.com/create-checkout-session" method="POST"><button onClick={() => sessionStorage.clear()} className="checkoutBtn" role="link" type="submit">Checkout</button></form>}
+              {!(props.cartItems.length) ? <p className='cartStatus'>Cart Empty</p> : <button onClick={() => handleSubmit()} className="checkoutBtn" role="link" type="submit">Checkout</button>}
             </div>
             {!(props.cartItems.length) ? <div className="contDiv">
                 <span className='contMsg'>Your cart is currently empty. Click the button below to view some products.</span>

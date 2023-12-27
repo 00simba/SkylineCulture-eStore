@@ -68,8 +68,8 @@ export default function CartPage(props){
     var cartItems = props.cartItems
 
     async function handleSubmit(){
-        await axios.post("http://localhost:8080/get-items", {cartItems})
-        await axios.post("http://localhost:8080/create-checkout-session").then((res) => {window.location = res.data.url})
+        await axios.post("https://skylineculture-api.onrender.com/get-items", {cartItems})
+        await axios.post("https://skylineculture-api.onrender.com/create-checkout-session").then((res) => {window.location = res.data.url})
         sessionStorage.clear()
     }
 

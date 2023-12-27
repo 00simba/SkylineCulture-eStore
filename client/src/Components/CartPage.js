@@ -69,18 +69,18 @@ export default function CartPage(props){
 
     axios.post("https://skylineculture-api.onrender.com/get-items", {cartItems})
 
-    useEffect(() => {
-        async function fetchConfig() {
-          // Fetch config from our backend.
-          const {
-            unitAmount,
-            currency
-          } = await fetch('https://skylineculture-api.onrender.com/config').then(r => r.json());
-          setAmount(unitAmount);
-          setCurrency(currency);
-        }
-        fetchConfig();
-      }, []);
+//    useEffect(() => {
+//         async function fetchConfig() {
+//           // Fetch config from our backend.
+//           const {
+//             unitAmount,
+//             currency
+//           } = await fetch('https://skylineculture-api.onrender.com/config').then(r => r.json());
+//           setAmount(unitAmount);
+//           setCurrency(currency);
+//         }
+//         fetchConfig();
+//       }, []);
 
     useEffect(() => {
         ReactGA.pageview(window.location.pathname)

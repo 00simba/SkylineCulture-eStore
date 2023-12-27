@@ -458,8 +458,8 @@ app.post('/create-checkout-session', async (req, res) => {
       shipping_options: getShipping(),
     });
 
-    return res.redirect(303, session.url);
-    
+    return res.send({url: session.url});
+
   });
 
   

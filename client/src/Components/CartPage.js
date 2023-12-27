@@ -69,7 +69,8 @@ export default function CartPage(props){
 
     async function handleSubmit(){
         await axios.post("https://skylineculture-api.onrender.com/get-items", {cartItems})
-        await axios.post("https://skylineculture-api.onrender.com/create-checkout-session", {}).then((res) => {window.location = res.data.url}).catch((err) => console.log(err))
+        await axios.post("https://skylineculture-api.onrender.com/create-checkout-session", {}, {headers:{"Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"}}).then((res) => {window.location = res.data.url}).catch((err) => console.log(err))
         sessionStorage.clear()
     }
 

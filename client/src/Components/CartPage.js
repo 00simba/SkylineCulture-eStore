@@ -66,7 +66,6 @@ export default function CartPage(props){
     const [currency, setCurrency] = useState('USD');
 
     var cartItems = props.cartItems
-    console.log(cartItems)
 
     axios.post("https://skylineculture-api.onrender.com/get-items", {cartItems})
 
@@ -76,7 +75,7 @@ export default function CartPage(props){
           const {
             unitAmount,
             currency
-          } = await fetch('/config').then(r => r.json());
+          } = await fetch('https://skylineculture-api.onrender.com/config').then(r => r.json());
           setAmount(unitAmount);
           setCurrency(currency);
         }

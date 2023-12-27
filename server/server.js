@@ -432,9 +432,7 @@ function getLineItems(){
 
 }
 
-var session_id;
 
-  
 app.post('/create-checkout-session', async (req, res) => {
     const domainURL = 'https://www.skylineculture.store';
 

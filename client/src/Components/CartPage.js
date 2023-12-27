@@ -5,7 +5,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import { Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactGA from 'react-ga'
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 function removeItem(setCartItems, cartItems, productId, productVariant){
@@ -59,6 +60,28 @@ function getCount(cartItems) {
 
 
 export default function CartPage(props){
+
+    const [quantity, setQuantity] = useState(1);
+    const [amount, setAmount] = useState(0);
+    const [currency, setCurrency] = useState('USD');
+
+    var cartItems = props.cartItems
+    console.log(cartItems)
+
+    axios.post("https://skylineculture-api.onrender.com/get-items", {cartItems})
+
+    useEffect(() => {
+        async function fetchConfig() {
+          // Fetch config from our backend.
+          const {
+            unitAmount,
+            currency
+          } = await fetch('/config').then(r => r.json());
+          setAmount(unitAmount);
+          setCurrency(currency);
+        }
+        fetchConfig();
+      }, []);
 
     useEffect(() => {
         ReactGA.pageview(window.location.pathname)
@@ -124,7 +147,7 @@ export default function CartPage(props){
                 <h3 className='totalHeading'>Total: ${total.toFixed(2)}</h3>
                 <h3>Item(s): {itemCount}</h3>
               </div>
-              {!(props.cartItems.length) ? <p className='cartStatus'>Cart Empty</p> :<Link to={`/checkout/${id}`}><button onClick={() => props.changeId(id)} className="checkoutBtn" type="button">Checkout</button></Link>}
+              {!(props.cartItems.length) ? <p className='cartStatus'>Cart Empty</p> : <form action="/create-checkout-session" method="POST"><button onClick={() => sessionStorage.clear()} className="checkoutBtn" role="link" type="submit">Checkout</button></form>}
             </div>
             {!(props.cartItems.length) ? <div className="contDiv">
                 <span className='contMsg'>Your cart is currently empty. Click the button below to view some products.</span>

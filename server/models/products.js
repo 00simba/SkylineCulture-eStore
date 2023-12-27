@@ -14,6 +14,10 @@ const productSchema = new Schema({
         type: Number,
         required: true
     },
+    stripe_price:{
+        type: String,
+        required: true
+    },
     stock: {
         type: Array,
         required: true

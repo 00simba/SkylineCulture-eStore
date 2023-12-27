@@ -1,30 +1,39 @@
 import React, { useEffect } from 'react';
 import './ordercomplete.css'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import axios from 'axios'
 import ReactGA from 'react-ga'
  
-export default function OrderComplete(){
+export default function OrderComplete(props){
+
+    const [orderID, setID] = useState(null)
 
     useEffect(() => {
         ReactGA.pageview(window.location.pathname)
-    }, [])
-
-    localStorage.clear()
-    sessionStorage.clear()
-
+        if(sessionStorage.getItem('orderID')){     
+            setID(sessionStorage.getItem('orderID'))        
+        }
+        else{
+            var id = Math.floor(Math.random() * 9000 + 1000)
+            setID(id)
+            axios.post("https://skylineculture-api.onrender.com/remove-inventory").then((res) => console.log(res.data)).catch((err) => console.log(err))
+            axios.post("https://skylineculture-api.onrender.com/save-items", {orderID : id}).then((res) => {console.log(res.data)})    
+            localStorage.clear()
+        } 
+    }, []);
+    
     useEffect(() => {
-        axios.post('https://skylineculture-api.onrender.com/send-receipt').then((res) => console.log(res)).catch((err) => console.error(err))
-    }, [])
+        sessionStorage.setItem('orderID', orderID);
+    }, [orderID])
 
     return(
         <div className='completeContainer'>
             <div className='headingContainer'>
-                <h2>Your order has been placed!</h2>
-                <h2>Thank you.</h2>
+                <h2>Thank you for your purchase!</h2>
+                <h2>{`Order: #${orderID}`}</h2>
             </div>
             <div className='completeInfo'>
-                <p>You will receive a payment confirmation and tracking information email within 24 hours.</p>
                 <p>Visit the Track Order page for estimated shipping times</p>
                 <p>For all other inquiries about your order email: info@skylineculture.store</p>
             </div>

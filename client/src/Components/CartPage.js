@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ReactGA from 'react-ga'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { getCountry } from './getCountry';
 
 
 function removeItem(setCartItems, cartItems, productId, productVariant){
@@ -66,10 +67,11 @@ export default function CartPage(props){
     const [currency, setCurrency] = useState('USD');
 
     var cartItems = props.cartItems
+    const country = getCountry()
 
     async function handleSubmit(){
         await axios.post("https://skylineculture-api.onrender.com/get-items", {cartItems})
-        await axios.post("https://skylineculture-api.onrender.com/create-checkout-session", {}, {headers:{"Access-Control-Allow-Origin": "*",
+        await axios.post("https://skylineculture-api.onrender.com/create-checkout-session", {country}, {headers:{"Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"}}).then((res) => {window.location = res.data.url}).catch((err) => console.log(err))
         sessionStorage.clear()
     }

@@ -1,4 +1,4 @@
-module.exports = { getCountry: function getCountry() {
+export function getCountry() {
 	var countries = {
 		AD: "Andorra",
 		AE: "United Arab Emirates",
@@ -2864,5 +2864,5 @@ module.exports = { getCountry: function getCountry() {
 	const _country = timezones[timezone].c[0];
 	const country = countries[_country];
 	return country;
-}}
+}
 

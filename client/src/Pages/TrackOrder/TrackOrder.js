@@ -27,7 +27,7 @@ export default function TrackOrder(){
                     <input onChange={(e) => setID(e.target.value)} value={orderID} type='text' placeholder='Enter Shipment ID'></input>
                 </form>
                 <button onClick={(e) => handleSubmit(e)} className='trackButton'>Submit</button>
-                <div className='trackingInfo'>
+                {shippingInfo && <div className='trackingInfo'>
                     <div className='shipmentInfo'>
                         <div className='infoRow'><span className='infoLabel'>Carrier:&nbsp;</span> {shippingInfo && shippingInfo.carrier.toUpperCase()}</div>
                         <div className='infoRow'><span className='infoLabel'>Carrier Tracking Code:&nbsp;</span>{shippingInfo && shippingInfo.carrier_tracking_code}</div>
@@ -48,7 +48,7 @@ export default function TrackOrder(){
                             return <div>{date} {time} - {object.title} - {object.location_description}</div>
                         })}
                     </div>
-                </div>
+                </div>}
             </div>
             <div className='shippingFAQ'>
                 <h2>Additional Information</h2>

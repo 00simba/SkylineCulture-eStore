@@ -798,7 +798,7 @@ button:disabled{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: 100%;
+    width: 50%;
   }
 
   .card{
@@ -917,8 +917,8 @@ button:disabled{
     transform: translate(-100%, 0);
     border-bottom-right-radius: 20px;
 
-    border-bottom: 2.5px solid rgb(0, 0, 0) ;
-    border-right: 2.5px solid rgb(0, 0, 0) ;
+    border-bottom: 2px solid rgb(0, 0, 0) ;
+    border-right: 2px solid rgb(0, 0, 0) ;
     
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 
@@ -927,8 +927,8 @@ button:disabled{
   #menu li
   {
     display: block;
-    padding: 10px 0;
-    font-size: 22px;
+    padding: 15px 0px 0px 10px;
+    font-size: 20px;
   }
 
   /*
@@ -984,17 +984,25 @@ button:disabled{
 
   .eachItemRow{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: 4% 2% 4% 2%;
     padding: 5px;
     box-shadow: 0 2px 10px -2px rgba(0,0,0,.2);
     border-radius: 20px;
-    padding: 4%;
+  }
+
+  .leftSide{
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
   }
 
   .productImage{
-    padding: 3% 3% 0% 3%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
   }
+
 
   .productImage img{
     width: 100%;
@@ -1023,6 +1031,12 @@ button:disabled{
 
 
 @media only screen and (min-width: 579px) and (max-width: 768px){
+
+  .leftSide{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
 
   .descWrapper{
     border-radius: 15px;
@@ -1167,19 +1181,12 @@ button:disabled{
   }
 
   .eachItemRow{
-    margin-bottom: 25px;
-    padding: 15px;
-    box-shadow: 0 2px 10px -2px rgba(0,0,0,.2);
-    border-radius: 20px;
-  }
-
-  .eachItemRow{
     display: flex;
     flex-direction: row;
     flex-basis: 50%;
     justify-content: space-between;
     margin-bottom: 25px;
-    padding: 20px;
+    padding: 2% 10% 2% 10%;
     box-shadow: 0 2px 10px -2px rgba(0,0,0,.2);
     border-radius: 15px;
   }
@@ -1408,7 +1415,7 @@ button:disabled{
     flex-basis: 50%;
     justify-content: space-between;
     margin-bottom: 25px;
-    padding: 0px 20px 0px 20px;
+    padding: 2% 2% 0px 2%;
     box-shadow: 0 2px 10px -2px rgba(0,0,0,.2);
     border-radius: 15px;
   }

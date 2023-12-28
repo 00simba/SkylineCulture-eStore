@@ -41,16 +41,14 @@
 }
 
 .submitBtn{
-    background-color: rgb(50, 50, 50);
+    background-color: black;
     border: 1px solid #d5d9d9;
-    border-radius: 8px;
-    box-shadow: rgba(255, 255, 255, 0.5) 0 2px 5px 0;
+    border-radius: 15px;
     box-sizing: border-box;
     color: #ffffff;
     cursor: pointer;
     display: inline-block;
-    font-weight: bold;
-    font-family: "Amazon Ember",sans-serif;
+    font-family: "Rubik";
     font-size: 13px;
     line-height: 30px;
     padding: 0 10px 0 10px;
@@ -114,5 +112,11 @@
 
     .submitDiv{
         padding-top: 5%;
+    }
+}
+
+@media only screen and (min-width: 768px){
+    .contactForm{
+        padding: 3% 25% 0% 25%;
     }
 }

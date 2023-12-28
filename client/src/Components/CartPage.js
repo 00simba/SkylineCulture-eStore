@@ -114,15 +114,17 @@ export default function CartPage(props){
 
         return(
             <div className="eachItemRow">
-                <div className="itemInfos">
-                    <h3><a href={`/product/${item.productUrl}`}>{item.productName}</a></h3>
-                    <span>Price: <s>${(item.productPrice)}</s> <span className='salePrice'>${(item.salePrice)}</span></span>
-                    <span>Quantity: {item.productQuantity}</span> 
-                    {item.productVariant !='null' && item.productVariant !='Default' && <span>Color: {item.productVariant}</span>}
-                </div>
-                <div className="modifyItem">
-                    <Counter add={() => incrementItem(props.cartItems, item.productId, item.productVariant, props.setCartItems)} quantity={item.productQuantity}  minus={() => decrementItem(props.cartItems, item.productId, item.productVariant, props.setCartItems)}/>
-                    <button className="removeBtn" onClick={() => {removeItem(props.setCartItems, props.cartItems, item.productId, item.productVariant); remove()}}>Remove</button>
+                <div className='leftSide'>
+                    <div className="itemInfos">
+                        <h3><a href={`/product/${item.productUrl}`}>{item.productName}</a></h3>
+                        <span>Price: <s>${(item.productPrice)}</s> <span className='salePrice'>${(item.salePrice)}</span></span>
+                        <span>Quantity: {item.productQuantity}</span> 
+                        {item.productVariant !='null' && item.productVariant !='Default' && <span>Color: {item.productVariant}</span>}
+                    </div>
+                    <div className="modifyItem">
+                        <Counter add={() => incrementItem(props.cartItems, item.productId, item.productVariant, props.setCartItems)} quantity={item.productQuantity}  minus={() => decrementItem(props.cartItems, item.productId, item.productVariant, props.setCartItems)}/>
+                        <button className="removeBtn" onClick={() => {removeItem(props.setCartItems, props.cartItems, item.productId, item.productVariant); remove()}}>Remove</button>
+                    </div>
                 </div>
                 <div className="productImage">
                     <a href={`/product/${item.productUrl}`}><img src={require(`../Images/${item.productImage}`)}></img></a>

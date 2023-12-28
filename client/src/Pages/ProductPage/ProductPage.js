@@ -111,11 +111,14 @@ export default function ProductPage(props){
                         <MyGallery/>
                     </div>
 
-                    <div className="infoContainer">
+                    
+                    <div className="productDesc">
+                        <div className="descWrapper">
+                        <div className="infoContainer">
                         <div className="productInfo">
                             <div className="infoPrice">
-                                <h3 className="title">{productObj.title}</h3>
-                                {soldOut ? <h2 className="price">SOLD OUT</h2> : <div className='productPagePrice'><h3 className="prices"><s>${productObj.price}</s></h3><h3 className="salePrice">${productObj.sale_price}</h3></div>}
+                                <h2 className="title">{productObj.title}</h2>
+                                {soldOut ? <h2 className="price">SOLD OUT</h2> : <div className='productPagePrice'><h2 className="prices"><s>${productObj.price}</s></h2><h2 className="salePrice">${productObj.sale_price}</h2></div>}
                             </div>
                             <div className="addCounter">
                                 <AddToCart disabled={soldOut} id={productObj.id} product={productObj.title} quantity={quantity} variant={selected} variants={productObj.variants} image={productObj.img} price={productObj.price} sale_price={productObj.sale_price} basePrice={productObj.basePrice} url={productObj.url} addItemToCart={props.addItemToCart}/>
@@ -126,8 +129,6 @@ export default function ProductPage(props){
                             {(productObj.variants).map(variant => <Dropdown setSelected={setSelected} options={variant}/>)}
                         </div>}
                     </div>
-                    <div className="productDesc">    
-                        <div className="descWrapper">
                             <h3 className="descriptionHeader">Description</h3>
                             {(productObj.description).map((item) => <p>{item}<br/></p>)}
                             <h3 className="detailsHeader">Details</h3>

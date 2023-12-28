@@ -3,7 +3,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    border-top: solid 3px lightgray;
+    border-top: solid 2px lightgray;
     margin-top: 0%;
 }
 
@@ -36,7 +36,6 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    border-bottom: solid 2px lightgray;
     justify-content: center;
     align-items: center;
     text-align: center;

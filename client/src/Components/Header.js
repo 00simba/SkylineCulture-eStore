@@ -61,7 +61,7 @@ export default function Header(){
                     <Link to='/diecast-cars'><li>Diecast Cars</li></Link>
                     <Link to='/track-order'><li>Track Order</li></Link>
                     <Link to='/contact-us'><li>Contact</li></Link>
-                    <Link to='/cart'><li className='yourCartText'>Your Cart</li></Link>
+                    {<Link to='/cart'><li className='yourCartText'>Cart</li></Link>}
                 </ul>
 
                 <div className='cartIcon'>

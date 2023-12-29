@@ -5,9 +5,10 @@ import { toast, ToastContainer } from 'react-toastify';
 import { Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactGA from 'react-ga'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, CSSProperties } from 'react';
 import axios from 'axios';
 import { getCountry } from './getCountry';
+import { Ring } from 'react-css-spinners'
 
 
 function removeItem(setCartItems, cartItems, productId, productVariant){
@@ -62,34 +63,16 @@ function getCount(cartItems) {
 
 export default function CartPage(props){
 
-    const [quantity, setQuantity] = useState(1);
-    const [amount, setAmount] = useState(0);
-    const [currency, setCurrency] = useState('USD');
-
     var cartItems = props.cartItems
     const country = getCountry()
 
     async function handleSubmit(){
+
         await axios.post("https://skylineculture-api.onrender.com/get-items", {cartItems})
         await axios.post("https://skylineculture-api.onrender.com/create-checkout-session", {country}, {headers:{"Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"}}).then((res) => {window.location = res.data.url}).catch((err) => console.log(err))
         sessionStorage.clear()
     }
-
-    
-
-//    useEffect(() => {
-//         async function fetchConfig() {
-//           // Fetch config from our backend.
-//           const {
-//             unitAmount,
-//             currency
-//           } = await fetch('https://skylineculture-api.onrender.com/config').then(r => r.json());
-//           setAmount(unitAmount);
-//           setCurrency(currency);
-//         }
-//         fetchConfig();
-//       }, []);
 
     useEffect(() => {
         ReactGA.pageview(window.location.pathname)
@@ -136,6 +119,8 @@ export default function CartPage(props){
     const shortid = require('shortid');
     const id = shortid.generate();
 
+    let [loading, setLoading] = useState(false);
+
     return(
         <div className='cartContainer'>
             <ToastContainer
@@ -157,7 +142,18 @@ export default function CartPage(props){
                 <h3 className='totalHeading'>Total: ${total.toFixed(2)}</h3>
                 <h3>Item(s): {itemCount}</h3>
               </div>
-              {!(props.cartItems.length) ? <p className='cartStatus'>Cart Empty</p> : <button onClick={() => handleSubmit()} className="checkoutBtn" role="link" type="submit">Checkout</button>}
+              {!(props.cartItems.length) ? <p className='cartStatus'>Cart Empty</p> : 
+              
+                <div className='loadingDiv'>
+
+                    {loading && 
+                     <Ring color="#000000" size={30} thickness={3} />
+                    
+                    }
+                
+                    <button onClick={() => {handleSubmit(); setLoading(true)}} className="checkoutBtn" role="link" type="submit">Checkout</button>
+                
+                </div>}
             </div>
             {!(props.cartItems.length) ? <div className="contDiv">
                 <span className='contMsg'>Your cart is currently empty. Click the button below to view some products.</span>

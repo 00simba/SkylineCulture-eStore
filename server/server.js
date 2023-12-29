@@ -309,7 +309,7 @@ function getShipping(country){
                 shipping_rate_data: {
                   type: 'fixed_amount',
                   fixed_amount: {
-                    amount: 795,
+                    amount: 995,
                     currency: 'usd',
                   },
                   display_name: 'Asendia International',
@@ -355,7 +355,7 @@ function getShipping(country){
                 shipping_rate_data: {
                   type: 'fixed_amount',
                   fixed_amount: {
-                    amount: 395,
+                    amount: 0,
                     currency: 'usd',
                   },
                   display_name: 'USPS',
@@ -377,7 +377,7 @@ function getShipping(country){
                 shipping_rate_data: {
                   type: 'fixed_amount',
                   fixed_amount: {
-                    amount: 795,
+                    amount: 0,
                     currency: 'usd',
                   },
                   display_name: 'Asendia International',

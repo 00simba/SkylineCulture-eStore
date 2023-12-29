@@ -29,6 +29,7 @@
     "react-toastify": "^9.1.1",
     "shortid": "^2.2.16",
     "terser-webpack-plugin": "^4.2.3",
+    "typescript": "^5.3.3",
     "web-vitals": "^2.1.4",
     "webpack": "^4.28.3"
   },

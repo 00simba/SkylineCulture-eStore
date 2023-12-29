@@ -1,4 +1,4 @@
-const shipping =  ["All shipments are fully tracked!\n\n USA: 3-6 business days\n Canada: 2-8 business days\n International: 6-21 business days"]
+const shipping =  ["USA: 4 business days\n Canada: 2-8 business days\n International: 7-15 business days"]
 
 export default [
     {

@@ -16,6 +16,7 @@ import ReactGA from 'react-ga'
 
 export default function ProductPage(props){
 
+
     useEffect(() => {
         ReactGA.pageview(window.location.pathname)
     }, [])
@@ -55,7 +56,7 @@ export default function ProductPage(props){
     let images = []
 
     productObj.img.forEach((img, index) => {
-        images.push({original: require(`../../Images/${productObj.img[index]}`)})
+        return images.push({ original: require(`../../Images/${productObj.img[index]}`) });
     })
 
     class MyGallery extends React.Component{

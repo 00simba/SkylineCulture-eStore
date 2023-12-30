@@ -316,11 +316,11 @@ function getShipping(country){
                   delivery_estimate: {
                     minimum: {
                       unit: 'business_day',
-                      value: 5,
+                      value: 7,
                     },
                     maximum: {
                       unit: 'business_day',
-                      value: 22,
+                      value: 15,
                     },
                   },
                 },

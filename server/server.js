@@ -294,11 +294,11 @@ function getShipping(country){
                   delivery_estimate: {
                     minimum: {
                       unit: 'business_day',
-                      value: 3,
+                      value: 4,
                     },
                     maximum: {
                       unit: 'business_day',
-                      value: 5,
+                      value: 4,
                     },
                   },
                 },
@@ -402,8 +402,6 @@ function getLineItems(){
 
     var line_items = []
 
-    console.log(cart)
-
     cart['cartItems'].forEach((cartItem) => {
   
         if(cartItem.productVariant != 'null'){
@@ -433,7 +431,6 @@ function getLineItems(){
 
 app.post('/create-checkout-session', async (req, res) => {
     const domainURL = 'https://www.skylineculture.store';
-
     // Create new Checkout Session for the order
     // Other optional params include:
     // [billing_address_collection] - to display billing address details on the page
@@ -453,7 +450,7 @@ app.post('/create-checkout-session', async (req, res) => {
       success_url: `${domainURL}/order-complete`,
       cancel_url: `${domainURL}/cart`,
       billing_address_collection: 'required',
-      shipping_options: getShipping(req.body.country),
+      shipping_options: getShipping(req.body.selected),
     });
 
     return res.send({url: session.url});

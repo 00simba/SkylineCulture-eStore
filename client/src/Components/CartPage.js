@@ -67,7 +67,7 @@ export default function CartPage(props){
     const country = getCountry()
 
     async function handleSubmit(){
-
+        setLoading(true)
         await axios.post("https://skylineculture-api.onrender.com/get-items", {cartItems})
         await axios.post("https://skylineculture-api.onrender.com/create-checkout-session", {country}, {headers:{"Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"}}).then((res) => {window.location = res.data.url}).catch((err) => console.log(err))
@@ -151,7 +151,7 @@ export default function CartPage(props){
                     
                     }
                 
-                    <button onClick={() => {handleSubmit(); setLoading(true)}} className="checkoutBtn" role="link" type="submit">Checkout</button>
+                    <button onClick={() => handleSubmit()} className="checkoutBtn" role="link" type="submit">Checkout</button>
                 
                 </div>}
             </div>

@@ -10,12 +10,14 @@ import BackButton from "../../Components/BackButton";
 import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css'
 import ImageGallery from 'react-image-gallery';
 import Dropdown from "../../Components/Dropdown/Dropdown";
+import ReactStars from 'react-stars'
 import './productpage.css'
 import axios from "axios";
 import ReactGA from 'react-ga'
+import data from '../../Data/Data'
+import { Ellipsis } from 'react-css-spinners'
 
 export default function ProductPage(props){
-
 
     useEffect(() => {
         ReactGA.pageview(window.location.pathname)
@@ -30,13 +32,13 @@ export default function ProductPage(props){
 
     let index;
 
-    for(const items in props.items){
-        if(props.items[items].props.item.url === productUrl){
-            index = (props.items[items].props.item.id)-1
+    for(const itemsIndex in props.items){
+        if (props.items[itemsIndex].props.item.url === productUrl){
+            index = itemsIndex
         }
     }
 
-    const productObj = props.items[index].props.item;
+    const productObj = data[index]
 
     const [quantity, setQuantity] = React.useState(1)
     
@@ -68,9 +70,10 @@ export default function ProductPage(props){
     const [selected, setSelected] = React.useState(null);
 
     const [productStock, setStock] = React.useState(null);
+    const [productReviews, setReviews] = React.useState(null);
 
     useEffect(() => {
-        axios.post('https://skylineculture-api.onrender.com/get-stock', {productName: productObj.title}).then((res) => setStock(res.data[0].stock)).catch((err) => console.error(err))
+        axios.post('https://skylineculture-api.onrender.com/get-stock', {productName: productObj.title}).then((res) => {setStock(res.data[0].stock); setReviews(res.data[0].reviews)}).catch((err) => console.error(err))
     }, [])
 
     let soldOut = false
@@ -83,6 +86,13 @@ export default function ProductPage(props){
                 }
             }
         })
+    }
+
+    const firstExample = {
+        size: 20,
+        value: productObj.stars,
+        edit: false,
+        color2: "#FFB800"
     }
     
     return(
@@ -111,7 +121,6 @@ export default function ProductPage(props){
                     <div className="imageContainer">
                         <MyGallery/>
                     </div>
-
                     
                     <div className="productDesc">
                         <div className="descWrapper">
@@ -119,6 +128,7 @@ export default function ProductPage(props){
                         <div className="productInfo">
                             <div className="infoPrice">
                                 <h2 className="title">{productObj.title}</h2>
+                                <ReactStars {...firstExample}/>
                                 {soldOut ? <h2 className="price">SOLD OUT</h2> : <div className='productPagePrice'><h2 className="prices"><s>${productObj.price}</s></h2><h2 className="salePrice">${productObj.sale_price}</h2></div>}
                             </div>
                             <div className="addCounter">
@@ -139,7 +149,29 @@ export default function ProductPage(props){
                         </div>
                     </div>
             </div>
-        </div>
-        
+            <div className="reviewContainer">
+                {!productReviews && 
+                     <div className="reviewLoading"><Ellipsis color="#000000" size={60} thickness={3} /></div>
+                    
+                }
+                {productReviews && <h2>Customer Reviews</h2>}
+                {productReviews && 
+                productReviews.map((review) => {
+                    return(
+                        <>               
+                            <div className="reviewRow"> 
+                                <div className="starDiv">
+                                    <ReactStars size={20} edit={false} value={review.stars} color2={'#FFB800'}/>
+                                    <span>{review.name}</span>
+                                    <span>{review.date}</span>
+                                </div>
+                                <span>{review.desc}</span>
+                               {review.images && <div className="reviewPics">{review.images.map((image) => {return(<img src={image}/>)})}</div>}
+                            </div> 
+                        </>
+                    )})
+                }
+            </div>
+        </div>       
     )
 }

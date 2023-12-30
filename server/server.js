@@ -12,7 +12,6 @@ const cors = require("cors")
 app.use(cors())
 app.use(express.static(path.join(__dirname, '..', 'client', 'build')))
 const axios = require('axios');
-const { countryToAlpha2 } = require('country-to-iso')
 
 require('dotenv').config()
 
@@ -21,8 +20,9 @@ mongoose.connect(dbURI, {dbName: 'website-db', useNewUrlParser: true, useUnified
 
 const storeItems = new Map()
 Product.find().then((result) => result.map((item) => {
-    storeItems.set(item.id, {name: item.name, price: item.price, stripe_price: item.stripe_price, stock: item.stock})
+    storeItems.set(item.id, {name: item.name, price: item.price, stripe_price: item.stripe_price, stock: item.stock, reviews: item.reviews})
 }))
+
 
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
@@ -152,7 +152,7 @@ app.post('/delete-item', async (req, res) => {
 
 app.post('/get-stock', async (req, res) => {
     await Product.find({name: req.body.productName}).then((response) => {
-        res.send(response)}).catch((err) => {console.log(err)})
+        res.send(response);}).catch((err) => {console.log(err)})
 })
 
 app.post('/get-customer', (req,res) => {

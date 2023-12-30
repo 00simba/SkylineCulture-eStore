@@ -14,7 +14,8 @@ export default function LandingPage(props){
                 key={item.id}
                 id={item.id}
                 title={item.title}
-                item={item}  
+                item={item} 
+                stars={item.stars} 
             />
         )
     })

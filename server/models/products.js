@@ -21,6 +21,10 @@ const productSchema = new Schema({
     stock: {
         type: Array,
         required: true
+    },
+    reviews: {
+        type: Array,
+        required: false
     }
 })
 

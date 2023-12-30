@@ -1,3 +1,7 @@
+.homeStars{
+  margin-left: 4%;
+}
+
 .loadingDiv{
   display: flex;
   flex-direction: row;
@@ -1034,7 +1038,7 @@ button:disabled{
 
   .productContainer{
     padding-top: 5%;
-    margin-bottom: 15vh
+    margin-bottom: 3vh
   }
 
 }
@@ -1057,7 +1061,7 @@ button:disabled{
   }
 
   .productContainer{
-    margin-bottom: 15vh;
+    margin-bottom: 3%;
   }
 
   .websiteBanner{
@@ -1364,7 +1368,7 @@ button:disabled{
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    padding: 15px 10% 15vh 10%;
+    padding: 15px 10% 2% 10%;
 
   }
 

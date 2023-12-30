@@ -19,10 +19,7 @@ import TrackOrder from './Pages/TrackOrder/TrackOrder';
 import TermsAndService from './Pages/TermsAndService/TermsAndService';
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import ContactUs from './Pages/ContactUs/ContactUs';
-import ReactGA from 'react-ga'
 import shortid from 'shortid';
-
-ReactGA.initialize('UA-255315723-1');
 
 export default function Website(){
 
@@ -96,6 +93,7 @@ export default function Website(){
                 id={item.id}
                 title={item.title}
                 item={item}  
+                stars={item.stars}
             />
         )
     })

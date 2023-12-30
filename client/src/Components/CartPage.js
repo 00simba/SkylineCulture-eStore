@@ -78,8 +78,8 @@ export default function CartPage(props){
         }
         else{
             setLoading(true)
-            await axios.post("http://localhost:8080/get-items", {cartItems})
-            await axios.post("http://localhost:8080/create-checkout-session", {selected}, {headers:{"Access-Control-Allow-Origin": "*",
+            await axios.post("https://skylineculture-api.onrender.com/get-items", {cartItems})
+            await axios.post("https://skylineculture-api.onrender.com/create-checkout-session", {selected}, {headers:{"Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"}}).then((res) => {window.location = res.data.url}).catch((err) => console.log(err))
             sessionStorage.clear()
         }

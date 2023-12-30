@@ -14,16 +14,12 @@ export default function AddToCart(props){
         theme: "colored",
     });
 
-    const warn = () => toast.warn(`Please Select An Option!`, {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-    });
+    async function handleSubmit(){
+        if(props.variant == null || props.variant.includes('Select')){
+            let dd = document.getElementById("dropdown");
+            dd.style.border = `1px solid red`;
+        }
+    }
 
     return(
         <div className='addToCartBtn'>
@@ -33,7 +29,7 @@ export default function AddToCart(props){
                     props.addItemToCart(props.id, props.product, props.quantity, props.variant, props.image, props.price, props.sale_price, props.url)
                 }
                 else{
-                    warn()
+                    handleSubmit()
                 }}
             } className='addToCart' type="button">Add to Cart</button>
         </div>

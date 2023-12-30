@@ -5,10 +5,11 @@ import { toast, ToastContainer } from 'react-toastify';
 import { Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactGA from 'react-ga'
-import { useState, useEffect, CSSProperties } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { getCountry } from './getCountry';
 import { Ring } from 'react-css-spinners'
+import Dropdown from './Dropdown/Dropdown';
 
 
 function removeItem(setCartItems, cartItems, productId, productVariant){
@@ -60,18 +61,28 @@ function getCount(cartItems) {
     return tempCount
 }
 
-
 export default function CartPage(props){
 
     var cartItems = props.cartItems
-    const country = getCountry()
+    let [loading, setLoading] = useState(false);
+    const [selected, setSelected] = React.useState(null);
+
+    let options = {
+        "Select Country": ['United States', 'Canada', 'International']
+    }
 
     async function handleSubmit(){
-        setLoading(true)
-        await axios.post("https://skylineculture-api.onrender.com/get-items", {cartItems})
-        await axios.post("https://skylineculture-api.onrender.com/create-checkout-session", {country}, {headers:{"Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"}}).then((res) => {window.location = res.data.url}).catch((err) => console.log(err))
-        sessionStorage.clear()
+        if(selected == null || selected == "Select Country"){
+            let dd = document.getElementById("dropdown");
+            dd.style.border = '1px solid red';
+        }
+        else{
+            setLoading(true)
+            await axios.post("https://skylineculture-api.onrender.com/get-items", {cartItems})
+            await axios.post("https://skylineculture-api.onrender.com/create-checkout-session", {selected}, {headers:{"Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"}}).then((res) => {window.location = res.data.url}).catch((err) => console.log(err))
+            sessionStorage.clear()
+        }
     }
 
     useEffect(() => {
@@ -115,11 +126,6 @@ export default function CartPage(props){
             </div>
         )
     })
- 
-    const shortid = require('shortid');
-    const id = shortid.generate();
-
-    let [loading, setLoading] = useState(false);
 
     return(
         <div className='cartContainer'>
@@ -150,6 +156,8 @@ export default function CartPage(props){
                      <Ring color="#000000" size={30} thickness={3} />
                     
                     }
+
+                    <Dropdown setSelected={setSelected} options={options}/>
                 
                     <button onClick={() => handleSubmit()} className="checkoutBtn" role="link" type="submit">Checkout</button>
                 

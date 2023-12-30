@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState} from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Counter from '../../Components/Counter'
 import AddToCart from '../../Components/AddToCart'
@@ -93,7 +93,7 @@ export default function ProductPage(props){
         value: productObj.stars,
         edit: false,
         color2: "#FFB800"
-    }
+    }    
     
     return(
         <div>

@@ -55,7 +55,7 @@ export default function TrackOrder(){
                 <ul className='additionalInfo'>
                     <span>All orders ship from Canada. Please allow 1-2 business days for fulfillment.</span>
                     <span>In case you are/were unavailable at the time your shipment arrives please <br/> refer to the list below and contact the corresponding shipping carrier.</span>
-                    <span>USA Carrier: USPS <br/> Canada Carrier: Canada Post <br/> International Carrier: APC International</span>
+                    <span>USA Carrier: USPS <br/> Canada Carrier: Canada Post <br/> International Carrier: APC Postal Logistics</span>
                     <span>In the case you do not receive your shipment, contact us as soon as possible <br/> and we will make things right.</span>
                 </ul>
             </div>

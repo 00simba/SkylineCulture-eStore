@@ -290,7 +290,7 @@ function getShipping(country){
                     amount: 395,
                     currency: 'usd',
                   },
-                  display_name: 'USPS First Class',
+                  display_name: 'USPS Ground Advantage',
                   delivery_estimate: {
                     minimum: {
                       unit: 'business_day',
@@ -298,7 +298,7 @@ function getShipping(country){
                     },
                     maximum: {
                       unit: 'business_day',
-                      value: 4,
+                      value: 6,
                     },
                   },
                 },
@@ -312,7 +312,7 @@ function getShipping(country){
                     amount: 995,
                     currency: 'usd',
                   },
-                  display_name: 'Asendia International',
+                  display_name: 'APC Priority Worldwide',
                   delivery_estimate: {
                     minimum: {
                       unit: 'business_day',
@@ -358,15 +358,15 @@ function getShipping(country){
                     amount: 0,
                     currency: 'usd',
                   },
-                  display_name: 'USPS',
+                  display_name: 'USPS Ground Advantage',
                   delivery_estimate: {
                     minimum: {
                       unit: 'business_day',
-                      value: 3,
+                      value: 4,
                     },
                     maximum: {
                       unit: 'business_day',
-                      value: 5,
+                      value: 6,
                     },
                   },
                 },
@@ -380,15 +380,15 @@ function getShipping(country){
                     amount: 0,
                     currency: 'usd',
                   },
-                  display_name: 'Asendia International',
+                  display_name: 'APC Priority Worldwide',
                   delivery_estimate: {
                     minimum: {
                       unit: 'business_day',
-                      value: 5,
+                      value: 7,
                     },
                     maximum: {
                       unit: 'business_day',
-                      value: 22,
+                      value: 15,
                     },
                   },
                 },

@@ -1,4 +1,4 @@
-const shipping =  ["USA: 4 business days\n Canada: 2-8 business days\n International: 7-15 business days"]
+const shipping =  ["USA: 4-6 business days\n Canada: 2-8 business days\n International: 7-15 business days"]
 
 export default [
     {

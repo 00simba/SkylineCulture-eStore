@@ -268,7 +268,7 @@ function getShipping(country){
                     amount: 795,
                     currency: 'usd',
                   },
-                  display_name: 'Canada Post',
+                  display_name: 'Canada Post Expedited',
                   delivery_estimate: {
                     minimum: {
                       unit: 'business_day',
@@ -336,7 +336,7 @@ function getShipping(country){
                     amount: 0,
                     currency: 'usd',
                   },
-                  display_name: 'Canada Post',
+                  display_name: 'Canada Post Expedited',
                   delivery_estimate: {
                     minimum: {
                       unit: 'business_day',

@@ -276,7 +276,7 @@ function getShipping(country){
                     },
                     maximum: {
                       unit: 'business_day',
-                      value: 8,
+                      value: 6,
                     },
                   },
                 },
@@ -344,7 +344,7 @@ function getShipping(country){
                     },
                     maximum: {
                       unit: 'business_day',
-                      value: 8,
+                      value: 6,
                     },
                   },
                 },

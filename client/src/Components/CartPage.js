@@ -7,7 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import ReactGA from 'react-ga'
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { getCountry } from './getCountry';
 import { Ring } from 'react-css-spinners'
 import Dropdown from './Dropdown/Dropdown';
 
@@ -77,6 +76,7 @@ export default function CartPage(props){
             dd.style.border = '1px solid red';
         }
         else{
+            //https://skylineculture-api.onrender.com
             setLoading(true)
             await axios.post("https://skylineculture-api.onrender.com/get-items", {cartItems})
             await axios.post("https://skylineculture-api.onrender.com/create-checkout-session", {selected}, {headers:{"Access-Control-Allow-Origin": "*",

@@ -41,7 +41,6 @@ export default function Website(){
 
     cartItems.slice(1);
 
-
     function addItemToCart(id, product, quantity, variant, image, price, sale_price, url){
 
         let picture = image[0]
@@ -69,11 +68,6 @@ export default function Website(){
         if(found==0){
             setCartItems([...cartItems, {productId: `${id}`, productName: `${product}`, productQuantity: `${quantity}`, productVariant: `${variant}`,productImage: `${picture}`, productPrice: `${price}`, salePrice: `${sale_price}`, productUrl: `${url}`}])
         }      
-    }
-
-    const [country, setCountry] = React.useState('')
-    function changeCountry(country){
-        setCountry(country)
     }
 
     const productUrl = []
@@ -106,7 +100,7 @@ export default function Website(){
                     <Route path='/' element={<LandingPage data={data}/>}/>
                     <Route path={`product/:productUrl`} element={<ProductPage productUrl = {productUrl} addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
                     <Route path='/cart' element={<CartPage setCartItems={setCartItems} cartItems={cartItems}/>}/>
-                    <Route path={`/order-complete`} element={<OrderComplete orderID={id}/>}/>
+                    <Route path={`/order/*`} element={<OrderComplete orderID={id}/>}/>
                     <Route path={`/keychains`} element={<Keychains data={data}/>}/>
                     <Route path={`/stickers`} element={<Stickers data={data}/>}/>
                     <Route path={`/diecast-cars`} element={<DiecastCars data={data}/>}/>

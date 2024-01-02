@@ -3,17 +3,17 @@ const Schema = mongoose.Schema
 
 const orderSchema = new Schema({
     orderID: {
-        type: String,
+        type: Number,
         require: true
-    },
-    customer: {
-        type: Object,
-        required: true
     },
     items: {
         type: Array,
         required: true
     },
+    sessionID: {
+        type: String,
+        require: true
+    }
 })
 
 

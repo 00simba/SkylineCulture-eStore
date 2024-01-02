@@ -4,7 +4,7 @@ import './websitebanner.css'
 export default function WebsiteBanner(){
     return(
         <div className='websiteBanner'>
-            🚚 FREE Shipping On Orders Over $35!
+            ✈️ FREE Shipping On $35+ Orders!
         </div>
     )
 }

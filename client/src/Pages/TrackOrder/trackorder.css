@@ -12,7 +12,7 @@
     gap: 15px;
     justify-content: center;
     align-items: center;
-    padding-top: 5%;
+    padding-top: 3%;
 }
 
 .shippingFAQ{
@@ -108,7 +108,12 @@
         padding-top: 0%;
     }
 
+    .trackingContainer{
+        padding-top: 5%;
+    }
+
     .shippingFAQ{
+        padding-top: 10%;
         margin-top: 0%;
     }
 

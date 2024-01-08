@@ -141,7 +141,7 @@ function getShipping(country){
                 shipping_rate_data: {
                   type: 'fixed_amount',
                   fixed_amount: {
-                    amount: 795,
+                    amount: 0,
                     currency: 'usd',
                   },
                   display_name: 'Canada Post Expedited',
@@ -163,7 +163,7 @@ function getShipping(country){
                 shipping_rate_data: {
                   type: 'fixed_amount',
                   fixed_amount: {
-                    amount: 395,
+                    amount: 0,
                     currency: 'usd',
                   },
                   display_name: 'USPS Ground Advantage',

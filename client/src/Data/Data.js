@@ -1,4 +1,4 @@
-const shipping =  ["USA: 4-6 business days\n Canada: 2-6 business days\n International: 7-15 business days"]
+const shipping =  ["• This item is eligible for FREE shipping to USA and Canada!\n • Get FREE international shipping on $35+ orders!\n\n • Estimated Delivery Time:\nUSA: 4-6 business days\n Canada: 2-6 business days\n International: 7-15 business days"]
 
 export default [
     {
@@ -11,9 +11,9 @@ export default [
         "url" : "r34-gtr-keychain",
         "description" : [
         
-        "One of the most popular sports car out of Japan, the R34 GTR! This spec is based off the ultra rare 1 of 20 Z-TUNE!",        
+        "• One of the most popular sports car out of Japan, the R34 GTR! This spec is based off the ultra rare 1 of 20 Z-TUNE!",        
         
-        "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! ",
+        "• Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! ",
 
          ],
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
@@ -31,8 +31,8 @@ export default [
         "url" : "r32-gtr-keychain",
         "description" : [
             
-        "Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain! ",        
-        "Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! "],
+        "• Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain! ",        
+        "• Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! "],
 
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
         "shipping": [shipping[0]],
@@ -49,7 +49,7 @@ export default [
         "url" : "turbo-keychain",
         "description" : [
             
-        "Give your keyset a boost by getting this turbo keychain that features a spinnable turbine.",
+        "• Give your keyset a boost by getting this turbo keychain that features a spinnable turbine.",
     
         ],
 
@@ -68,7 +68,7 @@ export default [
         "url" : "nos-keychain",
         "description" : [
             
-        "A perfect miniature NOS bottle keychain that features an unscrewable lid to work as a stash.",
+        "• A perfect miniature NOS bottle keychain that features an unscrewable lid to work as a stash.",
     
         ],
 
@@ -87,7 +87,7 @@ export default [
         "url" : "100-pack-stickers",
         "description" : [
             
-        "Decorate your accessories by owning this pack of 100 car stickers.",         
+        "• Decorate your accessories by owning this pack of 100 car stickers.",         
         
         ],
 
@@ -106,7 +106,7 @@ export default [
         "url" : "36-r34-diecast",
         "description" : [
             
-        "Featuring the R34 GTR in Bayside Blue, Black, and Fast & Furious Silver with doors that can open. Get your 1:36 scaled version today!",         
+        "• Featuring the R34 GTR in Bayside Blue, Black, and Fast & Furious Silver with doors that can open. Get your 1:36 scaled version today!",         
         
         ],
 
@@ -125,7 +125,7 @@ export default [
         "url" : "gearbox-keychain",
         "description" : [
             
-        "A fun 6 speed gearbox keychain that you can fidgit with to mimic the gearbox of a real car.",         
+        "• A fun 6 speed gearbox keychain that you can fidgit with to mimic the gearbox of a real car.",         
         
         ],
 
@@ -144,7 +144,7 @@ export default [
         "url" : "suspension-keychain",
         "description" : [
             
-        "An adjustable suspension keychain that can be pressed on its ends to engage the spring just like a real suspension.",         
+        "• An adjustable suspension keychain that can be pressed on its ends to engage the spring just like a real suspension.",         
         
         ],
 
@@ -163,7 +163,7 @@ export default [
         "url" : "te37-keychain",
         "description" : [
             
-        "Featuring the car community famous TE37 as a 3D miniature keychain designed as realistic as possible.",         
+        "• Featuring the car community famous TE37 as a 3D miniature keychain designed as realistic as possible.",         
         
         ],
 
@@ -182,7 +182,7 @@ export default [
         "url" : "gtr-keychain",
         "description" : [
             
-        "A clean, simple, and classic GTR logo keychain for any GTR fan.",         
+        "• A clean, simple, and classic GTR logo keychain for any GTR fan.",         
         
         ],
 
@@ -201,7 +201,7 @@ export default [
         "url" : "r34-gtr-pin",
         "description" : [
         
-        "One of the most iconic, timeless, and influential machine in automotive history, the R34 GTR! Fully designed at SkylineCulture. A pin for all R34 GTR fans to bring the most out of their backpacks, hats, pin collections, and more!"],
+        "• One of the most iconic, timeless, and influential machine in automotive history, the R34 GTR! Fully designed at SkylineCulture. A pin for all R34 GTR fans to bring the most out of their backpacks, hats, pin collections, and more!"],
         
         "specs": "Size: 1.5 in x 0.75 in\n Double Black Rubber Pin Clutch\n Soft Enamel Process\n Black Dyed Metal",
         "shipping": [shipping[0]],
@@ -218,7 +218,7 @@ export default [
         "url" : "rb26-keychain",
         "description" : [
             
-        "Based off the heart of Godzilla, the RB26! The RB26, inline 6 2.6L engine debuted in 1989 and contributed to motorsports history as it set records."],
+        "• Based off the heart of Godzilla, the RB26! The RB26, inline 6 2.6L engine debuted in 1989 and contributed to motorsports history as it set records."],
 
         "specs": "Made of PVC material allowing for flexibility while retaining durability and quality.",
         "shipping": [shipping[0]],

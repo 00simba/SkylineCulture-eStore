@@ -325,6 +325,7 @@ app.post('/create-checkout-session', async (req, res) => {
 
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
+      payment_method_types: ['card', 'paypal'],
       invoice_creation: {
         enabled: true,
       },

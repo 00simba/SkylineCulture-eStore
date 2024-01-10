@@ -140,7 +140,15 @@ export default function ProductPage(props){
                             {(productObj.variants).map(variant => <Dropdown setSelected={setSelected} options={variant}/>)}
                         </div>}
                     </div>
-                            <h3 className="descriptionHeader">Description</h3>
+                            {productObj.collection == "Keychains" && <>
+                            <div>
+                                <h4>Keychain Discounts!</h4>
+                                <span>• BUY 1 GET 1 50% OFF</span> <br/>
+                                <span>• BUY 2 GET 2 FREE</span> <br/>
+                                <span>Discount applies to all keychains and automatically at checkout!</span>
+
+                            </div></>}
+                            <br/><h3 className="descriptionHeader">Description</h3>
                             {(productObj.description).map((item) => <p>{item}<br/></p>)}
                             <h3 className="detailsHeader">Details</h3>
                             {productObj.specs}

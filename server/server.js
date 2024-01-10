@@ -9,6 +9,7 @@ app.use(express.json())
 app.use(express.static('../client/build'))
 app.use(bodyParser.urlencoded({extended: false}))
 const cors = require("cors")
+const { disconnect } = require('process')
 app.use(cors())
 app.use(express.static(path.join(__dirname, '..', 'client', 'build')))
 
@@ -44,7 +45,6 @@ function calculateTotal(){
     })
     return total
 }
-
 
 app.post('/save-items', async (req, res) => {
 
@@ -313,9 +313,10 @@ app.post('/order-complete', async (req, res) => {
   }
 });
 
+
 app.post('/create-checkout-session', async (req, res) => {
     
-    const domainURL = 'https://www.skylineculture.store';
+    const domainURL = 'https://skylineculture.store';
 
     var orderID;
 
@@ -323,13 +324,60 @@ app.post('/create-checkout-session', async (req, res) => {
       orderID = res[0].orderID + 1
     })
 
+    //Apply keychain discount
+
+    var chainCount = 0;
+    var couponId;
+    var prices = [];
+
+    (cart.cartItems).forEach((itemObject) => {
+        var name = (storeItems.get(parseInt(itemObject.productId))).name
+        if(name.includes("Keychain")){
+          chainCount += 1 * (parseInt(itemObject.productQuantity))
+          for(var i = 0; i < parseInt(itemObject.productQuantity); i ++){
+            prices.push(storeItems.get(parseInt(itemObject.productId)).price)
+          }
+        }
+    })
+
+    prices.sort((a, b) => a - b)
+    console.log(prices)
+
+    if(chainCount == 4){
+
+      discount = parseInt(prices[0]) +  parseInt(prices[1])
+
+      const coupon = await stripe.coupons.create({
+        name: "BUY 2 GET 2 FREE",
+        amount_off: discount,
+        "currency": 'USD',
+      });
+      couponId = coupon.id
+    }
+
+    if(chainCount == 2){
+
+      discount = Math.floor(parseInt(prices[0]) / 2)
+
+      const coupon = await stripe.coupons.create({
+        name: "BUY 1 GET 1 50% OFF",
+        amount_off: discount,
+        "currency": 'USD',
+      });
+      couponId = coupon.id
+    }
+
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       invoice_creation: {
         enabled: true,
       },
+      discounts: [
+        {
+        coupon: couponId
+        }
+      ],
       customer_creation: "always",
-      allow_promotion_codes: true,
       shipping_address_collection: {allowed_countries: ['CA', 'US', 'GB', 'AU', 'NZ', 'FR', 'ES', 'IT', 'DE', 'PL', 'BE', 'AT', 'DK', 'IS', 'IE', 'FI', 'SE', 'CH', 'NL', 'NO', 'HK', 'JP', 'SG', 'KW', 'AE', 'QA']},
       line_items: getLineItems(),
       success_url: `${domainURL}/order/success?session_id={CHECKOUT_SESSION_ID}`,

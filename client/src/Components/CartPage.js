@@ -51,7 +51,6 @@ function getTotal(cartItems){
     return tempTotal
 }
 
-
 function getCount(cartItems) {
     var tempCount=0;
     cartItems.forEach((item) => {
@@ -76,7 +75,6 @@ export default function CartPage(props){
             dd.style.border = '1px solid red';
         }
         else{
-            //https://skylineculture-api.onrender.com
             setLoading(true)
             await axios.post("https://skylineculture-api.onrender.com/get-items", {cartItems})
             await axios.post("https://skylineculture-api.onrender.com/create-checkout-session", {selected}, {headers:{"Access-Control-Allow-Origin": "*",

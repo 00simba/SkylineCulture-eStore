@@ -1,4 +1,4 @@
-const shipping =  ["• This item is eligible for FREE shipping to USA and Canada!\n • Get FREE international shipping on $35+ orders!\n\n • Estimated Delivery Time:\nUSA: 4-6 business days\n Canada: 2-6 business days\n International: 7-15 business days"]
+const shipping =  ["• Orders of $35 or more qualify for FREE Shipping.\n - Estimated Delivery Time:\nUSA: 4-6 business days\nCanada: 2-6 business days\nInternational: 7-15 business days"]
 
 export default [
     {
@@ -6,8 +6,8 @@ export default [
         "title" : "R34 GTR Keychain",
         "stars" : 5,
         "img" : ["r34_keychain/r34key_main.png", "r34_keychain/r34key_1.png"],
-        "price" : 19.99,
-        "sale_price": 14.99,
+        "price" : 14.99,
+        "sale_price": 9.99,
         "url" : "r34-gtr-keychain",
         "description" : [
         
@@ -26,8 +26,8 @@ export default [
         "title" : "R32 GTR Keychain",
         "stars" : 5,
         "img" : ["r32_keychain/r32key_main.PNG"],
-        "price" : 19.99,
-        "sale_price": 14.99,
+        "price" : 14.99,
+        "sale_price": 9.99,
         "url" : "r32-gtr-keychain",
         "description" : [
             
@@ -158,8 +158,8 @@ export default [
         "title" : "TE37 Keychain",
         "stars" : 5,
         "img" : ["te37_keychain/te37_Black.png", "te37_keychain/te37_Chroma.png", "te37_keychain/te37_Silver.png", "te37_keychain/te37_1.png", "te37_keychain/te37_2.png", "te37_keychain/te37_3.png", "te37_keychain/te37_4.png"],
-        "price" : 14.99,
-        "sale_price": 11.99,
+        "price" : 11.99,
+        "sale_price": 9.99,
         "url" : "te37-keychain",
         "description" : [
             
@@ -196,8 +196,8 @@ export default [
         "title" : "R34 GTR Pin",
         "stars": 4.5,
         "img" : ["r34_pin/r34pin_main.png", "r34_pin/r34pin_1.png", "r34_pin/r34pin_2.png", "r34_pin/r34pin_3.png"],
-        "price" : 19.99,
-        "sale_price": 14.99,
+        "price" : 14.99,
+        "sale_price": 9.99,
         "url" : "r34-gtr-pin",
         "description" : [
         

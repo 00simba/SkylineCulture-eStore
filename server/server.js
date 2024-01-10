@@ -141,7 +141,7 @@ function getShipping(country){
                 shipping_rate_data: {
                   type: 'fixed_amount',
                   fixed_amount: {
-                    amount: 0,
+                    amount: 695,
                     currency: 'usd',
                   },
                   display_name: 'Canada Post Expedited',
@@ -163,7 +163,7 @@ function getShipping(country){
                 shipping_rate_data: {
                   type: 'fixed_amount',
                   fixed_amount: {
-                    amount: 0,
+                    amount: 395,
                     currency: 'usd',
                   },
                   display_name: 'USPS Ground Advantage',
@@ -343,7 +343,7 @@ app.post('/create-checkout-session', async (req, res) => {
     prices.sort((a, b) => a - b)
     console.log(prices)
 
-    if(chainCount == 4){
+    if(chainCount >= 4){
 
       discount = parseInt(prices[0]) +  parseInt(prices[1])
 

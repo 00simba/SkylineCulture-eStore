@@ -142,11 +142,10 @@ export default function ProductPage(props){
                     </div>
                             {productObj.collection == "Keychains" && <>
                             <div>
-                                <h4>Keychain Discounts!</h4>
-                                <span>• BUY 1 GET 1 50% OFF</span> <br/>
-                                <span>• BUY 2 GET 2 FREE</span> <br/>
-                                <span>Discount applies to all keychains and automatically at checkout!</span>
-
+                                <h4>• Keychain Discounts</h4>
+                                <span>- Buy 1 Get 1 50% OFF</span> <br/>
+                                <span>- Buy 2 Get 2 FREE</span> <br/>
+                                <span>Discount is applied automatically at checkout to all keychains.</span>
                             </div></>}
                             <br/><h3 className="descriptionHeader">Description</h3>
                             {(productObj.description).map((item) => <p>{item}<br/></p>)}

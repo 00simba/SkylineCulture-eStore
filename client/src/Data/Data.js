@@ -1,4 +1,4 @@
-const shipping =  ["• Orders of $35 or more qualify for FREE Shipping.\n - Estimated Delivery Time:\nUSA: 4-6 business days\nCanada: 2-6 business days\nInternational: 7-15 business days"]
+const shipping =  ["• Orders of $35 or more qualify for FREE Shipping.\n\nUSA: 4-6 business days\nCanada: 2-6 business days\nInternational: 7-15 business days"]
 //curr_id = 13
 export default [
     {

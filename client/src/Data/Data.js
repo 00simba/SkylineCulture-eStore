@@ -1,10 +1,10 @@
 const shipping =  ["• Orders of $35 or more qualify for FREE Shipping.\n - Estimated Delivery Time:\nUSA: 4-6 business days\nCanada: 2-6 business days\nInternational: 7-15 business days"]
-
+//curr_id = 13
 export default [
     {
         "id" : 1,
         "title" : "R34 GTR Keychain",
-        "stars" : 5,
+        "stars" : 0,
         "img" : ["r34_keychain/r34key_main.png", "r34_keychain/r34key_1.png"],
         "price" : 14.99,
         "sale_price": 9.99,
@@ -12,10 +12,8 @@ export default [
         "description" : [
         
         "• One of the most popular sports car out of Japan, the R34 GTR! This spec is based off the ultra rare 1 of 20 Z-TUNE!",        
-        
-        "• Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! ",
 
-         ],
+        ],
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
         "shipping": [shipping[0]],
         "variants" : [{}],
@@ -24,16 +22,16 @@ export default [
     {
         "id" : 2,
         "title" : "R32 GTR Keychain",
-        "stars" : 5,
+        "stars" : 0,
         "img" : ["r32_keychain/r32key_main.PNG"],
         "price" : 14.99,
         "sale_price": 9.99,
         "url" : "r32-gtr-keychain",
         "description" : [
             
-        "• Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR! Represent your passion in this automotive icon by supporting this keychain! ",        
-        "• Fully designed at SkylineCulture, and available ONLY at SkylineCulture for you to show off on your key set! "],
-
+        "• Featuring the record setting sports car dubbed 'Godzilla', the R32 GTR!"
+        
+        ],
         "specs": "Size: 2 inches on longest side\n Material: Constructed of metal",
         "shipping": [shipping[0]],
         "variants" : [{}],
@@ -87,7 +85,7 @@ export default [
         "url" : "100-pack-stickers",
         "description" : [
             
-        "• Decorate your accessories by owning this pack of 100 car stickers.",         
+        "• A pack of 100 stickers containing various JDM cars to decorate your accessories.",         
         
         ],
 
@@ -98,7 +96,28 @@ export default [
     },
     {
         "id" : 12,
-        "title" : "1/36 R34 GTR",
+        "title" : "Nissan Skyline R34 GTR - 1/24",
+        "stars" : 0,
+        "img" : ["24r34_diecast/24r34_Blue.png", "24r34_diecast/24r34_White.png", "24r34_diecast/24r34_1.png", "24r34_diecast/24r34_2.png",
+        "24r34_diecast/24r34_3.png", "24r34_diecast/24r34_4.png", "24r34_diecast/24r34_5.png", "24r34_diecast/24r34_6.png",
+        "24r34_diecast/24r34_7.png"],
+        "price" : 34.99,
+        "sale_price": 29.99,
+        "url" : "24-r34-diecast",
+        "description" : [
+            
+        "• A well detailed 1/24 scaled version of the R34 GTR by Welly featuring doors and hood that can be opened.",         
+        
+        ],
+
+        "specs": "Brand: Welly\n Scale: 1:24",
+        "shipping": [shipping[0]],
+        "variants" : [{"Select Color": ["Blue", "White"]}],
+        "collection" : "Diecast Cars",
+    },
+    {
+        "id" : 13,
+        "title" : "Nissan Skyline R34 GTR - 1/36",
         "stars" : 5,
         "img" : ["36r34_diecast/36r34_main.png", "36r34_diecast/36r34_Blue.png", "36r34_diecast/36r34_Silver.png", "36r34_diecast/r36r34_Black.png"],
         "price" : 19.99,
@@ -106,11 +125,11 @@ export default [
         "url" : "36-r34-diecast",
         "description" : [
             
-        "• Featuring the R34 GTR in Bayside Blue, Black, and Fast & Furious Silver with doors that can open. Get your 1:36 scaled version today!",         
+        "• Featuring the R34 GTR in Bayside Blue, Black, and Fast & Furious Silver with doors that can open.",         
         
         ],
 
-        "specs": "Scale: 1:36\n Material: Alloy",
+        "specs": "Brand: Jackiekim \n Scale: 1:36",
         "shipping": [shipping[0]],
         "variants" : [{"Select Color": ["Blue", "Black", "Silver"]}],
         "collection" : "Diecast Cars",
@@ -156,7 +175,7 @@ export default [
     {
         "id" : 9,
         "title" : "TE37 Keychain",
-        "stars" : 5,
+        "stars" : 0,
         "img" : ["te37_keychain/te37_Black.png", "te37_keychain/te37_Chroma.png", "te37_keychain/te37_Silver.png", "te37_keychain/te37_1.png", "te37_keychain/te37_2.png", "te37_keychain/te37_3.png", "te37_keychain/te37_4.png"],
         "price" : 11.99,
         "sale_price": 9.99,
@@ -194,14 +213,14 @@ export default [
     {
         "id" : 3,
         "title" : "R34 GTR Pin",
-        "stars": 4.5,
+        "stars": 0,
         "img" : ["r34_pin/r34pin_main.png", "r34_pin/r34pin_1.png", "r34_pin/r34pin_2.png", "r34_pin/r34pin_3.png"],
         "price" : 14.99,
         "sale_price": 9.99,
         "url" : "r34-gtr-pin",
         "description" : [
         
-        "• One of the most iconic, timeless, and influential machine in automotive history, the R34 GTR! Fully designed at SkylineCulture. A pin for all R34 GTR fans to bring the most out of their backpacks, hats, pin collections, and more!"],
+        "• A pin for all R34 GTR fans to bring the most out of their backpacks, hats, pin collections, and more!"],
         
         "specs": "Size: 1.5 in x 0.75 in\n Double Black Rubber Pin Clutch\n Soft Enamel Process\n Black Dyed Metal",
         "shipping": [shipping[0]],
@@ -211,7 +230,7 @@ export default [
     {
         "id" : 4,
         "title" : "RB26 Keychain",
-        "stars": 4.5,
+        "stars": 0,
         "img" : ["rb26_keychain/rb26_main.PNG"],
         "price" : 9.99,
         "sale_price": 4.99,

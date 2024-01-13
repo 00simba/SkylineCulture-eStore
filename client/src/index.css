@@ -21,7 +21,7 @@
 .productPagePrice{
   display: flex;
   flex-direction: row;
-  gap: 5%;
+  gap: 10px;
 }
 
 .salePrice{
@@ -797,7 +797,7 @@ button:disabled{
   .productPagePrice{
     display: flex;
     flex-direction: row;
-    gap: 5%;
+    gap: 10px;
   }
 
   .parent{

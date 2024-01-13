@@ -15,7 +15,6 @@ import './productpage.css'
 import axios from "axios";
 import ReactGA from 'react-ga'
 import data from '../../Data/Data'
-import { Ellipsis } from 'react-css-spinners'
 
 export default function ProductPage(props){
 
@@ -73,7 +72,12 @@ export default function ProductPage(props){
     const [productReviews, setReviews] = React.useState(null);
 
     useEffect(() => {
-        axios.post('https://skylineculture-api.onrender.com/get-stock', {productName: productObj.title}).then((res) => {setStock(res.data[0].stock); setReviews(res.data[0].reviews)}).catch((err) => console.error(err))
+        axios.post('https://skylineculture-api.onrender.com/get-stock', {productName: productObj.title}).then((res) => {
+            setStock(res.data[0].stock); 
+            if(res.data[0].reviews.length > 0){
+                setReviews(res.data[0].reviews)
+            }
+        }).catch((err) => console.error(err))
     }, [])
 
     let soldOut = false
@@ -93,7 +97,11 @@ export default function ProductPage(props){
         value: productObj.stars,
         edit: false,
         color2: "#FFB800"
-    }    
+    } 
+    
+    function submitReview(){
+        
+    }
     
     return(
         <div>
@@ -157,27 +165,41 @@ export default function ProductPage(props){
                     </div>
             </div>
             <div className="reviewContainer">
-                {!productReviews && 
-                     <div className="reviewLoading"><Ellipsis color="#000000" size={60} thickness={3} /></div>
-                    
-                }
-                {productReviews && <h2>Customer Reviews</h2>}
-                {productReviews && 
-                productReviews.map((review) => {
-                    return(
-                        <>               
-                            <div className="reviewRow"> 
-                                <div className="starDiv">
-                                    <ReactStars size={20} edit={false} value={review.stars} color2={'#FFB800'}/>
-                                    <span>{review.name}</span>
-                                    <span>{review.date}</span>
-                                </div>
-                                <span>{review.desc}</span>
-                               {review.images && <div className="reviewPics">{review.images.map((image) => {return(<img src={image}/>)})}</div>}
-                            </div> 
+                <div className="addSection">
+                    <h2>Write A Review</h2>
+                    <div className="starDiv">
+                        <ReactStars size={20} edit={true} value={0} color1={'gray'} color2={'#FFB800'}/>
+                    </div>
+                    <input placeholder="Order ID"></input>
+                    <textarea name="review" className='reviewBox' id='review'/>
+                    <button onClick={() => submitReview()}className="imagesBtn">Upload Images</button>
+                    <button onClick={() => submitReview()}className="reviewBtn">Submit</button>
+                </div>
+                <div className="reviewSection">
+                    {productReviews != null ? 
+                        <>
+                            <h2>Customer Reviews</h2>
+                            {productReviews.map((review) => {
+                                return(
+                                    <>               
+                                        <div className="reviewRow"> 
+                                            <div className="starDiv">
+                                                <ReactStars size={20} edit={false} value={review.stars} color2={'#FFB800'}/>
+                                                <span>{review.name}</span>
+                                                <span>{review.date}</span>
+                                            </div>
+                                            <span>{review.desc}</span>
+                                        {review.images && <div className="reviewPics">{review.images.map((image) => {return(<img src={image}/>)})}</div>}
+                                        </div> 
+                                    </>
+                                )})}
                         </>
-                    )})
-                }
+                        :
+                        <>
+                            <h2>No Reviews Yet</h2>
+                        </>
+                    }
+                </div>
             </div>
         </div>       
     )

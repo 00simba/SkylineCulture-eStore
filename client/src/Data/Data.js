@@ -95,7 +95,7 @@ export default [
         "collection" : "Stickers",
     },
     {
-        "id" : 12,
+        "id" : 13,
         "title" : "Nissan Skyline R34 GTR - 1/24",
         "stars" : 0,
         "img" : ["24r34_diecast/24r34_Blue.png", "24r34_diecast/24r34_White.png", "24r34_diecast/24r34_1.png", "24r34_diecast/24r34_2.png",
@@ -116,7 +116,7 @@ export default [
         "collection" : "Diecast Cars",
     },
     {
-        "id" : 13,
+        "id" : 12,
         "title" : "Nissan Skyline R34 GTR - 1/36",
         "stars" : 5,
         "img" : ["36r34_diecast/36r34_main.png", "36r34_diecast/36r34_Blue.png", "36r34_diecast/36r34_Silver.png", "36r34_diecast/r36r34_Black.png"],

@@ -3,7 +3,7 @@ import { getEmbedding } from './get-embeddings.js';
 
 export async function vectorQuery(query) {
 
-    const client = new MongoClient('mongodb+srv://00simba:%40Simba1.@website.7not5.mongodb.net/?retryWrites=true&w=majority&appName=website');
+    const client = new MongoClient(process.env.DATABASE_URI);
 
     try {
         

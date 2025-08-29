@@ -20,12 +20,13 @@ import TermsAndService from './Pages/TermsAndService/TermsAndService';
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import ContactUs from './Pages/ContactUs/ContactUs';
 import shortid from 'shortid';
+import SearchPage from './Pages/SearchPage/SearchPage.js';
 
 export default function Website(){
 
     const [cartItems, setCartItems] = React.useState([]);
     const location = useLocation();   
-    const [id, setId] = React.useState(shortid.generate())
+    const [id, setId] = React.useState(shortid.generate());
 
     React.useEffect(() => {
         setId(shortid.generate())
@@ -98,6 +99,7 @@ export default function Website(){
             {![`/checkout/${id}`, `/payment/${id}`].includes(location.pathname) && <Header/>} 
             <Routes>   
                     <Route path='/' element={<LandingPage data={data}/>}/>
+                    <Route path='/search-result' element={<SearchPage/>}/>
                     <Route path={`product/:productUrl`} element={<ProductPage productUrl = {productUrl} addItemToCart = {addItemToCart} cart={cartItems} items={products}/>}/>
                     <Route path='/cart' element={<CartPage setCartItems={setCartItems} cartItems={cartItems}/>}/>
                     <Route path={`/order/*`} element={<OrderComplete orderID={id}/>}/>

@@ -1,3 +1,43 @@
+.search-box{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-left: 20%;
+  margin-right: 2%;
+}
+
+.search-input{
+  width: 150px;
+  border: 2px solid #d5d9d9;
+  border-radius: 15px;
+}
+
+.search-button{
+  width: 70px;
+  height: 35px;
+}
+
+.button{
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #d5d9d9;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Rubik";
+  font-size: 13px;
+  line-height: 30px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
 .homeStars{
   margin-left: 4%;
 }
@@ -786,7 +826,33 @@ button:disabled{
   justify-content: space-between;
 }
 
+.mobile-search-container{
+    display: none;
+}
+
+
 @media only screen and (max-width: 578px){
+
+  .mobile-search-container{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .mobile-search-box{
+    display: flex;
+    width: 50px;
+  }
+
+  .mobile-search-input{
+    width: 100px;
+    margin-right: 10px;
+    border-radius: 10px;
+  }
+
+  .search-box{
+    display: none;
+    margin-left: 0%;
+  }
 
   .descWrapper{
     border-radius: 15px;
@@ -849,7 +915,7 @@ button:disabled{
     color: tomato;
   }
 
-  #menuToggle input
+  .menu-check-box
   {
     display: block;
     width: 40px;
@@ -1047,6 +1113,11 @@ button:disabled{
 
 @media only screen and (min-width: 579px) and (max-width: 768px){
 
+  .search-box{
+    margin-top: 10px;
+    margin-left: 0%;
+  }
+
   .leftSide{
     justify-content: center;
     display: flex;
@@ -1115,8 +1186,7 @@ button:disabled{
 
 	.cartIcon{
 		width: 21px;
-    margin-left: -0.5%;
-    margin-top: 2px;
+    margin-top: 10px;
 	}
 
   .yourCartText{

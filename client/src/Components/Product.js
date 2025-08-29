@@ -19,7 +19,7 @@ export default function Product(props){
     return(
         <Link className='productLink' to={`/product/${props.item.url}`} style={linkStyle} >
             <div className="card">
-                <img className="productpic" src={require(`../Images/${props.item.img[0]}`)}></img>
+                <img className="productpic" src={props.item.img[0]}></img>
                 <h4>{props.item.title}</h4>
                 <div className='homeStars'><ReactStars {... productReview}/></div>
                 <div className='cardPriceDiv'><h3 className="prices"><s>${props.item.price}</s></h3><h3 className="salePrice">${props.item.sale_price}</h3></div>

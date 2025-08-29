@@ -103,7 +103,6 @@ export default function CartPage(props){
         });
 
     const items = props.cartItems.map(item => {
-
         return(
             <div className="eachItemRow">
                 <div className='leftSide'>
@@ -119,7 +118,7 @@ export default function CartPage(props){
                     </div>
                 </div>
                 <div className="productImage">
-                    <a href={`/product/${item.productUrl}`}><img src={require(`../Images/${item.productImage}`)}></img></a>
+                    <a href={`/product/${item.productUrl}`}><img src={item.productImage}></img></a>
                 </div>
             </div>
         )

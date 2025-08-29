@@ -1,8 +1,11 @@
 const path = require('path')
 const express = require('express')
 const mongoose = require('mongoose')
+const { MongoClient } = require('mongodb'); 
 const Product = require('./models/products')
 const Order = require('./models/orders')
+const productEmbedding = require('./modules/get-embeddings');
+const vectorQuery = require('./modules/vector-query');
 const bodyParser = require('body-parser')
 const app = express()
 app.use(express.json())
@@ -12,12 +15,10 @@ const cors = require("cors")
 app.use(cors())
 app.use(express.static(path.join(__dirname, '..', 'client', 'build')))
 
-
 require('dotenv').config()
 
 const dbURI = process.env.DATABASE_URI;
 mongoose.connect(dbURI, {dbName: 'website-db', useNewUrlParser: true, useUnifiedTopology: true}).then((result) => console.log('Connected to DB')).catch((err) => console.log(err))
-
 
 const storeItems = new Map()
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
@@ -30,6 +31,46 @@ Product.find().then((result) => result.map((item) => {
 app.get('*', (req,res) =>{
   res.sendFile(path.resolve(__dirname,'..', 'client', 'build', 'index.html'));
 });
+
+app.post('/search-result', async(req, res) => {
+  var query = req.body['query'];
+  var result = await vectorQuery.vectorQuery(query);
+  res.send(result);
+})
+
+app.post('/get-embeddings', async (req, res) => {
+  const client = new MongoClient(dbURI);
+  try {
+    await client.connect();
+    const db = client.db("website-db");
+    const collection = db.collection("products");
+    const filter = { "name": { "$nin": [ null, "" ] } };
+    const documents = await collection.find(filter).limit(50).toArray();
+    console.log("Generating embeddings and updating documents...");
+    const updatedDocuments = [];
+    await Promise.all(documents.map(async doc => {
+      var embedding = await productEmbedding.getEmbedding(doc.name);
+      updatedDocuments.push(
+        {
+          updateOne: {
+            filter : {"_id" : doc._id},
+            update : { $set: {"embedding": embedding }}
+          }
+        }
+      )
+    }));
+
+    const options = { ordered: false };
+    const result = await collection.bulkWrite(updatedDocuments, options);
+    console.log("Count of documents updated: " + result.modifiedCount);
+  } catch (err) {
+    console.log(err.stack);
+  } finally {
+    await client.close();
+  }
+  
+});
+
 
 app.post("/get-items", (req,res) => {
   cart = req.body

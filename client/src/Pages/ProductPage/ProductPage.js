@@ -57,7 +57,7 @@ export default function ProductPage(props){
     let images = []
 
     productObj.img.forEach((img, index) => {
-        return images.push({ original: require(`../../Images/${productObj.img[index]}`) });
+        return images.push({ original: productObj.img[index] });
     })
 
     class MyGallery extends React.Component{

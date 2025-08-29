@@ -30,7 +30,7 @@ export default function SearchPage(){
         if (!query) return;
         (async () => {
             setLoading(true);
-            await axios.post("http://localhost:8080/search-result", {query}).then((res) => {
+            await axios.post("https://skylineculture-api.onrender.com/search-result", {query}).then((res) => {
                 setData(res.data);
             }).catch((err) => {
                 throw err

@@ -47,7 +47,7 @@ export default function SearchPage(){
     return(
         <div className='search-container'>
             {loading ? <><h3 className='searching-text'>{searching}</h3></> :   
-                data.map(item => (
+                data && data.map(item => (
                     <>
                         <div className='search-row' onClick = {() => handleClick(JSON.parse(item)['url'])}>
                             <div className='search-items'>

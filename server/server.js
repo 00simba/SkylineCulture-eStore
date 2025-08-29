@@ -12,10 +12,7 @@ app.use(express.json())
 app.use(express.static('../client/build'))
 app.use(bodyParser.urlencoded({extended: false}))
 const cors = require("cors")
-app.use(cors({
-  origin: "https://skylineculture.onrender.com",
-  methods: ["GET", "POST"]
-}))
+app.use(cors())
 app.use(express.static(path.join(__dirname, '..', 'client', 'build')))
 
 require('dotenv').config()

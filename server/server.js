@@ -73,9 +73,9 @@ app.post('/get-embeddings', async (req, res) => {
 
 app.post('/save-items', async (req, res) => {
 
-  var sessionID = null
-  var queryID = null
-  var orderID = null
+  var sessionID = null;
+  var queryID = null;
+  var orderID = 1000;
 
   await Order.find().sort({_id: -1}).limit(1).then((res) => {
     orderID = res[0].orderID + 1

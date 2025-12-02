@@ -75,22 +75,10 @@ app.post('/save-items', async (req, res) => {
 
   var sessionID = null;
   var queryID = null;
-  var orderID = 1000;
 
-  await Order.find().sort({_id: -1}).limit(1).then((res) => {
-    orderID = res[0].orderID + 1
-  })
-
-  await Order.findOne({sessionID: req.body.session_id}).then((res) => {
-    if(res){
-      sessionID = res.sessionID
-      queryID = res.orderID
-    }
-  })
 
   if(!sessionID){
     var orderModel = await new Order()
-    orderModel.orderID = orderID
     orderModel.items = cart.cartItems
     orderModel.sessionID = req.body.session_id
     await orderModel.save()
@@ -351,11 +339,6 @@ app.post('/create-checkout-session', async (req, res) => {
         total += price 
     })
 
-    var orderID = 1000;
-
-    await Order.find().sort({_id: -1}).limit(1).then((res) => {
-      orderID = res[0].orderID + 1
-    }).catch((err) => console.log(err));
 
     //Apply keychain discount
 
@@ -417,11 +400,13 @@ app.post('/create-checkout-session', async (req, res) => {
       cancel_url: `${domainURL}/cart`,
       billing_address_collection: 'required',
       shipping_options: getShipping(total, req.body.selected),
+      /*
       payment_intent_data: {
         "metadata": {
           "Order ID": orderID,
         }
       }
+      */
     });
     
     return res.send({url: session.url});

@@ -355,7 +355,7 @@ app.post('/create-checkout-session', async (req, res) => {
 
     await Order.find().sort({_id: -1}).limit(1).then((res) => {
       orderID = res[0].orderID + 1
-    })
+    }).catch((err) => console.log(err));
 
     //Apply keychain discount
 

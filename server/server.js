@@ -70,8 +70,7 @@ app.post('/get-embeddings', async (req, res) => {
   
 });
 
-
-app.post('/save-items', async (req, res) => {
+/*app.post('/save-items', async (req, res) => {
 
   var sessionID = null;
   var queryID = null;
@@ -86,6 +85,7 @@ app.post('/save-items', async (req, res) => {
   }
   res.send({'orderID': queryID})
 })
+*/
 
 app.post('/get-stock', async (req, res) => {
     await Product.find({name: req.body.productName}).then((response) => {

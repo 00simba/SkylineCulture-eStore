@@ -17,7 +17,7 @@ export default function OrderComplete(props){
         //https://skylineculture-api.onrender.com
         axios.post("https://skylineculture-api.onrender.com/order-complete", {session_id: searchParams.get("session_id")}).then((res) => {
             setName(res.data.name.split(' ')[0])
-            axios.post("https://skylineculture-api.onrender.com/save-items", {session_id: searchParams.get("session_id")}).then((res) => setID(res.data.orderID)).catch((err) => console.log(err))  
+            //axios.post("https://skylineculture-api.onrender.com/save-items", {session_id: searchParams.get("session_id")}).then((res) => {}).catch((err) => console.log(err))  
             axios.post("https://skylineculture-api.onrender.com/remove-inventory", {session_id: searchParams.get("session_id")}).then((res) => console.log(res.data)).catch((err) => console.log(err))
             localStorage.clear()
         }).catch((err) => {

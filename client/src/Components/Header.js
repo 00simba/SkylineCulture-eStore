@@ -81,11 +81,19 @@ export default function Header(){
                     <Link to='/contact-us'><li>Contact</li></Link>
                 </ul>
 
+
+                {
+                
+                /*
                 
                 <form className='search-box' onSubmit={onSubmit}>
                     <input type="text" className="search-input" name="query" value={query} onChange={(e) => setQuery(e.target.value)}></input>
                     <button className='button search-button' type="submit">Search</button>
                 </form>
+                */
+
+                }
+                
 
                 <div className='cartIcon'>
                     <Link to='/cart'><img src='https://d38opoffv15p79.cloudfront.net/cart_icon.webp'></img></Link>

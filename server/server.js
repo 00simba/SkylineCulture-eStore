@@ -351,7 +351,7 @@ app.post('/create-checkout-session', async (req, res) => {
         total += price 
     })
 
-    var orderID;
+    var orderID = 1000;
 
     await Order.find().sort({_id: -1}).limit(1).then((res) => {
       orderID = res[0].orderID + 1

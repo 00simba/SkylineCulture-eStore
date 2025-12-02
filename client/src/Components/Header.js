@@ -47,12 +47,15 @@ export default function Header(){
                 
                         <ul id="menu" >
 
+                            {/*
+
                             <div className='mobile-search-container'>
                                     <form className='mobile-search-box' onSubmit={onSubmit}>
                                         <input type="text" className="mobile-search-input" name="query" value={query} onChange={(e) => setQuery(e.target.value)}></input>
                                         <button className='button mobile-search-button' type="submit">Search</button>
                                     </form>
                             </div>
+                            */}
 
 
                             <Link to='/'><li id='mobileLi'>Home</li></Link>
@@ -96,7 +99,7 @@ export default function Header(){
                 
 
                 <div className='cartIcon'>
-                    <Link to='/cart'><img src='https://d38opoffv15p79.cloudfront.net/cart_icon.webp'></img></Link>
+                    <Link to='/cart'><img src='https://d38opoffv15p79.cloudfront.net/cart_icon/cart_icon.webp'></img></Link>
                 </div>
 
             </div>

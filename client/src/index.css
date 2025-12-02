@@ -347,11 +347,12 @@ img{
 }
 
 .navbar{
+  background-color: black;
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,.2);
 }
 
 .navbar li{
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -917,6 +918,7 @@ button:disabled{
 
   .menu-check-box
   {
+    background-color: white;
     display: block;
     width: 40px;
     height: 32px;
@@ -940,7 +942,7 @@ button:disabled{
     margin-bottom: 5px;
     position: relative;
     
-    background: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
     border-radius: 3px;
     
     z-index: 1;
@@ -966,7 +968,7 @@ button:disabled{
   {
     opacity: 1;
     transform: rotate(45deg) translate(0pc, 0pc);
-    background: #232323;
+    background: #ffffff;
   }
 
   #menuToggle input:checked ~ span:nth-last-child(3)
@@ -989,14 +991,14 @@ button:disabled{
     margin: -100px 0 0 -50px;
     padding: 50px;
     padding-top: 125px;
-    background: rgb(255, 255, 255);
+    background: rgb(0, 0, 0);
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     /* to stop flickering of text in safari */
     
     transform-origin: 0% 0%;
     transform: translate(-100%, 0);
-    border-bottom-right-radius: 20px;
+    border-bottom-right-radius: 10px;
 
     border-bottom: 2px solid rgb(0, 0, 0) ;
     border-right: 2px solid rgb(0, 0, 0) ;
@@ -1036,7 +1038,8 @@ button:disabled{
 
 
   .navbar{
-    align-items: baseline;
+    background-color: black;
+    align-items: center;
     padding: 7% 4% 7% 4%;
     display: flex;
     flex-direction: row;
@@ -1159,6 +1162,7 @@ button:disabled{
 
 
   .navbar{
+    background-color: black;
     display: flex;
     flex-direction: row;
     padding-bottom: 3%;
@@ -1205,6 +1209,7 @@ button:disabled{
 	}
 
 	.navbar{
+    background-color: black;
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
@@ -1388,6 +1393,7 @@ button:disabled{
     justify-content: flex-start;
     align-items: center;
     padding: 3%;
+    background-color: black;
   }
 	#menuToggle{
 		display: none;

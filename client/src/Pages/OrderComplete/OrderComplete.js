@@ -22,7 +22,7 @@ export default function OrderComplete(props){
             localStorage.clear()
         }).catch((err) => {
             console.log(err)
-            window.location.href = 'https://skylineculture.store/not-found';
+            window.location.href = 'https://skylineculture.com/not-found';
         })
     }, [name]);
     
@@ -37,7 +37,7 @@ export default function OrderComplete(props){
             </div>
             <div className='completeInfo'>
                 <p>Visit the Track Order page for estimated shipping times</p>
-                <p>For all other inquiries about your order email: info@skylineculture.store</p>
+                <p>For all other inquiries about your order email: info@skylineculture.com</p>
             </div>
             <div className='homeButtonDiv'>
                 <Link to={`/`}><button className='homeButton'>Return Home</button></Link>

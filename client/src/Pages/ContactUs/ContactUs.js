@@ -66,7 +66,7 @@ export default function ContactUs(){
 
                     <h2>Contact Us</h2>
                     <br/>
-                    <span>Please fill out the form below in order to get in touch about any inquiries or email info@skylineculture.store. You can expect to receive a response within 24 hours.</span>
+                    <span>Please fill out the form below in order to get in touch about any inquiries or email info@skylineculture.com. You can expect to receive a response within 24 hours.</span>
 
                     <label className='nameLabel'>Name</label>
                     <input type="text" name="name" id='name' value={name} onChange={(e) => setName(e.target.value)}/>

@@ -21,8 +21,7 @@ const dbURI = process.env.DATABASE_URI;
 mongoose.connect(dbURI, {dbName: 'website-db', useNewUrlParser: true, useUnifiedTopology: true}).then((result) => console.log('Connected to DB')).catch((err) => console.log(err))
 
 const storeItems = new Map()
-const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
-let cart = [];
+const stripe = require('stripe')(process.env.STRIPE_TEST_KEY)
 
 Product.find().then((result) => result.map((item) => {
     storeItems.set(item.id, {name: item.name, price: item.price, stripe_price: item.stripe_price, stock: item.stock, reviews: item.reviews})
@@ -71,20 +70,6 @@ app.post('/get-embeddings', async (req, res) => {
   
 });
 
-
-app.post("/get-items", (req,res) => {
-  cart = req.body
-  res.send(cart)
-})
-
-function calculateTotal(){
-    var total = 0;
-    (cart.cartItems).forEach((itemObject) => {
-        var price = ((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity))
-        total += price 
-    })
-    return total
-}
 
 app.post('/save-items', async (req, res) => {
 
@@ -171,11 +156,11 @@ app.post('/remove-inventory', async (req, res) => {
     }
 })
 
-function getShipping(country){
+function getShipping(total, country){
 
     var shipping = []
 
-    if(calculateTotal() < 3500){
+    if(total < 3500){
         if(country == 'Canada'){
             shipping.push({
                 shipping_rate_data: {
@@ -314,11 +299,11 @@ function getShipping(country){
     return shipping     
 }
 
-function getLineItems(){
+function getLineItems(cart){
 
     var line_items = []
 
-    cart['cartItems'].forEach((cartItem) => {
+    cart.forEach((cartItem) => {
         if(cartItem.productVariant != 'null'){
             var priceString = storeItems.get(parseInt(cartItem.productId)).stripe_price
             stringArr = priceString.split(' ')
@@ -355,8 +340,16 @@ app.post('/order-complete', async (req, res) => {
 
 
 app.post('/create-checkout-session', async (req, res) => {
-    
-    const domainURL = 'https://skylineculture.store';
+
+
+    const domainURL = 'https://skylineculture.com';
+    const cart = req.body.cartItems;
+
+    var total = 0;
+    cart.forEach((itemObject) => {
+        var price = ((storeItems.get(parseInt(itemObject.productId))).price)*(parseInt(itemObject.productQuantity))
+        total += price 
+    })
 
     var orderID;
 
@@ -370,7 +363,7 @@ app.post('/create-checkout-session', async (req, res) => {
     var couponId;
     var prices = [];
 
-    (cart.cartItems).forEach((itemObject) => {
+    cart.forEach((itemObject) => {
         var name = (storeItems.get(parseInt(itemObject.productId))).name
         if(name.includes("Keychain")){
           chainCount += 1 * (parseInt(itemObject.productQuantity))
@@ -419,11 +412,11 @@ app.post('/create-checkout-session', async (req, res) => {
       ],
       customer_creation: "always",
       shipping_address_collection: {allowed_countries: ['CA', 'US', 'GB', 'AU', 'NZ', 'FR', 'ES', 'IT', 'DE', 'PL', 'BE', 'AT', 'DK', 'IS', 'IE', 'FI', 'SE', 'CH', 'NL', 'NO', 'HK', 'JP', 'SG', 'KW', 'AE', 'QA']},
-      line_items: getLineItems(),
+      line_items: getLineItems(cart),
       success_url: `${domainURL}/order/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${domainURL}/cart`,
       billing_address_collection: 'required',
-      shipping_options: getShipping(req.body.selected),
+      shipping_options: getShipping(total, req.body.selected),
       payment_intent_data: {
         "metadata": {
           "Order ID": orderID,

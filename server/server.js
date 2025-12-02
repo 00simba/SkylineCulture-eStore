@@ -21,7 +21,7 @@ const dbURI = process.env.DATABASE_URI;
 mongoose.connect(dbURI, {dbName: 'website-db', useNewUrlParser: true, useUnifiedTopology: true}).then((result) => console.log('Connected to DB')).catch((err) => console.log(err))
 
 const storeItems = new Map()
-const stripe = require('stripe')(process.env.STRIPE_TEST_KEY)
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 Product.find().then((result) => result.map((item) => {
     storeItems.set(item.id, {name: item.name, price: item.price, stripe_price: item.stripe_price, stock: item.stock, reviews: item.reviews})

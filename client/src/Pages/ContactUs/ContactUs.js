@@ -31,7 +31,7 @@ export default function ContactUs(){
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('service_d5wq1tq', 'template_nquyi7w', form.current, 'tMgSATKzaRQ4LzWTM')
+        emailjs.sendForm('service_c9grlw4', 'template_nquyi7w', form.current, 'tMgSATKzaRQ4LzWTM')
         .then((result) => {
             setName('')
             setEmail('')

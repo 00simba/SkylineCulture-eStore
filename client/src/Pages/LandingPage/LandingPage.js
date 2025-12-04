@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import Products from '../../Components/Product';
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga';
 
 export default function LandingPage(props){
 

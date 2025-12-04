@@ -1,19 +1,20 @@
-const path = require('path')
-const express = require('express')
-const mongoose = require('mongoose')
+const path = require('path');
+const express = require('express');
+const mongoose = require('mongoose');
 const { MongoClient } = require('mongodb'); 
-const Product = require('./models/products')
-const Order = require('./models/orders')
+const Product = require('./models/products');
+const Order = require('./models/orders');
+const orderUtil =  require('../client/src/Utils/getNextOrderNumber.js');
 const productEmbedding = require('./modules/get-embeddings');
 const vectorQuery = require('./modules/vector-query');
-const bodyParser = require('body-parser')
-const app = express()
-app.use(express.json())
-app.use(express.static('../client/build'))
-app.use(bodyParser.urlencoded({extended: false}))
-const cors = require("cors")
-app.use(cors())
-app.use(express.static(path.join(__dirname, '..', 'client', 'build')))
+const bodyParser = require('body-parser');
+const app = express();
+app.use(express.json());
+app.use(express.static('../client/build'));
+app.use(bodyParser.urlencoded({extended: false}));
+const cors = require("cors");
+app.use(cors());
+app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 
 require('dotenv').config()
 
@@ -21,11 +22,12 @@ const dbURI = process.env.DATABASE_URI;
 mongoose.connect(dbURI, {dbName: 'website-db', useNewUrlParser: true, useUnifiedTopology: true}).then((result) => console.log('Connected to DB')).catch((err) => console.log(err))
 
 const storeItems = new Map()
-const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+const stripe = require('stripe')(process.env.STRIPE_TEST_KEY)
 
 Product.find().then((result) => result.map((item) => {
     storeItems.set(item.id, {name: item.name, price: item.price, stripe_price: item.stripe_price, stock: item.stock, reviews: item.reviews})
 }))
+
 
 app.get('*', (req,res) =>{
   res.sendFile(path.resolve(__dirname,'..', 'client', 'build', 'index.html'));
@@ -70,23 +72,6 @@ app.post('/get-embeddings', async (req, res) => {
   
 });
 
-/*app.post('/save-items', async (req, res) => {
-
-  var sessionID = null;
-  var queryID = null;
-
-
-  if(!sessionID){
-    var orderModel = await new Order()
-    orderModel.items = cart.cartItems
-    orderModel.sessionID = req.body.session_id
-    await orderModel.save()
-    console.log("Saved")
-  }
-  res.send({'orderID': queryID})
-})
-*/
-
 app.post('/get-stock', async (req, res) => {
     await Product.find({name: req.body.productName}).then((response) => {
         res.send(response);}).catch((err) => {console.log(err)})
@@ -94,17 +79,13 @@ app.post('/get-stock', async (req, res) => {
 
 app.post('/remove-inventory', async (req, res) => {
 
-    var sessionID = null
+  // expect cart
+    let cart = JSON.parse(req.body.cart);
 
-    await Order.findOne({sessionID: req.body.session_id}).then((res) => {
-      if(res){
-        sessionID = res.sessionID
-      }
-    })
+    if(cart.length){
 
-    if(!sessionID){
-      console.log('Removed')
-      cart.cartItems.forEach(async (item) => {
+      await Order.findOne({orderNumber: req.body.orderNumber}).then(() => {
+        cart.forEach(async (item) => {
           await Product.findOne({name: item.productName}).then(async (product) => {
 
               product = product.toObject()
@@ -141,7 +122,10 @@ app.post('/remove-inventory', async (req, res) => {
               }
           })
       })
+    });
+
     }
+    
 })
 
 function getShipping(total, country){
@@ -316,14 +300,45 @@ function getLineItems(cart){
 
 app.post('/order-complete', async (req, res) => {
 
-  try{
-    const session = await stripe.checkout.sessions.retrieve(req.body.session_id)
-    const customer = await stripe.customers.retrieve(session.customer)
-    res.send({'name': customer.name});
-  } catch{
-    console.log("The session does not exist.")
-    return res.sendStatus(400)
+  var orderNumber;
+  var cart = JSON.parse(req.body.cart);
+  var cartArray = [];
+
+  if(cart.length){
+
+    orderUtil.getNextOrderNumber().then((res) => (
+    orderNumber = res
+    ));
+
+    try{
+      const session = await stripe.checkout.sessions.retrieve(req.body.session_id)
+      const customer = await stripe.customers.retrieve(session.customer)
+      res.send({
+        'name': customer.name,
+        'orderNumber' : orderNumber
+      });
+
+      for(var i = 0; i < cart.length; i++){
+        cartArray.push(
+          {
+            'name': cart[i]['productName'],
+            'quantity': cart[i]['productQuantity']
+          }
+        );
+      };
+
+      var orderModel = await new Order();
+      orderModel.orderNumber = orderNumber;
+      orderModel.name = customer.name;
+      orderModel.items = cartArray;
+      await orderModel.save();
+
+    } catch(err) {
+      console.log(err)
+      return res.sendStatus(400)
+    }
   }
+
 });
 
 
@@ -357,7 +372,6 @@ app.post('/create-checkout-session', async (req, res) => {
     })
 
     prices.sort((a, b) => a - b)
-    console.log(prices)
 
     if(chainCount >= 4){
 
